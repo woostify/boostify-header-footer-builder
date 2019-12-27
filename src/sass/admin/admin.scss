@@ -1,0 +1,19 @@
+#ht_hf_setting {
+	.form-meta-footer {
+		margin-top: 15px;
+		label {
+			display: block;
+			margin-bottom: 10px;
+			vertical-align: baseline;
+			font-weight: 600;
+		}
+
+		.input-wrapper {
+			margin-bottom: 30px;
+		}
+
+		select {
+			min-width: 180px;
+		}
+	}
+}
