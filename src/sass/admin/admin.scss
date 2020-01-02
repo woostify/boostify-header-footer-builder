@@ -17,3 +17,52 @@
 		}
 	}
 }
+
+// For Settings Post Page
+
+.hf-input-wrapper {
+	margin-bottom: 15px;
+	overflow: hidden;
+
+	label {
+		display: block;
+		margin-bottom: 8px;
+	}
+
+	select {
+		min-width: 180px;
+		display: block;
+	}
+}
+
+.edit-post-meta-boxes-area #poststuff h3.hndle,
+.edit-post-meta-boxes-area #poststuff .stuffbox > h3,
+.edit-post-meta-boxes-area #poststuff h2.hndle {
+	color: #191e23;
+	border: none;
+}
+
+// For Page settings
+
+.ht-hf-setting-page {
+	background-color: #fff;
+	padding: 25px;
+	margin: 15px;
+
+	.header {
+		margin-bottom: 30px;
+	}
+
+	.form-setting {
+		select {
+			min-width: 200px
+		}
+
+		label {
+			min-width: 120px;
+			display: inline-block;
+			text-align: left;
+			margin: 15px 0;
+		}
+	}
+}

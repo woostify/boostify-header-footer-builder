@@ -9,21 +9,14 @@
 </head>
 
 <body <?php body_class(); ?>>
-	<section id="primary" class="tour-area content-tour">
-		<main id="main" class="site-main">
+	<main id="ht-hf-primary">
+
 
 		<?php
 		while ( have_posts() ) :
 			the_post();
 
-			?>
-
-			<section id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-				<div class="wt-listing">
-					<?php the_content(); ?>
-				</div>
-			</section>
-		<?php
+			boostify_hf_content();
 			// If comments are open or we have at least one comment, load up the comment template.
 
 
@@ -31,8 +24,7 @@
 		wp_reset_postdata();
 		?>
 
-		</main><!-- #main -->
-	</section><!-- #primary -->
+	</main><!-- #primary -->
 </body>
 <?php
 wp_footer();

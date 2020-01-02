@@ -21,15 +21,16 @@ if ( ! class_exists( 'Boostify_Header_Footer_Metabox' ) ) {
 		public function hooks() {
 			add_action( 'add_meta_boxes', array( $this, 'pagesetting_meta_box' ) );
 			add_action( 'save_post', array( $this, 'pagesetting_save' ) );
+			add_action( 'add_meta_boxes', array( $this, 'hf_post_settings' ) );
+			add_action( 'save_post', array( $this, 'hf_post_settings_save' ) );
 		}
 
 		public function pagesetting_meta_box() {
-			add_meta_box( 'ht_hf_setting', 'Page Settings', array( $this, 'ht_hfsetting_output' ), 'btf_builder' );
+			add_meta_box( 'ht_hf_setting', 'Template Settings', array( $this, 'ht_hfsetting_output' ), 'btf_builder', 'side' );
 		}
 
 		public function ht_hfsetting_output( $post ) {
-			$type          = get_post_meta( $post->ID, 'hf_type', true );
-			$display       = get_post_meta( $post->ID, 'hf_display', true );
+			$type          = get_post_meta( $post->ID, 'bhf_type', true );
 			$select_footer = '';
 			$select_header = '';
 			// Check Type Selected
@@ -41,15 +42,6 @@ if ( ! class_exists( 'Boostify_Header_Footer_Metabox' ) ) {
 				$select_header = ' selected';
 			}
 
-			$args = [
-				'post_type'           => 'page',
-				'posts_per_page'      => -1,
-				'ignore_sticky_posts' => 1,
-			];
-
-			$options = new WP_Query( $args );
-
-
 			wp_nonce_field( 'boostify_hf_action', 'boostify_hf' );
 			?>
 
@@ -58,27 +50,9 @@ if ( ! class_exists( 'Boostify_Header_Footer_Metabox' ) ) {
 				<!-- Choose Header or Footer -->
 				<div class="input-wrapper">
 					<label for="container"><?php echo esc_html__( 'Type of Template', 'boostify' ); ?></label>
-					<select name="hf_type" id="container">
+					<select name="bhf_type" id="container">
 						<option value="header"<?php echo esc_attr( $select_header ); ?>><?php echo esc_html__( 'Header', 'boostify' ); ?></option>
 						<option value="footer"<?php echo esc_attr( $select_footer ); ?>><?php echo esc_html__( 'Footer', 'boostify' ); ?></option>
-					</select>
-				</div>
-
-
-				<div class="input-wrapper">
-					<label for="header-transparent"><?php echo esc_html__( 'Display On', 'boostify' ); ?></label>
-					<select name="hf_display" id="header-transparent">
-						<option value="0" ><?php echo esc_html__( 'All Page', 'boostify' ); ?></option>
-						<?php
-							while ( $options->have_posts() ) {
-								$options->the_post();
-								?>
-								<option value="<?php echo esc_attr( get_the_ID() ); ?>"<?php echo esc_attr( ( get_the_ID() == $display ) ? ' selected' : '' ); ?> ><?php echo esc_html( get_the_title() ); ?></option>
-								<?php
-							}
-
-							wp_reset_postdata();
-						?>
 					</select>
 				</div>
 
@@ -87,42 +61,133 @@ if ( ! class_exists( 'Boostify_Header_Footer_Metabox' ) ) {
 		}
 
 		public function pagesetting_save( $post_id ) {
-			$nonce_name   = isset( $_POST['boostify_hf'] ) ? $_POST['boostify_hf'] : '';
+			$nonce_name   = isset( $_POST['boostify_hf'] ) ? sanitize_text_field( $_POST['boostify_hf'] ) : '';
 			$nonce_action = 'boostify_hf_action';
 
-			if ( ! isset( $nonce_name ) )
+			if ( ! isset( $nonce_name ) ) {
 				return;
+			}
 			// Check if a nonce is valid.
-			if ( ! wp_verify_nonce( $nonce_name, $nonce_action ) )
+			if ( ! wp_verify_nonce( $nonce_name, $nonce_action ) ) {
 				return;
+			}
 
 			// Check if the user has permissions to save data.
-			if ( ! current_user_can( 'edit_post', $post_id ) )
+			if ( ! current_user_can( 'edit_post', $post_id ) ) {
 				return;
+			}
 
 			// Check if it's not an autosave.
-			if ( wp_is_post_autosave( $post_id ) )
+			if ( wp_is_post_autosave( $post_id ) ) {
 				return;
+			}
 
 			// Check if it's not a revision.
-			if ( wp_is_post_revision( $post_id ) )
+			if ( wp_is_post_revision( $post_id ) ) {
 				return;
+			}
 
-			$type = ( isset($_POST['hf_type']) ) ? sanitize_text_field( $_POST['hf_type'] ) : 'show';
+			$type = ( isset( $_POST['bhf_type'] ) ) ? sanitize_text_field( $_POST['bhf_type'] ) : 'show';
 
 			update_post_meta(
 				$post_id,
-				'hf_type',
+				'bhf_type',
 				$type
 			);
+		}
 
-			$display = ( isset( $_POST['hf_display'] ) ) ? sanitize_text_field( $_POST['hf_display'] ) : 'show';
+		// For choose header footer Post And page
+
+		public function hf_post_settings() {
+			add_meta_box( 'hf_post_setting', 'Header Footer Template', array( $this, 'hf_setting_output' ), array( 'post', 'page' ), 'side' );
+		}
+
+		public function hf_setting_output( $post ) {
+			$header_display = get_post_meta( $post->ID, 'bhf_display_header', true );
+			$footer_display = get_post_meta( $post->ID, 'bhf_display_footer', true );
+			$header_posts   = boostify_hf_header_option();
+			$footer_posts   = boostify_hf_footer_option();
+
+			wp_nonce_field( 'bhf_action', 'bhf' );
+			?>
+
+			<div class="form-meta-footer">
+
+				<!-- Choose Header or Footer -->
+
+				<div class="hf-input-wrapper">
+					<label for="bhf-display-header"><?php echo esc_html__( 'Header', 'boostify' ); ?></label>
+					<select name="bhf_display_header" id="bhf-display-header">
+						<?php
+						foreach ( $header_posts as $index => $header ) {
+
+							?>
+							<option value="<?php echo esc_attr( $index ); ?>"<?php echo esc_attr( ( $index == $header_display ) ? ' selected' : '' ); ?> ><?php echo esc_html( $header ); ?></option>
+							<?php
+						}
+
+						?>
+					</select>
+				</div>
+
+				<div class="hf-input-wrapper">
+					<label for="bhf_display_footer"><?php echo esc_html__( 'Footer', 'boostify' ); ?></label>
+					<select name="bhf_display_footer" id="bhf_display_footer">
+						<?php
+						foreach ( $footer_posts as $index => $footer ) {
+							?>
+							<option value="<?php echo esc_attr( $index ); ?>"<?php echo esc_attr( ( $index == $footer_display ) ? ' selected' : '' ); ?> ><?php echo esc_html( $footer ); ?></option>
+							<?php
+						}
+
+						?>
+					</select>
+				</div>
+
+			</div>
+			<?php
+		}
+
+		public function hf_post_settings_save( $post_id ) {
+			$nonce_name   = isset( $_POST['bhf'] ) ? $_POST['bhf'] : '';
+			$nonce_action = 'bhf_action';
+
+			if ( ! isset( $nonce_name ) ) {
+				return;
+			}
+			// Check if a nonce is valid.
+			if ( ! wp_verify_nonce( $nonce_name, $nonce_action ) ) {
+				return;
+			}
+
+			// Check if the user has permissions to save data.
+			if ( ! current_user_can( 'edit_post', $post_id ) ) {
+				return;
+			}
+
+			// Check if it's not an autosave.
+			if ( wp_is_post_autosave( $post_id ) ) {
+				return;
+			}
+
+			// Check if it's not a revision.
+			if ( wp_is_post_revision( $post_id ) ) {
+				return;
+			}
+
+			$display_header = ( isset( $_POST['bhf_display_header'] ) ) ? sanitize_text_field( $_POST['bhf_display_header'] ) : '';
 			update_post_meta(
 				$post_id,
-				'hf_display',
-				$display
+				'bhf_display_header',
+				$display_header
 			);
 
+			$display_footer = ( isset( $_POST['bhf_display_footer'] ) ) ? sanitize_text_field( $_POST['bhf_display_footer'] ) : '';
+			update_post_meta(
+				$post_id,
+				'bhf_display_footer',
+				$display_footer
+			);
 		}
 
 	}

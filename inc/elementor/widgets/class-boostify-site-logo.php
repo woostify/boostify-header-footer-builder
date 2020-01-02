@@ -15,7 +15,7 @@ class Boostify_Site_Logo extends Widget_Base {
 	 * @return string Widget name.
 	 */
 	public function get_name() {
-		return 'ht-hf-nav-menu';
+		return 'ht-hf-site-logo';
 	}
 
 	/**
@@ -47,10 +47,6 @@ class Boostify_Site_Logo extends Widget_Base {
 		return array( 'ht_hf_builder' );
 	}
 
-	public function get_style_depends() {
-		return array( 'wt-destination' );
-	}
-
 	/**
 	 * Register the widget controls.
 	 *
@@ -65,123 +61,28 @@ class Boostify_Site_Logo extends Widget_Base {
 		);
 
 		$this->add_control(
-			'layout',
-			array(
-				'label'   => esc_html__( 'Layout', 'ht-wanderlust' ),
-				'type'    => Controls_Manager::SELECT,
-				'options' => [
-					'default' => esc_html__( 'Default', 'ht-wanderlust' ),
-					'simple'  => esc_html__( 'Simple', 'ht-wanderlust' ),
-					'classic' => esc_html__( 'Classic', 'ht-wanderlust' ),
-				],
-				'default' => 'default',
-			)
-		);
-
-		$this->add_control(
-			'label_position',
-			array(
-				'label'     => esc_html__( 'Title Positon', 'ht-wanderlust' ),
+			'align',
+			[
+				'label'     => esc_html__( 'Align', 'boostify' ),
 				'type'      => Controls_Manager::CHOOSE,
-				'default'   => 'flex-end',
+				'default'   => 'flex-start',
 				'selectors' => [
-					'{{WRAPPER}} .ewt-destination-info' => 'align-items: {{VALUE}};',
+					'{{WRAPPER}} .boostify-menu' => 'justify-content: {{VALUE}};',
 				],
 				'options'   => [
 					'flex-start' => [
-						'icon'  => 'eicon-v-align-top',
-						'title' => 'Top',
+						'icon'  => 'eicon-h-align-left',
+						'title' => 'Left',
 					],
 					'center'     => [
-						'icon'  => 'eicon-v-align-middle',
+						'icon'  => 'eicon-h-align-center',
 						'title' => 'Center',
 					],
 					'flex-end'   => [
-						'icon'  => 'eicon-v-align-bottom',
-						'title' => 'Bottom',
+						'icon'  => 'eicon-h-align-right',
+						'title' => 'Right',
 					],
 				],
-
-			)
-		);
-
-
-		$this->add_control(
-			'image',
-			array(
-				'label'       => esc_html__( 'Image', 'ht-wanderlust' ),
-				'type'        => Controls_Manager::MEDIA,
-				'description' => esc_html__( 'If you do not select a photo, it will be taken destination thumbnail', 'ht-wanderlust' ),
-				'default'     => [
-					'url' => \Elementor\Utils::get_placeholder_image_src(),
-				],
-			)
-		);
-
-		$this->add_group_control(
-			\Elementor\Group_Control_Image_Size::get_type(),
-			[
-				'name'        => 'thumbnail',
-				'default'     => 'full',
-				'label'       => esc_html__( 'Image Size', 'ht-wanderlust' ),
-				'description' => esc_html__( 'Custom image size when selected image.', 'ht-wanderlust' ),
-			]
-		);
-
-		$this->end_controls_section();
-
-		$this->start_controls_section(
-			'style',
-			[
-				'label' => esc_html__( 'Style', 'ht-wanderlust' ),
-				'tab'   => Controls_Manager::TAB_STYLE,
-			]
-		);
-
-		$this->add_control(
-			'title_color',
-			[
-				'label'     => esc_html__( 'Title Color', 'ht-wanderlust' ),
-				'type'      => Controls_Manager::COLOR,
-				'default'   => '#000',
-				'selectors' => [
-					'{{WRAPPER}} .ewt-destination-title' => 'color: {{VALUE}};',
-				],
-
-			]
-		);
-
-		$this->add_group_control(
-			Elementor\Group_Control_Typography::get_type(),
-			[
-				'label'    => esc_html__( 'Title Typography', 'ht-wanderlust' ),
-				'name'     => 'title_typo',
-				'scheme'   => Elementor\Scheme_Typography::TYPOGRAPHY_1,
-				'selector' => '{{WRAPPER}} .ewt-destination-title',
-			]
-		);
-
-		$this->add_control(
-			'count_color',
-			[
-				'label'     => esc_html__( 'Text Color', 'ht-wanderlust' ),
-				'type'      => Controls_Manager::COLOR,
-				'default'   => '#000',
-				'separator' => 'before',
-				'selectors' => [
-					'{{WRAPPER}} .text-count' => 'color: {{VALUE}};',
-				],
-
-			]
-		);
-
-		$this->add_group_control(
-			Elementor\Group_Control_Typography::get_type(),
-			[
-				'label'    => esc_html__( 'Text Typography', 'ht-wanderlust' ),
-				'name'     => 'text_typo',
-				'scheme'   => Elementor\Scheme_Typography::TYPOGRAPHY_1,
-				'selector' => '{{WRAPPER}} .text-count',
 			]
 		);
 
@@ -196,7 +97,24 @@ class Boostify_Site_Logo extends Widget_Base {
 	 */
 	protected function render() {
 		$settings = $this->get_settings_for_display();
+		?>
+			<div class="boostify-site-logo-header">
+			<?php
+				if ( has_custom_logo() ) :
+					the_custom_logo();
+				else :
+					if ( is_user_logged_in() ) {
+						echo esc_html__( 'Please go to customize choose logo for site', 'boostify' );
+					} else {
+						?>
+						<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
+						<?php
+					}
+				endif;
 
+			?>
+		</div>
+	<?php
 	}
 
 

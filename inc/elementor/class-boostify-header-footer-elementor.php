@@ -57,7 +57,13 @@ if ( ! class_exists( 'Boostify_Header_Footer_Elementor' ) ) {
 		 * @access public
 		 */
 		public function widget_styles() {
-
+			// Style Tour Filter
+			wp_register_style(
+				'boostify_hf_nav_menu',
+				HT_HF_URL . 'assets/css/elementor/nav-menu.css',
+				array(),
+				HT_HF_VER
+			);
 		}
 		/**
 		 * widget_scripts
@@ -68,6 +74,13 @@ if ( ! class_exists( 'Boostify_Header_Footer_Elementor' ) ) {
 		 * @access public
 		 */
 		public function widget_scripts() {
+			wp_register_script(
+				'boostify_hf_nav_menu',
+				HT_HF_URL . 'assets/js/nav-menu' . boostify_hf_suffix() . '.js',
+				array( 'jquery', 'slick' ),
+				HT_HF_VER,
+				true
+			);
 		}
 		/**
 		 * Include Widgets files

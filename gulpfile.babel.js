@@ -15,6 +15,7 @@ import zip from 'gulp-zip';
 import info from './package.json';
 import project from './project.json';
 import wpPot from 'gulp-wp-pot';
+import minify from 'gulp-minify';
 
 const PRODUCTION = yargs.argv.prod;
 const server = browserSync.create();
@@ -22,7 +23,7 @@ const server = browserSync.create();
 const paths = {
 	styles: {
 		src: [
-			'src/sass/admin/*.scss',
+			'src/sass/**/*.scss',
 		],
 		dest: 'assets/css',
 	},
@@ -68,10 +69,16 @@ export const clean = () => del(['dist']);
 
 export const scripts = () => {
 	return src(paths.scripts.src)
-		.pipe(gulpif(!PRODUCTION, sourcemaps.init()))
 		.pipe(gulpif(PRODUCTION, uglify()))
+		.pipe(minify({
+			ext: {
+				min: '.min.js'
+			},
+			ignoreFiles: ['-min.js']
+		}))
 		.pipe(dest(paths.scripts.dest));
 };
+
 
 export const serve = done => {
 	server.init({

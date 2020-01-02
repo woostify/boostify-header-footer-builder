@@ -1,0 +1,61 @@
+#ht_hf_setting .form-meta-footer {
+  margin-top: 15px;
+}
+
+#ht_hf_setting .form-meta-footer label {
+  display: block;
+  margin-bottom: 10px;
+  vertical-align: baseline;
+  font-weight: 600;
+}
+
+#ht_hf_setting .form-meta-footer .input-wrapper {
+  margin-bottom: 30px;
+}
+
+#ht_hf_setting .form-meta-footer select {
+  min-width: 180px;
+}
+
+.hf-input-wrapper {
+  margin-bottom: 15px;
+  overflow: hidden;
+}
+
+.hf-input-wrapper label {
+  display: block;
+  margin-bottom: 8px;
+}
+
+.hf-input-wrapper select {
+  min-width: 180px;
+  display: block;
+}
+
+.edit-post-meta-boxes-area #poststuff h3.hndle,
+.edit-post-meta-boxes-area #poststuff .stuffbox > h3,
+.edit-post-meta-boxes-area #poststuff h2.hndle {
+  color: #191e23;
+  border: none;
+}
+
+.ht-hf-setting-page {
+  background-color: #fff;
+  padding: 25px;
+  margin: 15px;
+}
+
+.ht-hf-setting-page .header {
+  margin-bottom: 30px;
+}
+
+.ht-hf-setting-page .form-setting select {
+  min-width: 200px;
+}
+
+.ht-hf-setting-page .form-setting label {
+  min-width: 120px;
+  display: inline-block;
+  text-align: left;
+  margin: 15px 0;
+}
