@@ -36,11 +36,7 @@ class Boostify_Hf_Template_Render {
 
 			// Scripts and styles.
 			add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
-			add_filter( 'body_class', array( $this, 'body_class' ) );
-			add_filter( 'manage_btf_builder_posts_columns', array( $this, 'columns_head' ) );
-			add_action( 'manage_btf_builder_posts_custom_column', array( $this, 'columns_content' ), 10, 2 );
 			add_shortcode( 'bhf', array( $this, 'render_template' ) );
-
 		}
 
 	}
@@ -85,21 +81,6 @@ class Boostify_Hf_Template_Render {
 
 
 	/**
-	 * Adds classes to the body tag conditionally.
-	 *
-	 * @param  Array $classes array with class names for the body tag.
-	 *
-	 * @return Array          array with class names for the body tag.
-	 */
-	public function body_class( $classes ) {
-
-		$classes[] = 'listing-template-' . $this->template;
-		$classes[] = 'listing-stylesheet-' . get_stylesheet();
-
-		return $classes;
-	}
-
-	/**
 	 * Callback to shortcode.
 	 *
 	 * @param array $atts attributes for shortcode.
@@ -108,13 +89,15 @@ class Boostify_Hf_Template_Render {
 
 		$atts = shortcode_atts(
 			array(
-				'id' => '',
+				'id'   => '',
+				'type' => '',
 			),
 			$atts,
 			'bhf'
 		);
 
-		$id = ! empty( $atts['id'] ) ? intval( $atts['id'] ) : '';
+		$id   = ! empty( $atts['id'] ) ? intval( $atts['id'] ) : '';
+		$type = ! empty( $atts['type'] ) ? $atts['type'] : '';
 
 		if ( empty( $id ) ) {
 			return '';
@@ -128,35 +111,6 @@ class Boostify_Hf_Template_Render {
 		$css_file->enqueue();
 
 		return self::$elementor_instance->frontend->get_builder_content_for_display( $id );
-
-	}
-
-	public function columns_head( $columns ) {
-		$date_column = $columns['date'];
-
-		unset( $columns['date'] );
-
-		$columns['shortcode'] = __( 'Shortcode', 'boostify' );
-		$columns['date']      = $date_column;
-
-		return $columns;
-	}
-
-	// SHOW THE FEATURED IMAGE
-	public function columns_content( $column_name, $post_id ) {
-		switch ( $column_name ) {
-			case 'shortcode':
-				ob_start();
-				?>
-				<span class="hfe-shortcode-col-wrap">
-					<input type="text" readonly="readonly" value="[bhf id='<?php echo esc_attr( $post_id ); ?>']" class="hfe-large-text code">
-				</span>
-
-				<?php
-
-				ob_get_contents();
-				break;
-		}
 	}
 
 }

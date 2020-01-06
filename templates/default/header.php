@@ -20,5 +20,5 @@
 </head>
 
 <body <?php body_class(); ?>>
-
+<div id="page" class="bhf-site">
 <?php do_action( 'boostify_hf_get_header' ); ?>

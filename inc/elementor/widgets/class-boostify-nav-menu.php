@@ -125,7 +125,7 @@ class Boostify_Nav_Menu extends Widget_Base {
 
 					<?php
 						if ( 'yes' == $settings['search'] ) :
-							do_action( 'boostify_hf_seach_form_mobile' );
+							do_action( 'boostify_hf_seach_form' );
 						endif;
 					?>
 

@@ -56,7 +56,7 @@ class Boostify_Site_Logo extends Widget_Base {
 		$this->start_controls_section(
 			'section_content',
 			array(
-				'label' => esc_html__( 'Destination', 'ht-wanderlust' ),
+				'label' => esc_html__( 'Logo', 'ht-wanderlust' ),
 			)
 		);
 

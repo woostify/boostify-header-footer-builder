@@ -77,7 +77,16 @@ if ( ! class_exists( 'Boostify_Header_Footer_Elementor' ) ) {
 			wp_register_script(
 				'boostify_hf_nav_menu',
 				HT_HF_URL . 'assets/js/nav-menu' . boostify_hf_suffix() . '.js',
-				array( 'jquery', 'slick' ),
+				array( 'jquery' ),
+				HT_HF_VER,
+				true
+			);
+
+			// Search
+			wp_register_script(
+				'boostify_hf_search',
+				HT_HF_URL . 'assets/js/search' . boostify_hf_suffix() . '.js',
+				array( 'jquery' ),
 				HT_HF_VER,
 				true
 			);

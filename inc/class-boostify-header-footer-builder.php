@@ -119,10 +119,18 @@ if ( ! class_exists( 'Boostify_Header_Footer_Builder' ) ) {
 
 		public function wt_style() {
 
-			// FontAweSome 5 Free
+			// Menu
 			wp_enqueue_style(
-				'nav-menu-css',
+				'boostify-hf-nav-menu-css',
 				HT_HF_URL . 'assets/css/elementor/nav-menu.css',
+				array(),
+				HT_HF_VER
+			);
+
+			// Search
+			wp_enqueue_style(
+				'boostify-hf-search',
+				HT_HF_URL . 'assets/css/elementor/search.css',
 				array(),
 				HT_HF_VER
 			);
