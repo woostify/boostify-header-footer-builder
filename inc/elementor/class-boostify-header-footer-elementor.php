@@ -134,6 +134,11 @@ if ( ! class_exists( 'Boostify_Header_Footer_Elementor' ) ) {
 				}
 			}
 		}
+
+		public function register_controls() {
+			# code...
+		}
+
 		/**
 		 *  Plugin class constructor
 		 *
@@ -151,6 +156,8 @@ if ( ! class_exists( 'Boostify_Header_Footer_Elementor' ) ) {
 			add_action( 'elementor/frontend/after_register_scripts', array( $this, 'widget_scripts' ) );
 			// Register widgets
 			add_action( 'elementor/widgets/widgets_registered', array( $this, 'register_widgets' ) );
+
+			add_action( 'elementor/element/section/section_effects/after_section_start', [ $this, 'register_controls' ] );
 		}
 	}
 	// Instantiate Boostify_Header_Footer_Elementor Class

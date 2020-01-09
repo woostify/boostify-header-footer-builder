@@ -44,6 +44,17 @@
 
 	}
 
+	.boostify-menu-child {
+		position: absolute;
+		top: 100%;
+		left: 0;
+
+		.sub-menu {
+			position: relative;
+			z-index: 99999999;
+		}
+	}
+
 	.menu-item-has-children {
 		position: relative;
 
@@ -55,10 +66,11 @@
 			}
 		}
 		&:hover {
+			&>.boostify-menu-child>.sub-menu,
 			&>.sub-menu {
 				visibility: visible;
 				opacity: 1;
-				z-index: 9999;
+				z-index: 9999999;
 				transform: translateY(0%);
 				transition-delay: 0s, 0s, 0.3s;
 			}
@@ -72,6 +84,10 @@
 			}
 			.sub-menu {
 				left: 100%;
+				top: 0;
+			}
+
+			.boostify-menu-child {
 				top: 0;
 			}
 		}

@@ -88,6 +88,42 @@ class Boostify_Site_Logo extends Widget_Base {
 
 		$this->end_controls_section();
 
+		$this->start_controls_section(
+			'section',
+			array(
+				'label' => esc_html__( 'Logo', 'ht-wanderlust' ),
+				'tab' => Controls_Manager::TAB_ADVANCED
+			)
+		);
+
+		$this->add_control(
+			'aligdsdn',
+			[
+				'label'     => esc_html__( 'Align', 'boostify' ),
+				'type'      => Controls_Manager::CHOOSE,
+				'default'   => 'flex-start',
+				'selectors' => [
+					'{{WRAPPER}} .boostify-menu' => 'justify-content: {{VALUE}};',
+				],
+				'options'   => [
+					'flex-start' => [
+						'icon'  => 'eicon-h-align-left',
+						'title' => 'Left',
+					],
+					'center'     => [
+						'icon'  => 'eicon-h-align-center',
+						'title' => 'Center',
+					],
+					'flex-end'   => [
+						'icon'  => 'eicon-h-align-right',
+						'title' => 'Right',
+					],
+				],
+			]
+		);
+
+		$this->end_controls_section();
+
 	}
 
 	/**

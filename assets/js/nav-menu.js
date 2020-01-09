@@ -10,6 +10,12 @@
 		var nav = $scope.find( '.boostify-menu-sidebar' );
 		var overlay = $scope.find( '.boostify-overlay' );
 		var close = $scope.find( '.boostify--close-menu-side-bar' );
+		var main = $scope.find( '.boostify-main-navigation' );
+		var sub = main.find( '.sub-menu' );
+		sub.each( function (index) {
+			$(this).wrap('<div class="boostify-menu-child">');
+
+		} );
 
 		// Show Menu Mobile
 		toggle.on('click', function(e) {
@@ -45,9 +51,10 @@
 			};
 		});
 
-	/* MOBILE MENU */
+		/* MOBILE MENU */
 
-		$( '.boostify-menu-sidebar ul >.menu-item-has-children>a' ).on( 'click', function (e) {
+		var btn = nav.find( 'ul >.menu-item-has-children>a' );
+		btn.on( 'click', function (e) {
 			e.preventDefault();
 			var item = $( this ).siblings('ul.sub-menu');
 			var active = item.hasClass('active');
@@ -61,6 +68,19 @@
 				$(this).addClass('up');
 			}
 		} );
+
+		// for Testing
+		$('.sub-menu .menu-item-has-children').on('hover', function () {
+
+			var width = $(this).offset().left,
+			windowWidth = $(window).width(),
+			range = windowWidth - width;
+
+			if ( range < 400 ) {
+				$(this).find('.boostify-menu-child').css({ "top" : "100%" });
+				$(this).find('.sub-menu').css({ "left" : 'auto', "top": "100%", "right": "50%" });
+			}
+		});
 
 	};
 

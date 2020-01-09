@@ -86,7 +86,6 @@ class Boostify_Nav_Menu extends Widget_Base {
 						'menu'           => $settings['menu'],
 						'container'      => '',
 						'menu_class'     => 'boostify-menu',
-						'menu_id'        => 'boostify-primary-menu',
 						'theme_location' => 'primary',
 					];
 
@@ -105,7 +104,7 @@ class Boostify_Nav_Menu extends Widget_Base {
 
 			<div class="boostify-menu-sidebar boostify--hover-<?php echo esc_attr( $settings['pointer'] ); ?>">
 				<div class="boostify-menu-sidebar--wrapper">
-					<?php if ( 'yes' == $settings['logo'] ): ?>
+					<?php if ( 'yes' == $settings['logo'] ) : ?>
 						<div class="logo-sidebar">
 							<?php
 							if ( has_custom_logo() ) :
@@ -124,9 +123,9 @@ class Boostify_Nav_Menu extends Widget_Base {
 					<?php endif ?>
 
 					<?php
-						if ( 'yes' == $settings['search'] ) :
-							do_action( 'boostify_hf_seach_form' );
-						endif;
+					if ( 'yes' == $settings['search'] ) :
+						do_action( 'boostify_hf_seach_form' );
+					endif;
 					?>
 
 
@@ -137,7 +136,6 @@ class Boostify_Nav_Menu extends Widget_Base {
 								'menu'           => $settings['menu'],
 								'container'      => '',
 								'menu_class'     => 'boostify-dropdown-menu',
-								'menu_id'        => 'boostify-dropdown-menu',
 								'theme_location' => 'primary',
 							];
 
@@ -262,12 +260,12 @@ class Boostify_Nav_Menu extends Widget_Base {
 		$this->add_control(
 			'logo',
 			[
-				'label' => __( 'Show Logo', 'boostify' ),
-				'type' => \Elementor\Controls_Manager::SWITCHER,
-				'label_on' => __( 'Show', 'boostify' ),
-				'label_off' => __( 'Hide', 'boostify' ),
+				'label'        => __( 'Show Logo', 'boostify' ),
+				'type'         => \Elementor\Controls_Manager::SWITCHER,
+				'label_on'     => __( 'Show', 'boostify' ),
+				'label_off'    => __( 'Hide', 'boostify' ),
 				'return_value' => 'yes',
-				'default' => 'yes',
+				'default'      => 'yes',
 			]
 		);
 
@@ -278,21 +276,21 @@ class Boostify_Nav_Menu extends Widget_Base {
 				'type'      => Controls_Manager::CHOOSE,
 				'default'   => 'left',
 				'condition' => [
-					'logo' =>'yes',
+					'logo' => 'yes',
 				],
 				'selectors' => [
 					'{{WRAPPER}} .logo-sidebar' => 'text-align: {{VALUE}};',
 				],
 				'options'   => [
-					'left' => [
+					'left'   => [
 						'icon'  => 'eicon-h-align-left',
 						'title' => 'Top',
 					],
-					'center'     => [
+					'center' => [
 						'icon'  => 'eicon-h-align-center',
 						'title' => 'Center',
 					],
-					'right'   => [
+					'right'  => [
 						'icon'  => 'eicon-h-align-right',
 						'title' => 'Bottom',
 					],
@@ -339,15 +337,15 @@ class Boostify_Nav_Menu extends Widget_Base {
 					'{{WRAPPER}} .boostify-menu-toggle' => 'text-align: {{VALUE}};',
 				],
 				'options'   => [
-					'left' => [
+					'left'   => [
 						'icon'  => 'eicon-h-align-left',
 						'title' => 'Top',
 					],
-					'center'     => [
+					'center' => [
 						'icon'  => 'eicon-h-align-center',
 						'title' => 'Center',
 					],
-					'right'   => [
+					'right'  => [
 						'icon'  => 'eicon-h-align-right',
 						'title' => 'Bottom',
 					],
@@ -406,7 +404,7 @@ class Boostify_Nav_Menu extends Widget_Base {
 				'type'      => Controls_Manager::COLOR,
 				'default'   => '#000',
 				'scheme'    => [
-					'type' => \Elementor\Scheme_Color::get_type(),
+					'type'  => \Elementor\Scheme_Color::get_type(),
 					'value' => \Elementor\Scheme_Color::COLOR_1,
 				],
 				'selectors' => [
@@ -434,7 +432,7 @@ class Boostify_Nav_Menu extends Widget_Base {
 				'type'      => Controls_Manager::COLOR,
 				'default'   => '#aa3166',
 				'scheme'    => [
-					'type' => \Elementor\Scheme_Color::get_type(),
+					'type'  => \Elementor\Scheme_Color::get_type(),
 					'value' => \Elementor\Scheme_Color::COLOR_1,
 				],
 				'selectors' => [
@@ -451,7 +449,7 @@ class Boostify_Nav_Menu extends Widget_Base {
 				'type'      => Controls_Manager::COLOR,
 				'default'   => '#eee',
 				'scheme'    => [
-					'type' => \Elementor\Scheme_Color::get_type(),
+					'type'  => \Elementor\Scheme_Color::get_type(),
 					'value' => \Elementor\Scheme_Color::COLOR_1,
 				],
 				'selectors' => [
@@ -459,7 +457,6 @@ class Boostify_Nav_Menu extends Widget_Base {
 				],
 			]
 		);
-
 
 		$this->add_group_control(
 			Elementor\Group_Control_Typography::get_type(),
@@ -480,6 +477,43 @@ class Boostify_Nav_Menu extends Widget_Base {
 				'tab'   => Controls_Manager::TAB_STYLE,
 			]
 		);
+
+		$this->add_responsive_control(
+			'dropdown_top_distance',
+			[
+				'label'     => __( 'Distance', 'boostify' ),
+				'type'      => Controls_Manager::SLIDER,
+				'range'     => [
+					'px' => [
+						'min' => 0,
+						'max' => 100,
+					],
+				],
+				'selectors' => [
+					'{{WRAPPER}} .boostify-menu>.menu-item-has-children>.boostify-menu-child' => 'padding-top: {{SIZE}}{{UNIT}} !important',
+				],
+				'separator' => 'before',
+			]
+		);
+
+		$this->add_control(
+			'padding_submenu_item',
+			[
+				'label'      => __( 'Padding', 'boostify' ),
+				'type'       => Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px' ],
+				'default'    => [
+					'top'    => 15,
+					'bottom' => 15,
+					'left'   => 20,
+					'right'  => 20,
+				],
+				'selectors'  => [
+					'{{WRAPPER}} .boostify-menu .sub-menu a' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+
 
 		$this->start_controls_tabs(
 			'submenu_style_tabs'
@@ -517,7 +551,7 @@ class Boostify_Nav_Menu extends Widget_Base {
 				'default'   => '#d1346f',
 				'separator' => 'before',
 				'scheme'    => [
-					'type' => \Elementor\Scheme_Color::get_type(),
+					'type'  => \Elementor\Scheme_Color::get_type(),
 					'value' => \Elementor\Scheme_Color::COLOR_1,
 				],
 				'selectors' => [
@@ -529,9 +563,9 @@ class Boostify_Nav_Menu extends Widget_Base {
 		$this->add_group_control(
 			Elementor\Group_Control_Background::get_type(),
 			[
-				'name' => 'background_submenu',
-				'label' => __( 'Background', 'boostify' ),
-				'types' => [ 'classic', 'gradient', 'video' ],
+				'name'     => 'background_submenu',
+				'label'    => __( 'Background', 'boostify' ),
+				'types'    => [ 'classic', 'gradient', 'video' ],
 				'selector' => '.boostify-menu .sub-menu',
 			]
 		);
@@ -548,7 +582,7 @@ class Boostify_Nav_Menu extends Widget_Base {
 				'default'   => '#000',
 				'separator' => 'before',
 				'scheme'    => [
-					'type' => \Elementor\Scheme_Color::get_type(),
+					'type'  => \Elementor\Scheme_Color::get_type(),
 					'value' => \Elementor\Scheme_Color::COLOR_1,
 				],
 				'selectors' => [
@@ -577,12 +611,12 @@ class Boostify_Nav_Menu extends Widget_Base {
 				'default'   => '#aa3166',
 				'separator' => 'before',
 				'scheme'    => [
-					'type' => \Elementor\Scheme_Color::get_type(),
+					'type'  => \Elementor\Scheme_Color::get_type(),
 					'value' => \Elementor\Scheme_Color::COLOR_1,
 				],
 				'selectors' => [
-					'{{WRAPPER}} .boostify-menu li .sub-menu > li:hover > a' => 'color: {{VALUE}}',
-					'{{WRAPPER}} .boostify--hover-underline .boostify-menu li .sub-menu > li:hover > a:after' => 'background-color: {{VALUE}}'
+					'{{WRAPPER}} .boostify-menu li .sub-menu > li:hover > a'                                  => 'color: {{VALUE}}',
+					'{{WRAPPER}} .boostify--hover-underline .boostify-menu li .sub-menu > li:hover > a:after' => 'background-color: {{VALUE}}',
 				],
 			]
 		);
@@ -594,7 +628,7 @@ class Boostify_Nav_Menu extends Widget_Base {
 				'type'      => Controls_Manager::COLOR,
 				'default'   => '#eee',
 				'scheme'    => [
-					'type' => \Elementor\Scheme_Color::get_type(),
+					'type'  => \Elementor\Scheme_Color::get_type(),
 					'value' => \Elementor\Scheme_Color::COLOR_1,
 				],
 				'selectors' => [
@@ -646,6 +680,23 @@ class Boostify_Nav_Menu extends Widget_Base {
 
 	public function menu_sidebar_style_nornal() {
 		$this->add_control(
+			'color_toggle',
+			[
+				'label'     => __( 'Toggle Icon Color', 'boostify' ),
+				'type'      => Controls_Manager::COLOR,
+				'default'   => '#000',
+				'separator' => 'before',
+				'scheme'    => [
+					'type'  => \Elementor\Scheme_Color::get_type(),
+					'value' => \Elementor\Scheme_Color::COLOR_1,
+				],
+				'selectors' => [
+					'{{WRAPPER}} .boostify-menu-toggle' => 'color: {{VALUE}}',
+				],
+			]
+		);
+
+		$this->add_control(
 			'color_menu_sidebar',
 			[
 				'label'     => __( 'SubMenu Color', 'boostify' ),
@@ -653,7 +704,7 @@ class Boostify_Nav_Menu extends Widget_Base {
 				'default'   => '#000',
 				'separator' => 'before',
 				'scheme'    => [
-					'type' => \Elementor\Scheme_Color::get_type(),
+					'type'  => \Elementor\Scheme_Color::get_type(),
 					'value' => \Elementor\Scheme_Color::COLOR_1,
 				],
 				'selectors' => [
@@ -675,6 +726,23 @@ class Boostify_Nav_Menu extends Widget_Base {
 
 	public function menu_sidebar_style_hover() {
 		$this->add_control(
+			'color_toggle_hover',
+			[
+				'label'     => __( 'Toggle Icon Color', 'boostify' ),
+				'type'      => Controls_Manager::COLOR,
+				'default'   => '#000',
+				'separator' => 'before',
+				'scheme'    => [
+					'type'  => \Elementor\Scheme_Color::get_type(),
+					'value' => \Elementor\Scheme_Color::COLOR_1,
+				],
+				'selectors' => [
+					'{{WRAPPER}} .boostify-menu-toggle:hover' => 'color: {{VALUE}}',
+				],
+			]
+		);
+
+		$this->add_control(
 			'color_menu_sidebar_hover',
 			[
 				'label'     => __( 'SubMenu Color', 'boostify' ),
@@ -682,7 +750,7 @@ class Boostify_Nav_Menu extends Widget_Base {
 				'default'   => '#d1346f',
 				'separator' => 'before',
 				'scheme'    => [
-					'type' => \Elementor\Scheme_Color::get_type(),
+					'type'  => \Elementor\Scheme_Color::get_type(),
 					'value' => \Elementor\Scheme_Color::COLOR_1,
 				],
 				'selectors' => [

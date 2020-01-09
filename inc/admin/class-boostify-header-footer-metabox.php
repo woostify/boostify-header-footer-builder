@@ -20,12 +20,14 @@ if ( ! class_exists( 'Boostify_Header_Footer_Metabox' ) ) {
 		public function hooks() {
 			add_action( 'add_meta_boxes', array( $this, 'pagesetting_meta_box' ) );
 			add_action( 'save_post', array( $this, 'pagesetting_save' ) );
+			add_action( 'wp_ajax_boostify_hf_load_autocomplate', array( $this, 'boostify_hf_input' ) );
+			add_action( 'wp_ajax_nopriv_boostify_hf_load_autocomplate', array( $this, 'boostify_hf_input' ) );
 			add_action( 'wp_ajax_boostify_hf_post_admin', array( $this, 'boostify_hf_post_admin' ) );
 			add_action( 'wp_ajax_nopriv_boostify_hf_post_admin', array( $this, 'boostify_hf_post_admin' ) );
 		}
 
 		public function pagesetting_meta_box() {
-			add_meta_box( 'ht_hf_setting', 'Template Settings', array( $this, 'ht_hfsetting_output' ), 'btf_builder', 'side' );
+			add_meta_box( 'ht_hf_setting', 'Template Settings', array( $this, 'ht_hfsetting_output' ), 'btf_builder', 'side', 'high' );
 		}
 
 		public function ht_hfsetting_output( $post ) {
@@ -111,14 +113,13 @@ if ( ! class_exists( 'Boostify_Header_Footer_Metabox' ) ) {
 
 			// Post
 			$metabox = $_POST;
-			$post = ( isset( $_POST['bhf_post'] ) ) ? sanitize_text_field( $_POST['bhf_post'] ) : '';
+			$post    = ( isset( $_POST['bhf_post'] ) ) ? ( $_POST['bhf_post'] ) : '';
 
 			update_post_meta(
 				$post_id,
 				'bhf_post',
 				$post
 			);
-
 
 			// Post Type
 			$post_type = ( isset( $_POST['bhf_post_type'] ) ) ? sanitize_text_field( $_POST['bhf_post_type'] ) : '';
@@ -166,6 +167,10 @@ if ( ! class_exists( 'Boostify_Header_Footer_Metabox' ) ) {
 			$display          = get_post_meta( $post->ID, 'bhf_display', true );
 			$post_id          = get_post_meta( $post->ID, 'bhf_post', true );
 			$post_type        = get_post_meta( $post->ID, 'bhf_post_type', true );
+			$list_post        = $post_id;
+			if ( 'all' != $post_id ) {
+				$list_post = explode( ',', $post_id );
+			}
 
 			?>
 				<div class="input-wrapper">
@@ -185,26 +190,40 @@ if ( ! class_exists( 'Boostify_Header_Footer_Metabox' ) ) {
 						<div class="input-item-wrapper">
 							<?php
 							if ( ! empty( $post_id ) && ! empty( $post_type ) ) :
-								$list_post = $this->get_posts( $post_type );
+
 								?>
-								<select name="bhf_post" id="post">
-									<option value="all"><?php echo esc_html( 'All', 'boostify' ); ?></option>
-									<?php
-									if ( $list_post->have_posts() ) :
-										while ( $list_post->have_posts() ) {
-											$list_post->the_post();
-											$select = ( get_the_ID() == $post_id ) ? 'selected' : '';
-											?>
-											<option value="<?php echo esc_attr( get_the_ID() ); ?>" <?php echo esc_attr( $select ); ?>>
-												<?php echo esc_html( get_the_title() ); ?>
-											</option>
-											<?php
-										}
-										wp_reset_postdata();
-									endif;
-									?>
-								</select>
-								<input type="hidden" name="bhf_post_type" value="<?php echo esc_attr( $post_type ); ?>">
+							<div class="boostify-section-select-post <?php echo ( is_string( $list_post ) ? 'select-all' : 'render--post has-option' ); ?>">
+
+								<span class="boostify-select-all-post<?php echo ( is_string( $list_post ) ? '' : ' hidden' ); ?>">
+									<span class="boostify-select-all"><?php echo esc_html__( 'All', 'boostify' ); ?></span>
+									<span class="boostify-arrow ion-chevron-down"></span>
+								</span>
+
+								<div class="boostify-section-render--post <?php echo ( is_string( $list_post ) ? 'hidden' : '' ); ?>">
+									<div class="boostify-auto-complete-field">
+										<?php
+										if ( is_array( $list_post ) ) :
+
+											foreach ( $list_post as $id ) :
+												$id = (int) $id;
+												?>
+
+												<span class="boostify-auto-complete-key">
+													<span class="boostify-title"><?php echo esc_html( get_the_title( $id ) ); ?></span>
+													<span class="btn-boostify-auto-complete-delete ion-close" data-item="<?php echo esc_attr( $id ); ?>"></span>
+												</span>
+												<?php
+											endforeach;
+										endif;
+										?>
+										<input type="text" class="boostify--hf-post-name" aria-autocomplete="list" size="1">
+									</div>
+								</div>
+
+							</div>
+							<input type="hidden" name="bhf_post" value="<?php echo esc_html( $post_id ); ?>">
+							<input type="hidden" name="bhf_post_type" value="<?php echo esc_attr( $post_type ); ?>">
+							<div class="boostify-data"></div>
 								<?php
 							endif;
 							?>
@@ -217,34 +236,53 @@ if ( ! class_exists( 'Boostify_Header_Footer_Metabox' ) ) {
 
 		public function boostify_hf_post_admin() {
 			check_ajax_referer( 'ht_hf_nonce' );
-			$post_type = $_POST['post_type'];
-			$posts     = $this->get_posts( $post_type );
+			$post_type = $_GET['post_type'];
+			$keyword   = $_GET['key'];
 
-			if ( 'all' != $post_type && 'archive' != $post_type && 'search' != $post_type && 'blog' != $post_type ) :
+			$the_query = new WP_Query(
+				array(
+					's'              => $keyword,
+					'posts_per_page' => -1,
+					'post_type'      => $post_type,
+				)
+			);
+
+			if ( $the_query->have_posts() ) {
 				?>
-				<div class="hf-input-item-wrapper">
-					<select name="bhf_post" id="post">
-						<option value="all"><?php echo esc_html( 'All', 'boostify' ); ?></option>
-						<?php
-						if ( $posts->have_posts() ) :
-							while ( $posts->have_posts() ) {
-								$posts->the_post();
-								?>
-								<option value="<?php echo esc_attr( get_the_ID() ); ?>">
-									<?php echo esc_html( get_the_title() ); ?>
-								</option>
-								<?php
-							}
-							wp_reset_postdata();
-						endif;
+				<div class="boostify-hf-list-post">
+					<ul class="hf-list-post">
+					<?php
+					while ( $the_query->have_posts() ) {
+						$the_query->the_post();
+						$results[ get_the_ID() ] = get_the_title();
 						?>
-					</select>
-					<input type="hidden" name="bhf_post_type" value="<?php echo esc_attr( $post_type ); ?>">
+							<li class="post-item" data-item="<?php echo esc_attr( get_the_ID() ); ?>">
+								<?php the_title(); ?>
+							</li>
+
+						<?php
+					}
+					?>
+					</ul>
 				</div>
 				<?php
-			endif;
+
+				/* Restore original Post Data */
+
+				wp_reset_postdata();
+
+			} else {
+
+				?>
+				<div class="boostify-hf-list-post">
+					<h6><?php echo esc_html__( 'Nothing Found', 'boostify' ); ?></h6>
+				</div>
+				<?php
+
+			}
 
 			die();
+
 		}
 
 		public function get_posts( $post_type ) {
@@ -259,5 +297,30 @@ if ( ! class_exists( 'Boostify_Header_Footer_Metabox' ) ) {
 			return $posts;
 		}
 
+		public function boostify_hf_input() {
+			check_ajax_referer( 'ht_hf_nonce' );
+			$post_type = $_POST['post_type'];
+			if ( 'all' != $post_type && 'archive' != $post_type && 'search' != $post_type && 'blog' != $post_type ) :
+				?>
+				<div class="input-item-wrapper">
+					<div class="boostify-section-select-post">
+						<span class="boostify-select-all-post">
+							<span class="boostify-select-all"><?php echo esc_html__( 'All', 'boostify' ); ?></span>
+							<span class="boostify-arrow ion-chevron-down"></span>
+						</span>
+						<div class="boostify-section-render--post hidden">
+							<div class="boostify-auto-complete-field">
+								<input type="text" class="boostify--hf-post-name" aria-autocomplete="list" size="1">
+							</div>
+						</div>
+					</div>
+					<input type="hidden" name="bhf_post_type" value="<?php echo esc_attr( $post_type ); ?>">
+					<input type="hidden" name="bhf_post" value="all">
+					<div class="boostify-data"></div>
+				</div>
+				<?php
+			endif;
+			die();
+		}
 	}
 }

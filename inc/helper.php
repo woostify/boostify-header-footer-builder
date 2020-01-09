@@ -39,7 +39,7 @@ if ( ! function_exists( 'boostify_hf_search_form' ) ) {
 
 					<span class="screen-reader-text"><?php echo esc_html_x( 'Search for:', 'label', 'boostify' ); ?></span>
 
-					<input type="search" id="site-search-field" class="search-field site-search-field" placeholder="<?php echo esc_attr__( 'Enter Keyword', 'boostify' ); ?>" name="s">
+					<input type="search" class="search-field site-search-field" placeholder="<?php echo esc_attr__( 'Enter Keyword', 'boostify' ); ?>" name="s">
 					<input type="hidden" name="post_type" value="post">
 					<button type="submit" class="btn-boostify-search-form ion-ios-search">
 						<span class="screen-reader-text"><?php echo esc_html__( 'Search', 'boostify' ); ?></span>

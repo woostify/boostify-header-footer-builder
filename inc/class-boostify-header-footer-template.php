@@ -55,6 +55,10 @@ if ( ! class_exists( 'Boostify_Header_Footer_Template' ) ) {
 
 		public function render_header() {
 			$page_type = $this->page_type();
+			// var_dump( $this->display_all() );
+			// var_dump( $this->display_template( $page_type ) );
+			// var_dump( $this->current_single() );
+			// var_dump( $this->all_single() );
 
 			if ( $this->display_all() || $this->display_template( $page_type ) || $this->current_single() || $this->all_single() ) {
 				require HT_HF_PATH . 'templates/default/header.php';
@@ -209,11 +213,15 @@ if ( ! class_exists( 'Boostify_Header_Footer_Template' ) ) {
 			if ( ! is_single() && ! is_page() ) {
 				return false;
 			}
+
+			$id = get_the_ID();
+
+
 			$args = array(
 				'post_type'           => 'btf_builder',
 				'orderby'             => 'id',
 				'order'               => 'DESC',
-				'posts_per_page'      => 1,
+				'posts_per_page'      => -1,
 				'ignore_sticky_posts' => 1,
 				'meta_query'          => array(
 					array(
@@ -226,11 +234,6 @@ if ( ! class_exists( 'Boostify_Header_Footer_Template' ) ) {
 						'compare' => 'LIKE',
 						'value'   => get_post_type(),
 					),
-					array(
-						'key'     => 'bhf_post',
-						'compare' => 'LIKE',
-						'value'   => get_the_ID(),
-					),
 				),
 			);
 
@@ -238,7 +241,27 @@ if ( ! class_exists( 'Boostify_Header_Footer_Template' ) ) {
 
 			if ( $header->have_posts() ) {
 
-				return $header;
+				$list_header = $header->posts;
+				$current     = [];
+
+				foreach ( $list_header as $key => $post ) {
+					$list_id = get_post_meta( $post->ID, 'bhf_post', true );
+					if ( ! empty( $list_id ) || 'all' != $list_id ) {
+						$post_id = explode( ',', $list_id );
+						if ( in_array( $id, $post_id ) ) {
+							$current[0] = $post;
+						}
+					}
+				}
+
+				if ( empty( $current ) ) {
+					return false;
+				} else {
+					$header->posts      = $current;
+					$header->post_count = 1;
+
+					return $header;
+				}
 			} else {
 
 				return false;

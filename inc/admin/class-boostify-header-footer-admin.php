@@ -34,6 +34,8 @@ if ( ! class_exists( 'Boostify_Header_Footer_Admin' ) ) {
 		}
 
 		public function load_admin_style() {
+			wp_enqueue_script( 'suggest' );
+
 			wp_enqueue_style(
 				'boostify-hf-admin',
 				HT_HF_URL . 'assets/css/admin/admin.css',
@@ -41,10 +43,17 @@ if ( ! class_exists( 'Boostify_Header_Footer_Admin' ) ) {
 				HT_HF_VER
 			);
 
+			wp_enqueue_style(
+				'ionicons',
+				HT_HF_URL . '/assets/css/ionicons.css',
+				[],
+				HT_HF_VER
+			);
+
 			wp_enqueue_script(
 				'boostify-hf-admin',
 				HT_HF_URL . 'assets/js/admin' . boostify_hf_suffix() . '.js',
-				array( 'jquery' ),
+				array( 'jquery', 'suggest' ),
 				HT_HF_VER,
 				true
 			);
