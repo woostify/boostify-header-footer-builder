@@ -108,6 +108,7 @@ if ( ! class_exists( 'Boostify_Header_Footer_Elementor' ) ) {
 					require_once $key;
 				}
 			}
+			// require_once HT_HF_PATH . '/inc/elementor/module/class-boostify-hf-sticky.php';
 		}
 		/**
 		 * Register Widgets
@@ -135,9 +136,6 @@ if ( ! class_exists( 'Boostify_Header_Footer_Elementor' ) ) {
 			}
 		}
 
-		public function register_controls() {
-			# code...
-		}
 
 		/**
 		 *  Plugin class constructor
@@ -157,7 +155,7 @@ if ( ! class_exists( 'Boostify_Header_Footer_Elementor' ) ) {
 			// Register widgets
 			add_action( 'elementor/widgets/widgets_registered', array( $this, 'register_widgets' ) );
 
-			add_action( 'elementor/element/section/section_effects/after_section_start', [ $this, 'register_controls' ] );
+			// add_action( 'elementor/element/section/section_effects/after_section_start', [ $this, 'register_controls' ] );
 		}
 	}
 	// Instantiate Boostify_Header_Footer_Elementor Class

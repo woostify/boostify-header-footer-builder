@@ -546,7 +546,7 @@ class Boostify_Nav_Menu extends Widget_Base {
 		$this->add_control(
 			'color_submenu_border',
 			[
-				'label'     => __( 'SubMenu Color', 'boostify' ),
+				'label'     => __( 'SubMenu Border Color', 'boostify' ),
 				'type'      => Controls_Manager::COLOR,
 				'default'   => '#d1346f',
 				'separator' => 'before',
@@ -617,6 +617,7 @@ class Boostify_Nav_Menu extends Widget_Base {
 				'selectors' => [
 					'{{WRAPPER}} .boostify-menu li .sub-menu > li:hover > a'                                  => 'color: {{VALUE}}',
 					'{{WRAPPER}} .boostify--hover-underline .boostify-menu li .sub-menu > li:hover > a:after' => 'background-color: {{VALUE}}',
+					'{{WRAPPER}} .boostify-menu .sub-menu li.current-menu-item a'                                       => 'color: {{VALUE}}',
 				],
 			]
 		);

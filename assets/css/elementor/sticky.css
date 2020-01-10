@@ -1,0 +1,9 @@
+.show-sticky {
+  position: fixed;
+  top: 0;
+  z-index: 9999999;
+}
+
+.admin-bar .show-sticky {
+  top: 32px;
+}

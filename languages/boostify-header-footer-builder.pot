@@ -33,15 +33,15 @@ msgstr ""
 msgid "Footer"
 msgstr ""
 
-#: inc/admin/class-boostify-header-footer-metabox.php:181
+#: inc/admin/class-boostify-header-footer-metabox.php:178
 msgid "Display On"
 msgstr ""
 
-#: inc/admin/class-boostify-header-footer-metabox.php:201, inc/admin/class-boostify-header-footer-metabox.php:255, inc/admin/class-boostify-header-footer-metabox.php:312
+#: inc/admin/class-boostify-header-footer-metabox.php:198, inc/admin/class-boostify-header-footer-metabox.php:308
 msgid "All"
 msgstr ""
 
-#: inc/admin/class-boostify-header-footer-metabox.php:280
+#: inc/admin/class-boostify-header-footer-metabox.php:278
 msgid "Nothing Found"
 msgstr ""
 
@@ -129,11 +129,11 @@ msgstr ""
 msgid "Menu Style"
 msgstr ""
 
-#: inc/elementor/widgets/class-boostify-nav-menu.php:375, inc/elementor/widgets/class-boostify-nav-menu.php:506, inc/elementor/widgets/class-boostify-nav-menu.php:638
+#: inc/elementor/widgets/class-boostify-nav-menu.php:375, inc/elementor/widgets/class-boostify-nav-menu.php:525, inc/elementor/widgets/class-boostify-nav-menu.php:657
 msgid "Normal"
 msgstr ""
 
-#: inc/elementor/widgets/class-boostify-nav-menu.php:386, inc/elementor/widgets/class-boostify-nav-menu.php:517, inc/elementor/widgets/class-boostify-nav-menu.php:649
+#: inc/elementor/widgets/class-boostify-nav-menu.php:386, inc/elementor/widgets/class-boostify-nav-menu.php:536, inc/elementor/widgets/class-boostify-nav-menu.php:668
 msgid "Hover"
 msgstr ""
 
@@ -141,7 +141,7 @@ msgstr ""
 msgid "Menu Color"
 msgstr ""
 
-#: inc/elementor/widgets/class-boostify-nav-menu.php:420, inc/elementor/widgets/class-boostify-nav-menu.php:465, inc/elementor/widgets/class-boostify-nav-menu.php:579, inc/elementor/widgets/class-boostify-nav-menu.php:701, inc/elementor/widgets/class-boostify-site-search.php:166
+#: inc/elementor/widgets/class-boostify-nav-menu.php:420, inc/elementor/widgets/class-boostify-nav-menu.php:465, inc/elementor/widgets/class-boostify-nav-menu.php:598, inc/elementor/widgets/class-boostify-nav-menu.php:720, inc/elementor/widgets/class-boostify-site-search.php:166
 msgid "Typography"
 msgstr ""
 
@@ -157,23 +157,27 @@ msgstr ""
 msgid "Distance"
 msgstr ""
 
-#: inc/elementor/widgets/class-boostify-nav-menu.php:530, inc/elementor/widgets/class-boostify-nav-menu.php:561, inc/elementor/widgets/class-boostify-nav-menu.php:590, inc/elementor/widgets/class-boostify-nav-menu.php:683, inc/elementor/widgets/class-boostify-nav-menu.php:729
+#: inc/elementor/widgets/class-boostify-nav-menu.php:502, inc/elementor/widgets/class-boostify-site-search.php:119
+msgid "Padding"
+msgstr ""
+
+#: inc/elementor/widgets/class-boostify-nav-menu.php:549, inc/elementor/widgets/class-boostify-nav-menu.php:580, inc/elementor/widgets/class-boostify-nav-menu.php:609, inc/elementor/widgets/class-boostify-nav-menu.php:702, inc/elementor/widgets/class-boostify-nav-menu.php:748
 msgid "SubMenu Color"
 msgstr ""
 
-#: inc/elementor/widgets/class-boostify-nav-menu.php:548, inc/elementor/widgets/class-boostify-site-search.php:176
+#: inc/elementor/widgets/class-boostify-nav-menu.php:567, inc/elementor/widgets/class-boostify-site-search.php:176
 msgid "Background"
 msgstr ""
 
-#: inc/elementor/widgets/class-boostify-nav-menu.php:608
+#: inc/elementor/widgets/class-boostify-nav-menu.php:627
 msgid "Background Submenu Item Hover"
 msgstr ""
 
-#: inc/elementor/widgets/class-boostify-nav-menu.php:626
+#: inc/elementor/widgets/class-boostify-nav-menu.php:645
 msgid "Menu Mobie Style"
 msgstr ""
 
-#: inc/elementor/widgets/class-boostify-nav-menu.php:666, inc/elementor/widgets/class-boostify-nav-menu.php:712
+#: inc/elementor/widgets/class-boostify-nav-menu.php:685, inc/elementor/widgets/class-boostify-nav-menu.php:731
 msgid "Toggle Icon Color"
 msgstr ""
 
@@ -191,10 +195,6 @@ msgstr ""
 
 #: inc/elementor/widgets/class-boostify-site-search.php:86
 msgid "Enter Placeholder"
-msgstr ""
-
-#: inc/elementor/widgets/class-boostify-site-search.php:119
-msgid "Padding"
 msgstr ""
 
 #: inc/elementor/widgets/class-boostify-site-search.php:133

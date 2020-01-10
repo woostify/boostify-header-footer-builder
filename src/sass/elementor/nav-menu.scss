@@ -42,6 +42,11 @@
 			line-height: 1.6;
 		}
 
+		.boostify-menu-child {
+			left: 100%;
+
+		}
+
 	}
 
 	.boostify-menu-child {
@@ -83,7 +88,7 @@
 				justify-content: space-between;
 			}
 			.sub-menu {
-				left: 100%;
+				left: 0;
 				top: 0;
 			}
 

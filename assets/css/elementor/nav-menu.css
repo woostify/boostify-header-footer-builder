@@ -42,6 +42,10 @@
   line-height: 1.6;
 }
 
+.boostify-menu .sub-menu .boostify-menu-child {
+  left: 100%;
+}
+
 .boostify-menu .boostify-menu-child {
   position: absolute;
   top: 100%;
@@ -78,7 +82,7 @@
 }
 
 .boostify-menu .menu-item-has-children .menu-item-has-children .sub-menu {
-  left: 100%;
+  left: 0;
   top: 0;
 }
 
