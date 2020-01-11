@@ -214,7 +214,7 @@ class Boostify_Site_Search extends Widget_Base {
 		if ( 'icon' == $settings['layout'] ) {
 			?>
 			<div class="boostify-site-search-toggle">
-				<button class="boostify-search-icon--toggle icon-magnifying-glass" aria-expanded="false">
+				<button class="boostify-search-icon--toggle ion-ios-search" aria-expanded="false">
 					<span class="screen-reader-text"><?php echo esc_html__( 'Enter Keyword', 'boostify' ); ?></span>
 				</button>
 			</div>
