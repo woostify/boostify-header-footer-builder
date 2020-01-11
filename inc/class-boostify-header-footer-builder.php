@@ -46,6 +46,7 @@ if ( ! class_exists( 'Boostify_Header_Footer_Builder' ) ) {
 			add_action( 'elementor/controls/controls_registered', array( $this, 'modify_controls' ), 10, 1 );
 			add_action( 'elementor/editor/wp_head', array( $this, 'enqueue_icon' ) );
 			add_action( 'wp_enqueue_scripts', array( $this, 'wt_style' ), 99 );
+			add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_icon' ), 99 );
 		}
 
 		public function body_ver( $classes ) {
