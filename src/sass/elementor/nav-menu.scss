@@ -53,10 +53,10 @@
 		position: absolute;
 		top: 100%;
 		left: 0;
+		visibility: hidden;
 
 		.sub-menu {
 			position: relative;
-			z-index: 99999999;
 		}
 	}
 
@@ -71,6 +71,10 @@
 			}
 		}
 		&:hover {
+
+			&>.boostify-menu-child {
+				visibility: visible;
+			}
 			&>.boostify-menu-child>.sub-menu,
 			&>.sub-menu {
 				visibility: visible;

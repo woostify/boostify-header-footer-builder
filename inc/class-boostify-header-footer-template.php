@@ -55,10 +55,7 @@ if ( ! class_exists( 'Boostify_Header_Footer_Template' ) ) {
 
 		public function render_header() {
 			$page_type = $this->page_type();
-			// var_dump( $this->display_all() );
-			// var_dump( $this->display_template( $page_type ) );
-			// var_dump( $this->current_single() );
-			// var_dump( $this->all_single() );
+
 
 			if ( $this->display_all() || $this->display_template( $page_type ) || $this->current_single() || $this->all_single() ) {
 				require HT_HF_PATH . 'templates/default/header.php';

@@ -35,8 +35,6 @@ if ( ! class_exists( 'Boostify_Header_Footer_Builder' ) ) {
 			include_once HT_HF_PATH . 'inc/class-boostify-header-footer-template.php';
 			include_once HT_HF_PATH . 'inc/elementor/class-boostify-hf-template-render.php';
 			include_once HT_HF_PATH . 'inc/elementor/class-boostify-header-footer-elementor.php';
-			include_once HT_HF_PATH . 'inc/elementor/module/class-boostify-hf-sticky.php';
-
 		}
 
 		public function hooks() {

@@ -19,6 +19,9 @@ if ( ! class_exists( 'Boostify_Header_Footer_Elementor' ) ) {
 		 * @var Plugin The single instance of the class.
 		 */
 		private static $_instance = null;
+
+
+		private $modules_manager;
 		/**
 		 * Instance
 		 *
@@ -108,7 +111,6 @@ if ( ! class_exists( 'Boostify_Header_Footer_Elementor' ) ) {
 					require_once $key;
 				}
 			}
-			// require_once HT_HF_PATH . '/inc/elementor/module/class-boostify-hf-sticky.php';
 		}
 		/**
 		 * Register Widgets
@@ -136,6 +138,40 @@ if ( ! class_exists( 'Boostify_Header_Footer_Elementor' ) ) {
 			}
 		}
 
+		private function includes() {
+			require HT_HF_PATH . 'inc/elementor/module/class-boostify-hf-sticky.php';
+		}
+
+		public function hf_init() {
+
+			$this->modules_manager = Boostify_Hf_Sticky::instance();
+
+			$elementor = Elementor\Plugin::$instance;
+
+			// Add element category in panel
+			$elementor->elements_manager->add_category(
+				'boostify-sticky',
+				[
+					'title' => __( 'Header Sticky', 'boostify' ),
+					'icon'  => 'font',
+				],
+				1
+			);
+
+			do_action( 'elementor_controls/init' );
+		}
+
+		private function setup_hooks() {
+			add_action( 'elementor/init', array( $this, 'hf_init' ) );
+
+			add_action( 'elementor/elements/categories_registered', array( $this, 'add_elementor_widget_categories' ) );
+			// Register widget style
+			add_action( 'elementor/frontend/after_enqueue_styles', array( $this, 'widget_styles' ) );
+			// Register widget scripts
+			add_action( 'elementor/frontend/after_register_scripts', array( $this, 'widget_scripts' ) );
+			// Register widgets
+			add_action( 'elementor/widgets/widgets_registered', array( $this, 'register_widgets' ) );
+		}
 
 		/**
 		 *  Plugin class constructor
@@ -147,15 +183,10 @@ if ( ! class_exists( 'Boostify_Header_Footer_Elementor' ) ) {
 		 */
 		public function __construct() {
 			// Register custom widget categories.
-			add_action( 'elementor/elements/categories_registered', array( $this, 'add_elementor_widget_categories' ) );
-			// Register widget style
-			add_action( 'elementor/frontend/after_enqueue_styles', array( $this, 'widget_styles' ) );
-			// Register widget scripts
-			add_action( 'elementor/frontend/after_register_scripts', array( $this, 'widget_scripts' ) );
-			// Register widgets
-			add_action( 'elementor/widgets/widgets_registered', array( $this, 'register_widgets' ) );
 
-			// add_action( 'elementor/element/section/section_effects/after_section_start', [ $this, 'register_controls' ] );
+			$this->includes();
+
+			$this->setup_hooks();
 		}
 	}
 	// Instantiate Boostify_Header_Footer_Elementor Class

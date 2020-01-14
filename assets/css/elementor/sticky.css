@@ -1,9 +1,23 @@
-.show-sticky {
-  position: fixed;
-  top: 0;
-  z-index: 9999999;
+.boostify-sticky-yes.elementor-section {
+  z-index: 99999;
 }
 
-.admin-bar .show-sticky {
+.elementor-edit-mode .boostify-sticky-yes.elementor-section {
+  z-index: 1;
+}
+
+#elementor-preview-iframe .boostify-sticky-yes.elementor-section {
+  top: 0 !important;
+}
+
+.boostify-site-logo-header .custom-logo {
+  transition: 0.3s all;
+}
+
+.admin-bar .boostify-sticky-yes.elementor-section {
   top: 32px;
+}
+
+.boostify-sticky--active {
+  box-shadow: 1px 3px 15px rgba(0, 0, 0, 0.12);
 }

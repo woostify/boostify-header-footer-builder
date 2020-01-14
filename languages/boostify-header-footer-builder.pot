@@ -49,6 +49,78 @@ msgstr ""
 msgid "Boostify Header Footer"
 msgstr ""
 
+#: inc/elementor/class-boostify-hf-plugin.php:46, inc/elementor/class-boostify-hf-plugin.php:57
+msgid "Something went wrong."
+msgstr ""
+
+#: inc/elementor/class-boostify-hf-plugin.php:114
+msgid "Header Sticky"
+msgstr ""
+
+#: inc/elementor/module/class-boostify-hf-sticky.php:31
+msgid "Sticky Header"
+msgstr ""
+
+#: inc/elementor/module/class-boostify-hf-sticky.php:39
+msgid "Enable"
+msgstr ""
+
+#: inc/elementor/module/class-boostify-hf-sticky.php:41, inc/elementor/module/class-boostify-hf-sticky.php:100, inc/elementor/module/class-boostify-hf-sticky.php:133
+msgid "On"
+msgstr ""
+
+#: inc/elementor/module/class-boostify-hf-sticky.php:42, inc/elementor/module/class-boostify-hf-sticky.php:101, inc/elementor/module/class-boostify-hf-sticky.php:134
+msgid "Off"
+msgstr ""
+
+#: inc/elementor/module/class-boostify-hf-sticky.php:53
+msgid "Enable On"
+msgstr ""
+
+#: inc/elementor/module/class-boostify-hf-sticky.php:59
+msgid "Desktop"
+msgstr ""
+
+#: inc/elementor/module/class-boostify-hf-sticky.php:60
+msgid "Tablet"
+msgstr ""
+
+#: inc/elementor/module/class-boostify-hf-sticky.php:61
+msgid "Mobile"
+msgstr ""
+
+#: inc/elementor/module/class-boostify-hf-sticky.php:74
+msgid "Scroll Distance (px)"
+msgstr ""
+
+#: inc/elementor/module/class-boostify-hf-sticky.php:77
+msgid "Choose the scroll distance to enable Sticky Header Effects"
+msgstr ""
+
+#: inc/elementor/module/class-boostify-hf-sticky.php:97
+msgid "Header Background"
+msgstr ""
+
+#: inc/elementor/module/class-boostify-hf-sticky.php:106
+msgid "Choose background color after scrolling"
+msgstr ""
+
+#: inc/elementor/module/class-boostify-hf-sticky.php:117, inc/elementor/module/class-boostify-hf-sticky.php:149
+msgid "Color"
+msgstr ""
+
+#: inc/elementor/module/class-boostify-hf-sticky.php:130
+msgid "Bottom Border"
+msgstr ""
+
+#: inc/elementor/module/class-boostify-hf-sticky.php:137
+msgid "Choose bottom border size and color"
+msgstr ""
+
+#: inc/elementor/module/class-boostify-hf-sticky.php:163
+msgid "Width (px)"
+msgstr ""
+
 #: inc/elementor/widgets/class-boostify-nav-menu.php:27
 msgid "Nav Menu"
 msgstr ""
@@ -129,11 +201,11 @@ msgstr ""
 msgid "Menu Style"
 msgstr ""
 
-#: inc/elementor/widgets/class-boostify-nav-menu.php:375, inc/elementor/widgets/class-boostify-nav-menu.php:525, inc/elementor/widgets/class-boostify-nav-menu.php:657
+#: inc/elementor/widgets/class-boostify-nav-menu.php:375, inc/elementor/widgets/class-boostify-nav-menu.php:525, inc/elementor/widgets/class-boostify-nav-menu.php:658
 msgid "Normal"
 msgstr ""
 
-#: inc/elementor/widgets/class-boostify-nav-menu.php:386, inc/elementor/widgets/class-boostify-nav-menu.php:536, inc/elementor/widgets/class-boostify-nav-menu.php:668
+#: inc/elementor/widgets/class-boostify-nav-menu.php:386, inc/elementor/widgets/class-boostify-nav-menu.php:536, inc/elementor/widgets/class-boostify-nav-menu.php:669
 msgid "Hover"
 msgstr ""
 
@@ -141,7 +213,7 @@ msgstr ""
 msgid "Menu Color"
 msgstr ""
 
-#: inc/elementor/widgets/class-boostify-nav-menu.php:420, inc/elementor/widgets/class-boostify-nav-menu.php:465, inc/elementor/widgets/class-boostify-nav-menu.php:598, inc/elementor/widgets/class-boostify-nav-menu.php:720, inc/elementor/widgets/class-boostify-site-search.php:166
+#: inc/elementor/widgets/class-boostify-nav-menu.php:420, inc/elementor/widgets/class-boostify-nav-menu.php:465, inc/elementor/widgets/class-boostify-nav-menu.php:598, inc/elementor/widgets/class-boostify-nav-menu.php:721, inc/elementor/widgets/class-boostify-site-search.php:166
 msgid "Typography"
 msgstr ""
 
@@ -161,23 +233,27 @@ msgstr ""
 msgid "Padding"
 msgstr ""
 
-#: inc/elementor/widgets/class-boostify-nav-menu.php:549, inc/elementor/widgets/class-boostify-nav-menu.php:580, inc/elementor/widgets/class-boostify-nav-menu.php:609, inc/elementor/widgets/class-boostify-nav-menu.php:702, inc/elementor/widgets/class-boostify-nav-menu.php:748
-msgid "SubMenu Color"
+#: inc/elementor/widgets/class-boostify-nav-menu.php:549
+msgid "SubMenu Border Color"
 msgstr ""
 
 #: inc/elementor/widgets/class-boostify-nav-menu.php:567, inc/elementor/widgets/class-boostify-site-search.php:176
 msgid "Background"
 msgstr ""
 
-#: inc/elementor/widgets/class-boostify-nav-menu.php:627
+#: inc/elementor/widgets/class-boostify-nav-menu.php:580, inc/elementor/widgets/class-boostify-nav-menu.php:609, inc/elementor/widgets/class-boostify-nav-menu.php:703, inc/elementor/widgets/class-boostify-nav-menu.php:749
+msgid "SubMenu Color"
+msgstr ""
+
+#: inc/elementor/widgets/class-boostify-nav-menu.php:628
 msgid "Background Submenu Item Hover"
 msgstr ""
 
-#: inc/elementor/widgets/class-boostify-nav-menu.php:645
+#: inc/elementor/widgets/class-boostify-nav-menu.php:646
 msgid "Menu Mobie Style"
 msgstr ""
 
-#: inc/elementor/widgets/class-boostify-nav-menu.php:685, inc/elementor/widgets/class-boostify-nav-menu.php:731
+#: inc/elementor/widgets/class-boostify-nav-menu.php:686, inc/elementor/widgets/class-boostify-nav-menu.php:732
 msgid "Toggle Icon Color"
 msgstr ""
 
