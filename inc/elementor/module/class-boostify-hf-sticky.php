@@ -152,9 +152,6 @@ class Boostify_Hf_Sticky extends Module {
 				'condition'          => [
 					'bsticky!' => '',
 				],
-				'default'            => [
-					'url' => \Elementor\Utils::get_placeholder_image_src(),
-				],
 			]
 		);
 

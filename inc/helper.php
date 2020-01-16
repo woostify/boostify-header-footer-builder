@@ -28,10 +28,15 @@ if ( ! function_exists( 'boostify_hf_suffix' ) ) {
 	}
 }
 
-// Get form search Side Bar
+// Get search form
 
 if ( ! function_exists( 'boostify_hf_search_form' ) ) {
-	function boostify_hf_search_form() {
+	/**
+	 * Get search form .
+	 *
+	 * @return     form search
+	 */
+	function boostify_hf_search_form( $icon = 'ion-ios-search', $placeholder = 'Enter Keyword', $text = null ) {
 		$url = esc_url( home_url( '/' ) );
 		?>
 			<div class="boostify--search-sidebar-wrapper" aria-expanded="false" role="form">
@@ -39,9 +44,14 @@ if ( ! function_exists( 'boostify_hf_search_form' ) ) {
 
 					<span class="screen-reader-text"><?php echo esc_html_x( 'Search for:', 'label', 'boostify' ); ?></span>
 
-					<input type="search" class="search-field site-search-field" placeholder="<?php echo esc_attr__( 'Enter Keyword', 'boostify' ); ?>" name="s">
+					<input type="search" class="search-field site-search-field" placeholder="<?php echo esc_attr( $placeholder ); ?>" name="s">
 					<input type="hidden" name="post_type" value="post">
-					<button type="submit" class="btn-boostify-search-form ion-ios-search">
+					<button type="submit" class="btn-boostify-search-form <?php echo esc_attr( $icon ); ?>">
+						<?php
+						if ( $text ) :
+							echo esc_html( $text );
+						endif;
+						?>
 						<span class="screen-reader-text"><?php echo esc_html__( 'Search', 'boostify' ); ?></span>
 					</button>
 				</form>

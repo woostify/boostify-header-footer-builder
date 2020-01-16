@@ -3,9 +3,9 @@ use Elementor\Widget_Base;
 use Elementor\Controls_Manager;
 
 /**
- * wanderlust Hello World
+ * Site Search Widget
  *
- * Elementor widget for hello world.
+ * Elementor widget for Site Search.
  */
 class Boostify_Site_Search extends Widget_Base {
 
@@ -24,7 +24,7 @@ class Boostify_Site_Search extends Widget_Base {
 	 * @return string Widget title.
 	 */
 	public function get_title() {
-		return esc_html__( 'Search Icon', 'boostify' );
+		return esc_html__( 'Site Search', 'boostify' );
 	}
 
 	/**
@@ -79,6 +79,50 @@ class Boostify_Site_Search extends Widget_Base {
 		);
 
 		$this->add_control(
+			'button_type',
+			[
+				'label'   => esc_html__( 'Button Type', 'boostify' ),
+				'type'    => Controls_Manager::SELECT,
+				'options' => [
+					'icon' => 'Icon',
+					'text' => 'Text',
+				],
+				'default' => 'icon',
+			]
+		);
+
+		$this->add_control(
+			'icon',
+			[
+				'label'     => esc_html__( 'Select Icon', 'boostify' ),
+				'type'      => Controls_Manager::ICON,
+				'include'   => [
+					'ion-ios-search',
+					'ion-ios-search-strong',
+					'fa fa-search',
+					'ion-ios-arrow-thin-right',
+				],
+				'default'   => 'ion-ios-search',
+				'condition' => [
+					'button_type' => 'icon',
+				],
+
+			]
+		);
+
+		$this->add_control(
+			'text',
+			[
+				'label'       => __( 'Label', 'boostify' ),
+				'type'        => Controls_Manager::TEXT,
+				'placeholder' => __( 'Enter Label', 'boostify' ),
+				'condition'   => [
+					'button_type' => 'text',
+				],
+			]
+		);
+
+		$this->add_control(
 			'placeholder',
 			[
 				'label'       => __( 'Placeholder', 'boostify' ),
@@ -110,6 +154,35 @@ class Boostify_Site_Search extends Widget_Base {
 						'title' => 'Right',
 					],
 				],
+				'condition' => [
+					'layout' => 'icon',
+				],
+			]
+		);
+
+		$this->add_control(
+			'height',
+			[
+				'label'      => __( 'Height', 'boostify' ),
+				'type'       => Controls_Manager::SLIDER,
+				'size_units' => [ 'px', '%' ],
+				'range'      => [
+					'px' => [
+						'min'  => 30,
+						'max'  => 100,
+						'step' => 1,
+					],
+				],
+				'default'    => [
+					'unit' => 'px',
+					'size' => 45,
+				],
+				'selectors'  => [
+					'{{WRAPPER}} .boostify-search-form-header .site-search-field' => 'height: {{SIZE}}{{UNIT}};',
+				],
+				'condition'  => [
+					'layout' => 'form',
+				],
 			]
 		);
 
@@ -121,6 +194,31 @@ class Boostify_Site_Search extends Widget_Base {
 				'size_units' => [ 'px' ],
 				'selectors'  => [
 					'{{WRAPPER}} .boostify-search-icon--toggle' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+				'condition'  => [
+					'layout' => 'icon',
+				],
+			]
+		);
+
+		$this->add_control(
+			'padding_form',
+			[
+				'label'              => __( 'Padding', 'boostify' ),
+				'type'               => Controls_Manager::DIMENSIONS,
+				'size_units'         => [ 'px' ],
+				'allowed_dimensions' => [ 'right', 'left' ],
+				'default'            => [
+					'top'    => 0,
+					'bottom' => 0,
+					'left'   => 10,
+					'right'  => 10,
+				],
+				'selectors'          => [
+					'{{WRAPPER}} .boostify-search-form-header .btn-boostify-search-form' => 'padding: 0{{UNIT}} {{RIGHT}}{{UNIT}} 0{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+				'condition'          => [
+					'layout' => 'form',
 				],
 			]
 		);
@@ -175,7 +273,7 @@ class Boostify_Site_Search extends Widget_Base {
 				'name'     => 'background',
 				'label'    => __( 'Background', 'boostify' ),
 				'types'    => [ 'classic', 'gradient', 'video' ],
-				'selector' => '{{WRAPPER}} .boostify-search-icon--toggle',
+				'selector' => '{{WRAPPER}} .boostify-search-icon--toggle, {{WRAPPER}} .btn-boostify-search-form',
 			]
 		);
 
@@ -210,18 +308,25 @@ class Boostify_Site_Search extends Widget_Base {
 	 * Written in PHP and used to generate the final HTML.
 	 */
 	protected function render() {
-		$settings = $this->get_settings_for_display();
+		$settings    = $this->get_settings_for_display();
+		$icon        = $settings['icon'];
+		$text        = $settings['text'];
+		$placeholder = $settings['placeholder'];
+		if ( empty( $text ) ) {
+			$text = null;
+		}
+
 		if ( 'icon' == $settings['layout'] ) {
 			?>
 			<div class="boostify-site-search-toggle">
-				<button class="boostify-search-icon--toggle ion-ios-search" aria-expanded="false">
+				<button class="boostify-search-icon--toggle <?php echo esc_attr( $settings['icon'] ); ?>" aria-expanded="false">
 					<span class="screen-reader-text"><?php echo esc_html__( 'Enter Keyword', 'boostify' ); ?></span>
 				</button>
 			</div>
 
 			<div class="boostify-search--toggle">
 				<div class="boostify-search-toggle--wrapper">
-					<?php do_action( 'boostify_hf_seach_form' ); ?>
+					<?php do_action( 'boostify_hf_seach_form', $icon, $placeholder, $text ); ?>
 				</div>
 				<button class="boostify--site-search-close ion-android-close">
 					<span class="screen-reader-text"><?php echo esc_html__( 'Close', 'boostify' ); ?></span>
@@ -232,9 +337,8 @@ class Boostify_Site_Search extends Widget_Base {
 			?>
 			<div class="boostify-search-form-header">
 				<div class="boostify-search-form--wrapper">
-					<?php do_action( 'boostify_hf_seach_form' ); ?>
+					<?php do_action( 'boostify_hf_seach_form', $icon, $placeholder, $text ); ?>
 				</div>
-
 			</div>
 			<?php
 		}

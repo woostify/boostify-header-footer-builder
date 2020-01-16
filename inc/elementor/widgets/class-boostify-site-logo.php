@@ -3,9 +3,9 @@ use Elementor\Widget_Base;
 use Elementor\Controls_Manager;
 
 /**
- * wanderlust Hello World
+ * Site Logo
  *
- * Elementor widget for hello world.
+ * Elementor widget for Site Logo.
  */
 class Boostify_Site_Logo extends Widget_Base {
 
@@ -88,42 +88,6 @@ class Boostify_Site_Logo extends Widget_Base {
 
 		$this->end_controls_section();
 
-		$this->start_controls_section(
-			'section',
-			array(
-				'label' => esc_html__( 'Logo', 'ht-wanderlust' ),
-				'tab' => Controls_Manager::TAB_ADVANCED
-			)
-		);
-
-		$this->add_control(
-			'aligdsdn',
-			[
-				'label'     => esc_html__( 'Align', 'boostify' ),
-				'type'      => Controls_Manager::CHOOSE,
-				'default'   => 'flex-start',
-				'selectors' => [
-					'{{WRAPPER}} .boostify-menu' => 'justify-content: {{VALUE}};',
-				],
-				'options'   => [
-					'flex-start' => [
-						'icon'  => 'eicon-h-align-left',
-						'title' => 'Left',
-					],
-					'center'     => [
-						'icon'  => 'eicon-h-align-center',
-						'title' => 'Center',
-					],
-					'flex-end'   => [
-						'icon'  => 'eicon-h-align-right',
-						'title' => 'Right',
-					],
-				],
-			]
-		);
-
-		$this->end_controls_section();
-
 	}
 
 	/**
@@ -136,23 +100,21 @@ class Boostify_Site_Logo extends Widget_Base {
 		?>
 			<div class="boostify-site-logo-header">
 			<?php
-				if ( has_custom_logo() ) :
-					the_custom_logo();
-				else :
-					if ( is_user_logged_in() ) {
-						echo esc_html__( 'Please go to customize choose logo for site', 'boostify' );
-					} else {
-						?>
-						<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
-						<?php
-					}
-				endif;
+			if ( has_custom_logo() ) :
+				the_custom_logo();
+			else :
+				if ( is_user_logged_in() ) {
+					echo esc_html__( 'Please go to customize choose logo for site', 'boostify' );
+				} else {
+					?>
+					<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
+					<?php
+				}
+			endif;
 
 			?>
 		</div>
-	<?php
+		<?php
 	}
-
-
 
 }

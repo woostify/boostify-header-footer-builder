@@ -1,6 +1,6 @@
 <?php
 /**
- * Class Plugin
+ * Class Header Footer Elementor
  *
  * Main Plugin class
  * @since 1.2.0
@@ -51,23 +51,6 @@ if ( ! class_exists( 'Boostify_Header_Footer_Elementor' ) ) {
 			);
 		}
 
-		/**
-		 * widget_scripts
-		 *
-		 * Load required plugin core files.
-		 *
-		 * @since 1.2.0
-		 * @access public
-		 */
-		public function widget_styles() {
-			// Style Tour Filter
-			wp_register_style(
-				'boostify_hf_nav_menu',
-				HT_HF_URL . 'assets/css/elementor/nav-menu.css',
-				array(),
-				HT_HF_VER
-			);
-		}
 		/**
 		 * widget_scripts
 		 *
@@ -142,7 +125,7 @@ if ( ! class_exists( 'Boostify_Header_Footer_Elementor' ) ) {
 			require HT_HF_PATH . 'inc/elementor/module/class-boostify-hf-sticky.php';
 		}
 
-		public function hf_init() {
+		public function init() {
 
 			$this->modules_manager = Boostify_Hf_Sticky::instance();
 
@@ -162,11 +145,10 @@ if ( ! class_exists( 'Boostify_Header_Footer_Elementor' ) ) {
 		}
 
 		private function setup_hooks() {
-			add_action( 'elementor/init', array( $this, 'hf_init' ) );
-
+			// Register Modul.
+			add_action( 'elementor/init', array( $this, 'init' ) );
+			// Register custom widget categories.
 			add_action( 'elementor/elements/categories_registered', array( $this, 'add_elementor_widget_categories' ) );
-			// Register widget style
-			add_action( 'elementor/frontend/after_enqueue_styles', array( $this, 'widget_styles' ) );
 			// Register widget scripts
 			add_action( 'elementor/frontend/after_register_scripts', array( $this, 'widget_scripts' ) );
 			// Register widgets
@@ -182,8 +164,6 @@ if ( ! class_exists( 'Boostify_Header_Footer_Elementor' ) ) {
 		 * @access public
 		 */
 		public function __construct() {
-			// Register custom widget categories.
-
 			$this->includes();
 
 			$this->setup_hooks();

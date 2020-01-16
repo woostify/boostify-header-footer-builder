@@ -29,7 +29,6 @@ if ( ! class_exists( 'Boostify_Header_Footer_Builder' ) ) {
 
 		public function includes() {
 			include_once HT_HF_PATH . 'inc/helper.php';
-			include_once HT_HF_PATH . 'inc/hooks.php';
 			include_once HT_HF_PATH . 'inc/admin/class-boostify-header-footer-admin.php';
 			include_once HT_HF_PATH . 'inc/admin/class-boostify-header-footer-metabox.php';
 			include_once HT_HF_PATH . 'inc/class-boostify-header-footer-template.php';
@@ -45,6 +44,7 @@ if ( ! class_exists( 'Boostify_Header_Footer_Builder' ) ) {
 			add_action( 'elementor/editor/wp_head', array( $this, 'enqueue_icon' ) );
 			add_action( 'wp_enqueue_scripts', array( $this, 'wt_style' ), 99 );
 			add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_icon' ), 99 );
+			add_action( 'boostify_hf_seach_form', 'boostify_hf_search_form', 10, 3 );
 		}
 
 		public function body_ver( $classes ) {
@@ -64,11 +64,11 @@ if ( ! class_exists( 'Boostify_Header_Footer_Builder' ) ) {
 					'has_archive'  => false,
 					'public'       => true,
 					'labels'       => array(
-						'name'          => esc_html__( 'Header Footer Builder', 'ht-wanderlust' ),
-						'add_new_item'  => esc_html__( 'Add New Header, Footer', 'ht-wanderlust' ),
-						'edit_item'     => esc_html__( 'Edit Header, Footer', 'ht-wanderlust' ),
-						'all_items'     => esc_html__( 'All Header, Footer', 'ht-wanderlust' ),
-						'singular_name' => esc_html__( 'Header Footer Builder', 'ht-wanderlust' ),
+						'name'          => esc_html__( 'Header Footer Builder', 'boostify' ),
+						'add_new_item'  => esc_html__( 'Add New Header, Footer', 'boostify' ),
+						'edit_item'     => esc_html__( 'Edit Header, Footer', 'boostify' ),
+						'all_items'     => esc_html__( 'All Header, Footer', 'boostify' ),
+						'singular_name' => esc_html__( 'Elementor Builder', 'boostify' ),
 					),
 					'menu_icon'    => 'dashicons-editor-kitchensink',
 				)
@@ -95,10 +95,12 @@ if ( ! class_exists( 'Boostify_Header_Footer_Builder' ) ) {
 					'ion-chevron-down'            => 'Ion Downr',
 					'ion-ios-arrow-down'          => 'Ion Ios Down',
 					'ion-ios-arrow-forward'       => 'Ion Ios Forward',
-					'ion-ios-arrow-thin-right'    => 'Ion Ios Thin Right',
+					'ion-ios-arrow-thin-right'    => 'Thin Right',
 					'ion-navicon'                 => 'Ion Navicon',
 					'ion-navicon-round'           => 'Navicon Round',
 					'ion-android-menu'            => 'Menu',
+					'ion-ios-search'              => 'Search',
+					'ion-ios-search-strong'       => 'Search Strong',
 				),
 				$icons
 			);
@@ -118,7 +120,6 @@ if ( ! class_exists( 'Boostify_Header_Footer_Builder' ) ) {
 
 
 		public function wt_style() {
-
 			// Menu
 			wp_enqueue_style(
 				'boostify-hf-nav-menu-css',

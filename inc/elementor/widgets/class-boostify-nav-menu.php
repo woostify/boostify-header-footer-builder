@@ -96,7 +96,7 @@ class Boostify_Nav_Menu extends Widget_Base {
 				<?php } ?>
 			</nav>
 
-			<a href="#" class="boostify-menu-toggle" aria-controls="primary-menu" aria-expanded="false">
+			<a href="#" class="boostify-menu-toggle" aria-expanded="false">
 				<span class="menu-toggle-wrapper <?php echo esc_attr( $settings['toggle_icon'] ); ?>"></span><!-- .menu-toggle-wrapper -->
 
 				<span class="screen-reader-text menu-toggle-text"><?php esc_html_e( 'Menu', 'wunderlust' ); ?></span>
@@ -124,7 +124,7 @@ class Boostify_Nav_Menu extends Widget_Base {
 
 					<?php
 					if ( 'yes' == $settings['search'] ) :
-						do_action( 'boostify_hf_seach_form' );
+						do_action( 'boostify_hf_seach_form', 'ion-ios-search' );
 					endif;
 					?>
 

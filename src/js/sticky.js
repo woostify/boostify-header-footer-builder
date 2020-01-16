@@ -31,7 +31,6 @@ function stickyHeader() {
 			var logoUrl = logo.attr('src');
 			var logoStick = data.image.url;
 			var tranparent = sticky.hasClass( 'boostify-header-tranparent-yes' );
-			var enabled = "";
 			if ( widthScreen >= 1025 ) {
 				var enabled = 'desktop';
 			} else if ( widthScreen  > 767 && widthScreen < 1025 ) {
@@ -48,24 +47,32 @@ function stickyHeader() {
 						'</section>'
 					);
 					var copy = sticky.siblings('.boostify-header--default');
-					copy.css({ 'visibility' : 'hidden', 'transition' : 'none 0s ease 0s', 'margin-top' : margin.size + margin.unit });
+					copy.css({
+						'visibility' : 'hidden',
+						'transition' : 'none 0s ease 0s',
+						// 'margin-top' : margin.size + margin.unit
+					});
 				}
 
 				sticky.css({ 
 					'position' : 'fixed',
 					'left' : left + 'px',
 					'width' : width + 'px',
-					'margin-top' : margin.size + margin.unit,
-					'margin-bottom' : '0px',
+					// 'margin-top' : margin.size + margin.unit,
 				});
 				var copyMargin = top + margin.size;
 
 				$j(window).scroll(function() {
+					console.log( sticky.offset().top );
 					var scroll = $j(window).scrollTop();
 					if ( scroll > ( top + height ) ) {
 						sticky.addClass('boostify-sticky--active');
 						sticky.css({'background-color' : data.bsticky_background});
-						logo.attr( 'src', logoStick );
+						if ( logoStick != '' ) {
+							logo.attr( 'src', logoStick );
+						} else {
+							logo.attr( 'src', logoUrl );
+						}
 					} else {
 						sticky.removeClass('boostify-sticky--active');
 						sticky.css("background-color", '');
@@ -77,47 +84,6 @@ function stickyHeader() {
 			$j(window).resize(function() {
 				width = $j(window).width();
 				sticky.css({ 'width' : width + 'px'});
-				widthScreen = $j(window).width();
-				if ( widthScreen >= 1025 ) {
-					var enabled = 'desktop';
-				} else if ( widthScreen  > 767 && widthScreen < 1025 ) {
-					var enabled = 'tablet';
-				} else if ( widthScreen <= 767 ) {
-					var enabled = "mobile";
-				}
-
-				if ( screen.includes( enabled ) ) {
-					if ( ! tranparent ) {
-						sticky.after(
-							'<section class="boostify-header--default elementor-section">' +
-							element +
-							'</section>'
-						);
-						var copy = sticky.siblings('.boostify-header--default');
-						copy.css({ 'visibility' : 'hidden', 'transition' : 'none 0s ease 0s', 'margin-top' : margin.size + margin.unit });
-					}
-
-					sticky.css({ 
-						'position' : 'fixed',
-						'left' : left + 'px',
-						'width' : width + 'px',
-						'margin-top' : margin.size + margin.unit,
-						'margin-bottom' : '0px',
-					});
-					var copyMargin = top + margin.size;
-
-					$j(window).scroll(function() {
-						var scroll = $j(window).scrollTop();
-						if ( scroll > ( top + height ) ) {
-							sticky.css({'background-color' : data.bsticky_background});
-							logo.attr( 'src', logoStick );
-						} else {
-							sticky.removeClass('boostify-sticky--active');
-							sticky.css("background-color", '');
-							logo.attr( 'src', logoUrl );
-						}
-					} );
-				}
 			} );
 		} );
 	}

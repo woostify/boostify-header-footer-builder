@@ -53,10 +53,9 @@ if ( ! class_exists( 'Boostify_Header_Footer_Template' ) ) {
 			return $single_template;
 		}
 
+		// Get Header Builder
 		public function render_header() {
 			$page_type = $this->page_type();
-
-
 			if ( $this->display_all() || $this->display_template( $page_type ) || $this->current_single() || $this->all_single() ) {
 				require HT_HF_PATH . 'templates/default/header.php';
 				$templates   = [];
@@ -67,13 +66,11 @@ if ( ! class_exists( 'Boostify_Header_Footer_Template' ) ) {
 				locate_template( $templates, true );
 				ob_get_clean();
 			}
-
 		}
 
+		// Get Footer Builder
 		public function render_footer() {
-
 			$page_type = $this->page_type();
-
 			if ( $this->display_all( 'footer' ) || $this->display_template( $page_type, 'footer' ) || $this->current_single( 'footer' ) || $this->all_single( 'footer' ) ) {
 				require HT_HF_PATH . 'templates/default/footer.php';
 				$templates   = [];
@@ -139,7 +136,7 @@ if ( ! class_exists( 'Boostify_Header_Footer_Template' ) ) {
 
 		}
 
-
+		// For Template All Page
 		public function display_all( $type = 'header' ) {
 			$args = array(
 				'post_type'           => 'btf_builder',
@@ -172,11 +169,12 @@ if ( ! class_exists( 'Boostify_Header_Footer_Template' ) ) {
 			}
 		}
 
+		// For Archive, Blog Page, Search Page
 		public function display_template( $page_type, $type = 'header' ) {
 			if ( empty( $page_type ) ) {
 				return false;
 			}
-			$args = array(
+			$args   = array(
 				'post_type'           => 'btf_builder',
 				'orderby'             => 'id',
 				'order'               => 'DESC',
@@ -195,9 +193,7 @@ if ( ! class_exists( 'Boostify_Header_Footer_Template' ) ) {
 					),
 				),
 			);
-
 			$header = new WP_Query( $args );
-
 			if ( $header->have_posts() ) {
 
 				return $header;
@@ -206,13 +202,12 @@ if ( ! class_exists( 'Boostify_Header_Footer_Template' ) ) {
 			}
 		}
 
+		// Get Template Builder For Current Single
 		public function current_single( $type = 'header' ) {
 			if ( ! is_single() && ! is_page() ) {
 				return false;
 			}
-
 			$id = get_the_ID();
-
 
 			$args = array(
 				'post_type'           => 'btf_builder',
@@ -265,11 +260,12 @@ if ( ! class_exists( 'Boostify_Header_Footer_Template' ) ) {
 			}
 		}
 
+		// Get Template Builder For All Single
 		public function all_single( $type = 'header' ) {
 			if ( ! is_single() && ! is_page() ) {
 				return false;
 			}
-			$args = array(
+			$args   = array(
 				'post_type'           => 'btf_builder',
 				'orderby'             => 'id',
 				'order'               => 'DESC',
@@ -293,10 +289,8 @@ if ( ! class_exists( 'Boostify_Header_Footer_Template' ) ) {
 					),
 				),
 			);
-
 			$header = new WP_Query( $args );
 			wp_reset_postdata();
-
 			if ( $header->have_posts() ) {
 
 				return $header;
@@ -306,6 +300,7 @@ if ( ! class_exists( 'Boostify_Header_Footer_Template' ) ) {
 			}
 		}
 
+		// Return Page Type.
 		public function page_type() {
 			$page_type = '';
 			if ( is_home() ) {
@@ -319,6 +314,7 @@ if ( ! class_exists( 'Boostify_Header_Footer_Template' ) ) {
 			return $page_type;
 		}
 
+		// Get current Template builder.
 		public function render( $header, $path ) {
 			if ( $header->have_posts() ) {
 				while ( $header->have_posts() ) {
