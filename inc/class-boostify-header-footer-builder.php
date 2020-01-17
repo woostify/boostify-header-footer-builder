@@ -42,7 +42,7 @@ if ( ! class_exists( 'Boostify_Header_Footer_Builder' ) ) {
 			add_action( 'body_class', array( $this, 'body_ver' ) );
 			add_action( 'elementor/controls/controls_registered', array( $this, 'modify_controls' ), 10, 1 );
 			add_action( 'elementor/editor/wp_head', array( $this, 'enqueue_icon' ) );
-			add_action( 'wp_enqueue_scripts', array( $this, 'wt_style' ), 99 );
+			add_action( 'wp_enqueue_scripts', array( $this, 'style' ), 99 );
 			add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_icon' ), 99 );
 			add_action( 'boostify_hf_seach_form', 'boostify_hf_search_form', 10, 3 );
 		}
@@ -64,7 +64,7 @@ if ( ! class_exists( 'Boostify_Header_Footer_Builder' ) ) {
 					'has_archive'  => false,
 					'public'       => true,
 					'labels'       => array(
-						'name'          => esc_html__( 'Header Footer Builder', 'boostify' ),
+						'name'          => esc_html__( 'Elementor Builder', 'boostify' ),
 						'add_new_item'  => esc_html__( 'Add New Header, Footer', 'boostify' ),
 						'edit_item'     => esc_html__( 'Edit Header, Footer', 'boostify' ),
 						'all_items'     => esc_html__( 'All Header, Footer', 'boostify' ),
@@ -119,7 +119,7 @@ if ( ! class_exists( 'Boostify_Header_Footer_Builder' ) ) {
 		}
 
 
-		public function wt_style() {
+		public function style() {
 			// Menu
 			wp_enqueue_style(
 				'boostify-hf-nav-menu-css',
@@ -135,7 +135,6 @@ if ( ! class_exists( 'Boostify_Header_Footer_Builder' ) ) {
 				array(),
 				HT_HF_VER
 			);
-
 		}
 	}
 

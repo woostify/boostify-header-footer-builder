@@ -6,12 +6,26 @@ use Elementor\Plugin;
 use Elementor\Controls_Stack;
 use Elementor\Core\Base\Module;
 
+
 /**
- * wanderlust Hello World
+ * Sticky Module
  *
- * Elementor widget for hello world.
+ * Elementor Module Sticky
  */
-class Boostify_Hf_Sticky extends Module {
+class Boostify_Hf_Sticky {
+
+	/**
+	 * Instance
+	 *
+	 */
+	private static $_instance = null;
+
+	public static function instance() {
+		if ( is_null( self::$_instance ) ) {
+			self::$_instance = new self();
+		}
+		return self::$_instance;
+	}
 
 	public function __construct() {
 
@@ -187,6 +201,4 @@ class Boostify_Hf_Sticky extends Module {
 			false
 		);
 	}
-
-
 }

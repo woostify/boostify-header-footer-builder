@@ -15,6 +15,7 @@ function stickyHeader() {
 			if ( copyElem.hasClass( 'elementor-sticky--active' ) || ( copyElem.hasClass( 'elementor-sticky--active' ) && copyElem.hasClass( 'she-header-yes' ) ) ) {
 				return;
 			}
+			var bodyTop = $j('body').offset().top;
 			var top = sticky.offset().top;
 			var left = sticky.offset().left;
 			var width = sticky.width();
@@ -50,7 +51,7 @@ function stickyHeader() {
 					copy.css({
 						'visibility' : 'hidden',
 						'transition' : 'none 0s ease 0s',
-						// 'margin-top' : margin.size + margin.unit
+						// 'margin-top' : top + margin.unit
 					});
 				}
 
@@ -61,22 +62,34 @@ function stickyHeader() {
 					// 'margin-top' : margin.size + margin.unit,
 				});
 				var copyMargin = top + margin.size;
+				if ( $j(window).scrollTop() > top ) {
+					sticky.css({'top' : bodyTop + 'px' });
+				} else {
+					if ( ( top - $j(window).scrollTop() ) > 0 ) {
+						sticky.css({'top': ( top - $j(window).scrollTop() ) + 'px'});
+					}
+				}
 
 				$j(window).scroll(function() {
-					console.log( sticky.offset().top );
 					var scroll = $j(window).scrollTop();
-					if ( scroll > ( top + height ) ) {
+					console.log( scroll );
+					if ( ( top - scroll ) >= 0 ) {
+						sticky.css({'top': ( top - scroll ) + 'px'});
+
+						sticky.removeClass('boostify-sticky--active');
+						sticky.css({ "background-color" : '' });
+						logo.attr( 'src', logoUrl );
+
+					} else {
+						sticky.css({'top' : bodyTop + 'px' });
+
 						sticky.addClass('boostify-sticky--active');
-						sticky.css({'background-color' : data.bsticky_background});
+						sticky.css({'background-color' : data.bsticky_background });
 						if ( logoStick != '' ) {
 							logo.attr( 'src', logoStick );
 						} else {
 							logo.attr( 'src', logoUrl );
 						}
-					} else {
-						sticky.removeClass('boostify-sticky--active');
-						sticky.css("background-color", '');
-						logo.attr( 'src', logoUrl );
 					}
 				} );
 			}

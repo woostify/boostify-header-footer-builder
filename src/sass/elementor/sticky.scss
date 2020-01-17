@@ -1,23 +1,29 @@
 .boostify-sticky-yes.elementor-section {
-	z-index: 99999;
+  z-index: 999;
+}
+
+.bhf-site .elementor-inner .boostify-sticky-yes.elementor-section {
+	transition: background 0.3s linear, border 0.3s, box-shadow 0.3s linear, top 0s linear;
 }
 
 .elementor-edit-mode .boostify-sticky-yes.elementor-section {
-	z-index: 1;
+  z-index: 1;
 }
 
 #elementor-preview-iframe .boostify-sticky-yes.elementor-section {
-	top: 0!important;
+  top: 0 !important;
 }
 
 .boostify-site-logo-header .custom-logo {
-	transition: 0.3s all;
-}
-
-.admin-bar .boostify-sticky-yes.elementor-section {
-	top: 32px;
+  transition: 0.3s all;
 }
 
 .boostify-sticky--active {
-	box-shadow: 1px 3px 15px rgba( 0, 0, 0, 0.12);
+  box-shadow: 1px 3px 15px rgba(0, 0, 0, 0.12);
+  background-color: #fff;
+  transition: top 0.1s linear;
+}
+
+.boostify-sticky-yes {
+  background-color: #fff;
 }

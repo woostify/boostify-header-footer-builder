@@ -155,6 +155,10 @@ if ( ! class_exists( 'Boostify_Header_Footer_Metabox' ) ) {
 				'acf-field'           => 'acf-field',
 				'booked_appointments' => 'booked_appointments',
 				'wpcf7_contact_form'  => 'wpcf7_contact_form',
+				'scheduled-action'    => 'scheduled-action',
+				'shop_order'          => 'shop_order',
+				'shop_order_refund'   => 'shop_order_refund',
+				'shop_coupon'         => 'shop_coupon',
 			];
 			$diff             = array_diff( $post_types, $post_types_unset );
 			$default          = [

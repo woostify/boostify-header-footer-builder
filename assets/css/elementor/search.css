@@ -18,6 +18,10 @@
   transform: scale(1);
 }
 
+.boostify-search--toggle .btn-boostify-search-form {
+  background: transparent !important;
+}
+
 .boostify-search--toggle .boostify-search-toggle--wrapper {
   width: 80%;
 }
@@ -78,4 +82,9 @@
 
 .boostify-search-form-header .boostify--search-sidebar-wrapper {
   padding: 0;
+}
+
+.boostify-search-form-header .boostify--search-sidebar-wrapper .btn-boostify-search-form {
+  width: auto;
+  min-width: 30px;
 }

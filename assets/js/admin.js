@@ -79,7 +79,8 @@
 			$('.boostify--hf-post-name').before(html);
 		}
 		$( 'input[name=bhf_post]' ).val(listPost);
-		$( '.boostify--hf-post-name' ).val('');
+		$( '.boostify--hf-post-name' ).val('');// Reset Input
+		$('.boostify-data').html('');
 
 	} );
 
@@ -121,6 +122,11 @@
 			render.addClass('hidden');
 			parents.removeClass('render--post').addClass('select-all');
 		}
+	});
+
+	$('body').on('click', function(e) {
+		$( '.boostify-data' ).html( '' );
+		$( '.boostify--hf-post-name' ).val('');// Reset Input
 	});
 
 })(jQuery);
