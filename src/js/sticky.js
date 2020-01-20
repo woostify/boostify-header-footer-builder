@@ -31,6 +31,7 @@ function stickyHeader() {
 			var logo = sticky.find('.custom-logo');
 			var logoUrl = logo.attr('src');
 			var logoStick = data.image.url;
+			var menuColor = data.bsticky_menu_color;
 			var tranparent = sticky.hasClass( 'boostify-header-tranparent-yes' );
 			if ( widthScreen >= 1025 ) {
 				var enabled = 'desktop';
@@ -64,6 +65,16 @@ function stickyHeader() {
 				var copyMargin = top + margin.size;
 				if ( $j(window).scrollTop() > top ) {
 					sticky.css({'top' : bodyTop + 'px' });
+					if ( menuColor && menuColor != '' ) {
+						sticky.find( '.boostify-menu > li > a' ).css({ 'color' : menuColor });
+					}
+					if ( logoStick != '' ) {
+						logo.attr( 'src', logoStick );
+					} else {
+						logo.attr( 'src', logoUrl );
+					}
+					sticky.addClass('boostify-sticky--active');
+					sticky.css({'background-color' : data.bsticky_background });
 				} else {
 					if ( ( top - $j(window).scrollTop() ) > 0 ) {
 						sticky.css({'top': ( top - $j(window).scrollTop() ) + 'px'});
@@ -72,19 +83,25 @@ function stickyHeader() {
 
 				$j(window).scroll(function() {
 					var scroll = $j(window).scrollTop();
-					console.log( scroll );
+
 					if ( ( top - scroll ) >= 0 ) {
 						sticky.css({'top': ( top - scroll ) + 'px'});
 
 						sticky.removeClass('boostify-sticky--active');
 						sticky.css({ "background-color" : '' });
 						logo.attr( 'src', logoUrl );
+						sticky.find( '.boostify-menu > li > a' ).css({ 'color' : '' });
 
 					} else {
 						sticky.css({'top' : bodyTop + 'px' });
 
 						sticky.addClass('boostify-sticky--active');
 						sticky.css({'background-color' : data.bsticky_background });
+						if ( menuColor && menuColor != '' ) {
+							sticky.find( '.boostify-menu > li > a' ).css({ 'color' : menuColor });
+						}
+						
+						console.log( logoStick );
 						if ( logoStick != '' ) {
 							logo.attr( 'src', logoStick );
 						} else {

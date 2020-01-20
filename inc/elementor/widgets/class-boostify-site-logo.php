@@ -24,7 +24,7 @@ class Boostify_Site_Logo extends Widget_Base {
 	 * @return string Widget title.
 	 */
 	public function get_title() {
-		return esc_html__( 'Logo', 'ht-wanderlust' );
+		return esc_html__( 'Logo', 'boostify' );
 	}
 
 	/**
@@ -56,8 +56,45 @@ class Boostify_Site_Logo extends Widget_Base {
 		$this->start_controls_section(
 			'section_content',
 			array(
-				'label' => esc_html__( 'Logo', 'ht-wanderlust' ),
+				'label' => esc_html__( 'Logo', 'boostify' ),
 			)
+		);
+
+		$this->add_control(
+			'use',
+			[
+				'label'   => __( 'Use', 'boostify' ),
+				'type'    => Controls_Manager::SELECT,
+				'default' => 'site',
+				'options' => [
+					'site'   => 'Site Logo',
+					'custom' => 'Custom Logo',
+				],
+			]
+		);
+
+		$this->add_control(
+			'image',
+			[
+				'label'     => __( 'Logo Custom', 'boostify' ),
+				'type'      => \Elementor\Controls_Manager::MEDIA,
+				'condition' => [
+					'use' => 'custom',
+				],
+			]
+		);
+
+		$this->add_group_control(
+			\Elementor\Group_Control_Image_Size::get_type(),
+			[
+				'name'        => 'thumbnail',
+				'default'     => 'full',
+				'label'       => esc_html__( 'Logo Size', 'boostify' ),
+				'description' => esc_html__( 'Custom Logo size when selected image.', 'boostify' ),
+				'condition'   => [
+					'use' => 'custom',
+				],
+			]
 		);
 
 		$this->add_control(
@@ -100,17 +137,27 @@ class Boostify_Site_Logo extends Widget_Base {
 		?>
 			<div class="boostify-site-logo-header">
 			<?php
-			if ( has_custom_logo() ) :
-				the_custom_logo();
-			else :
-				if ( is_user_logged_in() ) {
-					echo esc_html__( 'Please go to customize choose logo for site', 'boostify' );
-				} else {
-					?>
-					<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
-					<?php
-				}
-			endif;
+			if ( 'site' === $settings['use'] || empty( $settings['image']['id'] ) ) {
+
+				if ( has_custom_logo() ) :
+					the_custom_logo();
+				else :
+					if ( is_user_logged_in() ) {
+						echo esc_html__( 'Please go to customize choose logo for site', 'boostify' );
+					} else {
+						?>
+						<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
+						<?php
+					}
+				endif;
+			} else {
+
+				$url = Elementor\Group_Control_Image_Size::get_attachment_image_src( $settings['image']['id'], 'thumbnail', $settings );
+				?>
+				<img src="<?php echo esc_url( $url ); ?>" alt="Logo" class="custom-logo">
+				<?php
+
+			}
 
 			?>
 		</div>

@@ -33,15 +33,15 @@ msgstr ""
 msgid "Footer"
 msgstr ""
 
-#: inc/admin/class-boostify-header-footer-metabox.php:178
+#: inc/admin/class-boostify-header-footer-metabox.php:182
 msgid "Display On"
 msgstr ""
 
-#: inc/admin/class-boostify-header-footer-metabox.php:198, inc/admin/class-boostify-header-footer-metabox.php:308
+#: inc/admin/class-boostify-header-footer-metabox.php:202, inc/admin/class-boostify-header-footer-metabox.php:312
 msgid "All"
 msgstr ""
 
-#: inc/admin/class-boostify-header-footer-metabox.php:278
+#: inc/admin/class-boostify-header-footer-metabox.php:282
 msgid "Nothing Found"
 msgstr ""
 

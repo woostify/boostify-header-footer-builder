@@ -422,6 +422,24 @@ class Boostify_Nav_Menu extends Widget_Base {
 				'selector' => '{{WRAPPER}} .boostify-menu > li > a',
 			]
 		);
+
+		$this->add_control(
+			'menu_item_padding',
+			[
+				'label'      => __( 'Padding', 'boostify' ),
+				'type'       => Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em' ],
+				'default'    => [
+					'top'    => 0,
+					'bottom' => 0,
+					'left'   => 20,
+					'right'  => 20,
+				],
+				'selectors'  => [
+					'{{WRAPPER}} .boostify-menu > li > a' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
 	}
 
 	public function menu_style_hover() {

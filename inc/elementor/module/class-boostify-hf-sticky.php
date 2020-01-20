@@ -169,6 +169,39 @@ class Boostify_Hf_Sticky {
 			]
 		);
 
+		$element->add_control(
+			'bsticky_menu_color_custom',
+			[
+				'label'              => __( 'Menu Color', 'boostify' ),
+				'type'               => Controls_Manager::SWITCHER,
+				'separator'          => 'before',
+				'label_on'           => __( 'On', 'boostify' ),
+				'label_off'          => __( 'Off', 'boostify' ),
+				'return_value'       => 'yes',
+				'default'            => '',
+				'frontend_available' => true,
+				'description'        => __( 'Choose menu color after scrolling', 'boostify' ),
+				'condition'          => [
+					'bsticky!' => '',
+				],
+
+			]
+		);
+
+		$element->add_control(
+			'bsticky_menu_color',
+			[
+				'label'              => __( 'Menu Color', 'boostify' ),
+				'type'               => Controls_Manager::COLOR,
+				'render_type'        => 'none',
+				'frontend_available' => true,
+				'condition'          => [
+					'bsticky_menu_color_custom' => 'yes',
+					'bsticky!'                  => '',
+				],
+			]
+		);
+
 		$element->end_controls_section();
 	}
 
