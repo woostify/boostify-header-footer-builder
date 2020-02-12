@@ -24,6 +24,24 @@
   transition: top 0.1s linear;
 }
 
-.boostify-sticky-yes {
-  background-color: #fff;
+.boostify-site-header .elementor-section.elementor-section-boxed > .elementor-container {
+  padding: 0 15px;
+}
+
+@media (min-width: 768px) {
+  .boostify-site-header .elementor-section.elementor-section-boxed > .elementor-container {
+    max-width: 750px;
+  }
+}
+
+@media (min-width: 992px) {
+  .boostify-site-header .elementor-section.elementor-section-boxed > .elementor-container {
+    max-width: 970px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .boostify-site-header .elementor-section.elementor-section-boxed > .elementor-container {
+    max-width: 1170px;
+  }
 }

@@ -43,12 +43,27 @@ function stickyHeader() {
 
 			if ( screen.includes( enabled ) ) {
 				if ( ! tranparent ) {
+					var coppyClass = 'boostify-header--default elementor-section';
+					if ( sticky.hasClass('elementor-hidden-phone') ) {
+						coppyClass += ' elementor-hidden-phone';
+					}
+
+					if ( sticky.hasClass('elementor-hidden-tablet') ) {
+						coppyClass += ' elementor-hidden-tablet';
+					}
+
+					if ( sticky.hasClass('elementor-hidden-desktop') ) {
+						coppyClass += ' elementor-hidden-desktop';
+					}
+
 					sticky.after(
-						'<section class="boostify-header--default elementor-section">' +
+						'<section class="' + coppyClass + '">' +
 						element +
 						'</section>'
 					);
+
 					var copy = sticky.siblings('.boostify-header--default');
+
 					copy.css({
 						'visibility' : 'hidden',
 						'transition' : 'none 0s ease 0s',
@@ -100,8 +115,7 @@ function stickyHeader() {
 						if ( menuColor && menuColor != '' ) {
 							sticky.find( '.boostify-menu > li > a' ).css({ 'color' : menuColor });
 						}
-						
-						console.log( logoStick );
+
 						if ( logoStick != '' ) {
 							logo.attr( 'src', logoStick );
 						} else {

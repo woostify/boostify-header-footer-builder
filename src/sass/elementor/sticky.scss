@@ -3,7 +3,7 @@
 }
 
 .bhf-site .elementor-inner .boostify-sticky-yes.elementor-section {
-	transition: background 0.3s linear, border 0.3s, box-shadow 0.3s linear, top 0s linear;
+    transition: background 0.3s linear, border 0.3s, box-shadow 0.3s linear, top 0s linear;
 }
 
 .elementor-edit-mode .boostify-sticky-yes.elementor-section {
@@ -24,6 +24,17 @@
   transition: top 0.1s linear;
 }
 
-.boostify-sticky-yes {
-  background-color: #fff;
+.boostify-site-header {
+    .elementor-section.elementor-section-boxed > .elementor-container {
+        padding: 0 15px;
+        @media (min-width: 768px) {
+            max-width: 750px;
+        }
+        @media (min-width: 992px) {
+            max-width: 970px;
+        }
+        @media ( min-width: 1200px ) {
+            max-width: 1170px;
+        }
+    }
 }

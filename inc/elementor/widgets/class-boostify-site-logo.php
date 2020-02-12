@@ -102,20 +102,20 @@ class Boostify_Site_Logo extends Widget_Base {
 			[
 				'label'     => esc_html__( 'Align', 'boostify' ),
 				'type'      => Controls_Manager::CHOOSE,
-				'default'   => 'flex-start',
+				'default'   => 'left',
 				'selectors' => [
-					'{{WRAPPER}} .boostify-menu' => 'justify-content: {{VALUE}};',
+					'{{WRAPPER}} .boostify-site-logo-header' => 'text-align: {{VALUE}};',
 				],
 				'options'   => [
-					'flex-start' => [
+					'left'   => [
 						'icon'  => 'eicon-h-align-left',
 						'title' => 'Left',
 					],
-					'center'     => [
+					'center' => [
 						'icon'  => 'eicon-h-align-center',
 						'title' => 'Center',
 					],
-					'flex-end'   => [
+					'right'  => [
 						'icon'  => 'eicon-h-align-right',
 						'title' => 'Right',
 					],
@@ -154,7 +154,9 @@ class Boostify_Site_Logo extends Widget_Base {
 
 				$url = Elementor\Group_Control_Image_Size::get_attachment_image_src( $settings['image']['id'], 'thumbnail', $settings );
 				?>
-				<img src="<?php echo esc_url( $url ); ?>" alt="Logo" class="custom-logo">
+				<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
+					<img src="<?php echo esc_url( $url ); ?>" alt="Logo" class="custom-logo">
+				</a>
 				<?php
 
 			}
