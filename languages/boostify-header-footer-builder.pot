@@ -13,6 +13,31 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
+#: inc/class-boostify-header-footer-builder.php:67, inc/class-boostify-header-footer-builder.php:71
+msgid "Elementor Builder"
+msgstr ""
+
+#: inc/class-boostify-header-footer-builder.php:68
+msgid "Add New Header, Footer"
+msgstr ""
+
+#: inc/class-boostify-header-footer-builder.php:69
+msgid "Edit Header, Footer"
+msgstr ""
+
+#: inc/class-boostify-header-footer-builder.php:70
+msgid "All Header, Footer"
+msgstr ""
+
+#: inc/helper.php:45
+msgctxt "label"
+msgid "Search for:"
+msgstr ""
+
+#: inc/helper.php:55, inc/elementor/widgets/class-boostify-site-search.php:64
+msgid "Search"
+msgstr ""
+
 #: inc/admin/class-boostify-header-footer-admin.php:77
 msgid "Type"
 msgstr ""
@@ -43,22 +68,6 @@ msgstr ""
 
 #: inc/admin/class-boostify-header-footer-metabox.php:282
 msgid "Nothing Found"
-msgstr ""
-
-#: inc/class-boostify-header-footer-builder.php:67, inc/class-boostify-header-footer-builder.php:71
-msgid "Elementor Builder"
-msgstr ""
-
-#: inc/class-boostify-header-footer-builder.php:68
-msgid "Add New Header, Footer"
-msgstr ""
-
-#: inc/class-boostify-header-footer-builder.php:69
-msgid "Edit Header, Footer"
-msgstr ""
-
-#: inc/class-boostify-header-footer-builder.php:70
-msgid "All Header, Footer"
 msgstr ""
 
 #: inc/elementor/class-boostify-header-footer-elementor.php:49
@@ -297,10 +306,6 @@ msgstr ""
 msgid "Site Search"
 msgstr ""
 
-#: inc/elementor/widgets/class-boostify-site-search.php:64, inc/helper.php:55
-msgid "Search"
-msgstr ""
-
 #: inc/elementor/widgets/class-boostify-site-search.php:84
 msgid "Button Type"
 msgstr ""
@@ -355,9 +360,4 @@ msgstr ""
 
 #: inc/elementor/widgets/class-boostify-site-search.php:332
 msgid "Close"
-msgstr ""
-
-#: inc/helper.php:45
-msgctxt "label"
-msgid "Search for:"
 msgstr ""
