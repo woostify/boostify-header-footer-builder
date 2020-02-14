@@ -38,11 +38,11 @@ if ( ! class_exists( 'Boostify_Header_Footer_Metabox' ) ) {
 			$select_footer = '';
 			$select_header = '';
 			// Check Type Selected
-			if ( 'footer' == $type ) {
+			if ( 'footer' === $type ) {
 				$select_footer = ' selected';
 			}
 
-			if ( 'header' == $type ) {
+			if ( 'header' === $type ) {
 				$select_header = ' selected';
 			}
 
@@ -67,7 +67,7 @@ if ( ! class_exists( 'Boostify_Header_Footer_Metabox' ) ) {
 		}
 
 		public function pagesetting_save( $post_id ) {
-			$nonce_name   = isset( $_POST['boostify_hf'] ) ? sanitize_text_field( $_POST['boostify_hf'] ) : '';
+			$nonce_name   = sanitize_text_field( $_POST['boostify_hf'] );
 			$nonce_action = 'boostify_hf_action';
 
 			if ( ! isset( $nonce_name ) ) {
@@ -94,7 +94,7 @@ if ( ! class_exists( 'Boostify_Header_Footer_Metabox' ) ) {
 			}
 
 			// Type of Template Builder
-			$type = ( isset( $_POST['bhf_type'] ) ) ? sanitize_text_field( $_POST['bhf_type'] ) : 'header';
+			$type = sanitize_text_field( $_POST['bhf_type'] );
 
 			update_post_meta(
 				$post_id,
@@ -103,7 +103,7 @@ if ( ! class_exists( 'Boostify_Header_Footer_Metabox' ) ) {
 			);
 
 			// Display On
-			$display = ( isset( $_POST['bhf_display'] ) ) ? sanitize_text_field( $_POST['bhf_display'] ) : '';
+			$display = sanitize_text_field( $_POST['bhf_display'] );
 
 			update_post_meta(
 				$post_id,
@@ -112,8 +112,8 @@ if ( ! class_exists( 'Boostify_Header_Footer_Metabox' ) ) {
 			);
 
 			// Post
-			$metabox = $_POST;
-			$post    = ( isset( $_POST['bhf_post'] ) ) ? ( $_POST['bhf_post'] ) : '';
+
+			$post = sanitize_text_field( $_POST['bhf_post'] );
 
 			update_post_meta(
 				$post_id,
@@ -122,7 +122,7 @@ if ( ! class_exists( 'Boostify_Header_Footer_Metabox' ) ) {
 			);
 
 			// Post Type
-			$post_type = ( isset( $_POST['bhf_post_type'] ) ) ? sanitize_text_field( $_POST['bhf_post_type'] ) : '';
+			$post_type = sanitize_text_field( $_POST['bhf_post_type'] );
 
 			update_post_meta(
 				$post_id,
@@ -135,7 +135,7 @@ if ( ! class_exists( 'Boostify_Header_Footer_Metabox' ) ) {
 
 		public function hf_display( $post ) {
 			$post_types       = get_post_types();
-			$post_types_unset = [
+			$post_types_unset = array(
 				'attachment'          => 'attachment',
 				'revision'            => 'revision',
 				'nav_menu_item'       => 'nav_menu_item',
@@ -159,20 +159,20 @@ if ( ! class_exists( 'Boostify_Header_Footer_Metabox' ) ) {
 				'shop_order'          => 'shop_order',
 				'shop_order_refund'   => 'shop_order_refund',
 				'shop_coupon'         => 'shop_coupon',
-			];
+			);
 			$diff             = array_diff( $post_types, $post_types_unset );
-			$default          = [
+			$default          = array(
 				'all'     => 'All Page',
 				'blog'    => 'Blog Page',
 				'archive' => 'Archive Page',
 				'search'  => 'Search Page',
-			];
+			);
 			$options          = array_merge( $default, $diff );
 			$display          = get_post_meta( $post->ID, 'bhf_display', true );
 			$post_id          = get_post_meta( $post->ID, 'bhf_post', true );
 			$post_type        = get_post_meta( $post->ID, 'bhf_post_type', true );
 			$list_post        = $post_id;
-			if ( 'all' != $post_id ) {
+			if ( 'all' !== $post_id ) {
 				$list_post = explode( ',', $post_id );
 			}
 
@@ -183,7 +183,7 @@ if ( ! class_exists( 'Boostify_Header_Footer_Metabox' ) ) {
 						<select name="bhf_display" id="display-on">
 							<?php
 							foreach ( $options as $key => $option ) :
-								$selected = ( $key == $display ) ? 'selected' : '';
+								$selected = ( $key === $display ) ? 'selected' : '';
 								?>
 								<option value="<?php echo esc_attr( $key ); ?>" <?php echo esc_attr( $selected ); ?>><?php echo esc_html( $option ); ?></option>
 							<?php endforeach ?>
@@ -240,8 +240,8 @@ if ( ! class_exists( 'Boostify_Header_Footer_Metabox' ) ) {
 
 		public function boostify_hf_post_admin() {
 			check_ajax_referer( 'ht_hf_nonce' );
-			$post_type = $_GET['post_type'];
-			$keyword   = $_GET['key'];
+			$post_type = sanitize_text_field( $_GET['post_type'] );
+			$keyword   = sanitize_text_field( $_GET['key'] );
 
 			$the_query = new WP_Query(
 				array(
@@ -290,12 +290,12 @@ if ( ! class_exists( 'Boostify_Header_Footer_Metabox' ) ) {
 		}
 
 		public function get_posts( $post_type ) {
-			$args  = [
+			$args  = array(
 				'post_type'      => $post_type,
 				'orderby'        => 'name',
 				'order'          => 'ASC',
 				'posts_per_page' => -1,
-			];
+			);
 			$posts = new WP_Query( $args );
 
 			return $posts;
@@ -303,8 +303,8 @@ if ( ! class_exists( 'Boostify_Header_Footer_Metabox' ) ) {
 
 		public function boostify_hf_input() {
 			check_ajax_referer( 'ht_hf_nonce' );
-			$post_type = $_POST['post_type'];
-			if ( 'all' != $post_type && 'archive' != $post_type && 'search' != $post_type && 'blog' != $post_type ) :
+			$post_type = sanitize_text_field( $_POST['post_type'] );
+			if ( 'all' !== $post_type && 'archive' !== $post_type && 'search' !== $post_type && 'blog' !== $post_type ) :
 				?>
 				<div class="input-item-wrapper">
 					<div class="boostify-section-select-post">

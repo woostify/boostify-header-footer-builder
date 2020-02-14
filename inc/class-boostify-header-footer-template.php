@@ -47,7 +47,7 @@ if ( ! class_exists( 'Boostify_Header_Footer_Template' ) ) {
 		// Template single post type
 		public function single_template( $single_template ) {
 			if ( 'btf_builder' == get_post_type() ) {
-				$single_template = HT_HF_PATH . 'templates/hf.php';
+				$single_template = BOOSTIFY_HEADER_FOOTER_PATH . 'templates/hf.php';
 			}
 
 			return $single_template;
@@ -57,7 +57,7 @@ if ( ! class_exists( 'Boostify_Header_Footer_Template' ) ) {
 		public function render_header() {
 			$page_type = $this->page_type();
 			if ( $this->display_all() || $this->display_template( $page_type ) || $this->current_single() || $this->all_single() ) {
-				require HT_HF_PATH . 'templates/default/header.php';
+				require BOOSTIFY_HEADER_FOOTER_PATH . 'templates/default/header.php';
 				$templates   = [];
 				$templates[] = 'header.php';
 				// Avoid running wp_head hooks again.
@@ -72,7 +72,7 @@ if ( ! class_exists( 'Boostify_Header_Footer_Template' ) ) {
 		public function render_footer() {
 			$page_type = $this->page_type();
 			if ( $this->display_all( 'footer' ) || $this->display_template( $page_type, 'footer' ) || $this->current_single( 'footer' ) || $this->all_single( 'footer' ) ) {
-				require HT_HF_PATH . 'templates/default/footer.php';
+				require BOOSTIFY_HEADER_FOOTER_PATH . 'templates/default/footer.php';
 				$templates   = [];
 				$templates[] = 'footer.php';
 				// Avoid running wp_footer hooks again.
@@ -84,7 +84,7 @@ if ( ! class_exists( 'Boostify_Header_Footer_Template' ) ) {
 		}
 
 		public function header_template() {
-			$path      = HT_HF_PATH . 'templates/content/content-header.php';
+			$path      = BOOSTIFY_HEADER_FOOTER_PATH . 'templates/content/content-header.php';
 			$page_type = $this->page_type();
 			if ( ! empty( $page_type ) ) {
 				$header = $this->display_template( $page_type );
@@ -111,7 +111,7 @@ if ( ! class_exists( 'Boostify_Header_Footer_Template' ) ) {
 		// Get hf_builder Footer Template
 		public function footer_template() {
 
-			$path      = HT_HF_PATH . 'templates/content/content-footer.php';
+			$path      = BOOSTIFY_HEADER_FOOTER_PATH . 'templates/content/content-footer.php';
 			$page_type = $this->page_type();
 			if ( ! empty( $page_type ) ) {
 				$footer = $this->display_template( $page_type, 'footer' );

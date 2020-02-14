@@ -8,7 +8,7 @@
 /**
  * Class Boostify_Hf_Template_Render
  */
-class Boostify_Hf_Template_Render {
+class Boostify_Header_Footer_Template_Render {
 
 	/**
 	 * Current theme template

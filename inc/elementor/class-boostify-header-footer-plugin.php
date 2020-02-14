@@ -10,12 +10,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Main class plugin
  */
-class Boostify_Hf_Plugin {
+class Boostify_Header_Footer_Plugin {
 
 	/**
 	 * @var Plugin
 	 */
-	private static $_instance;
+	private static $instance;
 
 	/**
 	 * @var Manager
@@ -26,35 +26,35 @@ class Boostify_Hf_Plugin {
 	 * @return Plugin
 	 */
 	public static function instance() {
-		if ( is_null( self::$_instance ) ) {
-			self::$_instance = new self();
+		if ( is_null( self::$instance ) ) {
+			self::$instance = new self();
 		}
 
-		return self::$_instance;
+		return self::$instance;
 	}
 
 	private function includes() {
-		require HT_HF_PATH . 'inc/elementor/module/class-boostify-hf-sticky.php';
+		require BOOSTIFY_HEADER_FOOTER_PATH . 'inc/elementor/module/class-boostify-hf-sticky.php';
 	}
 
 
 	public function hf_init() {
 
-		$this->modules_manager = Boostify_Hf_Sticky::instance();
+		$this->modules_manager = Boostify_Header_Footer_Sticky::instance();
 
 		$elementor = Elementor\Plugin::$instance;
 
 		// Add element category in panel
 		$elementor->elements_manager->add_category(
 			'boostify-sticky',
-			[
+			array(
 				'title' => __( 'Header Sticky', 'boostify' ),
 				'icon'  => 'font',
-			],
+			),
 			1
 		);
 
-		do_action( 'elementor_controls/init' );
+		do_action( 'elementor_controls/init' ); // phpcs:ignore
 	}
 
 	private function setup_hooks() {
@@ -71,5 +71,5 @@ class Boostify_Hf_Plugin {
 	}
 }
 
-Boostify_Hf_Plugin::instance();
+Boostify_Header_Footer_Plugin::instance();
 

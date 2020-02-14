@@ -18,7 +18,7 @@ if ( ! class_exists( 'Boostify_Header_Footer_Elementor' ) ) {
 		 *
 		 * @var Plugin The single instance of the class.
 		 */
-		private static $_instance = null;
+		private static $instance = null;
 
 
 		private $modules_manager;
@@ -33,10 +33,10 @@ if ( ! class_exists( 'Boostify_Header_Footer_Elementor' ) ) {
 		 * @return Plugin An instance of the class.
 		 */
 		public static function instance() {
-			if ( is_null( self::$_instance ) ) {
-				self::$_instance = new self();
+			if ( is_null( self::$instance ) ) {
+				self::$instance = new self();
 			}
-			return self::$_instance;
+			return self::$instance;
 		}
 
 		/**
@@ -62,18 +62,18 @@ if ( ! class_exists( 'Boostify_Header_Footer_Elementor' ) ) {
 		public function widget_scripts() {
 			wp_register_script(
 				'boostify_hf_nav_menu',
-				HT_HF_URL . 'assets/js/nav-menu' . boostify_hf_suffix() . '.js',
+				BOOSTIFY_HEADER_FOOTER_URL . 'assets/js/nav-menu' . boostify_header_footer_suffix() . '.js',
 				array( 'jquery' ),
-				HT_HF_VER,
+				BOOSTIFY_HEADER_FOOTER_VER,
 				true
 			);
 
 			// Search
 			wp_register_script(
 				'boostify_hf_search',
-				HT_HF_URL . 'assets/js/search' . boostify_hf_suffix() . '.js',
+				BOOSTIFY_HEADER_FOOTER_URL . 'assets/js/search' . boostify_header_footer_suffix() . '.js',
 				array( 'jquery' ),
-				HT_HF_VER,
+				BOOSTIFY_HEADER_FOOTER_VER,
 				true
 			);
 		}
@@ -87,7 +87,7 @@ if ( ! class_exists( 'Boostify_Header_Footer_Elementor' ) ) {
 		 */
 		private function include_widgets_files() {
 
-			$widgets = glob( HT_HF_PATH . 'inc/elementor/widgets/*.php' );
+			$widgets = glob( BOOSTIFY_HEADER_FOOTER_PATH . 'inc/elementor/widgets/*.php' );
 
 			foreach ( $widgets as $key ) {
 				if ( file_exists( $key ) ) {
@@ -107,7 +107,7 @@ if ( ! class_exists( 'Boostify_Header_Footer_Elementor' ) ) {
 			// Its is now safe to include Widgets files
 			$this->include_widgets_files();
 
-			$widgets = glob( HT_HF_PATH . 'inc/elementor/widgets/*.php' );
+			$widgets = glob( BOOSTIFY_HEADER_FOOTER_PATH . 'inc/elementor/widgets/*.php' );
 			// Register Widgets
 			foreach ( $widgets as $key ) {
 				if ( file_exists( $key ) ) {
@@ -122,26 +122,26 @@ if ( ! class_exists( 'Boostify_Header_Footer_Elementor' ) ) {
 		}
 
 		private function includes() {
-			require HT_HF_PATH . 'inc/elementor/module/class-boostify-hf-sticky.php';
+			require BOOSTIFY_HEADER_FOOTER_PATH . 'inc/elementor/module/class-boostify-header-footer-sticky.php';
 		}
 
 		public function init() {
 
-			$this->modules_manager = Boostify_Hf_Sticky::instance();
+			$this->modules_manager = Boostify_Header_Footer_Sticky::instance();
 
 			$elementor = Elementor\Plugin::$instance;
 
 			// Add element category in panel
 			$elementor->elements_manager->add_category(
 				'boostify-sticky',
-				[
+				array(
 					'title' => __( 'Header Sticky', 'boostify' ),
 					'icon'  => 'font',
-				],
+				),
 				1
 			);
 
-			do_action( 'elementor_controls/init' );
+			do_action( 'elementor_controls/init' ); // phpcs:ignore
 		}
 
 		private function setup_hooks() {

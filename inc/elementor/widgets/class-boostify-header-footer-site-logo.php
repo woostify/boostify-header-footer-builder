@@ -7,7 +7,7 @@ use Elementor\Controls_Manager;
  *
  * Elementor widget for Site Logo.
  */
-class Boostify_Site_Logo extends Widget_Base {
+class Boostify_Header_Footer_Site_Logo extends Widget_Base {
 
 	/**
 	 * Retrieve the widget name.
@@ -52,7 +52,7 @@ class Boostify_Site_Logo extends Widget_Base {
 	 *
 	 * Adds different input fields to allow the user to change and customize the widget settings.
 	 */
-	protected function _register_controls() {
+	protected function _register_controls() { // phpcs:ignore
 		$this->start_controls_section(
 			'section_content',
 			array(
@@ -62,65 +62,65 @@ class Boostify_Site_Logo extends Widget_Base {
 
 		$this->add_control(
 			'use',
-			[
+			array(
 				'label'   => __( 'Use', 'boostify' ),
 				'type'    => Controls_Manager::SELECT,
 				'default' => 'site',
-				'options' => [
+				'options' => array(
 					'site'   => 'Site Logo',
 					'custom' => 'Custom Logo',
-				],
-			]
+				),
+			)
 		);
 
 		$this->add_control(
 			'image',
-			[
+			array(
 				'label'     => __( 'Logo Custom', 'boostify' ),
 				'type'      => \Elementor\Controls_Manager::MEDIA,
-				'condition' => [
+				'condition' => array(
 					'use' => 'custom',
-				],
-			]
+				),
+			)
 		);
 
 		$this->add_group_control(
 			\Elementor\Group_Control_Image_Size::get_type(),
-			[
+			array(
 				'name'        => 'thumbnail',
 				'default'     => 'full',
 				'label'       => esc_html__( 'Logo Size', 'boostify' ),
 				'description' => esc_html__( 'Custom Logo size when selected image.', 'boostify' ),
-				'condition'   => [
+				'condition'   => array(
 					'use' => 'custom',
-				],
-			]
+				),
+			)
 		);
 
 		$this->add_control(
 			'align',
-			[
+			array(
 				'label'     => esc_html__( 'Align', 'boostify' ),
 				'type'      => Controls_Manager::CHOOSE,
 				'default'   => 'left',
-				'selectors' => [
+				'selectors' => array(
 					'{{WRAPPER}} .boostify-site-logo-header' => 'text-align: {{VALUE}};',
-				],
-				'options'   => [
-					'left'   => [
+				),
+				'options'   => array(
+					'left'   => array(
 						'icon'  => 'eicon-h-align-left',
 						'title' => 'Left',
-					],
-					'center' => [
+					),
+					'center' => array(
 						'icon'  => 'eicon-h-align-center',
 						'title' => 'Center',
-					],
-					'right'  => [
+					),
+					'right'  => array(
 						'icon'  => 'eicon-h-align-right',
 						'title' => 'Right',
-					],
-				],
-			]
+					),
+				),
+			)
 		);
 
 		$this->end_controls_section();

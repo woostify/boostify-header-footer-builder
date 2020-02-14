@@ -10,13 +10,13 @@ defined( 'ABSPATH' ) || exit;
 if ( ! class_exists( 'Boostify_Header_Footer_Builder' ) ) {
 	class Boostify_Header_Footer_Builder {
 
-		private static $_instance;
+		private static $instance;
 
 		public static function instance() {
 			if ( ! isset( self::$instance ) ) {
-				self::$_instance = new self();
+				self::$instance = new self();
 			}
-			return self::$_instance;
+			return self::$instance;
 		}
 
 		/**
@@ -28,12 +28,12 @@ if ( ! class_exists( 'Boostify_Header_Footer_Builder' ) ) {
 		}
 
 		public function includes() {
-			include_once HT_HF_PATH . 'inc/helper.php';
-			include_once HT_HF_PATH . 'inc/admin/class-boostify-header-footer-admin.php';
-			include_once HT_HF_PATH . 'inc/admin/class-boostify-header-footer-metabox.php';
-			include_once HT_HF_PATH . 'inc/class-boostify-header-footer-template.php';
-			include_once HT_HF_PATH . 'inc/elementor/class-boostify-hf-template-render.php';
-			include_once HT_HF_PATH . 'inc/elementor/class-boostify-header-footer-elementor.php';
+			include_once BOOSTIFY_HEADER_FOOTER_PATH . 'inc/helper.php';
+			include_once BOOSTIFY_HEADER_FOOTER_PATH . 'inc/admin/class-boostify-header-footer-admin.php';
+			include_once BOOSTIFY_HEADER_FOOTER_PATH . 'inc/admin/class-boostify-header-footer-metabox.php';
+			include_once BOOSTIFY_HEADER_FOOTER_PATH . 'inc/class-boostify-header-footer-template.php';
+			include_once BOOSTIFY_HEADER_FOOTER_PATH . 'inc/elementor/class-boostify-header-footer-template-render.php';
+			include_once BOOSTIFY_HEADER_FOOTER_PATH . 'inc/elementor/class-boostify-header-footer-elementor.php';
 		}
 
 		public function hooks() {
@@ -44,11 +44,11 @@ if ( ! class_exists( 'Boostify_Header_Footer_Builder' ) ) {
 			add_action( 'elementor/editor/wp_head', array( $this, 'enqueue_icon' ) );
 			add_action( 'wp_enqueue_scripts', array( $this, 'style' ), 99 );
 			add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_icon' ), 99 );
-			add_action( 'boostify_hf_seach_form', 'boostify_hf_search_form', 10, 3 );
+			add_action( 'boostify_hf_seach_form', 'boostify_header_footer_search_form', 10, 3 );
 		}
 
 		public function body_ver( $classes ) {
-			$classes[] = 'boostify-header-footer-' . HT_HF_VER;
+			$classes[] = 'boostify-header-footer-' . BOOSTIFY_HEADER_FOOTER_VER;
 
 			return $classes;
 		}
@@ -78,7 +78,7 @@ if ( ! class_exists( 'Boostify_Header_Footer_Builder' ) ) {
 		// Listing Teamplate
 		public function init() {
 			new Boostify_Header_Footer_Metabox();
-			new Boostify_Hf_Template_Render();
+			new Boostify_Header_Footer_Template_Render();
 		}
 
 		// Add Icon Elementor
@@ -112,9 +112,9 @@ if ( ! class_exists( 'Boostify_Header_Footer_Builder' ) ) {
 		public function enqueue_icon() {
 			wp_enqueue_style(
 				'ionicons',
-				HT_HF_URL . '/assets/css/ionicons.css',
-				[],
-				HT_HF_VER
+				BOOSTIFY_HEADER_FOOTER_URL . '/assets/css/ionicons.css',
+				array(),
+				BOOSTIFY_HEADER_FOOTER_VER
 			);
 		}
 
@@ -123,17 +123,17 @@ if ( ! class_exists( 'Boostify_Header_Footer_Builder' ) ) {
 			// Menu
 			wp_enqueue_style(
 				'boostify-hf-nav-menu-css',
-				HT_HF_URL . 'assets/css/elementor/nav-menu.css',
+				BOOSTIFY_HEADER_FOOTER_URL . 'assets/css/elementor/nav-menu.css',
 				array(),
-				HT_HF_VER
+				BOOSTIFY_HEADER_FOOTER_VER
 			);
 
 			// Search
 			wp_enqueue_style(
 				'boostify-hf-search',
-				HT_HF_URL . 'assets/css/elementor/search.css',
+				BOOSTIFY_HEADER_FOOTER_URL . 'assets/css/elementor/search.css',
 				array(),
-				HT_HF_VER
+				BOOSTIFY_HEADER_FOOTER_VER
 			);
 		}
 	}

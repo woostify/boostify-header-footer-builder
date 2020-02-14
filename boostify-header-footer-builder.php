@@ -8,8 +8,8 @@
  * Author URI: https://boostifythemes.com
  */
 
-define( 'HT_HF_PATH', plugin_dir_path( __FILE__ ) );
-define( 'HT_HF_URL', plugin_dir_url( __FILE__ ) );
-define( 'HT_HF_VER', '1.0' );
+define( 'BOOSTIFY_HEADER_FOOTER_PATH', plugin_dir_path( __FILE__ ) );
+define( 'BOOSTIFY_HEADER_FOOTER_URL', plugin_dir_url( __FILE__ ) );
+define( 'BOOSTIFY_HEADER_FOOTER_VER', '1.0' );
 
-require_once HT_HF_PATH . 'inc/class-boostify-header-footer-builder.php';
+require_once BOOSTIFY_HEADER_FOOTER_PATH . 'inc/class-boostify-header-footer-builder.php';

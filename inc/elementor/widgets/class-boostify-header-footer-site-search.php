@@ -7,7 +7,7 @@ use Elementor\Controls_Manager;
  *
  * Elementor widget for Site Search.
  */
-class Boostify_Site_Search extends Widget_Base {
+class Boostify_Header_Footer_Site_Search extends Widget_Base {
 
 	/**
 	 * Retrieve the widget name.
@@ -57,7 +57,7 @@ class Boostify_Site_Search extends Widget_Base {
 	 *
 	 * Adds different input fields to allow the user to change and customize the widget settings.
 	 */
-	protected function _register_controls() {
+	protected function _register_controls() { // phpcs:ignore
 		$this->start_controls_section(
 			'section_content',
 			array(
@@ -67,160 +67,160 @@ class Boostify_Site_Search extends Widget_Base {
 
 		$this->add_control(
 			'layout',
-			[
+			array(
 				'label'   => esc_html__( 'Layout', 'boostify' ),
 				'type'    => Controls_Manager::SELECT,
-				'options' => [
+				'options' => array(
 					'icon' => 'Icon',
 					'form' => 'Form',
-				],
+				),
 				'default' => 'icon',
-			]
+			)
 		);
 
 		$this->add_control(
 			'button_type',
-			[
+			array(
 				'label'   => esc_html__( 'Button Type', 'boostify' ),
 				'type'    => Controls_Manager::SELECT,
-				'options' => [
+				'options' => array(
 					'icon' => 'Icon',
 					'text' => 'Text',
-				],
+				),
 				'default' => 'icon',
-			]
+			)
 		);
 
 		$this->add_control(
 			'icon',
-			[
+			array(
 				'label'     => esc_html__( 'Select Icon', 'boostify' ),
 				'type'      => Controls_Manager::ICON,
-				'include'   => [
+				'include'   => array(
 					'ion-ios-search',
 					'ion-ios-search-strong',
 					'fa fa-search',
 					'ion-ios-arrow-thin-right',
-				],
+				),
 				'default'   => 'ion-ios-search',
-				'condition' => [
+				'condition' => array(
 					'button_type' => 'icon',
-				],
+				),
 
-			]
+			)
 		);
 
 		$this->add_control(
 			'text',
-			[
+			array(
 				'label'       => __( 'Label', 'boostify' ),
 				'type'        => Controls_Manager::TEXT,
 				'placeholder' => __( 'Enter Label', 'boostify' ),
-				'condition'   => [
+				'condition'   => array(
 					'button_type' => 'text',
-				],
-			]
+				),
+			)
 		);
 
 		$this->add_control(
 			'placeholder',
-			[
+			array(
 				'label'       => __( 'Placeholder', 'boostify' ),
 				'type'        => Controls_Manager::TEXT,
 				'placeholder' => __( 'Enter Placeholder', 'boostify' ),
-			]
+			)
 		);
 
 		$this->add_control(
 			'align',
-			[
+			array(
 				'label'     => esc_html__( 'Align', 'boostify' ),
 				'type'      => Controls_Manager::CHOOSE,
 				'default'   => 'left',
-				'selectors' => [
+				'selectors' => array(
 					'{{WRAPPER}} .boostify-site-search-toggle' => 'text-align: {{VALUE}};',
-				],
-				'options'   => [
-					'left'   => [
+				),
+				'options'   => array(
+					'left'   => array(
 						'icon'  => 'eicon-h-align-left',
 						'title' => 'Left',
-					],
-					'center' => [
+					),
+					'center' => array(
 						'icon'  => 'eicon-h-align-center',
 						'title' => 'Center',
-					],
-					'right'  => [
+					),
+					'right'  => array(
 						'icon'  => 'eicon-h-align-right',
 						'title' => 'Right',
-					],
-				],
-				'condition' => [
+					),
+				),
+				'condition' => array(
 					'layout' => 'icon',
-				],
-			]
+				),
+			)
 		);
 
 		$this->add_control(
 			'height',
-			[
+			array(
 				'label'      => __( 'Height', 'boostify' ),
 				'type'       => Controls_Manager::SLIDER,
-				'size_units' => [ 'px', '%' ],
-				'range'      => [
-					'px' => [
+				'size_units' => array( 'px', '%' ),
+				'range'      => array(
+					'px' => array(
 						'min'  => 30,
 						'max'  => 100,
 						'step' => 1,
-					],
-				],
-				'default'    => [
+					),
+				),
+				'default'    => array(
 					'unit' => 'px',
 					'size' => 45,
-				],
-				'selectors'  => [
+				),
+				'selectors'  => array(
 					'{{WRAPPER}} .boostify-search-form-header .site-search-field' => 'height: {{SIZE}}{{UNIT}};',
-				],
-				'condition'  => [
+				),
+				'condition'  => array(
 					'layout' => 'form',
-				],
-			]
+				),
+			)
 		);
 
 		$this->add_control(
 			'padding',
-			[
+			array(
 				'label'      => __( 'Padding', 'boostify' ),
 				'type'       => Controls_Manager::DIMENSIONS,
-				'size_units' => [ 'px' ],
-				'selectors'  => [
+				'size_units' => array( 'px' ),
+				'selectors'  => array(
 					'{{WRAPPER}} .boostify-search-icon--toggle' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-				],
-				'condition'  => [
+				),
+				'condition'  => array(
 					'layout' => 'icon',
-				],
-			]
+				),
+			)
 		);
 
 		$this->add_control(
 			'padding_form',
-			[
+			array(
 				'label'              => __( 'Padding', 'boostify' ),
 				'type'               => Controls_Manager::DIMENSIONS,
-				'size_units'         => [ 'px' ],
-				'allowed_dimensions' => [ 'right', 'left' ],
-				'default'            => [
+				'size_units'         => array( 'px' ),
+				'allowed_dimensions' => array( 'right', 'left' ),
+				'default'            => array(
 					'top'    => 0,
 					'bottom' => 0,
 					'left'   => 10,
 					'right'  => 10,
-				],
-				'selectors'          => [
+				),
+				'selectors'          => array(
 					'{{WRAPPER}} .boostify-search-form-header .btn-boostify-search-form' => 'padding: 0{{UNIT}} {{RIGHT}}{{UNIT}} 0{{UNIT}} {{LEFT}}{{UNIT}};',
-				],
-				'condition'          => [
+				),
+				'condition'          => array(
 					'layout' => 'form',
-				],
-			]
+				),
+			)
 		);
 
 		$this->end_controls_section();
@@ -235,67 +235,67 @@ class Boostify_Site_Search extends Widget_Base {
 
 		$this->add_control(
 			'heading_icon',
-			[
+			array(
 				'label'     => __( 'Icon Layout', 'boostify' ),
 				'type'      => \Elementor\Controls_Manager::HEADING,
 				'separator' => 'before',
-			]
+			)
 		);
 
 		$this->add_control(
 			'icon_color',
-			[
+			array(
 				'label'     => __( 'Icon Color', 'boostify' ),
 				'type'      => \Elementor\Controls_Manager::COLOR,
-				'scheme'    => [
+				'scheme'    => array(
 					'type'  => \Elementor\Scheme_Color::get_type(),
 					'value' => \Elementor\Scheme_Color::COLOR_1,
-				],
-				'selectors' => [
+				),
+				'selectors' => array(
 					'{{WRAPPER}} .boostify-search-icon--toggle' => 'color: {{VALUE}}',
-				],
-			]
+				),
+			)
 		);
 
 		$this->add_group_control(
 			Elementor\Group_Control_Typography::get_type(),
-			[
+			array(
 				'name'     => 'content_typography',
 				'label'    => __( 'Typography', 'boostify' ),
 				'scheme'   => Elementor\Scheme_Typography::TYPOGRAPHY_1,
 				'selector' => '{{WRAPPER}} .boostify-search-icon--toggle',
-			]
+			)
 		);
 
 		$this->add_group_control(
 			Elementor\Group_Control_Background::get_type(),
-			[
+			array(
 				'name'     => 'background',
 				'label'    => __( 'Background', 'boostify' ),
-				'types'    => [ 'classic', 'gradient', 'video' ],
+				'types'    => array( 'classic', 'gradient', 'video' ),
 				'selector' => '{{WRAPPER}} .boostify-search-icon--toggle, {{WRAPPER}} .btn-boostify-search-form',
-			]
+			)
 		);
 
 		$this->add_group_control(
 			Elementor\Group_Control_Border::get_type(),
-			[
+			array(
 				'name'     => 'border',
 				'label'    => __( 'Border', 'boostify' ),
 				'selector' => '{{WRAPPER}} .boostify-search-icon--toggle',
-			]
+			)
 		);
 
 		$this->add_control(
 			'bdrs',
-			[
+			array(
 				'label'      => __( 'Border Radius', 'boostify' ),
 				'type'       => Controls_Manager::DIMENSIONS,
-				'size_units' => [ 'px' ],
-				'selectors'  => [
+				'size_units' => array( 'px' ),
+				'selectors'  => array(
 					'{{WRAPPER}} .boostify-search-icon--toggle' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-				],
-			]
+				),
+			)
 		);
 
 		$this->end_controls_section();
@@ -309,14 +309,14 @@ class Boostify_Site_Search extends Widget_Base {
 	 */
 	protected function render() {
 		$settings    = $this->get_settings_for_display();
-		$icon        = $settings['icon'];
-		$text        = $settings['text'];
-		$placeholder = $settings['placeholder'];
+		$icon        = $setting['icon'];
+		$text        = $setting['text'];
+		$placeholder = $setting['placeholder'];
 		if ( empty( $text ) ) {
 			$text = null;
 		}
 
-		if ( 'icon' == $settings['layout'] ) {
+		if ( 'icon' == $settings['layout'] ) { // phpcs:ignore
 			?>
 			<div class="boostify-site-search-toggle">
 				<button class="boostify-search-icon--toggle <?php echo esc_attr( $settings['icon'] ); ?>" aria-expanded="false">

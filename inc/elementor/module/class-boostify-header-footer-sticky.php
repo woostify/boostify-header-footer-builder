@@ -12,19 +12,19 @@ use Elementor\Core\Base\Module;
  *
  * Elementor Module Sticky
  */
-class Boostify_Hf_Sticky {
+class Boostify_Header_Footer_Sticky {
 
 	/**
 	 * Instance
 	 *
 	 */
-	private static $_instance = null;
+	private static $instance = null;
 
 	public static function instance() {
-		if ( is_null( self::$_instance ) ) {
-			self::$_instance = new self();
+		if ( is_null( self::$instance ) ) {
+			self::$instance = new self();
 		}
-		return self::$_instance;
+		return self::$instance;
 	}
 
 	public function __construct() {
@@ -39,15 +39,15 @@ class Boostify_Hf_Sticky {
 	public function register_controls( Element_Base $element ) {
 		$element->start_controls_section(
 			'section_bhf_sticky_header',
-			[
+			array(
 				'label' => __( 'Sticky Header', 'boostify' ),
 				'tab'   => Controls_Manager::TAB_ADVANCED,
-			]
+			)
 		);
 
 		$element->add_control(
 			'bsticky',
-			[
+			array(
 				'label'              => __( 'Enable', 'boostify' ),
 				'type'               => Controls_Manager::SWITCHER,
 				'label_on'           => __( 'On', 'boostify' ),
@@ -56,12 +56,12 @@ class Boostify_Hf_Sticky {
 				'default'            => '',
 				'frontend_available' => true,
 				'prefix_class'       => 'boostify-sticky-',
-			]
+			)
 		);
 
 		$element->add_control(
 			'bsticky_tranparent',
-			[
+			array(
 				'label'              => __( 'Header Tranparent', 'boostify' ),
 				'type'               => Controls_Manager::SWITCHER,
 				'separator'          => 'before',
@@ -72,59 +72,59 @@ class Boostify_Hf_Sticky {
 				'frontend_available' => true,
 				'prefix_class'       => 'boostify-header-tranparent-',
 				'description'        => __( 'Choose background color after scrolling', 'boostify' ),
-				'condition'          => [
+				'condition'          => array(
 					'bsticky!' => '',
-				],
-			]
+				),
+			)
 		);
 
 		$element->add_control(
 			'bstick_on',
-			[
+			array(
 				'label'              => __( 'Enable On', 'boostify' ),
 				'type'               => Controls_Manager::SELECT2,
 				'multiple'           => true,
 				'label_block'        => 'true',
-				'default'            => [ 'desktop', 'tablet', 'mobile' ],
-				'options'            => [
+				'default'            => array( 'desktop', 'tablet', 'mobile' ),
+				'options'            => array(
 					'desktop' => __( 'Desktop', 'boostify' ),
 					'tablet'  => __( 'Tablet', 'boostify' ),
 					'mobile'  => __( 'Mobile', 'boostify' ),
-				],
-				'condition'          => [
+				),
+				'condition'          => array(
 					'bsticky!' => '',
-				],
+				),
 				'render_type'        => 'none',
 				'frontend_available' => true,
-			]
+			)
 		);
 
 		$element->add_responsive_control(
 			'bsticky_distance',
-			[
+			array(
 				'label'              => __( 'Scroll Distance (px)', 'boostify' ),
 				'type'               => Controls_Manager::SLIDER,
-				'size_units'         => [ 'px' ],
+				'size_units'         => array( 'px' ),
 				'description'        => __( 'Choose the scroll distance to enable Sticky Header Effects', 'boostify' ),
 				'frontend_available' => true,
-				'default'            => [
+				'default'            => array(
 					'size' => 0,
-				],
-				'range'              => [
-					'px' => [
+				),
+				'range'              => array(
+					'px' => array(
 						'min' => 0,
 						'max' => 500,
-					],
-				],
-				'condition'          => [
+					),
+				),
+				'condition'          => array(
 					'bsticky!' => '',
-				],
-			]
+				),
+			)
 		);
 
 		$element->add_control(
 			'bsticky_background_show',
-			[
+			array(
 				'label'              => __( 'Header Background', 'boostify' ),
 				'type'               => Controls_Manager::SWITCHER,
 				'separator'          => 'before',
@@ -135,43 +135,43 @@ class Boostify_Hf_Sticky {
 				'frontend_available' => true,
 				'prefix_class'       => 'boostify-sticky-background-',
 				'description'        => __( 'Choose background color after scrolling', 'boostify' ),
-				'condition'          => [
+				'condition'          => array(
 					'bsticky!' => '',
-				],
+				),
 
-			]
+			)
 		);
 
 		$element->add_control(
 			'bsticky_background',
-			[
+			array(
 				'label'              => __( 'Color', 'boostify' ),
 				'type'               => Controls_Manager::COLOR,
 				'render_type'        => 'none',
 				'frontend_available' => true,
-				'condition'          => [
+				'condition'          => array(
 					'bsticky_background_show' => 'yes',
 					'bsticky!'                => '',
-				],
-			]
+				),
+			)
 		);
 
 		$element->add_control(
 			'image',
-			[
+			array(
 				'label'              => __( 'Logo Sticky', 'boostify' ),
 				'type'               => \Elementor\Controls_Manager::MEDIA,
 				'frontend_available' => true,
 				'description'        => __( 'Choose Logo after scrolling', 'boostify' ),
-				'condition'          => [
+				'condition'          => array(
 					'bsticky!' => '',
-				],
-			]
+				),
+			)
 		);
 
 		$element->add_control(
 			'bsticky_menu_color_custom',
-			[
+			array(
 				'label'              => __( 'Menu Color', 'boostify' ),
 				'type'               => Controls_Manager::SWITCHER,
 				'separator'          => 'before',
@@ -181,56 +181,56 @@ class Boostify_Hf_Sticky {
 				'default'            => '',
 				'frontend_available' => true,
 				'description'        => __( 'Choose menu color after scrolling', 'boostify' ),
-				'condition'          => [
+				'condition'          => array(
 					'bsticky!' => '',
-				],
+				),
 
-			]
+			)
 		);
 
 		$element->add_control(
 			'bsticky_menu_color',
-			[
+			array(
 				'label'              => __( 'Menu Color', 'boostify' ),
 				'type'               => Controls_Manager::COLOR,
 				'render_type'        => 'none',
 				'frontend_available' => true,
-				'condition'          => [
+				'condition'          => array(
 					'bsticky_menu_color_custom' => 'yes',
 					'bsticky!'                  => '',
-				],
-			]
+				),
+			)
 		);
 
 		$element->end_controls_section();
 	}
 
 	private function add_actions() {
-		add_action( 'elementor/element/section/section_advanced/after_section_end', [ $this, 'register_controls' ] );
-		add_action( 'elementor/element/common/section_advanced/after_section_start', [ $this, 'register_controls' ] );
-		add_action( 'elementor/frontend/after_enqueue_styles', [ $this, 'enqueue_styles' ] );
-		add_action( 'wp_enqueue_scripts', [ $this, 'enqueue_scripts' ] );
+		add_action( 'elementor/element/section/section_advanced/after_section_end', array( $this, 'register_controls' ) );
+		add_action( 'elementor/element/common/section_advanced/after_section_start', array( $this, 'register_controls' ) );
+		add_action( 'elementor/frontend/after_enqueue_styles', array( $this, 'enqueue_styles' ) );
+		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
 	}
 
 	public function enqueue_styles() {
-		$suffix = boostify_hf_suffix();
+		$suffix = boostify_header_footer_suffix();
 
 		wp_enqueue_style(
 			'boostify-sticky-style',
-			HT_HF_URL . 'assets/css/elementor/sticky.css',
-			[],
-			HT_HF_VER
+			BOOSTIFY_HEADER_FOOTER_URL . 'assets/css/elementor/sticky.css',
+			array(),
+			BOOSTIFY_HEADER_FOOTER_VER
 		);
 	}
 
 	public function enqueue_scripts() {
-		$suffix = boostify_hf_suffix();
+		$suffix = boostify_header_footer_suffix();
 
 		wp_enqueue_script(
 			'boostify-hf-sticky',
-			HT_HF_URL . 'assets/js/sticky' . $suffix . '.js',
-			[ 'jquery' ],
-			HT_HF_VER,
+			BOOSTIFY_HEADER_FOOTER_URL . 'assets/js/sticky' . $suffix . '.js',
+			array( 'jquery' ),
+			BOOSTIFY_HEADER_FOOTER_VER,
 			false
 		);
 	}

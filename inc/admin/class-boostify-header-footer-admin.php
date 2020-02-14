@@ -11,13 +11,13 @@ defined( 'ABSPATH' ) || exit;
 if ( ! class_exists( 'Boostify_Header_Footer_Admin' ) ) {
 	class Boostify_Header_Footer_Admin {
 
-		private static $_instance;
+		private static $instance;
 
 		public static function instance() {
 			if ( ! isset( self::$instance ) ) {
-				self::$_instance = new self();
+				self::$instance = new self();
 			}
-			return self::$_instance;
+			return self::$instance;
 		}
 
 		/**
@@ -34,27 +34,26 @@ if ( ! class_exists( 'Boostify_Header_Footer_Admin' ) ) {
 		}
 
 		public function load_admin_style() {
-			wp_enqueue_script( 'suggest' );
 
 			wp_enqueue_style(
 				'boostify-hf-admin',
-				HT_HF_URL . 'assets/css/admin/admin.css',
+				BOOSTIFY_HEADER_FOOTER_URL . 'assets/css/admin/admin.css',
 				array(),
-				HT_HF_VER
+				BOOSTIFY_HEADER_FOOTER_VER
 			);
 
 			wp_enqueue_style(
 				'ionicons',
-				HT_HF_URL . '/assets/css/ionicons.css',
-				[],
-				HT_HF_VER
+				BOOSTIFY_HEADER_FOOTER_URL . '/assets/css/ionicons.css',
+				array(),
+				BOOSTIFY_HEADER_FOOTER_VER
 			);
 
 			wp_enqueue_script(
 				'boostify-hf-admin',
-				HT_HF_URL . 'assets/js/admin' . boostify_hf_suffix() . '.js',
+				BOOSTIFY_HEADER_FOOTER_URL . 'assets/js/admin' . boostify_header_footer_suffix() . '.js',
 				array( 'jquery', 'suggest' ),
-				HT_HF_VER,
+				BOOSTIFY_HEADER_FOOTER_VER,
 				true
 			);
 
