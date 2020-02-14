@@ -2,10 +2,10 @@
 /**
  * Plugin Name: Boostify Header Footer Builder
  * Plugin URI: https://boostifythemes.com
- * Description: The most advanced frontend drag & drop page builder. Create high-end, pixel perfect websites at record speeds. Any theme, any page, any design.
- * Version: 1.0
- * Author: BoostifyTheme
- * Author URI: https://boostifythemes.com
+ * Description: Create Header and Footer for your site using Elementor Page Builder.
+ * Version: 1.0.0
+ * Author: Woostify
+ * Author URI: https://woostify.com
  */
 
 define( 'BOOSTIFY_HEADER_FOOTER_PATH', plugin_dir_path( __FILE__ ) );
