@@ -1,7 +1,7 @@
 === Boostify header footer builder ===
 Contributors: duongancol
 Donate link: https://woostify.com/contact/
-Tags: elementor, header builder, footer builder
+Tags: elementor, header builder, footer builder, elementor header
 Requires at least: 4.0
 Requires PHP: 5.3
 Tested up to: 5.3
