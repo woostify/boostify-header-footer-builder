@@ -1,15 +1,14 @@
-=== Boostify header footer builder ===
+=== Boostify Header Footer Builder with Elementor Free ===
 Contributors: duongancol
 Donate link: https://woostify.com/contact/
 Tags: elementor, header builder, footer builder, elementor header
 Requires at least: 4.0
 Requires PHP: 5.3
 Tested up to: 5.3
-Stable tag: 1.0.1
+Stable tag: 1.0.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Create Header and Footer for your site using Elementor Page Builder.
 
 == Description ==
 
@@ -32,17 +31,12 @@ Let's get you started
 
 1. Open customizer at contact form 7 page and you will find a new menu called `CF7 Customizer`
 2. Inside CF7 Customizer panel there are four sections for you to customize
-3. Form Text & BG Colors Section
-4. Form Padding, Margin & Border Section
-5. Input Field Styling  Section
-6. Button Styling Section
 
 = How to get support? =
 
 If you have any questions post in the WordPress.org forums
 
 
-== Changelog ==
 == Changelog ==
 
 [![📝](https://raw.githubusercontent.com/stuff/master/images/git/log.png)](changelog.md)
