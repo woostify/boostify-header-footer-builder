@@ -45,7 +45,7 @@ If you have any questions post in the WordPress.org forums
 == Changelog ==
 == Changelog ==
 
-[![📝](https://raw.githubusercontent.com/ahmadawais/stuff/master/images/git/log.png)](changelog.md)
+[![📝](https://raw.githubusercontent.com/stuff/master/images/git/log.png)](changelog.md)
 
 ## Changelog
 
@@ -56,7 +56,7 @@ If you have any questions post in the WordPress.org forums
 
 == License ==
 
-GNU GPL v2.0. ⓒ [Ahmad Awais](https://AhmadAwais.com/)
+GNU GPL v2.0. 
 
 
 == Frequently Asked Questions ==
