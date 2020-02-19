@@ -5,7 +5,7 @@ Tags: elementor, header builder, footer builder, elementor header
 Requires at least: 4.0
 Requires PHP: 5.3
 Tested up to: 5.3
-Stable tag: 1.0.2
+Stable tag: 1.0.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -29,8 +29,8 @@ Let's get you started
 
 == Screenshots ==
 
-1. Open customizer at contact form 7 page and you will find a new menu called `CF7 Customizer`
-2. Inside CF7 Customizer panel there are four sections for you to customize
+1. Open 
+2. Inside 
 
 = How to get support? =
 
