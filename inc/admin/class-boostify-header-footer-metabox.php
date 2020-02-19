@@ -162,10 +162,11 @@ if ( ! class_exists( 'Boostify_Header_Footer_Metabox' ) ) {
 			);
 			$diff             = array_diff( $post_types, $post_types_unset );
 			$default          = array(
-				'all'     => 'All Page',
+				'all'     => 'All',
 				'blog'    => 'Blog Page',
 				'archive' => 'Archive Page',
 				'search'  => 'Search Page',
+				'not_found'     => '404 Page',
 			);
 			$options          = array_merge( $default, $diff );
 			$display          = get_post_meta( $post->ID, 'bhf_display', true );
@@ -183,7 +184,7 @@ if ( ! class_exists( 'Boostify_Header_Footer_Metabox' ) ) {
 						<select name="bhf_display" id="display-on">
 							<?php
 							foreach ( $options as $key => $option ) :
-								$selected = ( $key === $display ) ? 'selected' : '';
+								$selected = ( $key == $display ) ? 'selected' : ''; // phpcs:ignore
 								?>
 								<option value="<?php echo esc_attr( $key ); ?>" <?php echo esc_attr( $selected ); ?>><?php echo esc_html( $option ); ?></option>
 							<?php endforeach ?>
@@ -304,7 +305,8 @@ if ( ! class_exists( 'Boostify_Header_Footer_Metabox' ) ) {
 		public function boostify_hf_input() {
 			check_ajax_referer( 'ht_hf_nonce' );
 			$post_type = sanitize_text_field( $_POST['post_type'] );
-			if ( 'all' !== $post_type && 'archive' !== $post_type && 'search' !== $post_type && 'blog' !== $post_type ) :
+
+			if ( 'all' !== $post_type && 'archive' !== $post_type && 'search' !== $post_type && 'blog' !== $post_type && 'not_found' !== $post_type ) :
 				?>
 				<div class="input-item-wrapper">
 					<div class="boostify-section-select-post">
