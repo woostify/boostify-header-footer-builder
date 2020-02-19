@@ -16,7 +16,7 @@
 		while ( have_posts() ) :
 			the_post();
 
-			boostify_hf_content();
+			boostify_header_footer_content();
 			// If comments are open or we have at least one comment, load up the comment template.
 
 
