@@ -45,3 +45,11 @@
     max-width: 1170px;
   }
 }
+
+.boostify-header-tranparent-yes {
+  background-color: transparent;
+  position: absolute;
+  left: 0;
+  right: 0;
+  z-index: 99;
+}

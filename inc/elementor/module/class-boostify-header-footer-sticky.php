@@ -71,10 +71,6 @@ class Boostify_Header_Footer_Sticky {
 				'default'            => '',
 				'frontend_available' => true,
 				'prefix_class'       => 'boostify-header-tranparent-',
-				'description'        => __( 'Choose background color after scrolling', 'boostify' ),
-				'condition'          => array(
-					'bsticky!' => '',
-				),
 			)
 		);
 
