@@ -77,11 +77,11 @@ msgstr ""
 msgid "Enable"
 msgstr ""
 
-#: inc/elementor/module/class-boostify-header-footer-sticky.php:53, inc/elementor/module/class-boostify-header-footer-sticky.php:68, inc/elementor/module/class-boostify-header-footer-sticky.php:131, inc/elementor/module/class-boostify-header-footer-sticky.php:178
+#: inc/elementor/module/class-boostify-header-footer-sticky.php:53, inc/elementor/module/class-boostify-header-footer-sticky.php:68, inc/elementor/module/class-boostify-header-footer-sticky.php:127, inc/elementor/module/class-boostify-header-footer-sticky.php:174
 msgid "On"
 msgstr ""
 
-#: inc/elementor/module/class-boostify-header-footer-sticky.php:54, inc/elementor/module/class-boostify-header-footer-sticky.php:69, inc/elementor/module/class-boostify-header-footer-sticky.php:132, inc/elementor/module/class-boostify-header-footer-sticky.php:179
+#: inc/elementor/module/class-boostify-header-footer-sticky.php:54, inc/elementor/module/class-boostify-header-footer-sticky.php:69, inc/elementor/module/class-boostify-header-footer-sticky.php:128, inc/elementor/module/class-boostify-header-footer-sticky.php:175
 msgid "Off"
 msgstr ""
 
@@ -89,55 +89,55 @@ msgstr ""
 msgid "Header Tranparent"
 msgstr ""
 
-#: inc/elementor/module/class-boostify-header-footer-sticky.php:74, inc/elementor/module/class-boostify-header-footer-sticky.php:137
-msgid "Choose background color after scrolling"
-msgstr ""
-
-#: inc/elementor/module/class-boostify-header-footer-sticky.php:84
+#: inc/elementor/module/class-boostify-header-footer-sticky.php:80
 msgid "Enable On"
 msgstr ""
 
-#: inc/elementor/module/class-boostify-header-footer-sticky.php:90
+#: inc/elementor/module/class-boostify-header-footer-sticky.php:86
 msgid "Desktop"
 msgstr ""
 
-#: inc/elementor/module/class-boostify-header-footer-sticky.php:91
+#: inc/elementor/module/class-boostify-header-footer-sticky.php:87
 msgid "Tablet"
 msgstr ""
 
-#: inc/elementor/module/class-boostify-header-footer-sticky.php:92
+#: inc/elementor/module/class-boostify-header-footer-sticky.php:88
 msgid "Mobile"
 msgstr ""
 
-#: inc/elementor/module/class-boostify-header-footer-sticky.php:105
+#: inc/elementor/module/class-boostify-header-footer-sticky.php:101
 msgid "Scroll Distance (px)"
 msgstr ""
 
-#: inc/elementor/module/class-boostify-header-footer-sticky.php:108
+#: inc/elementor/module/class-boostify-header-footer-sticky.php:104
 msgid "Choose the scroll distance to enable Sticky Header Effects"
 msgstr ""
 
-#: inc/elementor/module/class-boostify-header-footer-sticky.php:128
+#: inc/elementor/module/class-boostify-header-footer-sticky.php:124
 msgid "Header Background"
 msgstr ""
 
-#: inc/elementor/module/class-boostify-header-footer-sticky.php:148
+#: inc/elementor/module/class-boostify-header-footer-sticky.php:133
+msgid "Choose background color after scrolling"
+msgstr ""
+
+#: inc/elementor/module/class-boostify-header-footer-sticky.php:144
 msgid "Color"
 msgstr ""
 
-#: inc/elementor/module/class-boostify-header-footer-sticky.php:162
+#: inc/elementor/module/class-boostify-header-footer-sticky.php:158
 msgid "Logo Sticky"
 msgstr ""
 
-#: inc/elementor/module/class-boostify-header-footer-sticky.php:165
+#: inc/elementor/module/class-boostify-header-footer-sticky.php:161
 msgid "Choose Logo after scrolling"
 msgstr ""
 
-#: inc/elementor/module/class-boostify-header-footer-sticky.php:175, inc/elementor/module/class-boostify-header-footer-sticky.php:194, inc/elementor/widgets/class-boostify-header-footer-nav-menu.php:405, inc/elementor/widgets/class-boostify-header-footer-nav-menu.php:451
+#: inc/elementor/module/class-boostify-header-footer-sticky.php:171, inc/elementor/module/class-boostify-header-footer-sticky.php:190, inc/elementor/widgets/class-boostify-header-footer-nav-menu.php:405, inc/elementor/widgets/class-boostify-header-footer-nav-menu.php:451
 msgid "Menu Color"
 msgstr ""
 
-#: inc/elementor/module/class-boostify-header-footer-sticky.php:183
+#: inc/elementor/module/class-boostify-header-footer-sticky.php:179
 msgid "Choose menu color after scrolling"
 msgstr ""
 

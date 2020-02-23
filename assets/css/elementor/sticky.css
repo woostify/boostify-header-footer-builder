@@ -53,3 +53,7 @@
   right: 0;
   z-index: 99;
 }
+
+#elementor-preview #ht-hf-primary .boostify-header-tranparent-yes {
+  position: relative;
+}
