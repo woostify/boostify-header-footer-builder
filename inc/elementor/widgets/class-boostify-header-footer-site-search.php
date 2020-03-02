@@ -309,9 +309,9 @@ class Boostify_Header_Footer_Site_Search extends Widget_Base {
 	 */
 	protected function render() {
 		$settings    = $this->get_settings_for_display();
-		$icon        = $setting['icon'];
-		$text        = $setting['text'];
-		$placeholder = $setting['placeholder'];
+		$icon        = $settings['icon'];
+		$text        = $settings['text'];
+		$placeholder = $settings['placeholder'];
 		if ( empty( $text ) ) {
 			$text = null;
 		}
