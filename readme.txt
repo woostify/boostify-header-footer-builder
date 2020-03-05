@@ -1,7 +1,7 @@
-=== Boostify Header Footer Builder with Elementor Free ===
+=== Boostify Header Footer Builder for Elementor ===
 Contributors: duongancol
 Donate link: https://woostify.com/contact/
-Tags: elementor, header builder, footer builder, elementor header
+Tags: elementor, header builder, footer builder, elementor header, sticky menu, elementor sticky, header footer builder
 Requires at least: 4.0
 Requires PHP: 5.3
 Tested up to: 5.3
@@ -12,29 +12,65 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 == Description ==
 
-> Create Header and Footer for your site using Elementor Page Builder.
+> Create Header and Footer for your site using Elementor Page Builder for Free.
 
-== Getting started: ==
+Boostify Header Footer Builder for Elementor is a powerful plugin that allows you to create
+- Header
+- Footer
+
+= Pick Display Locations =
+
+A custom header & footer can be displayed on a specific page or all the pages from the custom field.
+
+= Built-in widgets =
+
+Not like other plugins, the plugin gives the built-in widgets for the header so You don't need to install any 3rd party plugin for the add-on widget
+
+<ul>
+	<li><strong>Logo</strong> - Automatically get a logo from the customizer. You can even set a custom image as a logo with a custom link and caption.</li>
+	<li><strong>Nav Menu</strong> - Offers you list of already created menus on your website. You just need to choose the required one. </li>
+    <li><strong>Site Search</strong> - Create a search widget, it support 2 layouts: icon search and form search </li>
+</ul>
+
+= Sticky Header = 
+
+Build a sticky header is easily with the plugin. It offers enabling the sticky in mobile, tablet or desktop. 
+Uploading custom logo for sticky menu, change the background menu, all can be done via Elementor.
+
+= Work With All Themes =
+
+Boostify Header Footer Builder for Elementor works with all themes. For some themes, that use action/filter in the header.php, you can intergrade it with a hook.
+
+
+== Getting Started: ==
 
 Let's get you started
 
-* Step #0: → Install/Activate Boostify Header & Footer Builder plugin.
-* Step #1: → Add New Form and SAVE it.
+* Step #1: → Visit Dashboard > Boostify Header Footer Builder and click on the ‘Add New’.
+* Step #2: → Select 'Type of Template' (header/footer). Choose the Display On (Page, custom post type, archive)
+* Step #3: → Publish it.
+* Step #4: → Edit & design it with Elementor
+* Step #5: → Save it!
 
 == Installation ==
 
-* Step #0: → Install/Activate Boostify header footer builder plugin.
-* Step #1: → Add New Form and SAVE it.
+* Step #0: → Go to `Plugins -> Add New` and search for Boostify Header Footer Builder.
+* Step #1: → Visit Dashboard > Boostify Header Footer Builder and click on the ‘Add New’.
+* Step #2: → Select 'Type of Template' (header/footer). Choose the Display On (Page, custom post type, archive)
+* Step #3: → Publish it.
+* Step #4: → Edit & design it with Elementor
+* Step #5: → Save it!
 
 
 == Screenshots ==
 
-1. Open 
-2. Inside 
+1. Create and choose location 
+2. Elementor widget 
+3. Sticky Settings
 
 = How to get support? =
 
-If you have any questions post in the WordPress.org forums
+If you have any questions post in the [Plugin’s Forum](https://wordpress.org/support/plugin/boostify-header-footer-builder/ "Plugin’s Forum")
 
 
 == Changelog ==
@@ -43,10 +79,9 @@ If you have any questions post in the WordPress.org forums
 
 ## Changelog
 
-[❯ Read the changelog here
-
-<br>
-
+= 1.5.0 =
+- Fix Search widget display
+- Improvement: Elementor v2.9 compatibility.
 
 == License ==
 
@@ -55,14 +90,6 @@ GNU GPL v2.0.
 
 == Frequently Asked Questions ==
 
-**Q1: Aloha ?**
+**Q1: Can I use this plugin with my theme? ?**
 
-**Ans:** Press refresh, and clear the cache. It happens for reasons like, if:
-* You use any caching plugin
-* Your server has some cache generation
-* You are using CloudFlare
-So, just clear the cache and press refresh button on your browser a few times.
-
-== Upgrade Notice ==
-
-Major security bug fix update due to Freemius. MUST UPDATE the plugin right now.
+**Ans:** Yes, it works with all the theme
