@@ -135,6 +135,14 @@ if ( ! class_exists( 'Boostify_Header_Footer_Builder' ) ) {
 				array(),
 				BOOSTIFY_HEADER_FOOTER_VER
 			);
+
+			// Style
+			wp_enqueue_style(
+				'boostify-hf-style',
+				BOOSTIFY_HEADER_FOOTER_URL . 'assets/css/style.css',
+				array(),
+				BOOSTIFY_HEADER_FOOTER_VER
+			);
 		}
 	}
 
