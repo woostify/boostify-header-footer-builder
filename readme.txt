@@ -72,10 +72,7 @@ Let's get you started
 
 If you have any questions post in the [Plugin’s Forum](https://wordpress.org/support/plugin/boostify-header-footer-builder/ "Plugin’s Forum")
 
-
 == Changelog ==
-
-[![📝](https://raw.githubusercontent.com/stuff/master/images/git/log.png)](changelog.md)
 
 ## Changelog
 
