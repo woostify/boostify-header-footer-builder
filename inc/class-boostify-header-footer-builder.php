@@ -64,7 +64,7 @@ if ( ! class_exists( 'Boostify_Header_Footer_Builder' ) ) {
 					'has_archive'  => false,
 					'public'       => true,
 					'labels'       => array(
-						'name'          => esc_html__( 'Elementor Builder', 'boostify' ),
+						'name'          => esc_html__( 'Boostify Header Footer Builder', 'boostify' ),
 						'add_new_item'  => esc_html__( 'Add New Header, Footer', 'boostify' ),
 						'edit_item'     => esc_html__( 'Edit Header, Footer', 'boostify' ),
 						'all_items'     => esc_html__( 'All Header, Footer', 'boostify' ),
