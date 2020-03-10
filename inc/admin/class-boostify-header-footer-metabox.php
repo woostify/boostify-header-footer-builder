@@ -67,7 +67,7 @@ if ( ! class_exists( 'Boostify_Header_Footer_Metabox' ) ) {
 		}
 
 		public function pagesetting_save( $post_id ) {
-			$nonce_name   = sanitize_text_field( $_POST['boostify_hf'] );
+			$nonce_name   = ( array_key_exists( 'boostify_hf', $_POST ) ) ? sanitize_text_field( $_POST['boostify_hf'] ) : '';
 			$nonce_action = 'boostify_hf_action';
 
 			if ( ! isset( $nonce_name ) ) {

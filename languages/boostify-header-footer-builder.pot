@@ -45,8 +45,8 @@ msgstr ""
 msgid "Nothing Found"
 msgstr ""
 
-#: inc/class-boostify-header-footer-builder.php:67, inc/class-boostify-header-footer-builder.php:71
-msgid "Elementor Builder"
+#: inc/class-boostify-header-footer-builder.php:67
+msgid "Boostify Header Footer Builder"
 msgstr ""
 
 #: inc/class-boostify-header-footer-builder.php:68
@@ -59,6 +59,10 @@ msgstr ""
 
 #: inc/class-boostify-header-footer-builder.php:70
 msgid "All Header, Footer"
+msgstr ""
+
+#: inc/class-boostify-header-footer-builder.php:71
+msgid "Elementor Builder"
 msgstr ""
 
 #: inc/elementor/class-boostify-header-footer-elementor.php:49

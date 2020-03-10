@@ -25,6 +25,7 @@ if ( ! class_exists( 'Boostify_Header_Footer_Builder' ) ) {
 		public function __construct() {
 			$this->includes();
 			$this->hooks();
+			$this->cpt();
 		}
 
 		public function includes() {
@@ -45,6 +46,11 @@ if ( ! class_exists( 'Boostify_Header_Footer_Builder' ) ) {
 			add_action( 'wp_enqueue_scripts', array( $this, 'style' ), 99 );
 			add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_icon' ), 99 );
 			add_action( 'boostify_hf_seach_form', 'boostify_header_footer_search_form', 10, 3 );
+			add_action( 'admin_notices', array( $this, 'notice_plugin' ) );
+		}
+
+		public function cpt() {
+			add_post_type_support( 'btf_builder', 'elementor' );
 		}
 
 		public function body_ver( $classes ) {
@@ -143,6 +149,22 @@ if ( ! class_exists( 'Boostify_Header_Footer_Builder' ) ) {
 				array(),
 				BOOSTIFY_HEADER_FOOTER_VER
 			);
+		}
+
+		public function notice_plugin() {
+			if ( ! defined( 'ELEMENTOR_VERSION' ) || ! is_callable( 'Elementor\Plugin::instance' ) ) {
+
+				if ( file_exists( WP_PLUGIN_DIR . '/elementor/elementor.php' ) ) {
+					$url = network_admin_url() . 'plugins.php?s=elementor';
+				} else {
+					$url = network_admin_url() . 'plugin-install.php?s=elementor';
+				}
+
+				echo '<div class="notice notice-error">';
+				/* Translators: URL to install or activate Elementor plugin. */
+				echo '<p>' . sprintf( __( 'The <strong>Header Footer Elementor</strong> plugin requires <strong><a href="%s">Elementor</strong></a> plugin installed & activated.', 'header-footer-elementor' ) . '</p>', $url );
+				echo '</div>';
+			}
 		}
 	}
 
