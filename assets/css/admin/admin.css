@@ -65,7 +65,7 @@
 }
 
 .child-item {
-  margin-top: 20px;
+  margin: 20px 0;
 }
 
 #ht_hf_setting.loading:after {
@@ -246,4 +246,9 @@
   padding: 0;
   border: none;
   width: 250px;
+}
+
+.no-display-on,
+.display-on {
+  text-transform: capitalize;
 }

@@ -21,47 +21,51 @@ msgstr ""
 msgid "Shortcode"
 msgstr ""
 
-#: inc/admin/class-boostify-header-footer-metabox.php:56
+#: inc/admin/class-boostify-header-footer-metabox.php:60
 msgid "Type of Template"
 msgstr ""
 
-#: inc/admin/class-boostify-header-footer-metabox.php:58
+#: inc/admin/class-boostify-header-footer-metabox.php:62
 msgid "Header"
 msgstr ""
 
-#: inc/admin/class-boostify-header-footer-metabox.php:59
+#: inc/admin/class-boostify-header-footer-metabox.php:63
 msgid "Footer"
 msgstr ""
 
-#: inc/admin/class-boostify-header-footer-metabox.php:183
+#: inc/admin/class-boostify-header-footer-metabox.php:189, inc/admin/class-boostify-header-footer-metabox.php:473
 msgid "Display On"
 msgstr ""
 
-#: inc/admin/class-boostify-header-footer-metabox.php:203, inc/admin/class-boostify-header-footer-metabox.php:314
+#: inc/admin/class-boostify-header-footer-metabox.php:209, inc/admin/class-boostify-header-footer-metabox.php:267, inc/admin/class-boostify-header-footer-metabox.php:378, inc/admin/class-boostify-header-footer-metabox.php:406
 msgid "All"
 msgstr ""
 
-#: inc/admin/class-boostify-header-footer-metabox.php:283
+#: inc/admin/class-boostify-header-footer-metabox.php:247
+msgid "Do Not Display On"
+msgstr ""
+
+#: inc/admin/class-boostify-header-footer-metabox.php:346
 msgid "Nothing Found"
 msgstr ""
 
-#: inc/class-boostify-header-footer-builder.php:67
+#: inc/class-boostify-header-footer-builder.php:73
 msgid "Boostify Header Footer Builder"
 msgstr ""
 
-#: inc/class-boostify-header-footer-builder.php:68
+#: inc/class-boostify-header-footer-builder.php:74
 msgid "Add New Header, Footer"
 msgstr ""
 
-#: inc/class-boostify-header-footer-builder.php:69
+#: inc/class-boostify-header-footer-builder.php:75
 msgid "Edit Header, Footer"
 msgstr ""
 
-#: inc/class-boostify-header-footer-builder.php:70
+#: inc/class-boostify-header-footer-builder.php:76
 msgid "All Header, Footer"
 msgstr ""
 
-#: inc/class-boostify-header-footer-builder.php:71
+#: inc/class-boostify-header-footer-builder.php:77
 msgid "Elementor Builder"
 msgstr ""
 

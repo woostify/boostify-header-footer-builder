@@ -73,7 +73,7 @@
 }
 
 .child-item {
-	margin-top: 20px;
+	margin: 20px 0;
 }
 
 #ht_hf_setting {
@@ -262,4 +262,9 @@
 			width: 250px;
 		}
 	}
+}
+
+.no-display-on,
+.display-on {
+	text-transform: capitalize;
 }

@@ -24,6 +24,10 @@ if ( ! class_exists( 'Boostify_Header_Footer_Metabox' ) ) {
 			add_action( 'wp_ajax_nopriv_boostify_hf_load_autocomplate', array( $this, 'boostify_hf_input' ) );
 			add_action( 'wp_ajax_boostify_hf_post_admin', array( $this, 'boostify_hf_post_admin' ) );
 			add_action( 'wp_ajax_nopriv_boostify_hf_post_admin', array( $this, 'boostify_hf_post_admin' ) );
+			add_action( 'wp_ajax_bhf_more_rule', array( $this, 'parent_rule' ) );
+			add_action( 'wp_ajax_nopriv_bhf_more_rule', array( $this, 'parent_rule' ) );
+			add_action( 'wp_ajax_boostify_hf_ex_auto', array( $this, 'boostify_hf_post_exclude' ) );
+			add_action( 'wp_ajax_nopriv_boostify_hf_ex_auto', array( $this, 'boostify_hf_post_exclude' ) );
 		}
 
 		public function pagesetting_meta_box() {
@@ -111,6 +115,15 @@ if ( ! class_exists( 'Boostify_Header_Footer_Metabox' ) ) {
 				$display
 			);
 
+			// Do Not Display On
+			$no_display = sanitize_text_field( $_POST['bhf_no_display'] );
+
+			update_post_meta(
+				$post_id,
+				'bhf_no_display',
+				$no_display
+			);
+
 			// Post
 
 			$post = sanitize_text_field( $_POST['bhf_post'] );
@@ -119,6 +132,24 @@ if ( ! class_exists( 'Boostify_Header_Footer_Metabox' ) ) {
 				$post_id,
 				'bhf_post',
 				$post
+			);
+
+			// Ex Post
+			$ex_post = sanitize_text_field( $_POST['bhf_ex_post'] );
+
+			update_post_meta(
+				$post_id,
+				'bhf_ex_post',
+				$ex_post
+			);
+
+			// Ex Post Type
+			$ex_post_type = sanitize_text_field( $_POST['bhf_ex_post_type'] );
+
+			update_post_meta(
+				$post_id,
+				'bhf_ex_post_type',
+				$ex_post_type
 			);
 
 			// Post Type
@@ -134,109 +165,146 @@ if ( ! class_exists( 'Boostify_Header_Footer_Metabox' ) ) {
 
 
 		public function hf_display( $post ) {
-			$post_types       = get_post_types();
-			$post_types_unset = array(
-				'attachment'          => 'attachment',
-				'revision'            => 'revision',
-				'nav_menu_item'       => 'nav_menu_item',
-				'custom_css'          => 'custom_css',
-				'customize_changeset' => 'customize_changeset',
-				'oembed_cache'        => 'oembed_cache',
-				'user_request'        => 'user_request',
-				'wp_block'            => 'wp_block',
-				'elementor_library'   => 'elementor_library',
-				'btf_builder'         => 'btf_builder',
-				'elementor-hf'        => 'elementor-hf',
-				'elementor_font'      => 'elementor_font',
-				'elementor_icons'     => 'elementor_icons',
-				'wpforms'             => 'wpforms',
-				'wpforms_log'         => 'wpforms_log',
-				'acf-field-group'     => 'acf-field-group',
-				'acf-field'           => 'acf-field',
-				'booked_appointments' => 'booked_appointments',
-				'wpcf7_contact_form'  => 'wpcf7_contact_form',
-				'scheduled-action'    => 'scheduled-action',
-				'shop_order'          => 'shop_order',
-				'shop_order_refund'   => 'shop_order_refund',
-				'shop_coupon'         => 'shop_coupon',
-			);
-			$diff             = array_diff( $post_types, $post_types_unset );
-			$default          = array(
-				'all'     => 'All',
-				'blog'    => 'Blog Page',
-				'archive' => 'Archive Page',
-				'search'  => 'Search Page',
-				'not_found'     => '404 Page',
-			);
-			$options          = array_merge( $default, $diff );
-			$display          = get_post_meta( $post->ID, 'bhf_display', true );
-			$post_id          = get_post_meta( $post->ID, 'bhf_post', true );
-			$post_type        = get_post_meta( $post->ID, 'bhf_post_type', true );
-			$list_post        = $post_id;
+			$options      = $this->pt_support();
+			$display      = get_post_meta( $post->ID, 'bhf_display', true );
+			$no_display   = get_post_meta( $post->ID, 'bhf_no_display', true );
+			$post_id      = get_post_meta( $post->ID, 'bhf_post', true );
+			$post_type    = get_post_meta( $post->ID, 'bhf_post_type', true );
+			$ex_post_id   = get_post_meta( $post->ID, 'bhf_ex_post', true );
+			$ex_post_type = get_post_meta( $post->ID, 'bhf_ex_post_type', true );
+			$list_post    = $post_id;
+			$list_ex_post = $ex_post_id;
 			if ( 'all' !== $post_id ) {
 				$list_post = explode( ',', $post_id );
 			}
 
+			if ( 'all' !== $ex_post_id ) {
+				$list_ex_post = explode( ',', $ex_post_id );
+			}
+
 			?>
 				<div class="input-wrapper">
-					<div class="parent-item">
-						<label for="display-on"><?php echo esc_html__( 'Display On', 'boostify' ); ?></label>
-						<select name="bhf_display" id="display-on">
-							<?php
-							foreach ( $options as $key => $option ) :
-								$selected = ( $key == $display ) ? 'selected' : ''; // phpcs:ignore
+					<div class="condition-group display--on">
+						<div class="parent-item">
+							<label><?php echo esc_html__( 'Display On', 'boostify' ); ?></label>
+							<select name="bhf_display" class="display-on">
+								<?php
+								foreach ( $options as $key => $option ) :
+									$selected = ( $key == $display ) ? 'selected' : ''; // phpcs:ignore
+									?>
+									<option value="<?php echo esc_attr( $key ); ?>" <?php echo esc_attr( $selected ); ?>><?php echo esc_html( $option ); ?></option>
+								<?php endforeach ?>
+							</select>
+						</div>
+
+						<div class="child-item">
+							<div class="input-item-wrapper">
+								<?php
+								if ( ! empty( $post_id ) && ! empty( $post_type ) ) :
+
+									?>
+								<div class="boostify-section-select-post <?php echo ( is_string( $list_post ) ? 'select-all' : 'render--post has-option' ); ?>">
+
+									<span class="boostify-select-all-post<?php echo ( is_string( $list_post ) ? '' : ' hidden' ); ?>">
+										<span class="boostify-select-all"><?php echo esc_html__( 'All', 'boostify' ); ?></span>
+										<span class="boostify-arrow ion-chevron-down"></span>
+									</span>
+
+									<div class="boostify-section-render--post <?php echo ( is_string( $list_post ) ? 'hidden' : '' ); ?>">
+										<div class="boostify-auto-complete-field">
+											<?php
+											if ( is_array( $list_post ) ) :
+
+												foreach ( $list_post as $id ) :
+													$id = (int) $id;
+													?>
+
+													<span class="boostify-auto-complete-key">
+														<span class="boostify-title"><?php echo esc_html( get_the_title( $id ) ); ?></span>
+														<span class="btn-boostify-auto-complete-delete ion-close" data-item="<?php echo esc_attr( $id ); ?>"></span>
+													</span>
+													<?php
+												endforeach;
+											endif;
+											?>
+											<input type="text" class="boostify--hf-post-name" aria-autocomplete="list" size="1">
+										</div>
+									</div>
+
+								</div>
+								<input type="hidden" name="bhf_post" value="<?php echo esc_html( $post_id ); ?>">
+								<input type="hidden" name="bhf_post_type" value="<?php echo esc_attr( $post_type ); ?>" class="bhf-post-type">
+								<div class="boostify-data"></div>
+									<?php
+								endif;
 								?>
-								<option value="<?php echo esc_attr( $key ); ?>" <?php echo esc_attr( $selected ); ?>><?php echo esc_html( $option ); ?></option>
-							<?php endforeach ?>
-						</select>
+							</div>
+						</div>
 					</div>
 
-					<div class="child-item">
-						<div class="input-item-wrapper">
-							<?php
-							if ( ! empty( $post_id ) && ! empty( $post_type ) ) :
-
-								?>
-							<div class="boostify-section-select-post <?php echo ( is_string( $list_post ) ? 'select-all' : 'render--post has-option' ); ?>">
-
-								<span class="boostify-select-all-post<?php echo ( is_string( $list_post ) ? '' : ' hidden' ); ?>">
-									<span class="boostify-select-all"><?php echo esc_html__( 'All', 'boostify' ); ?></span>
-									<span class="boostify-arrow ion-chevron-down"></span>
-								</span>
-
-								<div class="boostify-section-render--post <?php echo ( is_string( $list_post ) ? 'hidden' : '' ); ?>">
-									<div class="boostify-auto-complete-field">
-										<?php
-										if ( is_array( $list_post ) ) :
-
-											foreach ( $list_post as $id ) :
-												$id = (int) $id;
-												?>
-
-												<span class="boostify-auto-complete-key">
-													<span class="boostify-title"><?php echo esc_html( get_the_title( $id ) ); ?></span>
-													<span class="btn-boostify-auto-complete-delete ion-close" data-item="<?php echo esc_attr( $id ); ?>"></span>
-												</span>
-												<?php
-											endforeach;
-										endif;
-										?>
-										<input type="text" class="boostify--hf-post-name" aria-autocomplete="list" size="1">
-									</div>
-								</div>
-
-							</div>
-							<input type="hidden" name="bhf_post" value="<?php echo esc_html( $post_id ); ?>">
-							<input type="hidden" name="bhf_post_type" value="<?php echo esc_attr( $post_type ); ?>">
-							<div class="boostify-data"></div>
+					<div class="condition-group not-display">
+						<div class="parent-item">
+							<label><?php echo esc_html__( 'Do Not Display On', 'boostify' ); ?></label>
+							<select name="bhf_no_display" class="no-display-on">
 								<?php
-							endif;
-							?>
+								unset( $options['all'] );
+								?>
+								<option value="0"><?php echo esc_html__( 'Select', 'boostify' ); ?></option>
+								<?php
+								foreach ( $options as $key => $option ) :
+									$selected = ( $key == $no_display ) ? 'selected' : ''; // phpcs:ignore
+									?>
+									<option value="<?php echo esc_attr( $key ); ?>" <?php echo esc_attr( $selected ); ?>><?php echo esc_html( $option ); ?></option>
+								<?php endforeach ?>
+							</select>
+						</div>
+
+						<div class="child-item">
+							<div class="input-item-wrapper">
+								<?php
+								if ( ! empty( $ex_post_id ) && ! empty( $ex_post_type ) ) :
+
+									?>
+								<div class="boostify-section-select-post <?php echo ( is_string( $list_ex_post ) ? 'select-all' : 'render--post has-option' ); ?>">
+
+									<span class="boostify-select-all-post<?php echo ( is_string( $list_ex_post ) ? '' : ' hidden' ); ?>">
+										<span class="boostify-select-all"><?php echo esc_html__( 'All', 'boostify' ); ?></span>
+										<span class="boostify-arrow ion-chevron-down"></span>
+									</span>
+
+									<div class="boostify-section-render--post <?php echo ( is_string( $list_ex_post ) ? 'hidden' : '' ); ?>">
+										<div class="boostify-auto-complete-field">
+											<?php
+											if ( is_array( $list_ex_post ) ) :
+
+												foreach ( $list_ex_post as $id ) :
+													$id = (int) $id;
+													?>
+
+													<span class="boostify-auto-complete-key">
+														<span class="boostify-title"><?php echo esc_html( get_the_title( $id ) ); ?></span>
+														<span class="btn-boostify-auto-complete-delete ion-close" data-item="<?php echo esc_attr( $id ); ?>"></span>
+													</span>
+													<?php
+												endforeach;
+											endif;
+											?>
+											<input type="text" class="boostify--hf-post-name" aria-autocomplete="list" size="1">
+										</div>
+									</div>
+
+								</div>
+								<input type="hidden" name="bhf_ex_post_type" value="<?php echo esc_attr( $ex_post_type ); ?>" class="bhf-post-type">
+								<input type="hidden" name="bhf_ex_post" value="<?php echo esc_html( $ex_post_id ); ?>">
+								<div class="boostify-data"></div>
+									<?php
+								endif;
+								?>
+							</div>
 						</div>
 					</div>
 				</div>
 			<?php
-
 		}
 
 		public function boostify_hf_post_admin() {
@@ -277,13 +345,11 @@ if ( ! class_exists( 'Boostify_Header_Footer_Metabox' ) ) {
 				wp_reset_postdata();
 
 			} else {
-
 				?>
 				<div class="boostify-hf-list-post">
 					<h6><?php echo esc_html__( 'Nothing Found', 'boostify' ); ?></h6>
 				</div>
 				<?php
-
 			}
 
 			die();
@@ -302,6 +368,8 @@ if ( ! class_exists( 'Boostify_Header_Footer_Metabox' ) ) {
 			return $posts;
 		}
 
+
+		// For Ajax For Select single post display
 		public function boostify_hf_input() {
 			check_ajax_referer( 'ht_hf_nonce' );
 			$post_type = sanitize_text_field( $_POST['post_type'] );
@@ -320,12 +388,107 @@ if ( ! class_exists( 'Boostify_Header_Footer_Metabox' ) ) {
 							</div>
 						</div>
 					</div>
-					<input type="hidden" name="bhf_post_type" value="<?php echo esc_attr( $post_type ); ?>">
+					<input type="hidden" name="bhf_post_type" value="<?php echo esc_attr( $post_type ); ?>" class="bhf-post-type">
 					<input type="hidden" name="bhf_post" value="all">
 					<div class="boostify-data"></div>
 				</div>
 				<?php
 			endif;
+			die();
+		}
+
+		// For Ajax For Select single post not display
+		public function boostify_hf_post_exclude() {
+			check_ajax_referer( 'ht_hf_nonce' );
+			$post_type = sanitize_text_field( $_POST['post_type'] );
+
+			if ( $post_type && 'all' !== $post_type && 'archive' !== $post_type && 'search' !== $post_type && 'blog' !== $post_type && 'not_found' !== $post_type ) :
+				?>
+				<div class="input-item-wrapper">
+					<div class="boostify-section-select-post">
+						<span class="boostify-select-all-post">
+							<span class="boostify-select-all"><?php echo esc_html__( 'All', 'boostify' ); ?></span>
+							<span class="boostify-arrow ion-chevron-down"></span>
+						</span>
+						<div class="boostify-section-render--post hidden">
+							<div class="boostify-auto-complete-field">
+								<input type="text" class="boostify--hf-post-name" aria-autocomplete="list" size="1">
+							</div>
+						</div>
+					</div>
+					<input type="hidden" name="bhf_ex_post_type" value="<?php echo esc_attr( $post_type ); ?>" class="bhf-post-type">
+					<input type="hidden" name="bhf_ex_post" value="all">
+
+					<div class="boostify-data"></div>
+				</div>
+				<?php
+			endif;
+			die();
+		}
+
+		// Get all post title in Site.
+		public function pt_support() {
+			$post_types       = get_post_types();
+			$post_types_unset = array(
+				'attachment'          => 'attachment',
+				'revision'            => 'revision',
+				'nav_menu_item'       => 'nav_menu_item',
+				'custom_css'          => 'custom_css',
+				'customize_changeset' => 'customize_changeset',
+				'oembed_cache'        => 'oembed_cache',
+				'user_request'        => 'user_request',
+				'wp_block'            => 'wp_block',
+				'elementor_library'   => 'elementor_library',
+				'btf_builder'         => 'btf_builder',
+				'elementor-hf'        => 'elementor-hf',
+				'elementor_font'      => 'elementor_font',
+				'elementor_icons'     => 'elementor_icons',
+				'wpforms'             => 'wpforms',
+				'wpforms_log'         => 'wpforms_log',
+				'acf-field-group'     => 'acf-field-group',
+				'acf-field'           => 'acf-field',
+				'booked_appointments' => 'booked_appointments',
+				'wpcf7_contact_form'  => 'wpcf7_contact_form',
+				'scheduled-action'    => 'scheduled-action',
+				'shop_order'          => 'shop_order',
+				'shop_order_refund'   => 'shop_order_refund',
+				'shop_coupon'         => 'shop_coupon',
+			);
+			$diff             = array_diff( $post_types, $post_types_unset );
+			$default          = array(
+				'all'       => 'All',
+				'blog'      => 'Blog Page',
+				'archive'   => 'Archive Page',
+				'search'    => 'Search Page',
+				'not_found' => '404 Page',
+			);
+			$options          = array_merge( $default, $diff );
+
+			return $options;
+		}
+
+		public function parent_rule() {
+			check_ajax_referer( 'ht_hf_nonce' );
+			$options = $this->pt_support();
+			$length  = $_GET['length'];
+			?>
+			<div class="condition-group">
+				<div class="parent-item">
+					<label><?php echo esc_html__( 'Display On', 'boostify' ); ?></label>
+					<select name="bhf_condition[<?php echo esc_html( $length ); ?>]" class="display-on">
+						<?php
+						foreach ( $options as $key => $option ) :
+							?>
+							<option value="<?php echo esc_attr( $key ); ?>"><?php echo esc_html( $option ); ?></option>
+						<?php endforeach ?>
+					</select>
+				</div>
+
+				<div class="child-item">
+				</div>
+			</div>
+			<?php
+
 			die();
 		}
 	}
