@@ -47,6 +47,8 @@ if ( ! class_exists( 'Boostify_Header_Footer_Builder' ) ) {
 			add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_icon' ), 99 );
 			add_action( 'boostify_hf_seach_form', 'boostify_header_footer_search_form', 10, 3 );
 			add_action( 'admin_notices', array( $this, 'notice_plugin' ) );
+			add_shortcode( 'btf_year', array( $this, 'get_year' ) );
+			add_shortcode( 'btf_site_tile', array( $this, 'get_site_name' ) );
 		}
 
 		public function cpt() {
@@ -162,9 +164,17 @@ if ( ! class_exists( 'Boostify_Header_Footer_Builder' ) ) {
 
 				echo '<div class="notice notice-error">';
 				/* Translators: URL to install or activate Elementor plugin. */
-				echo '<p>' . sprintf( __( 'The <strong>Header Footer Elementor</strong> plugin requires <strong><a href="%s">Elementor</strong></a> plugin installed & activated.', 'header-footer-elementor' ) . '</p>', $url );
+				echo '<p>' . sprintf( __( 'The <strong>Header Footer Elementor</strong> plugin requires <strong><a href="%s">Elementor</strong></a> plugin installed & activated.', 'header-footer-elementor' ) . '</p>', $url );// phpcs:ignore
 				echo '</div>';
 			}
+		}
+
+		public function get_year() {
+			return esc_html( date( 'Y' ) );// phpcs:ignore
+		}
+
+		public function get_site_name() {
+			return '<a class="boostify-copyright-info" href="' . esc_url( home_url( '/' ) ) . '">' . esc_html( get_bloginfo( 'name' ) ) . '</a>';
 		}
 	}
 
