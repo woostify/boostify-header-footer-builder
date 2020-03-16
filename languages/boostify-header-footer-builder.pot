@@ -33,11 +33,11 @@ msgstr ""
 msgid "Footer"
 msgstr ""
 
-#: inc/admin/class-boostify-header-footer-metabox.php:189, inc/admin/class-boostify-header-footer-metabox.php:473
+#: inc/admin/class-boostify-header-footer-metabox.php:189, inc/admin/class-boostify-header-footer-metabox.php:477
 msgid "Display On"
 msgstr ""
 
-#: inc/admin/class-boostify-header-footer-metabox.php:209, inc/admin/class-boostify-header-footer-metabox.php:267, inc/admin/class-boostify-header-footer-metabox.php:378, inc/admin/class-boostify-header-footer-metabox.php:406
+#: inc/admin/class-boostify-header-footer-metabox.php:209, inc/admin/class-boostify-header-footer-metabox.php:271, inc/admin/class-boostify-header-footer-metabox.php:382, inc/admin/class-boostify-header-footer-metabox.php:410
 msgid "All"
 msgstr ""
 
@@ -45,7 +45,11 @@ msgstr ""
 msgid "Do Not Display On"
 msgstr ""
 
-#: inc/admin/class-boostify-header-footer-metabox.php:346
+#: inc/admin/class-boostify-header-footer-metabox.php:252
+msgid "Select"
+msgstr ""
+
+#: inc/admin/class-boostify-header-footer-metabox.php:350
 msgid "Nothing Found"
 msgstr ""
 
