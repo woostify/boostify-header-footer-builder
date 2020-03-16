@@ -82,6 +82,9 @@
 			}
 		});
 
+		if( main.hasClass( 'primary-menu' ) ) {
+			main.removeClass( 'primary-menu' );
+		}
 	};
 
 
