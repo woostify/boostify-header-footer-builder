@@ -11,6 +11,8 @@ use Elementor\Core\Base\Module;
  * Sticky Module
  *
  * Elementor Module Sticky
+.*
+ * Author: ptp
  */
 class Boostify_Header_Footer_Sticky {
 

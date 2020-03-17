@@ -545,8 +545,16 @@ class Boostify_Header_Footer_Image_Retina extends Widget_Base {
 		} else {
 			$retina_url = Elementor\Group_Control_Image_Size::get_attachment_image_src( $settings['image']['id'], 'retina_image', $settings );
 		}
-		$link    = empty( $settings['link'] ) ? false : $settings['link'];
-		$caption = empty( $settings['caption'] ) ? false : $settings['caption'];
+		$link        = empty( $settings['link'] ) ? false : $settings['link'];
+		$caption     = empty( $settings['caption'] ) ? false : $settings['caption'];
+		$image_data  = wp_get_attachment_image_src( $settings['image']['id'] );
+		$retina_data = wp_get_attachment_image_src( $settings['retina']['id'] );
+		if ( ! empty( $image_data ) ) {
+			$image_url = $image_data[0];
+		}
+		if ( ! empty( $retina_data ) ) {
+			$retina_image_url = $retina_data[0];
+		}
 		?>
 			<div class="boostify-retina-image-set boostify-retina-image">
 				<div class="boostify-retina-image-container">

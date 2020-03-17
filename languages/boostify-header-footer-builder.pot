@@ -53,23 +53,23 @@ msgstr ""
 msgid "Nothing Found"
 msgstr ""
 
-#: inc/class-boostify-header-footer-builder.php:73
+#: inc/class-boostify-header-footer-builder.php:75
 msgid "Boostify Header Footer Builder"
 msgstr ""
 
-#: inc/class-boostify-header-footer-builder.php:74
+#: inc/class-boostify-header-footer-builder.php:76
 msgid "Add New Header, Footer"
 msgstr ""
 
-#: inc/class-boostify-header-footer-builder.php:75
+#: inc/class-boostify-header-footer-builder.php:77
 msgid "Edit Header, Footer"
 msgstr ""
 
-#: inc/class-boostify-header-footer-builder.php:76
+#: inc/class-boostify-header-footer-builder.php:78
 msgid "All Header, Footer"
 msgstr ""
 
-#: inc/class-boostify-header-footer-builder.php:77
+#: inc/class-boostify-header-footer-builder.php:79
 msgid "Elementor Builder"
 msgstr ""
 
@@ -81,76 +81,220 @@ msgstr ""
 msgid "Header Sticky"
 msgstr ""
 
-#: inc/elementor/module/class-boostify-header-footer-sticky.php:43
+#: inc/elementor/module/class-boostify-header-footer-sticky.php:45
 msgid "Sticky Header"
 msgstr ""
 
-#: inc/elementor/module/class-boostify-header-footer-sticky.php:51
+#: inc/elementor/module/class-boostify-header-footer-sticky.php:53
 msgid "Enable"
 msgstr ""
 
-#: inc/elementor/module/class-boostify-header-footer-sticky.php:53, inc/elementor/module/class-boostify-header-footer-sticky.php:68, inc/elementor/module/class-boostify-header-footer-sticky.php:127, inc/elementor/module/class-boostify-header-footer-sticky.php:174
+#: inc/elementor/module/class-boostify-header-footer-sticky.php:55, inc/elementor/module/class-boostify-header-footer-sticky.php:70, inc/elementor/module/class-boostify-header-footer-sticky.php:129, inc/elementor/module/class-boostify-header-footer-sticky.php:176
 msgid "On"
 msgstr ""
 
-#: inc/elementor/module/class-boostify-header-footer-sticky.php:54, inc/elementor/module/class-boostify-header-footer-sticky.php:69, inc/elementor/module/class-boostify-header-footer-sticky.php:128, inc/elementor/module/class-boostify-header-footer-sticky.php:175
+#: inc/elementor/module/class-boostify-header-footer-sticky.php:56, inc/elementor/module/class-boostify-header-footer-sticky.php:71, inc/elementor/module/class-boostify-header-footer-sticky.php:130, inc/elementor/module/class-boostify-header-footer-sticky.php:177
 msgid "Off"
 msgstr ""
 
-#: inc/elementor/module/class-boostify-header-footer-sticky.php:65
+#: inc/elementor/module/class-boostify-header-footer-sticky.php:67
 msgid "Header Tranparent"
 msgstr ""
 
-#: inc/elementor/module/class-boostify-header-footer-sticky.php:80
+#: inc/elementor/module/class-boostify-header-footer-sticky.php:82
 msgid "Enable On"
 msgstr ""
 
-#: inc/elementor/module/class-boostify-header-footer-sticky.php:86
+#: inc/elementor/module/class-boostify-header-footer-sticky.php:88
 msgid "Desktop"
 msgstr ""
 
-#: inc/elementor/module/class-boostify-header-footer-sticky.php:87
+#: inc/elementor/module/class-boostify-header-footer-sticky.php:89
 msgid "Tablet"
 msgstr ""
 
-#: inc/elementor/module/class-boostify-header-footer-sticky.php:88
+#: inc/elementor/module/class-boostify-header-footer-sticky.php:90
 msgid "Mobile"
 msgstr ""
 
-#: inc/elementor/module/class-boostify-header-footer-sticky.php:101
+#: inc/elementor/module/class-boostify-header-footer-sticky.php:103
 msgid "Scroll Distance (px)"
 msgstr ""
 
-#: inc/elementor/module/class-boostify-header-footer-sticky.php:104
+#: inc/elementor/module/class-boostify-header-footer-sticky.php:106
 msgid "Choose the scroll distance to enable Sticky Header Effects"
 msgstr ""
 
-#: inc/elementor/module/class-boostify-header-footer-sticky.php:124
+#: inc/elementor/module/class-boostify-header-footer-sticky.php:126
 msgid "Header Background"
 msgstr ""
 
-#: inc/elementor/module/class-boostify-header-footer-sticky.php:133
+#: inc/elementor/module/class-boostify-header-footer-sticky.php:135
 msgid "Choose background color after scrolling"
 msgstr ""
 
-#: inc/elementor/module/class-boostify-header-footer-sticky.php:144
+#: inc/elementor/module/class-boostify-header-footer-sticky.php:146
 msgid "Color"
 msgstr ""
 
-#: inc/elementor/module/class-boostify-header-footer-sticky.php:158
+#: inc/elementor/module/class-boostify-header-footer-sticky.php:160
 msgid "Logo Sticky"
 msgstr ""
 
-#: inc/elementor/module/class-boostify-header-footer-sticky.php:161
+#: inc/elementor/module/class-boostify-header-footer-sticky.php:163
 msgid "Choose Logo after scrolling"
 msgstr ""
 
-#: inc/elementor/module/class-boostify-header-footer-sticky.php:171, inc/elementor/module/class-boostify-header-footer-sticky.php:190, inc/elementor/widgets/class-boostify-header-footer-nav-menu.php:405, inc/elementor/widgets/class-boostify-header-footer-nav-menu.php:451
+#: inc/elementor/module/class-boostify-header-footer-sticky.php:173, inc/elementor/module/class-boostify-header-footer-sticky.php:192, inc/elementor/widgets/class-boostify-header-footer-nav-menu.php:405, inc/elementor/widgets/class-boostify-header-footer-nav-menu.php:451
 msgid "Menu Color"
 msgstr ""
 
-#: inc/elementor/module/class-boostify-header-footer-sticky.php:179
+#: inc/elementor/module/class-boostify-header-footer-sticky.php:181
 msgid "Choose menu color after scrolling"
+msgstr ""
+
+#: inc/elementor/widgets/class-boostify-header-footer-copyright.php:36, inc/elementor/widgets/class-boostify-header-footer-copyright.php:74
+msgid "Copyright"
+msgstr ""
+
+#: inc/elementor/widgets/class-boostify-header-footer-copyright.php:81
+msgid "Copyright Text"
+msgstr ""
+
+#: inc/elementor/widgets/class-boostify-header-footer-copyright.php:86
+msgid "Copyright © [btf_year] [btf_site_tile] | All Rights Reserved. Designed by [btf_site_tile]."
+msgstr ""
+
+#: inc/elementor/widgets/class-boostify-header-footer-copyright.php:93, inc/elementor/widgets/class-boostify-header-footer-image-retina.php:125
+msgid "Alignment"
+msgstr ""
+
+#: inc/elementor/widgets/class-boostify-header-footer-copyright.php:97, inc/elementor/widgets/class-boostify-header-footer-image-retina.php:129
+msgid "Left"
+msgstr ""
+
+#: inc/elementor/widgets/class-boostify-header-footer-copyright.php:101, inc/elementor/widgets/class-boostify-header-footer-image-retina.php:133
+msgid "Center"
+msgstr ""
+
+#: inc/elementor/widgets/class-boostify-header-footer-copyright.php:105, inc/elementor/widgets/class-boostify-header-footer-image-retina.php:137
+msgid "Right"
+msgstr ""
+
+#: inc/elementor/widgets/class-boostify-header-footer-copyright.php:118, inc/elementor/widgets/class-boostify-header-footer-image-retina.php:456
+msgid "Text Color"
+msgstr ""
+
+#: inc/elementor/widgets/class-boostify-header-footer-image-retina.php:35, inc/elementor/widgets/class-boostify-header-footer-image-retina.php:85, inc/elementor/widgets/class-boostify-header-footer-image-retina.php:179
+msgid "Retina Image"
+msgstr ""
+
+#: inc/elementor/widgets/class-boostify-header-footer-image-retina.php:91
+msgid "Choose Default Image"
+msgstr ""
+
+#: inc/elementor/widgets/class-boostify-header-footer-image-retina.php:104
+msgid "Choose Retina Image"
+msgstr ""
+
+#: inc/elementor/widgets/class-boostify-header-footer-image-retina.php:118
+msgid "Image Size"
+msgstr ""
+
+#: inc/elementor/widgets/class-boostify-header-footer-image-retina.php:151
+msgid "Custom Caption"
+msgstr ""
+
+#: inc/elementor/widgets/class-boostify-header-footer-image-retina.php:154
+msgid "Enter your image caption"
+msgstr ""
+
+#: inc/elementor/widgets/class-boostify-header-footer-image-retina.php:162
+msgid "Link"
+msgstr ""
+
+#: inc/elementor/widgets/class-boostify-header-footer-image-retina.php:164
+msgid "https://your-link.com"
+msgstr ""
+
+#: inc/elementor/widgets/class-boostify-header-footer-image-retina.php:187
+msgid "Width"
+msgstr ""
+
+#: inc/elementor/widgets/class-boostify-header-footer-image-retina.php:223
+msgid "Max Width"
+msgstr ""
+
+#: inc/elementor/widgets/class-boostify-header-footer-image-retina.php:259
+msgid "Border Style"
+msgstr ""
+
+#: inc/elementor/widgets/class-boostify-header-footer-image-retina.php:264
+msgid "None"
+msgstr ""
+
+#: inc/elementor/widgets/class-boostify-header-footer-image-retina.php:265
+msgid "Solid"
+msgstr ""
+
+#: inc/elementor/widgets/class-boostify-header-footer-image-retina.php:266
+msgid "Double"
+msgstr ""
+
+#: inc/elementor/widgets/class-boostify-header-footer-image-retina.php:267
+msgid "Dotted"
+msgstr ""
+
+#: inc/elementor/widgets/class-boostify-header-footer-image-retina.php:268
+msgid "Dashed"
+msgstr ""
+
+#: inc/elementor/widgets/class-boostify-header-footer-image-retina.php:278
+msgid "Border Width"
+msgstr ""
+
+#: inc/elementor/widgets/class-boostify-header-footer-image-retina.php:300
+msgid "Border Color"
+msgstr ""
+
+#: inc/elementor/widgets/class-boostify-header-footer-image-retina.php:319, inc/elementor/widgets/class-boostify-header-footer-site-search.php:292
+msgid "Border Radius"
+msgstr ""
+
+#: inc/elementor/widgets/class-boostify-header-footer-image-retina.php:344, inc/elementor/widgets/class-boostify-header-footer-nav-menu.php:377, inc/elementor/widgets/class-boostify-header-footer-nav-menu.php:544, inc/elementor/widgets/class-boostify-header-footer-nav-menu.php:677
+msgid "Normal"
+msgstr ""
+
+#: inc/elementor/widgets/class-boostify-header-footer-image-retina.php:351, inc/elementor/widgets/class-boostify-header-footer-image-retina.php:385
+msgid "Opacity"
+msgstr ""
+
+#: inc/elementor/widgets/class-boostify-header-footer-image-retina.php:379, inc/elementor/widgets/class-boostify-header-footer-nav-menu.php:388, inc/elementor/widgets/class-boostify-header-footer-nav-menu.php:555, inc/elementor/widgets/class-boostify-header-footer-nav-menu.php:688
+msgid "Hover"
+msgstr ""
+
+#: inc/elementor/widgets/class-boostify-header-footer-image-retina.php:411
+msgid "Hover Animation"
+msgstr ""
+
+#: inc/elementor/widgets/class-boostify-header-footer-image-retina.php:418
+msgid "Transition Duration"
+msgstr ""
+
+#: inc/elementor/widgets/class-boostify-header-footer-image-retina.php:448
+msgid "Caption"
+msgstr ""
+
+#: inc/elementor/widgets/class-boostify-header-footer-image-retina.php:472
+msgid "Background Color"
+msgstr ""
+
+#: inc/elementor/widgets/class-boostify-header-footer-image-retina.php:500, inc/elementor/widgets/class-boostify-header-footer-nav-menu.php:431, inc/elementor/widgets/class-boostify-header-footer-nav-menu.php:522, inc/elementor/widgets/class-boostify-header-footer-site-search.php:192, inc/elementor/widgets/class-boostify-header-footer-site-search.php:207
+msgid "Padding"
+msgstr ""
+
+#: inc/elementor/widgets/class-boostify-header-footer-image-retina.php:511
+msgid "Caption Top Spacing"
 msgstr ""
 
 #: inc/elementor/widgets/class-boostify-header-footer-nav-menu.php:27
@@ -233,20 +377,8 @@ msgstr ""
 msgid "Menu Style"
 msgstr ""
 
-#: inc/elementor/widgets/class-boostify-header-footer-nav-menu.php:377, inc/elementor/widgets/class-boostify-header-footer-nav-menu.php:544, inc/elementor/widgets/class-boostify-header-footer-nav-menu.php:677
-msgid "Normal"
-msgstr ""
-
-#: inc/elementor/widgets/class-boostify-header-footer-nav-menu.php:388, inc/elementor/widgets/class-boostify-header-footer-nav-menu.php:555, inc/elementor/widgets/class-boostify-header-footer-nav-menu.php:688
-msgid "Hover"
-msgstr ""
-
 #: inc/elementor/widgets/class-boostify-header-footer-nav-menu.php:422, inc/elementor/widgets/class-boostify-header-footer-nav-menu.php:485, inc/elementor/widgets/class-boostify-header-footer-nav-menu.php:617, inc/elementor/widgets/class-boostify-header-footer-nav-menu.php:740, inc/elementor/widgets/class-boostify-header-footer-site-search.php:264
 msgid "Typography"
-msgstr ""
-
-#: inc/elementor/widgets/class-boostify-header-footer-nav-menu.php:431, inc/elementor/widgets/class-boostify-header-footer-nav-menu.php:522, inc/elementor/widgets/class-boostify-header-footer-site-search.php:192, inc/elementor/widgets/class-boostify-header-footer-site-search.php:207
-msgid "Padding"
 msgstr ""
 
 #: inc/elementor/widgets/class-boostify-header-footer-nav-menu.php:468
@@ -355,10 +487,6 @@ msgstr ""
 
 #: inc/elementor/widgets/class-boostify-header-footer-site-search.php:284
 msgid "Border"
-msgstr ""
-
-#: inc/elementor/widgets/class-boostify-header-footer-site-search.php:292
-msgid "Border Radius"
 msgstr ""
 
 #: inc/elementor/widgets/class-boostify-header-footer-site-search.php:323
