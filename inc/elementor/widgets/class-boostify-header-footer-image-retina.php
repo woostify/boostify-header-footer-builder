@@ -45,7 +45,7 @@ class Boostify_Header_Footer_Image_Retina extends Widget_Base {
 	 * @return string Widget icon.
 	 */
 	public function get_icon() {
-		return 'boostify-icon-retina-image';
+		return 'eicon-eye';
 	}
 
 	/**
