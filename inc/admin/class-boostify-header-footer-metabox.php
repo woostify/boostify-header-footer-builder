@@ -30,25 +30,32 @@ if ( ! class_exists( 'Boostify_Header_Footer_Metabox' ) ) {
 			add_action( 'wp_ajax_nopriv_boostify_hf_ex_auto', array( $this, 'boostify_hf_post_exclude' ) );
 		}
 
+		// Type Builder
+		public function type_builder() {
+			$type = array(
+				'header'   => __( 'Header', 'boostify' ),
+				'footer'   => __( 'Footer', 'boostify' ),
+				'sub_menu' => __( 'Sub Mega Menu', 'boostify' ),
+			);
+
+			return $type;
+		}
+
+		// Meta Box In btf_builder post type
 		public function pagesetting_meta_box() {
 			add_meta_box( 'ht_hf_setting', 'Template Settings', array( $this, 'ht_hfsetting_output' ), 'btf_builder', 'side', 'high' );
 		}
 
+
+		// Screen meta box in btf_builder post type
 		public function ht_hfsetting_output( $post ) {
+			$types         = $this->type_builder();
 			$type          = get_post_meta( $post->ID, 'bhf_type', true );
 			$display       = get_post_meta( $post->ID, 'bhf_display', true );
 			$posts         = get_post_meta( $post->ID, 'bhf_post', true );
 			$post_type     = get_post_meta( $post->ID, 'bhf_post_type', true );
 			$select_footer = '';
 			$select_header = '';
-			// Check Type Selected
-			if ( 'footer' === $type ) {
-				$select_footer = ' selected';
-			}
-
-			if ( 'header' === $type ) {
-				$select_header = ' selected';
-			}
 
 			wp_nonce_field( 'boostify_hf_action', 'boostify_hf' );
 			?>
@@ -59,8 +66,10 @@ if ( ! class_exists( 'Boostify_Header_Footer_Metabox' ) ) {
 				<div class="input-wrapper">
 					<label for="container"><?php echo esc_html__( 'Type of Template', 'boostify' ); ?></label>
 					<select name="bhf_type" id="container">
-						<option value="header"<?php echo esc_attr( $select_header ); ?>><?php echo esc_html__( 'Header', 'boostify' ); ?></option>
-						<option value="footer"<?php echo esc_attr( $select_footer ); ?>><?php echo esc_html__( 'Footer', 'boostify' ); ?></option>
+						<?php foreach ( $types as $key => $val ) : ?>
+							<?php $selected = ( $key === $type ) ? 'selected' : ''; ?>
+							<option value="<?php echo esc_attr( $key ); ?>" <?php echo esc_attr( $selected ); ?>><?php echo esc_html( $val ); ?></option>
+						<?php endforeach ?>
 					</select>
 				</div>
 
@@ -70,6 +79,7 @@ if ( ! class_exists( 'Boostify_Header_Footer_Metabox' ) ) {
 			<?php
 		}
 
+		// Save meta box setting in btf_buider postType
 		public function pagesetting_save( $post_id ) {
 			$nonce_name   = ( array_key_exists( 'boostify_hf', $_POST ) ) ? sanitize_text_field( $_POST['boostify_hf'] ) : '';
 			$nonce_action = 'boostify_hf_action';

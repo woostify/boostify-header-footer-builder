@@ -52,8 +52,10 @@ function boostify_header_footer_content() {
 	$type = get_post_meta( $id, 'bhf_type' );
 	if ( 'header' === $type[0] ) {
 		$path = BOOSTIFY_HEADER_FOOTER_PATH . 'templates/content/content-header.php';
-	} else {
+	} elseif ( 'footer' === $type[0] ) {
 		$path = BOOSTIFY_HEADER_FOOTER_PATH . 'templates/content/content-footer.php';
+	} else {
+		$path = BOOSTIFY_HEADER_FOOTER_PATH . 'templates/content/content-sub-menu.php';
 	}
 	load_template( $path );
 }
