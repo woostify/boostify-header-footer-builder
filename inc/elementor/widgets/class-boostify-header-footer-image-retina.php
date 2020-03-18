@@ -1,28 +1,15 @@
 <?php
-/**
- * Elementor Widget
- *
- * @package Boostify Elementor Widget
- */
 
 use Elementor\Widget_Base;
 use Elementor\Controls_Manager;
-use Elementor\Control_Media;
 use Elementor\Utils;
-use Elementor\Group_Control_Border;
-use Elementor\Group_Control_Typography;
-use Elementor\Group_Control_Box_Shadow;
-use Elementor\Scheme_Typography;
-use Elementor\Scheme_Color;
-use Elementor\Group_Control_Image_Size;
 use Elementor\Group_Control_Css_Filter;
-use Elementor\Group_Control_Text_Shadow;
-use Elementor\Plugin;
 
 /**
- * Site Logo
+ * Image Retina
  *
- * Elementor widget for Site Logo.
+ * Elementor widget for Image Retina.
+ * Aurhor: ptp
  */
 class Boostify_Header_Footer_Image_Retina extends Widget_Base {
 
@@ -339,17 +326,6 @@ class Boostify_Header_Footer_Image_Retina extends Widget_Base {
 				'selectors'  => array(
 					'{{WRAPPER}} .boostify-retina-image img' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				),
-			)
-		);
-
-		$this->add_group_control(
-			Elementor\Group_Control_Box_Shadow::get_type(),
-			array(
-				'name'     => 'image_box_shadow',
-				'exclude'  => array(
-					'box_shadow_position',
-				),
-				'selector' => '{{WRAPPER}} .boostify-retina-image img',
 			)
 		);
 

@@ -21,35 +21,39 @@ msgstr ""
 msgid "Shortcode"
 msgstr ""
 
-#: inc/admin/class-boostify-header-footer-metabox.php:60
-msgid "Type of Template"
-msgstr ""
-
-#: inc/admin/class-boostify-header-footer-metabox.php:62
+#: inc/admin/class-boostify-header-footer-metabox.php:36
 msgid "Header"
 msgstr ""
 
-#: inc/admin/class-boostify-header-footer-metabox.php:63
+#: inc/admin/class-boostify-header-footer-metabox.php:37
 msgid "Footer"
 msgstr ""
 
-#: inc/admin/class-boostify-header-footer-metabox.php:189, inc/admin/class-boostify-header-footer-metabox.php:477
+#: inc/admin/class-boostify-header-footer-metabox.php:38
+msgid "Sub Mega Menu"
+msgstr ""
+
+#: inc/admin/class-boostify-header-footer-metabox.php:67
+msgid "Type of Template"
+msgstr ""
+
+#: inc/admin/class-boostify-header-footer-metabox.php:199, inc/admin/class-boostify-header-footer-metabox.php:487
 msgid "Display On"
 msgstr ""
 
-#: inc/admin/class-boostify-header-footer-metabox.php:209, inc/admin/class-boostify-header-footer-metabox.php:271, inc/admin/class-boostify-header-footer-metabox.php:382, inc/admin/class-boostify-header-footer-metabox.php:410
+#: inc/admin/class-boostify-header-footer-metabox.php:219, inc/admin/class-boostify-header-footer-metabox.php:281, inc/admin/class-boostify-header-footer-metabox.php:392, inc/admin/class-boostify-header-footer-metabox.php:420
 msgid "All"
 msgstr ""
 
-#: inc/admin/class-boostify-header-footer-metabox.php:247
+#: inc/admin/class-boostify-header-footer-metabox.php:257
 msgid "Do Not Display On"
 msgstr ""
 
-#: inc/admin/class-boostify-header-footer-metabox.php:252
+#: inc/admin/class-boostify-header-footer-metabox.php:262
 msgid "Select"
 msgstr ""
 
-#: inc/admin/class-boostify-header-footer-metabox.php:350
+#: inc/admin/class-boostify-header-footer-metabox.php:360
 msgid "Nothing Found"
 msgstr ""
 
@@ -165,136 +169,180 @@ msgstr ""
 msgid "Copyright © [btf_year] [btf_site_tile] | All Rights Reserved. Designed by [btf_site_tile]."
 msgstr ""
 
-#: inc/elementor/widgets/class-boostify-header-footer-copyright.php:93, inc/elementor/widgets/class-boostify-header-footer-image-retina.php:125
+#: inc/elementor/widgets/class-boostify-header-footer-copyright.php:93, inc/elementor/widgets/class-boostify-header-footer-image-retina.php:131
 msgid "Alignment"
 msgstr ""
 
-#: inc/elementor/widgets/class-boostify-header-footer-copyright.php:97, inc/elementor/widgets/class-boostify-header-footer-image-retina.php:129
+#: inc/elementor/widgets/class-boostify-header-footer-copyright.php:97, inc/elementor/widgets/class-boostify-header-footer-image-retina.php:135
 msgid "Left"
 msgstr ""
 
-#: inc/elementor/widgets/class-boostify-header-footer-copyright.php:101, inc/elementor/widgets/class-boostify-header-footer-image-retina.php:133
+#: inc/elementor/widgets/class-boostify-header-footer-copyright.php:101, inc/elementor/widgets/class-boostify-header-footer-image-retina.php:139
 msgid "Center"
 msgstr ""
 
-#: inc/elementor/widgets/class-boostify-header-footer-copyright.php:105, inc/elementor/widgets/class-boostify-header-footer-image-retina.php:137
+#: inc/elementor/widgets/class-boostify-header-footer-copyright.php:105, inc/elementor/widgets/class-boostify-header-footer-image-retina.php:143
 msgid "Right"
 msgstr ""
 
-#: inc/elementor/widgets/class-boostify-header-footer-copyright.php:118, inc/elementor/widgets/class-boostify-header-footer-image-retina.php:456
+#: inc/elementor/widgets/class-boostify-header-footer-copyright.php:118, inc/elementor/widgets/class-boostify-header-footer-image-retina.php:462
 msgid "Text Color"
 msgstr ""
 
-#: inc/elementor/widgets/class-boostify-header-footer-image-retina.php:35, inc/elementor/widgets/class-boostify-header-footer-image-retina.php:85, inc/elementor/widgets/class-boostify-header-footer-image-retina.php:179
+#: inc/elementor/widgets/class-boostify-header-footer-image-retina.php:41, inc/elementor/widgets/class-boostify-header-footer-image-retina.php:91, inc/elementor/widgets/class-boostify-header-footer-image-retina.php:185
 msgid "Retina Image"
 msgstr ""
 
-#: inc/elementor/widgets/class-boostify-header-footer-image-retina.php:91
+#: inc/elementor/widgets/class-boostify-header-footer-image-retina.php:97
 msgid "Choose Default Image"
 msgstr ""
 
-#: inc/elementor/widgets/class-boostify-header-footer-image-retina.php:104
+#: inc/elementor/widgets/class-boostify-header-footer-image-retina.php:110
 msgid "Choose Retina Image"
 msgstr ""
 
-#: inc/elementor/widgets/class-boostify-header-footer-image-retina.php:118
+#: inc/elementor/widgets/class-boostify-header-footer-image-retina.php:124
 msgid "Image Size"
 msgstr ""
 
-#: inc/elementor/widgets/class-boostify-header-footer-image-retina.php:151
+#: inc/elementor/widgets/class-boostify-header-footer-image-retina.php:157
 msgid "Custom Caption"
 msgstr ""
 
-#: inc/elementor/widgets/class-boostify-header-footer-image-retina.php:154
+#: inc/elementor/widgets/class-boostify-header-footer-image-retina.php:160
 msgid "Enter your image caption"
 msgstr ""
 
-#: inc/elementor/widgets/class-boostify-header-footer-image-retina.php:162
+#: inc/elementor/widgets/class-boostify-header-footer-image-retina.php:168, inc/elementor/widgets/class-boostify-header-footer-mega-menu.php:101
 msgid "Link"
 msgstr ""
 
-#: inc/elementor/widgets/class-boostify-header-footer-image-retina.php:164
+#: inc/elementor/widgets/class-boostify-header-footer-image-retina.php:170, inc/elementor/widgets/class-boostify-header-footer-mega-menu.php:103
 msgid "https://your-link.com"
 msgstr ""
 
-#: inc/elementor/widgets/class-boostify-header-footer-image-retina.php:187
+#: inc/elementor/widgets/class-boostify-header-footer-image-retina.php:193
 msgid "Width"
 msgstr ""
 
-#: inc/elementor/widgets/class-boostify-header-footer-image-retina.php:223
+#: inc/elementor/widgets/class-boostify-header-footer-image-retina.php:229
 msgid "Max Width"
 msgstr ""
 
-#: inc/elementor/widgets/class-boostify-header-footer-image-retina.php:259
+#: inc/elementor/widgets/class-boostify-header-footer-image-retina.php:265
 msgid "Border Style"
 msgstr ""
 
-#: inc/elementor/widgets/class-boostify-header-footer-image-retina.php:264
+#: inc/elementor/widgets/class-boostify-header-footer-image-retina.php:270
 msgid "None"
 msgstr ""
 
-#: inc/elementor/widgets/class-boostify-header-footer-image-retina.php:265
+#: inc/elementor/widgets/class-boostify-header-footer-image-retina.php:271
 msgid "Solid"
 msgstr ""
 
-#: inc/elementor/widgets/class-boostify-header-footer-image-retina.php:266
+#: inc/elementor/widgets/class-boostify-header-footer-image-retina.php:272
 msgid "Double"
 msgstr ""
 
-#: inc/elementor/widgets/class-boostify-header-footer-image-retina.php:267
+#: inc/elementor/widgets/class-boostify-header-footer-image-retina.php:273
 msgid "Dotted"
 msgstr ""
 
-#: inc/elementor/widgets/class-boostify-header-footer-image-retina.php:268
+#: inc/elementor/widgets/class-boostify-header-footer-image-retina.php:274
 msgid "Dashed"
 msgstr ""
 
-#: inc/elementor/widgets/class-boostify-header-footer-image-retina.php:278
+#: inc/elementor/widgets/class-boostify-header-footer-image-retina.php:284
 msgid "Border Width"
 msgstr ""
 
-#: inc/elementor/widgets/class-boostify-header-footer-image-retina.php:300
+#: inc/elementor/widgets/class-boostify-header-footer-image-retina.php:306
 msgid "Border Color"
 msgstr ""
 
-#: inc/elementor/widgets/class-boostify-header-footer-image-retina.php:319, inc/elementor/widgets/class-boostify-header-footer-site-search.php:292
+#: inc/elementor/widgets/class-boostify-header-footer-image-retina.php:325, inc/elementor/widgets/class-boostify-header-footer-site-search.php:292
 msgid "Border Radius"
 msgstr ""
 
-#: inc/elementor/widgets/class-boostify-header-footer-image-retina.php:344, inc/elementor/widgets/class-boostify-header-footer-nav-menu.php:377, inc/elementor/widgets/class-boostify-header-footer-nav-menu.php:544, inc/elementor/widgets/class-boostify-header-footer-nav-menu.php:677
+#: inc/elementor/widgets/class-boostify-header-footer-image-retina.php:350, inc/elementor/widgets/class-boostify-header-footer-nav-menu.php:377, inc/elementor/widgets/class-boostify-header-footer-nav-menu.php:544, inc/elementor/widgets/class-boostify-header-footer-nav-menu.php:677
 msgid "Normal"
 msgstr ""
 
-#: inc/elementor/widgets/class-boostify-header-footer-image-retina.php:351, inc/elementor/widgets/class-boostify-header-footer-image-retina.php:385
+#: inc/elementor/widgets/class-boostify-header-footer-image-retina.php:357, inc/elementor/widgets/class-boostify-header-footer-image-retina.php:391
 msgid "Opacity"
 msgstr ""
 
-#: inc/elementor/widgets/class-boostify-header-footer-image-retina.php:379, inc/elementor/widgets/class-boostify-header-footer-nav-menu.php:388, inc/elementor/widgets/class-boostify-header-footer-nav-menu.php:555, inc/elementor/widgets/class-boostify-header-footer-nav-menu.php:688
+#: inc/elementor/widgets/class-boostify-header-footer-image-retina.php:385, inc/elementor/widgets/class-boostify-header-footer-nav-menu.php:388, inc/elementor/widgets/class-boostify-header-footer-nav-menu.php:555, inc/elementor/widgets/class-boostify-header-footer-nav-menu.php:688
 msgid "Hover"
 msgstr ""
 
-#: inc/elementor/widgets/class-boostify-header-footer-image-retina.php:411
+#: inc/elementor/widgets/class-boostify-header-footer-image-retina.php:417
 msgid "Hover Animation"
 msgstr ""
 
-#: inc/elementor/widgets/class-boostify-header-footer-image-retina.php:418
+#: inc/elementor/widgets/class-boostify-header-footer-image-retina.php:424
 msgid "Transition Duration"
 msgstr ""
 
-#: inc/elementor/widgets/class-boostify-header-footer-image-retina.php:448
+#: inc/elementor/widgets/class-boostify-header-footer-image-retina.php:454
 msgid "Caption"
 msgstr ""
 
-#: inc/elementor/widgets/class-boostify-header-footer-image-retina.php:472
+#: inc/elementor/widgets/class-boostify-header-footer-image-retina.php:478
 msgid "Background Color"
 msgstr ""
 
-#: inc/elementor/widgets/class-boostify-header-footer-image-retina.php:500, inc/elementor/widgets/class-boostify-header-footer-nav-menu.php:431, inc/elementor/widgets/class-boostify-header-footer-nav-menu.php:522, inc/elementor/widgets/class-boostify-header-footer-site-search.php:192, inc/elementor/widgets/class-boostify-header-footer-site-search.php:207
+#: inc/elementor/widgets/class-boostify-header-footer-image-retina.php:506, inc/elementor/widgets/class-boostify-header-footer-nav-menu.php:431, inc/elementor/widgets/class-boostify-header-footer-nav-menu.php:522, inc/elementor/widgets/class-boostify-header-footer-site-search.php:192, inc/elementor/widgets/class-boostify-header-footer-site-search.php:207
 msgid "Padding"
 msgstr ""
 
-#: inc/elementor/widgets/class-boostify-header-footer-image-retina.php:511
+#: inc/elementor/widgets/class-boostify-header-footer-image-retina.php:517
 msgid "Caption Top Spacing"
+msgstr ""
+
+#: inc/elementor/widgets/class-boostify-header-footer-mega-menu.php:36, inc/elementor/widgets/class-boostify-header-footer-mega-menu.php:74
+msgid "Mega Menu"
+msgstr ""
+
+#: inc/elementor/widgets/class-boostify-header-footer-mega-menu.php:83
+msgid "Title"
+msgstr ""
+
+#: inc/elementor/widgets/class-boostify-header-footer-mega-menu.php:85
+msgid "Menu Item"
+msgstr ""
+
+#: inc/elementor/widgets/class-boostify-header-footer-mega-menu.php:93
+msgid "Icons"
+msgstr ""
+
+#: inc/elementor/widgets/class-boostify-header-footer-mega-menu.php:116, inc/elementor/widgets/class-boostify-header-footer-mega-menu.php:127, inc/elementor/widgets/class-boostify-header-footer-nav-menu.php:235
+msgid "Sub Menu"
+msgstr ""
+
+#: inc/elementor/widgets/class-boostify-header-footer-mega-menu.php:118
+msgid "Yes"
+msgstr ""
+
+#: inc/elementor/widgets/class-boostify-header-footer-mega-menu.php:119
+msgid "No"
+msgstr ""
+
+#: inc/elementor/widgets/class-boostify-header-footer-mega-menu.php:140
+msgid "Repeater List"
+msgstr ""
+
+#: inc/elementor/widgets/class-boostify-header-footer-mega-menu.php:146
+msgid "Menu Item 1"
+msgstr ""
+
+#: inc/elementor/widgets/class-boostify-header-footer-mega-menu.php:149
+msgid "Menu Item 2"
+msgstr ""
+
+#: inc/elementor/widgets/class-boostify-header-footer-mega-menu.php:230
+msgid "Select Sub Menu"
 msgstr ""
 
 #: inc/elementor/widgets/class-boostify-header-footer-nav-menu.php:27
@@ -335,10 +383,6 @@ msgstr ""
 
 #: inc/elementor/widgets/class-boostify-header-footer-nav-menu.php:220
 msgid "Pointer"
-msgstr ""
-
-#: inc/elementor/widgets/class-boostify-header-footer-nav-menu.php:235
-msgid "Sub Menu"
 msgstr ""
 
 #: inc/elementor/widgets/class-boostify-header-footer-nav-menu.php:245
