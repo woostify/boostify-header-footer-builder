@@ -1,6 +1,23 @@
 <?php
+/**
+ * Elementor Widget
+ *
+ * @package Boostify Elementor Widget
+ */
+
 use Elementor\Widget_Base;
 use Elementor\Controls_Manager;
+use Elementor\Control_Media;
+use Elementor\Utils;
+use Elementor\Group_Control_Border;
+use Elementor\Group_Control_Typography;
+use Elementor\Group_Control_Box_Shadow;
+use Elementor\Scheme_Typography;
+use Elementor\Scheme_Color;
+use Elementor\Group_Control_Image_Size;
+use Elementor\Group_Control_Css_Filter;
+use Elementor\Group_Control_Text_Shadow;
+use Elementor\Plugin;
 
 /**
  * Site Logo
@@ -86,7 +103,7 @@ class Boostify_Header_Footer_Image_Retina extends Widget_Base {
 			)
 		);
 		$this->add_control(
-			'image',
+			'retina_image',
 			array(
 				'label'   => __( 'Choose Default Image', 'boostify' ),
 				'type'    => Controls_Manager::MEDIA,
@@ -99,7 +116,7 @@ class Boostify_Header_Footer_Image_Retina extends Widget_Base {
 			)
 		);
 		$this->add_control(
-			'retina',
+			'real_retina',
 			array(
 				'label'   => __( 'Choose Retina Image', 'boostify' ),
 				'type'    => Controls_Manager::MEDIA,
@@ -445,8 +462,8 @@ class Boostify_Header_Footer_Image_Retina extends Widget_Base {
 		$this->start_controls_section(
 			'section_style_caption',
 			array(
-				'label'     => __( 'Caption', 'boostify' ),
-				'tab'       => Controls_Manager::TAB_STYLE,
+				'label' => __( 'Caption', 'boostify' ),
+				'tab'   => Controls_Manager::TAB_STYLE,
 			)
 		);
 
@@ -529,48 +546,143 @@ class Boostify_Header_Footer_Image_Retina extends Widget_Base {
 		$this->end_controls_section();
 	}
 
+	/**
+	 * Check if the current widget has caption
+	 *
+	 * @access private
+	 * @since 1.2.0
+	 *
+	 * @param array $settings returns settings.
+	 *
+	 * @return boolean
+	 */
+	private function has_caption( $settings ) {
+		return ( ! empty( $settings['caption_source'] ) && 'none' !== $settings['caption_source'] );
+	}
+
+	/**
+	 * Get the caption for current widget.
+	 *
+	 * @access private
+	 * @since 1.2.0
+	 * @param array $settings returns the caption.
+	 *
+	 * @return string
+	 */
+	private function get_caption( $settings ) {
+		$caption = '';
+		if ( 'custom' === $settings['caption_source'] ) {
+			$caption = ! empty( $settings['caption'] ) ? $settings['caption'] : '';
+		}
+		return $caption;
+	}
+
+	/**
+	 * Render
+	 */
 	protected function render() {
 		$settings = $this->get_settings_for_display();
-		if ( empty( $settings['image']['url'] ) ) {
+
+		if ( empty( $settings['retina_image']['url'] ) ) {
 			return;
 		}
-		if ( ! $settings['retina']['id'] ) {
-			$image_url = $settings['retina']['url'];
-		} else {
-			$image_url = Elementor\Group_Control_Image_Size::get_attachment_image_src( $settings['retina']['id'], 'retina_image', $settings );
-		}
 
-		if ( ! $settings['image']['id'] ) {
-			$retina_url = $settings['image']['url'];
-		} else {
-			$retina_url = Elementor\Group_Control_Image_Size::get_attachment_image_src( $settings['image']['id'], 'retina_image', $settings );
-		}
-		$link        = empty( $settings['link'] ) ? false : $settings['link'];
-		$caption     = empty( $settings['caption'] ) ? false : $settings['caption'];
-		$image_data  = wp_get_attachment_image_src( $settings['image']['id'] );
-		$retina_data = wp_get_attachment_image_src( $settings['retina']['id'] );
-		if ( ! empty( $image_data ) ) {
-			$image_url = $image_data[0];
-		}
-		if ( ! empty( $retina_data ) ) {
-			$retina_image_url = $retina_data[0];
-		}
+		$has_caption = $this->has_caption( $settings );
+
+		$this->add_render_attribute( 'wrapper', 'class', 'boostify-retina-image' );
+
 		?>
-			<div class="boostify-retina-image-set boostify-retina-image">
+		<div <?php echo esc_attr( $this->get_render_attribute_string( 'wrapper' ) ); ?>>
+			<?php
+			$size = $settings['retina_image_size'];
+			$demo = '';
+
+			if ( 'custom' !== $size ) {
+				$image_size = $size;
+			} else {
+				require_once ELEMENTOR_PATH . 'includes/libraries/bfi-thumb/bfi-thumb.php';
+
+				$image_dimension = $settings['retina_image_custom_dimension'];
+
+				$image_size = array(
+					// Defaults sizes.
+					0           => null, // Width.
+					1           => null, // Height.
+
+					'bfi_thumb' => true,
+					'crop'      => true,
+				);
+
+				$has_custom_size = false;
+				if ( ! empty( $image_dimension['width'] ) ) {
+					$has_custom_size = true;
+					$image_size[0]   = $image_dimension['width'];
+				}
+
+				if ( ! empty( $image_dimension['height'] ) ) {
+					$has_custom_size = true;
+					$image_size[1]   = $image_dimension['height'];
+				}
+
+				if ( ! $has_custom_size ) {
+					$image_size = 'full';
+				}
+			}
+			$retina_image_url = $settings['real_retina']['url'];
+
+			$image_url = $settings['retina_image']['url'];
+
+			$image_data = wp_get_attachment_image_src( $settings['retina_image']['id'], $image_size, true );
+
+			$retina_data = wp_get_attachment_image_src( $settings['real_retina']['id'], $image_size, true );
+
+			$retina_image_class = 'elementor-animation-';
+
+			if ( ! empty( $settings['hover_animation'] ) ) {
+				$demo = $settings['hover_animation'];
+			}
+			if ( ! empty( $image_data ) ) {
+				$image_url = $image_data[0];
+			}
+			if ( ! empty( $retina_data ) ) {
+				$retina_image_url = $retina_data[0];
+			}
+			$class_animation = $retina_image_class . $demo;
+
+			$image_unset         = site_url() . '/wp-includes/images/media/default.png';
+			$placeholder_img_url = Utils::get_placeholder_image_src();
+
+			if ( $image_unset === $retina_image_url ) {
+				if ( $image_unset !== $image_url ) {
+					$retina_image_url = $image_url;
+				} else {
+					$retina_image_url = $placeholder_img_url;
+				}
+			}
+
+			if ( $image_unset === $image_url ) {
+				$image_url = $placeholder_img_url;
+			}
+
+			$link = empty( $settings['link'] ) ? false : $settings['link'];
+
+			?>
+			<div class="boostify-retina-image-set">
 				<div class="boostify-retina-image-container">
 					<?php $this->link_open( $link ); ?>
-					<img class="boostify-retina-img"  src="<?php echo esc_url( $image_url ); ?>" srcset="<?php echo esc_url( $image_url ) . esc_html( ' 1x' ) . ',' . esc_url( $retina_url ) . ' 2x'; ?>"/>
+					<img class="boostify-retina-img <?php echo esc_attr( $class_animation ); ?>" src="<?php echo esc_url( $image_url ); ?>" srcset="<?php echo esc_url( $image_url ) . esc_attr( ' 1x' ) . ',' . esc_url( $retina_image_url ) . esc_attr( ' 2x' ); ?>"/>
 					<?php $this->link_close( $link ); ?>
 				</div>
-				<?php if ( $caption ) : ?>
-					<div class="boostify-caption-width"> 
-						<figcaption class="widget-image-caption wp-caption-text"><?php echo esc_html( $caption ); ?></figcaption>
-					</div>
-				<?php endif; ?>
 			</div>
+		</div>
 		<?php
 	}
 
+	/**
+	 * [link_open description]
+	 *
+	 * @param string $link type.
+	 */
 	public function link_open( $link ) {
 		if ( $link['url'] ) {
 			?>
@@ -579,6 +691,11 @@ class Boostify_Header_Footer_Image_Retina extends Widget_Base {
 		}
 	}
 
+	/**
+	 * [link_close description]
+	 *
+	 * @param string $link type.
+	 */
 	public function link_close( $link ) {
 		if ( $link['url'] ) {
 			?>
