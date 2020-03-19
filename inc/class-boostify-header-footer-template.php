@@ -6,6 +6,7 @@
  *
  * @package Boostify_Header_Footer_Template
  *
+ * Written by ptp
  */
 
 defined( 'ABSPATH' ) || exit;

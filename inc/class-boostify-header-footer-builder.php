@@ -6,6 +6,9 @@ defined( 'ABSPATH' ) || exit;
  * Main Boostify Header Footer Builder
  *
  * @class Boostify_Header_Footer_Builder
+ *
+ * Written by ptp
+ *
  */
 if ( ! class_exists( 'Boostify_Header_Footer_Builder' ) ) {
 	class Boostify_Header_Footer_Builder {
@@ -35,6 +38,7 @@ if ( ! class_exists( 'Boostify_Header_Footer_Builder' ) ) {
 			include_once BOOSTIFY_HEADER_FOOTER_PATH . 'inc/class-boostify-header-footer-template.php';
 			include_once BOOSTIFY_HEADER_FOOTER_PATH . 'inc/elementor/class-boostify-header-footer-template-render.php';
 			include_once BOOSTIFY_HEADER_FOOTER_PATH . 'inc/elementor/class-boostify-header-footer-elementor.php';
+			include_once BOOSTIFY_HEADER_FOOTER_PATH . 'inc/class-boostify-header-footer-sub-menu.php';
 		}
 
 		public function hooks() {
@@ -87,6 +91,7 @@ if ( ! class_exists( 'Boostify_Header_Footer_Builder' ) ) {
 		public function init() {
 			new Boostify_Header_Footer_Metabox();
 			new Boostify_Header_Footer_Template_Render();
+			new Boostify_Header_Footer_Sub_Menu();
 		}
 
 		// Add Icon Elementor
