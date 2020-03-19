@@ -308,12 +308,12 @@ class Boostify_Header_Footer_Mega_Menu extends Widget_Base {
 	 * @return object $sub menu default layout
 	 */
 	protected function sub_menu_default( $menu_id, $child_of ) {
-		$defaults = array(
+		$args = array(
 			'theme_location' => $menu_id,
 			'level'          => 2,
 			'child_of'       => $child_of,
 		);
-		wp_nav_menu( $defaults );
+		wp_nav_menu( $args );
 	}
 
 }
