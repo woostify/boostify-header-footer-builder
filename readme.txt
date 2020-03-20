@@ -1,5 +1,5 @@
 === Boostify Header Footer Builder for Elementor ===
-Contributors: duongancol
+Contributors: duongancol, ptp96
 Donate link: https://woostify.com/contact/
 Tags: elementor, header builder, footer builder, elementor header, sticky menu, elementor sticky, header footer builder
 Requires at least: 4.0
@@ -29,7 +29,7 @@ Not like other plugins, the plugin gives the built-in widgets for the header so 
 <ul>
 	<li><strong>Logo</strong> - Automatically get a logo from the customizer. You can even set a custom image as a logo with a custom link and caption.</li>
 	<li><strong>Nav Menu</strong> - Offers you list of already created menus on your website. You just need to choose the required one. </li>
-    <li><strong>Site Search</strong> - Create a search widget, it support 2 layouts: icon search and form search </li>
+	<li><strong>Site Search</strong> - Create a search widget, it support 2 layouts: icon search and form search </li>
 	<li><strong>Retina Logo</strong> - Add Retina image for retina display </li>
 	<li><strong>Copyright</strong> - Support copyright shortcode for the footer [btf_year] [btf_site_tile][btf_site_tile] </li>
 </ul>

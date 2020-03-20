@@ -165,7 +165,7 @@ class Boostify_Header_Footer_Mega_Menu extends Widget_Base {
 		);
 
 		$repeater->add_control(
-			'sub_default',
+			'child_of',
 			array(
 				'label'       => __( 'Sub Menu Of', 'boostify' ),
 				'type'        => \Elementor\Controls_Manager::TEXT,
@@ -210,35 +210,46 @@ class Boostify_Header_Footer_Mega_Menu extends Widget_Base {
 	protected function render() {
 		$settings        = $this->get_settings_for_display();
 		$id_menu         = wp_rand();
-		$menu_item_class = 'menu_item menu-item-type-custom';
-
+		$menu_item_class = 'menu-item menu-item-type-custom';
+		$args = array(
+			'theme_location' => 'primary',
+			'level'          => 2,
+			'child_of'       => 'test',
+		);
+		wp_nav_menu( $args );
 		?>
 		<nav class="boostify-nav boostify-nav-mega boostify-menu-layout- boostify-mega-menu boostify-menu">
 			<ul id="menu-<?php echo esc_attr( $id_menu ); ?>" class="menu boostify-mega-menu boostify-menu">
 
 			<?php
 			foreach ( $settings['menu'] as $menu ) {
-				$sub_id = (int) $menu['sub_menu'];
-				if ( $menu['has_sub'] && 'no' !== $menu['sub_menu'] ) {
-					$menu_item_class .= ' menu-item-has-children current-menu-parent';
+				$sub_id        = (int) $menu['sub_menu'];
+				$sub_type      = $menu['sub_type'];
+				$menu_location = $menu['menu_register'];
+				$child_of      = $menu['child_of'];
+				$item_class    = '';
+
+				if ( 'yes' === $menu['has_sub'] && ( 'no' !== $menu['sub_menu'] || ( $child_of && $menu_location ) ) ) {
+
+						$item_class = ' menu-item-has-children current-menu-parent';
+
 				}
+
+				$classes = $menu_item_class . $item_class;
 				?>
-				<li class="<?php echo esc_attr( $menu_item_class ); ?>">
+				<li class="<?php echo esc_attr( $classes ); ?>">
 					<a href="<?php echo esc_url( $menu['link']['url'] ); ?>">
 						<?php echo esc_html( $menu['item_text'] ); ?>
 					</a>
-					<?php if ( $sub_id && 'no' !== $sub_id ) : ?>
-						<ul class="sub-menu">
-						<?php
-						$sub_menu = $this->get_submenu( $sub_id );
-						while ( $sub_menu->have_posts() ) {
-							$sub_menu->the_post();
-							the_content();
-						}
-						wp_reset_postdata();
-						?>
-						</ul>
-					<?php endif ?>
+					<?php
+						if ( $menu['has_sub'] && 'mega' === $sub_type && 'no' !== $menu['sub_menu'] ) :
+							$this->get_sub_mega_menu( $sub_id );
+						elseif ( $menu['has_sub'] && $menu_location && $child_of ) :
+							$this->sub_menu_default( $menu_location, $child_of );
+						
+						endif;
+					?>
+
 
 				</li>
 				<?php
@@ -292,14 +303,26 @@ class Boostify_Header_Footer_Mega_Menu extends Widget_Base {
 	 * @param int $post_id
 	 * @return object $sub_menu
 	 */
-	protected function get_submenu( $post_id ) {
+	protected function get_sub_mega_menu( $post_id ) {
 		$args     = array(
 			'p'         => $post_id,
 			'post_type' => 'btf_builder',
 		);
 		$sub_menu = new WP_Query( $args );
 
-		return $sub_menu;
+		if ( $post_id && 'no' !== $post_id ) :
+			?>
+			<ul class="sub-menu">
+			<?php
+			while ( $sub_menu->have_posts() ) {
+				$sub_menu->the_post();
+				the_content();
+			}
+			wp_reset_postdata();
+			?>
+			</ul>
+			<?php
+		endif;
 	}
 
 	/**

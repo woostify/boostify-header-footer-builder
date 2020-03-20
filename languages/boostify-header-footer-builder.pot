@@ -29,7 +29,7 @@ msgstr ""
 msgid "Footer"
 msgstr ""
 
-#: inc/admin/class-boostify-header-footer-metabox.php:38
+#: inc/admin/class-boostify-header-footer-metabox.php:38, inc/elementor/widgets/class-boostify-header-footer-mega-menu.php:143
 msgid "Sub Mega Menu"
 msgstr ""
 
@@ -57,23 +57,23 @@ msgstr ""
 msgid "Nothing Found"
 msgstr ""
 
-#: inc/class-boostify-header-footer-builder.php:75
+#: inc/class-boostify-header-footer-builder.php:79
 msgid "Boostify Header Footer Builder"
 msgstr ""
 
-#: inc/class-boostify-header-footer-builder.php:76
+#: inc/class-boostify-header-footer-builder.php:80
 msgid "Add New Header, Footer"
 msgstr ""
 
-#: inc/class-boostify-header-footer-builder.php:77
+#: inc/class-boostify-header-footer-builder.php:81
 msgid "Edit Header, Footer"
 msgstr ""
 
-#: inc/class-boostify-header-footer-builder.php:78
+#: inc/class-boostify-header-footer-builder.php:82
 msgid "All Header, Footer"
 msgstr ""
 
-#: inc/class-boostify-header-footer-builder.php:79
+#: inc/class-boostify-header-footer-builder.php:83
 msgid "Elementor Builder"
 msgstr ""
 
@@ -317,8 +317,8 @@ msgstr ""
 msgid "Icons"
 msgstr ""
 
-#: inc/elementor/widgets/class-boostify-header-footer-mega-menu.php:116, inc/elementor/widgets/class-boostify-header-footer-mega-menu.php:127, inc/elementor/widgets/class-boostify-header-footer-nav-menu.php:235
-msgid "Sub Menu"
+#: inc/elementor/widgets/class-boostify-header-footer-mega-menu.php:116
+msgid "Have Sub Menu"
 msgstr ""
 
 #: inc/elementor/widgets/class-boostify-header-footer-mega-menu.php:118
@@ -329,19 +329,31 @@ msgstr ""
 msgid "No"
 msgstr ""
 
-#: inc/elementor/widgets/class-boostify-header-footer-mega-menu.php:140
-msgid "Repeater List"
+#: inc/elementor/widgets/class-boostify-header-footer-mega-menu.php:127
+msgid "Sub Menu Type"
 msgstr ""
 
-#: inc/elementor/widgets/class-boostify-header-footer-mega-menu.php:146
+#: inc/elementor/widgets/class-boostify-header-footer-mega-menu.php:157, inc/elementor/widgets/class-boostify-header-footer-mega-menu.php:183, inc/elementor/widgets/class-boostify-header-footer-nav-menu.php:183
+msgid "Menu"
+msgstr ""
+
+#: inc/elementor/widgets/class-boostify-header-footer-mega-menu.php:170
+msgid "Sub Menu Of"
+msgstr ""
+
+#: inc/elementor/widgets/class-boostify-header-footer-mega-menu.php:172
+msgid "Enter parent menu name Ex: Home"
+msgstr ""
+
+#: inc/elementor/widgets/class-boostify-header-footer-mega-menu.php:189
 msgid "Menu Item 1"
 msgstr ""
 
-#: inc/elementor/widgets/class-boostify-header-footer-mega-menu.php:149
+#: inc/elementor/widgets/class-boostify-header-footer-mega-menu.php:192
 msgid "Menu Item 2"
 msgstr ""
 
-#: inc/elementor/widgets/class-boostify-header-footer-mega-menu.php:230
+#: inc/elementor/widgets/class-boostify-header-footer-mega-menu.php:275
 msgid "Select Sub Menu"
 msgstr ""
 
@@ -369,10 +381,6 @@ msgstr ""
 msgid "Layout"
 msgstr ""
 
-#: inc/elementor/widgets/class-boostify-header-footer-nav-menu.php:183
-msgid "Menu"
-msgstr ""
-
 #: inc/elementor/widgets/class-boostify-header-footer-nav-menu.php:187
 msgid "Go to the <a href=\"%s\" target=\"_blank\">Menus screen</a> to manage your menus."
 msgstr ""
@@ -383,6 +391,10 @@ msgstr ""
 
 #: inc/elementor/widgets/class-boostify-header-footer-nav-menu.php:220
 msgid "Pointer"
+msgstr ""
+
+#: inc/elementor/widgets/class-boostify-header-footer-nav-menu.php:235
+msgid "Sub Menu"
 msgstr ""
 
 #: inc/elementor/widgets/class-boostify-header-footer-nav-menu.php:245
