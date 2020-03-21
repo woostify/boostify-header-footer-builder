@@ -38,7 +38,7 @@ if ( ! class_exists( 'Boostify_Header_Footer_Builder' ) ) {
 			include_once BOOSTIFY_HEADER_FOOTER_PATH . 'inc/class-boostify-header-footer-template.php';
 			include_once BOOSTIFY_HEADER_FOOTER_PATH . 'inc/elementor/class-boostify-header-footer-template-render.php';
 			include_once BOOSTIFY_HEADER_FOOTER_PATH . 'inc/elementor/class-boostify-header-footer-elementor.php';
-			include_once BOOSTIFY_HEADER_FOOTER_PATH . 'inc/class-boostify-header-footer-sub-menu.php';
+			include_once BOOSTIFY_HEADER_FOOTER_PATH . 'inc/menu/class-boostify-header-footer-sub-menu.php';
 		}
 
 		public function hooks() {

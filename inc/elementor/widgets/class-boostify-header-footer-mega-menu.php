@@ -156,7 +156,7 @@ class Boostify_Header_Footer_Mega_Menu extends Widget_Base {
 			array(
 				'label'     => __( 'Menu', 'boostify' ),
 				'type'      => \Elementor\Controls_Manager::SELECT,
-				'options'   => get_registered_nav_menus(),
+				'options'   => $this->all_menu_site(),
 				'condition' => array(
 					'has_sub'  => 'yes',
 					'sub_type' => 'default',
@@ -211,12 +211,6 @@ class Boostify_Header_Footer_Mega_Menu extends Widget_Base {
 		$settings        = $this->get_settings_for_display();
 		$id_menu         = wp_rand();
 		$menu_item_class = 'menu-item menu-item-type-custom';
-		$args = array(
-			'theme_location' => 'primary',
-			'level'          => 2,
-			'child_of'       => 'test',
-		);
-		wp_nav_menu( $args );
 		?>
 		<nav class="boostify-nav boostify-nav-mega boostify-menu-layout- boostify-mega-menu boostify-menu">
 			<ul id="menu-<?php echo esc_attr( $id_menu ); ?>" class="menu boostify-mega-menu boostify-menu">
@@ -242,12 +236,12 @@ class Boostify_Header_Footer_Mega_Menu extends Widget_Base {
 						<?php echo esc_html( $menu['item_text'] ); ?>
 					</a>
 					<?php
-						if ( $menu['has_sub'] && 'mega' === $sub_type && 'no' !== $menu['sub_menu'] ) :
+					if ( $menu['has_sub'] && 'mega' === $sub_type && 'no' !== $menu['sub_menu'] ) :
 							$this->get_sub_mega_menu( $sub_id );
-						elseif ( $menu['has_sub'] && $menu_location && $child_of ) :
+					elseif ( $menu['has_sub'] && $menu_location && $child_of ) :
 							$this->sub_menu_default( $menu_location, $child_of );
-						
-						endif;
+
+					endif;
 					?>
 
 
@@ -312,13 +306,10 @@ class Boostify_Header_Footer_Mega_Menu extends Widget_Base {
 
 		if ( $post_id && 'no' !== $post_id ) :
 			?>
-			<ul class="sub-menu">
+			<ul class="sub-menu sub-mega-menu">
 			<?php
-			while ( $sub_menu->have_posts() ) {
-				$sub_menu->the_post();
-				the_content();
-			}
-			wp_reset_postdata();
+			echo do_shortcode( '[bhf id="' . $post_id . '" type="sub_menu"]' );
+
 			?>
 			</ul>
 			<?php
@@ -332,11 +323,32 @@ class Boostify_Header_Footer_Mega_Menu extends Widget_Base {
 	 */
 	protected function sub_menu_default( $menu_id, $child_of ) {
 		$args = array(
-			'theme_location' => $menu_id,
-			'level'          => 2,
-			'child_of'       => $child_of,
+			'menu'       => $menu_id,
+			'level'      => 2,
+			'child_of'   => $child_of,
+			'menu_id'    => '',
+			'menu_class' => 'sub-menu',
+			'container'  => '',
 		);
 		wp_nav_menu( $args );
+	}
+
+	/**
+	 * Get Sub Mega Menu Class
+	 *
+	 * @return array | list menu in site
+	 */
+	protected function all_menu_site() {
+		$menus   = wp_get_nav_menus();
+		$options = array(
+			'no' => 'Select Menu',
+		);
+
+		foreach ( $menus as $menu ) {
+			$options[ $menu->slug ] = $menu->name;
+		}
+
+		return $options;
 	}
 
 }

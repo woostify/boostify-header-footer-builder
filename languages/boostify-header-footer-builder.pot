@@ -353,7 +353,7 @@ msgstr ""
 msgid "Menu Item 2"
 msgstr ""
 
-#: inc/elementor/widgets/class-boostify-header-footer-mega-menu.php:275
+#: inc/elementor/widgets/class-boostify-header-footer-mega-menu.php:286
 msgid "Select Sub Menu"
 msgstr ""
 
