@@ -1,5 +1,5 @@
 === Boostify Header Footer Builder for Elementor ===
-Contributors: duongancol
+Contributors: duongancol, ptp96
 Donate link: https://woostify.com/contact/
 Tags: elementor, header builder, footer builder, elementor header, sticky menu, elementor sticky, header footer builder
 Requires at least: 4.0
