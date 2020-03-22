@@ -35,8 +35,7 @@ class Boostify_Header_Footer_Template_Render {
 			self::$elementor_instance = Elementor\Plugin::instance();
 
 			// Scripts and styles.
-			add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ), 10 );
-			add_action( 'get_header', array( $this, 'enqueue_scripts' ) );
+			add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
 			add_shortcode( 'bhf', array( $this, 'render_template' ) );
 		}
 
