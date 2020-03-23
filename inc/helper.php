@@ -50,6 +50,9 @@ function boostify_header_footer_search_form( $icon = 'ion-ios-search', $placehol
 function boostify_header_footer_content() {
 	$id   = get_the_ID();
 	$type = get_post_meta( $id, 'bhf_type' );
+	if ( empty( $type ) ) {
+		$type[0] = 'header';
+	}
 	if ( 'header' === $type[0] ) {
 		$path = BOOSTIFY_HEADER_FOOTER_PATH . 'templates/content/content-header.php';
 	} elseif ( 'footer' === $type[0] ) {
