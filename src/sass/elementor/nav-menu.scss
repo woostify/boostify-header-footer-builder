@@ -6,6 +6,7 @@
 	flex-wrap: wrap;
 
 	&>li {
+		margin: 0;
 		&>a {
 			text-transform: uppercase;
 			font-weight: 600;

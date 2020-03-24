@@ -6,6 +6,10 @@
   flex-wrap: wrap;
 }
 
+.boostify-menu > li {
+  margin: 0;
+}
+
 .boostify-menu > li > a {
   text-transform: uppercase;
   font-weight: 600;

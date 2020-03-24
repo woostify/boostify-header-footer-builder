@@ -76,6 +76,15 @@ if ( ! class_exists( 'Boostify_Header_Footer_Elementor' ) ) {
 				BOOSTIFY_HEADER_FOOTER_VER,
 				true
 			);
+
+			// Mega Menu
+			wp_register_script(
+				'boostify_hf_nav_mega',
+				BOOSTIFY_HEADER_FOOTER_URL . 'assets/js/mega-menu' . boostify_header_footer_suffix() . '.js',
+				array( 'jquery' ),
+				BOOSTIFY_HEADER_FOOTER_VER,
+				true
+			);
 		}
 		/**
 		 * Include Widgets files

@@ -1,6 +1,6 @@
 <?php
 
-
+use Elementor\Widget_Base;
 use Elementor\Utils;
 
 if ( ! defined( 'ABSPATH' ) ) {
