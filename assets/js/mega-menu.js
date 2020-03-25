@@ -11,6 +11,7 @@
 		var itemMega = main.find( '.menu-item-has-mega' );
 		var toggle   = $scope.find( '.boostify-menu-toggle' );
 		var nav      = $scope.find( '.boostify-menu-sidebar' );
+		var overlay  = $scope.find( '.boostify-overlay' );
 		var close    = $scope.find( '.boostify--close-menu-side-bar' );
 		console.log( sub );
 		sub.each(
@@ -24,36 +25,111 @@
 		);
 
 		// Set With Mega Menu
-		itemMega.each(
-			function( index ) {
-				var item  = $( this );
-				var mega  = item.find( '.boostify-mega-sub' );
-				var width = $( window ).width();
-				var left  = item.offset().left;
-				mega.css({ 'left' : '-' + left + 'px', 'width' : width });
+		megaWidth();
+
+		$( window ).resize(
+			function() {
+				megaWidth();
+			}
+		);
+		function megaWidth() {
+			itemMega.each(
+				function( index ) {
+					var item  = $( this );
+					var mega  = item.find( '.boostify-mega-sub' );
+					var width = $( window ).width();
+					var left  = item.offset().left;
+					var padding, contentWith;
+					if ( width > 1170 ) {
+						padding     = ( width - 1170 ) / 2;
+						contentWith = 1170;
+						left        = padding - left;
+
+					} else {
+						padding     = 15;
+						left        = padding - left;
+						contentWith = ( width - 30 );
+
+					}
+					mega.css( { 'left' : left + 'px', 'width' : contentWith + 'px' } );
+				}
+			);
+		}
+
+		// Show Menu Mobile
+		toggle.on(
+			'click',
+			function(e) {
+				e.preventDefault();
+				if ( nav.hasClass( 'show' ) ) {
+					nav.removeClass( 'show' );
+					overlay.removeClass( 'show' );
+				} else {
+					nav.addClass( 'show' );
+					overlay.addClass( 'show' );
+				}
 			}
 		);
 
-
-		// Show Menu Mobile
-		toggle.on('click', function(e) {
-			e.preventDefault();
-
-			if ( nav.hasClass( 'show' ) ) {
+		// Close menu mobile when click overlay
+		overlay.on(
+			'click',
+			function(e) {
 				nav.removeClass( 'show' );
-				overlay.removeClass('show');
-
-			} else {
-				nav.addClass('show');
-				overlay.addClass('show');
+				overlay.removeClass( 'show' );
 			}
-		});
+		);
 
+		// Close menu mobile when click icon close
+		close.on(
+			'click',
+			function(e) {
+				nav.removeClass( 'show' );
+				overlay.removeClass( 'show' );
+			}
+		);
 
+		// Close menu mobile when click ESC
+		$( document ).on(
+			'keyup',
+			function (e) {
+				if (e.keyCode === 27) {
+					nav.removeClass( 'show' );
+					overlay.removeClass( 'show' );
+				};
+			}
+		);
+
+		/* MOBILE MENU */
+
+		var btn = nav.find( 'ul >.menu-item-has-children>a' );
+		btn.on(
+			'click',
+			function (e) {
+				e.preventDefault();
+				var item   = $( this ).siblings( 'ul.sub-menu' );
+				var active = item.hasClass( 'active' );
+				if ( active ) {
+					item.removeClass( 'active' );
+					$( this ).removeClass( 'up' );
+					item.slideUp( 300 );
+				} else {
+					item.addClass( 'active' );
+					item.slideDown( 300 );
+					$( this ).addClass( 'up' );
+				}
+			}
+		);
+
+		if ( main.hasClass( 'primary-menu' ) ) {
+			main.removeClass( 'primary-menu' );
+		}
 	};
 
-
-	$(window).on('elementor/frontend/init', function () {
-		elementorFrontend.hooks.addAction('frontend/element_ready/ht-hf-mega-menu.default', WidgetMegaMenu);
-	});
-})(jQuery);
+	$( window ).on(
+		'elementor/frontend/init',
+		function () {
+			elementorFrontend.hooks.addAction( 'frontend/element_ready/ht-hf-mega-menu.default', WidgetMegaMenu );
+		}
+	);
+} )( jQuery );

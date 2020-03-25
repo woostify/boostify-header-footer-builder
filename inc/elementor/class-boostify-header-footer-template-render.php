@@ -45,7 +45,7 @@ class Boostify_Header_Footer_Template_Render {
 	/**
 	 * Prints the admin notics when Elementor is not installed or activated.
 	 */
-	public function elementor_not_available() {
+	protected function elementor_not_available() {
 
 		if ( file_exists( WP_PLUGIN_DIR . '/elementor/elementor.php' ) ) {
 			$url = network_admin_url() . 'plugins.php?s=elementor';
@@ -133,11 +133,4 @@ class Boostify_Header_Footer_Template_Render {
 			return false;
 		}
 	}
-
-	/**
-	 * Callback to shortcode.
-	 *
-	 * @param array $atts attributes for shortcode.
-	 */
-
 }

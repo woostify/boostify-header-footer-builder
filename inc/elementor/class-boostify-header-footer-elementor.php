@@ -130,10 +130,6 @@ if ( ! class_exists( 'Boostify_Header_Footer_Elementor' ) ) {
 			}
 		}
 
-		private function includes() {
-			require BOOSTIFY_HEADER_FOOTER_PATH . 'inc/elementor/module/class-boostify-header-footer-sticky.php';
-		}
-
 		public function init() {
 
 			$this->modules_manager = Boostify_Header_Footer_Sticky::instance();
@@ -156,12 +152,21 @@ if ( ! class_exists( 'Boostify_Header_Footer_Elementor' ) ) {
 		private function setup_hooks() {
 			// Register Modul.
 			add_action( 'elementor/init', array( $this, 'init' ) );
+			add_action( 'elementor/init', array( $this, 'register_abstract' ) );
 			// Register custom widget categories.
 			add_action( 'elementor/elements/categories_registered', array( $this, 'add_elementor_widget_categories' ) );
 			// Register widget scripts
 			add_action( 'elementor/frontend/after_register_scripts', array( $this, 'widget_scripts' ) );
 			// Register widgets
 			add_action( 'elementor/widgets/widgets_registered', array( $this, 'register_widgets' ) );
+		}
+
+		public function register_abstract() {
+			include_once BOOSTIFY_HEADER_FOOTER_PATH . 'inc/elementor/abstract/class-nav-menu.php';
+		}
+
+		public function includes() {
+			require BOOSTIFY_HEADER_FOOTER_PATH . 'inc/elementor/module/class-boostify-header-footer-sticky.php';
 		}
 
 		/**

@@ -14,7 +14,6 @@
 		var sub = main.find( '.sub-menu' );
 		sub.each( function (index) {
 			$(this).wrap('<div class="boostify-menu-child">');
-
 		} );
 
 		// Show Menu Mobile

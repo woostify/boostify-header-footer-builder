@@ -132,6 +132,10 @@
   display: none;
 }
 
+.boostify-menu-sidebar .boostify-dropdown-menu li.menu-item {
+  margin: 0;
+}
+
 .boostify-overlay {
   display: none;
 }

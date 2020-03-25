@@ -1,7 +1,6 @@
 <?php
 
 use Boostify_Header_Footer\Nav_Menu;
-use Elementor\Widget_Base;
 use Elementor\Controls_Manager;
 
 /**
@@ -10,7 +9,7 @@ use Elementor\Controls_Manager;
  * Elementor widget for Mega Menu.
  * Author: ptp
  */
-class Boostify_Header_Footer_Mega_Menu extends Widget_Base {
+class Boostify_Header_Footer_Mega_Menu extends Nav_Menu {
 
 	/**
 	 * Retrieve the widget name.
@@ -38,49 +37,11 @@ class Boostify_Header_Footer_Mega_Menu extends Widget_Base {
 		return __( 'Mega Menu', 'boostify' );
 	}
 
-	/**
-	 * Retrieve the widget icon.
-	 *
-	 * @since 1.2.0
-	 *
-	 * @access public
-	 *
-	 * @return string Widget icon.
-	 */
-	public function get_icon() {
-		return 'fa fa-copyright';
-	}
-
-	/**
-	 * Retrieve the list of categories the widget belongs to.
-	 *
-	 * Used to determine where to display the widget in the editor.
-	 *
-	 * Note that currently Elementor supports only one category.
-	 * When multiple categories passed, Elementor uses the first one.
-	 *
-	 * @since 1.2.0
-	 *
-	 * @access public
-	 *
-	 * @return array Widget categories.
-	 */
-	// public function get_categories() {
-	// 	return array( 'ht_hf_builder' );
-	// }
-
 	public function get_script_depends() {
 		return array( 'boostify_hf_nav_mega' );
 	}
 
-	public function _register_controls() { //phpcs:ignore
-		$this->add_control_main_menu();
-		$this->add_control_mobile();
-		$this->add_control_menu_style();
-		$this->add_control_submenu_style();
-	}
-
-	protected function add_control_main_menu() {
+	protected function main_menu() {
 		$this->start_controls_section(
 			'section_title',
 			array(
@@ -208,360 +169,62 @@ class Boostify_Header_Footer_Mega_Menu extends Widget_Base {
 			)
 		);
 
-		$this->end_controls_section();
-	}
-
-
-
-	protected function add_control_mobile() {
-		$this->start_controls_section(
-			'mega_mobile',
-			array(
-				'label' => esc_html__( 'Menu Mobile', 'boostify' ),
-			)
-		);
-
 		$this->add_control(
-			'toggle_icon',
+			'align',
 			array(
-				'label'     => __( 'Toggle Icons', 'boostify' ),
-				'type'      => \Elementor\Controls_Manager::ICON,
-				'separator' => 'before',
-				'default'   => 'ion-android-menu',
-				'include'   => array(
-					'fa fa-navicon',
-					'ion-navicon',
-					'ion-navicon-round',
-					'ion-android-menu',
-				),
-			)
-		);
-
-		$this->add_control(
-			'toggle-align',
-			array(
-				'label'     => esc_html__( 'Toggle Align', 'boostify' ),
+				'label'     => esc_html__( 'Align', 'boostify' ),
 				'type'      => Controls_Manager::CHOOSE,
-				'default'   => 'right',
+				'default'   => 'flex-start',
 				'selectors' => array(
-					'{{WRAPPER}} .boostify-menu-toggle' => 'text-align: {{VALUE}};',
+					'{{WRAPPER}} .boostify-menu' => 'justify-content: {{VALUE}};',
 				),
 				'options'   => array(
-					'left'   => array(
+					'flex-start' => array(
 						'icon'  => 'eicon-h-align-left',
-						'title' => 'Top',
+						'title' => 'Left',
 					),
-					'center' => array(
+					'center'     => array(
 						'icon'  => 'eicon-h-align-center',
 						'title' => 'Center',
 					),
-					'right'  => array(
+					'flex-end'   => array(
 						'icon'  => 'eicon-h-align-right',
-						'title' => 'Bottom',
+						'title' => 'Right',
 					),
 				),
 			)
 		);
 
-		$this->end_controls_section();
-	}
-
-	public function add_control_menu_style() {
-		$this->start_controls_section(
-			'menu_style',
-			array(
-				'label' => __( 'Menu Style', 'boostify' ),
-				'tab'   => Controls_Manager::TAB_STYLE,
-			)
-		);
-
-		$this->start_controls_tabs(
-			'menu_style_tabs'
-		);
-
-		$this->start_controls_tab(
-			'style_nemu_normal_tab',
-			array(
-				'label' => __( 'Normal', 'boostify' ),
-			)
-		);
-
-		$this->menu_style_nornal();
-
-		$this->end_controls_tab();
-
-		$this->start_controls_tab(
-			'style_menu_hover_tab',
-			array(
-				'label' => __( 'Hover', 'boostify' ),
-			)
-		);
-
-		$this->menu_style_hover();
-
-		$this->end_controls_tab();
-
-		$this->end_controls_tabs();
-
-		$this->end_controls_section();
-	}
-
-	public function menu_style_nornal() {
 		$this->add_control(
-			'menucolor',
+			'pointer',
 			array(
-				'label'     => __( 'Menu Color', 'boostify' ),
-				'type'      => Controls_Manager::COLOR,
-				'default'   => '#000',
-				'scheme'    => array(
-					'type'  => \Elementor\Scheme_Color::get_type(),
-					'value' => \Elementor\Scheme_Color::COLOR_1,
+				'label'   => __( 'Pointer', 'boostify' ),
+				'type'    => Controls_Manager::SELECT,
+				'default' => 'none',
+				'options' => array(
+					'background' => 'Background',
+					'underline'  => 'Underline',
+					'none'       => 'None',
 				),
-				'selectors' => array(
-					'{{WRAPPER}} .boostify-menu > li > a' => 'color: {{VALUE}}',
-				),
-			)
-		);
 
-		$this->add_group_control(
-			Elementor\Group_Control_Typography::get_type(),
-			array(
-				'name'     => 'menu_typo',
-				'label'    => __( 'Typography', 'boostify' ),
-				'scheme'   => Elementor\Scheme_Typography::TYPOGRAPHY_1,
-				'selector' => '{{WRAPPER}} .boostify-menu > li > a',
-			)
-		);
-
-		$this->add_control(
-			'menu_item_padding',
-			array(
-				'label'      => __( 'Padding', 'boostify' ),
-				'type'       => Controls_Manager::DIMENSIONS,
-				'size_units' => array( 'px', '%', 'em' ),
-				'default'    => array(
-					'top'    => 0,
-					'bottom' => 0,
-					'left'   => 20,
-					'right'  => 20,
-				),
-				'selectors'  => array(
-					'{{WRAPPER}} .boostify-menu > li > a' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-				),
-			)
-		);
-	}
-
-	public function menu_style_hover() {
-		$this->add_control(
-			'menu_color_hover',
-			array(
-				'label'     => __( 'Menu Color', 'boostify' ),
-				'type'      => Controls_Manager::COLOR,
-				'default'   => '#aa3166',
-				'scheme'    => array(
-					'type'  => \Elementor\Scheme_Color::get_type(),
-					'value' => \Elementor\Scheme_Color::COLOR_1,
-				),
-				'selectors' => array(
-					'{{WRAPPER}} .boostify-menu > li:hover > a' => 'color: {{VALUE}}',
-					'{{WRAPPER}} .boostify--hover-underline .boostify-menu > li:hover > a:after' => 'background-color: {{VALUE}}',
-				),
-			)
-		);
-
-		$this->add_control(
-			'menu_item_background_color_hover',
-			array(
-				'label'     => __( 'Background Item Hover', 'boostify' ),
-				'type'      => Controls_Manager::COLOR,
-				'default'   => '#eee',
-				'scheme'    => array(
-					'type'  => \Elementor\Scheme_Color::get_type(),
-					'value' => \Elementor\Scheme_Color::COLOR_1,
-				),
-				'selectors' => array(
-					'{{WRAPPER}} .boostify--hover-background .boostify-menu > li:hover' => 'background-color: {{VALUE}}',
-				),
-			)
-		);
-
-		$this->add_group_control(
-			Elementor\Group_Control_Typography::get_type(),
-			array(
-				'name'     => 'menu_typo_hover',
-				'label'    => __( 'Typography', 'boostify' ),
-				'scheme'   => Elementor\Scheme_Typography::TYPOGRAPHY_1,
-				'selector' => '{{WRAPPER}} .boostify-menu > li:hover > a',
-			)
-		);
-	}
-
-	public function add_control_submenu_style() {
-		$this->start_controls_section(
-			'submenu_style',
-			array(
-				'label' => __( 'Sub Menu Style', 'boostify' ),
-				'tab'   => Controls_Manager::TAB_STYLE,
-			)
-		);
-
-		$this->add_responsive_control(
-			'dropdown_top_distance',
-			array(
-				'label'     => __( 'Distance', 'boostify' ),
-				'type'      => Controls_Manager::SLIDER,
-				'range'     => array(
-					'px' => array(
-						'min' => 0,
-						'max' => 100,
-					),
-				),
-				'selectors' => array(
-					'{{WRAPPER}} .boostify-menu>.menu-item-has-children>.boostify-menu-child' => 'padding-top: {{SIZE}}{{UNIT}} !important',
-				),
-				'separator' => 'before',
-			)
-		);
-
-		$this->add_control(
-			'padding_submenu_item',
-			array(
-				'label'      => __( 'Padding', 'boostify' ),
-				'type'       => Controls_Manager::DIMENSIONS,
-				'size_units' => array( 'px' ),
-				'default'    => array(
-					'top'    => 15,
-					'bottom' => 15,
-					'left'   => 20,
-					'right'  => 20,
-				),
-				'selectors'  => array(
-					'{{WRAPPER}} .boostify-menu .sub-menu a' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-				),
-			)
-		);
-
-		$this->start_controls_tabs(
-			'submenu_style_tabs'
-		);
-
-		$this->start_controls_tab(
-			'style_submemu_normal_tab',
-			array(
-				'label' => __( 'Normal', 'boostify' ),
-			)
-		);
-
-		$this->submenu_style_nornal();
-
-		$this->end_controls_tab();
-
-		$this->start_controls_tab(
-			'style_submenu_hover_tab',
-			array(
-				'label' => __( 'Hover', 'boostify' ),
-			)
-		);
-
-		$this->submenu_style_hover();
-
-		$this->end_controls_tab();
-
-		$this->end_controls_tabs();
-
-		$this->add_control(
-			'color_submenu_border',
-			array(
-				'label'     => __( 'SubMenu Border Color', 'boostify' ),
-				'type'      => Controls_Manager::COLOR,
-				'default'   => '#d1346f',
-				'separator' => 'before',
-				'scheme'    => array(
-					'type'  => \Elementor\Scheme_Color::get_type(),
-					'value' => \Elementor\Scheme_Color::COLOR_1,
-				),
-				'selectors' => array(
-					'{{WRAPPER}} .boostify-menu .sub-menu' => 'border-top-color: {{VALUE}}',
-				),
-			)
-		);
-
-		$this->add_group_control(
-			Elementor\Group_Control_Background::get_type(),
-			array(
-				'name'     => 'background_submenu',
-				'label'    => __( 'Background', 'boostify' ),
-				'types'    => array( 'classic', 'gradient', 'video' ),
-				'selector' => '.boostify-menu .sub-menu',
 			)
 		);
 
 		$this->end_controls_section();
 	}
 
-	public function submenu_style_nornal() {
+	/**
+	 * Add Custom mobile menu controll
+	 */
+	protected function custom_mobile_menu() {
 		$this->add_control(
-			'color_submenu',
+			'menu_mobile',
 			array(
-				'label'     => __( 'SubMenu Color', 'boostify' ),
-				'type'      => Controls_Manager::COLOR,
-				'default'   => '#000',
-				'separator' => 'before',
-				'scheme'    => array(
-					'type'  => \Elementor\Scheme_Color::get_type(),
-					'value' => \Elementor\Scheme_Color::COLOR_1,
-				),
-				'selectors' => array(
-					'{{WRAPPER}} .boostify-menu .menu-item-has-children .sub-menu a' => 'color: {{VALUE}}',
-				),
-			)
-		);
-
-		$this->add_group_control(
-			Elementor\Group_Control_Typography::get_type(),
-			array(
-				'name'     => 'submenu_typo',
-				'label'    => __( 'Typography', 'boostify' ),
-				'scheme'   => Elementor\Scheme_Typography::TYPOGRAPHY_1,
-				'selector' => '{{WRAPPER}} .boostify-menu .menu-item-has-children .sub-menu a',
-			)
-		);
-	}
-
-	public function submenu_style_hover() {
-		$this->add_control(
-			'color_submenu_hover',
-			array(
-				'label'     => __( 'SubMenu Color', 'boostify' ),
-				'type'      => Controls_Manager::COLOR,
-				'default'   => '#aa3166',
-				'separator' => 'before',
-				'scheme'    => array(
-					'type'  => \Elementor\Scheme_Color::get_type(),
-					'value' => \Elementor\Scheme_Color::COLOR_1,
-				),
-				'selectors' => array(
-					'{{WRAPPER}} .boostify-menu li .sub-menu > li:hover > a'                                  => 'color: {{VALUE}}',
-					'{{WRAPPER}} .boostify--hover-underline .boostify-menu li .sub-menu > li:hover > a:after' => 'background-color: {{VALUE}}',
-					'{{WRAPPER}} .boostify-menu .sub-menu li.current-menu-item a'                                       => 'color: {{VALUE}}',
-				),
-			)
-		);
-
-		$this->add_control(
-			'submenu_item_background_color_hover',
-			array(
-				'label'     => __( 'Background Submenu Item Hover', 'boostify' ),
-				'type'      => Controls_Manager::COLOR,
-				'default'   => '#eee',
-				'scheme'    => array(
-					'type'  => \Elementor\Scheme_Color::get_type(),
-					'value' => \Elementor\Scheme_Color::COLOR_1,
-				),
-				'selectors' => array(
-					'{{WRAPPER}} .boostify--hover-background .boostify-menu .sub-menu > li:hover' => 'background-color: {{VALUE}}',
-				),
+				'label'        => esc_html__( 'Menu Mobile', 'boostify' ),
+				'type'         => Controls_Manager::SELECT,
+				'options'      => $this->all_menu_site(),
+				'save_default' => true,
+				'default'      => 'no',
 			)
 		);
 	}
@@ -644,33 +307,15 @@ class Boostify_Header_Footer_Mega_Menu extends Widget_Base {
 	}
 
 	/**
-	 * Get Sub Mega Menu Class
-	 *
-	 * @return array | list menu in site
-	 */
-	protected function all_menu_site() {
-		$menus   = wp_get_nav_menus();
-		$options = array(
-			'no' => 'Select Menu',
-		);
-
-		foreach ( $menus as $menu ) {
-			$options[ $menu->slug ] = $menu->name;
-		}
-
-		return $options;
-	}
-
-	/**
 	 * Dissplay menu For Site
 	 *
 	 * @return template menu site
 	 */
-	protected function get_menu_site( $setting_menu ) {
+	protected function get_menu_site( $setting_menu, $classes = 'boostify-menu' ) {
 		$id_menu         = wp_rand();
 		$menu_item_class = 'menu-item menu-item-type-custom';
 		?>
-		<ul id="menu-<?php echo esc_attr( $id_menu ); ?>" class="menu boostify-mega-menu boostify-menu">
+		<ul id="menu-<?php echo esc_attr( $id_menu ); ?>" class="menu boostify-mega-menu <?php echo esc_attr( $classes ); ?>">
 
 		<?php
 		foreach ( $setting_menu as $menu ) {
@@ -723,7 +368,7 @@ class Boostify_Header_Footer_Mega_Menu extends Widget_Base {
 		$settings = $this->get_settings_for_display();
 		?>
 		<div class="boostify-navigation--widget">
-			<nav class="boostify-nav-mega boostify-menu-layout- boostify-mega-menu boostify-main-navigation">
+			<nav class="boostify-nav-mega boostify-menu-layout- boostify-mega-menu boostify-main-navigation <?php echo esc_attr( $settings['menu'] . ' boostify--hover-' . esc_attr( $settings['pointer'] ) ); ?>">
 				<?php $this->get_menu_site( $settings['menu'] ); ?>
 			</nav>
 			<a href="#" class="boostify-menu-toggle" aria-expanded="false">
@@ -732,17 +377,19 @@ class Boostify_Header_Footer_Mega_Menu extends Widget_Base {
 				<span class="screen-reader-text menu-toggle-text"><?php esc_html_e( 'Menu', 'wunderlust' ); ?></span>
 			</a><!-- .menu-toggle -->
 
-			<div class="boostify-menu-sidebar boostify--hover-">
+			<div class="boostify-menu-sidebar boostify--hover-<?php echo esc_attr( $settings['pointer'] ); ?>">
 				<div class="boostify-menu-sidebar--wrapper">
 
 					<nav class="boostify-menu-dropdown" aria-label="<?php esc_attr_e( 'Dropdown navigation', 'boostify' ); ?>">
-						<?php $this->get_menu_site( $settings['menu'] ); ?>
+						<?php $this->get_menu_site( $settings['menu'], 'boostify-dropdown-menu' ); ?>
 					</nav>
 				</div>
 			</div>
 		</div>
+		<div class="boostify-overlay">
+			<a href="#" class="boostify--close-menu-side-bar ion-android-close"></a>
+		</div>
 		<?php
-		echo class_exists( '\Elementor\Widget_Base' );
 	}
 }
 
