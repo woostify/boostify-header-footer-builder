@@ -2,28 +2,17 @@
 
 namespace Boostify_Header_Footer;
 
-use Elementor\Widget_Base;
 use Elementor\Controls_Manager;
 use Elementor\Group_Control_Background;
 use Elementor\Group_Control_Typography;
 use Elementor\Scheme_Typography;
+use Boostify_Header_Footer\Base_Widget;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 
-abstract class Nav_Menu extends Widget_Base {
-
-	/**
-	 * Retrieve the list of categories the widget belongs to.
-	 *
-	 * Used to determine where to display the widget in the editor.
-	 *
-	 * @return array Widget categories.
-	 */
-	public function get_categories() {
-		return array( 'ht_hf_builder' );
-	}
+abstract class Nav_Menu extends Base_Widget {
 
 	/**
 	 * Retrieve the widget icon.

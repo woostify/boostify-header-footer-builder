@@ -1,5 +1,5 @@
 <?php
-use Elementor\Widget_Base;
+use Boostify_Header_Footer\Base_Widget;
 use Elementor\Controls_Manager;
 
 /**
@@ -7,7 +7,7 @@ use Elementor\Controls_Manager;
  *
  * Elementor widget for Site Search.
  */
-class Boostify_Header_Footer_Site_Search extends Widget_Base {
+class Boostify_Header_Footer_Site_Search extends Base_Widget {
 
 	/**
 	 * Retrieve the widget name.
@@ -34,17 +34,6 @@ class Boostify_Header_Footer_Site_Search extends Widget_Base {
 	 */
 	public function get_icon() {
 		return 'eicon-search';
-	}
-
-	/**
-	 * Retrieve the list of categories the widget belongs to.
-	 *
-	 * Used to determine where to display the widget in the editor.
-	 *
-	 * @return array Widget categories.
-	 */
-	public function get_categories() {
-		return array( 'ht_hf_builder' );
 	}
 
 

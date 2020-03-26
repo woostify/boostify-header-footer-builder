@@ -162,6 +162,7 @@ if ( ! class_exists( 'Boostify_Header_Footer_Elementor' ) ) {
 		}
 
 		public function register_abstract() {
+			include_once BOOSTIFY_HEADER_FOOTER_PATH . 'inc/elementor/abstract/class-base-widget.php';
 			include_once BOOSTIFY_HEADER_FOOTER_PATH . 'inc/elementor/abstract/class-nav-menu.php';
 		}
 

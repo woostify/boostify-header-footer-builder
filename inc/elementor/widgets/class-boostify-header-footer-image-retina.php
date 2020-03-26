@@ -1,6 +1,6 @@
 <?php
 
-use Elementor\Widget_Base;
+use Boostify_Header_Footer\Base_Widget;
 use Elementor\Controls_Manager;
 use Elementor\Utils;
 use Elementor\Group_Control_Css_Filter;
@@ -11,7 +11,7 @@ use Elementor\Group_Control_Css_Filter;
  * Elementor widget for Image Retina.
  * Aurhor: ptp
  */
-class Boostify_Header_Footer_Image_Retina extends Widget_Base {
+class Boostify_Header_Footer_Image_Retina extends Base_Widget {
 
 	/**
 	 * Retrieve the widget name.
@@ -50,24 +50,6 @@ class Boostify_Header_Footer_Image_Retina extends Widget_Base {
 	 */
 	public function get_icon() {
 		return 'eicon-eye';
-	}
-
-	/**
-	 * Retrieve the list of categories the widget belongs to.
-	 *
-	 * Used to determine where to display the widget in the editor.
-	 *
-	 * Note that currently Elementor supports only one category.
-	 * When multiple categories passed, Elementor uses the first one.
-	 *
-	 * @since 1.2.0
-	 *
-	 * @access public
-	 *
-	 * @return array Widget categories.
-	 */
-	public function get_categories() {
-		return array( 'ht_hf_builder' );
 	}
 
 	protected function _register_controls() { //phpcs:ignore

@@ -218,6 +218,16 @@ class Boostify_Header_Footer_Mega_Menu extends Nav_Menu {
 	 */
 	protected function custom_mobile_menu() {
 		$this->add_control(
+			'menu_change',
+			array(
+				'label'        => __( 'Use Menu Site', 'boostify' ),
+				'type'         => \Elementor\Controls_Manager::SWITCHER,
+				'label_on'     => __( 'Yes', 'boostify' ),
+				'label_off'    => __( 'No', 'boostify' ),
+				'return_value' => 'yes',
+			)
+		);
+		$this->add_control(
 			'menu_mobile',
 			array(
 				'label'        => esc_html__( 'Menu Mobile', 'boostify' ),
@@ -368,7 +378,7 @@ class Boostify_Header_Footer_Mega_Menu extends Nav_Menu {
 		$settings = $this->get_settings_for_display();
 		?>
 		<div class="boostify-navigation--widget">
-			<nav class="boostify-nav-mega boostify-menu-layout- boostify-mega-menu boostify-main-navigation <?php echo esc_attr( $settings['menu'] . ' boostify--hover-' . esc_attr( $settings['pointer'] ) ); ?>">
+			<nav class="boostify-nav-mega boostify-menu-layout- boostify-mega-menu boostify-main-navigation <?php echo esc_attr( ' boostify--hover-' . esc_attr( $settings['pointer'] ) ); ?>">
 				<?php $this->get_menu_site( $settings['menu'] ); ?>
 			</nav>
 			<a href="#" class="boostify-menu-toggle" aria-expanded="false">
@@ -381,7 +391,19 @@ class Boostify_Header_Footer_Mega_Menu extends Nav_Menu {
 				<div class="boostify-menu-sidebar--wrapper">
 
 					<nav class="boostify-menu-dropdown" aria-label="<?php esc_attr_e( 'Dropdown navigation', 'boostify' ); ?>">
-						<?php $this->get_menu_site( $settings['menu'], 'boostify-dropdown-menu' ); ?>
+						<?php
+						if ( 'yes' === $settings['menu_change'] && 'no' !== $settings['menu_mobile'] ) {
+								$args = array(
+									'menu'       => $settings['menu_mobile'],
+									'menu_id'    => '',
+									'menu_class' => 'boostify-dropdown-menu',
+									'container'  => '',
+								);
+								wp_nav_menu( $args );
+						} else {
+							$this->get_menu_site( $settings['menu'], 'boostify-dropdown-menu' );
+						}
+						?>
 					</nav>
 				</div>
 			</div>

@@ -1,5 +1,6 @@
 <?php
-use Elementor\Widget_Base;
+
+use Boostify_Header_Footer\Base_Widget;
 use Elementor\Controls_Manager;
 
 /**
@@ -8,7 +9,7 @@ use Elementor\Controls_Manager;
  * Elementor widget for Copyright.
  * Author: ptp
  */
-class Boostify_Header_Footer_Copyright extends Widget_Base {
+class Boostify_Header_Footer_Copyright extends Base_Widget {
 
 	/**
 	 * Retrieve the widget name.
@@ -47,24 +48,6 @@ class Boostify_Header_Footer_Copyright extends Widget_Base {
 	 */
 	public function get_icon() {
 		return 'fa fa-copyright';
-	}
-
-	/**
-	 * Retrieve the list of categories the widget belongs to.
-	 *
-	 * Used to determine where to display the widget in the editor.
-	 *
-	 * Note that currently Elementor supports only one category.
-	 * When multiple categories passed, Elementor uses the first one.
-	 *
-	 * @since 1.2.0
-	 *
-	 * @access public
-	 *
-	 * @return array Widget categories.
-	 */
-	public function get_categories() {
-		return array( 'ht_hf_builder' );
 	}
 
 	public function _register_controls() { //phpcs:ignore
