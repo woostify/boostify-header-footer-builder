@@ -24,21 +24,6 @@
   transition: top 0.1s linear;
 }
 
-.boostify-site-header {
-    .elementor-section.elementor-section-boxed > .elementor-container {
-        padding: 0 15px;
-        @media (min-width: 768px) {
-            max-width: 750px;
-        }
-        @media (min-width: 992px) {
-            max-width: 970px;
-        }
-        @media ( min-width: 1200px ) {
-            max-width: 1170px;
-        }
-    }
-}
-
 .boostify-header-tranparent-yes {
   background-color: transparent;
   position: absolute;

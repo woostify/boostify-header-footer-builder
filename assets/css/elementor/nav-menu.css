@@ -8,12 +8,25 @@
 
 .boostify-menu > li {
   margin: 0;
+  display: flex;
+  align-items: center;
+}
+
+.boostify-menu > li .menu-item-main-info {
+  display: flex;
+  align-items: center;
+}
+
+.boostify-menu > li .menu-item-icon {
+  padding: 0 10px 0 0;
 }
 
 .boostify-menu > li > a {
   text-transform: uppercase;
   font-weight: 600;
   padding: 0 20px;
+  display: flex;
+  align-items: center;
 }
 
 .boostify-menu a {
@@ -66,8 +79,8 @@
 }
 
 .boostify-menu .menu-item-has-children > a:after {
-  content: '\f107';
-  font-family: 'FontAwesome';
+  content: '\f3d0';
+  font-family: "Ionicons";
   padding-left: 5px;
 }
 
@@ -150,13 +163,13 @@
 }
 
 .boostify-menu-sidebar .menu-item-has-children > a:after {
-  content: '\f105';
-  font-family: 'FontAwesome';
+  content: '\f3d0';
+  font-family: "Ionicons";
   transition: all 0.3s;
 }
 
 .boostify-menu-sidebar .menu-item-has-children > a.up:after {
-  content: '\f107';
+  content: '\f3d1';
   transition: all 0.3s;
 }
 
@@ -173,6 +186,22 @@
 .boostify-menu-sidebar .boostify-menu-dropdown {
   height: 100%;
   overflow-y: scroll;
+  /* width */
+  /* Handle */
+  /* Handle on hover */
+}
+
+.boostify-menu-sidebar .boostify-menu-dropdown::-webkit-scrollbar {
+  width: 5px;
+}
+
+.boostify-menu-sidebar .boostify-menu-dropdown::-webkit-scrollbar-thumb {
+  background: #1f3d70;
+  border-radius: 50px;
+}
+
+.boostify-menu-sidebar .boostify-menu-dropdown::-webkit-scrollbar-thumb:hover {
+  background: #fc1550;
 }
 
 .boostify-menu-sidebar .boostify-menu-sidebar--wrapper {
@@ -253,34 +282,57 @@
   color: #aa3166;
 }
 
-.boostify--hover-underline .boostify-menu li a:after {
+.boostify--hover-overline .boostify-menu li a:before,
+.boostify--hover-underline .boostify-menu li a:before {
   position: absolute;
   display: block;
   content: '';
   height: 3px;
   width: 0;
   transition: width 0.3s linear;
-  top: calc( ( 100% + 25px )/2);
 }
 
+.boostify--hover-overline .boostify-menu > li:hover > a,
 .boostify--hover-underline .boostify-menu > li:hover > a {
   position: relative;
 }
 
-.boostify--hover-underline .boostify-menu > li:hover > a:after {
+.boostify--hover-overline .boostify-menu > li:hover > a:before,
+.boostify--hover-underline .boostify-menu > li:hover > a:before {
   width: 50px;
   background-color: #000;
 }
 
+.boostify--hover-overline .boostify-menu li .sub-menu > li a,
 .boostify--hover-underline .boostify-menu li .sub-menu > li a {
   position: relative;
 }
 
+.boostify--hover-overline .boostify-menu li .sub-menu > li a:after,
 .boostify--hover-underline .boostify-menu li .sub-menu > li a:after {
   top: auto;
   bottom: 12px;
 }
 
+.boostify--hover-overline .boostify-menu li .sub-menu > li:hover > a:after,
 .boostify--hover-underline .boostify-menu li .sub-menu > li:hover > a:after {
   width: 50px;
+}
+
+.boostify--hover-underline li a:before {
+  top: calc( ( 100% + 25px )/2);
+}
+
+.boostify--hover-overline .boostify-menu li a:before {
+  top: 0;
+  left: calc( ( 100% - 80px )/ 2);
+}
+
+.boostify--hover-overline .boostify-menu > li:hover > a {
+  position: relative;
+}
+
+.boostify--hover-overline .boostify-menu > li:hover > a:before {
+  width: 80px;
+  background-color: #000;
 }

@@ -28,6 +28,8 @@ if ( ! class_exists( 'Boostify_Header_Footer_Metabox' ) ) {
 			add_action( 'wp_ajax_nopriv_bhf_more_rule', array( $this, 'parent_rule' ) );
 			add_action( 'wp_ajax_boostify_hf_ex_auto', array( $this, 'boostify_hf_post_exclude' ) );
 			add_action( 'wp_ajax_nopriv_boostify_hf_ex_auto', array( $this, 'boostify_hf_post_exclude' ) );
+			add_action( 'wp_ajax_boostify_hf_type', array( $this, 'display_setting' ) );
+			add_action( 'wp_ajax_nopriv_boostify_hf_type', array( $this, 'display_setting' ) );
 		}
 
 		// Type Builder
@@ -73,7 +75,12 @@ if ( ! class_exists( 'Boostify_Header_Footer_Metabox' ) ) {
 					</select>
 				</div>
 
-				<?php $this->hf_display( $post ); ?>
+				<?php
+				if ( 'sub_menu' !== $type ) {
+					$this->hf_display( $post );
+				}
+
+				?>
 
 			</div>
 			<?php
@@ -116,60 +123,72 @@ if ( ! class_exists( 'Boostify_Header_Footer_Metabox' ) ) {
 				$type
 			);
 
-			// Display On
-			$display = sanitize_text_field( $_POST['bhf_display'] );
+			if ( 'sub_menu' !== $type ) {
 
-			update_post_meta(
-				$post_id,
-				'bhf_display',
-				$display
-			);
+				// Display On
+				$display = sanitize_text_field( $_POST['bhf_display'] );
 
-			// Do Not Display On
-			$no_display = sanitize_text_field( $_POST['bhf_no_display'] );
+				update_post_meta(
+					$post_id,
+					'bhf_display',
+					$display
+				);
 
-			update_post_meta(
-				$post_id,
-				'bhf_no_display',
-				$no_display
-			);
+				// Do Not Display On
+				$no_display = sanitize_text_field( $_POST['bhf_no_display'] );
 
-			// Post
+				update_post_meta(
+					$post_id,
+					'bhf_no_display',
+					$no_display
+				);
 
-			$post = sanitize_text_field( $_POST['bhf_post'] );
+				// Post
+				if ( array_key_exists( 'bhf_post', $_POST ) ) {
+					$post = sanitize_text_field( $_POST['bhf_post'] );
 
-			update_post_meta(
-				$post_id,
-				'bhf_post',
-				$post
-			);
+					update_post_meta(
+						$post_id,
+						'bhf_post',
+						$post
+					);
+				}
 
-			// Ex Post
-			$ex_post = sanitize_text_field( $_POST['bhf_ex_post'] );
 
-			update_post_meta(
-				$post_id,
-				'bhf_ex_post',
-				$ex_post
-			);
+				// Ex Post
+				if ( array_key_exists( 'bhf_ex_post', $_POST ) ) {
+					$ex_post = sanitize_text_field( $_POST['bhf_ex_post'] );
 
-			// Ex Post Type
-			$ex_post_type = sanitize_text_field( $_POST['bhf_ex_post_type'] );
+					update_post_meta(
+						$post_id,
+						'bhf_ex_post',
+						$ex_post
+					);
+				}
 
-			update_post_meta(
-				$post_id,
-				'bhf_ex_post_type',
-				$ex_post_type
-			);
+				// Ex Post Type
+				if ( array_key_exists( 'bhf_ex_post_type', $_POST ) ) {
+					$ex_post_type = sanitize_text_field( $_POST['bhf_ex_post_type'] );
 
-			// Post Type
-			$post_type = sanitize_text_field( $_POST['bhf_post_type'] );
+					update_post_meta(
+						$post_id,
+						'bhf_ex_post_type',
+						$ex_post_type
+					);
+				}
 
-			update_post_meta(
-				$post_id,
-				'bhf_post_type',
-				$post_type
-			);
+				// Post Type
+				if ( array_key_exists( 'bhf_ex_post_type', $_POST ) ) {
+					$post_type = sanitize_text_field( $_POST['bhf_post_type'] );
+
+					update_post_meta(
+						$post_id,
+						'bhf_post_type',
+						$post_type
+					);
+				}
+			}
+
 
 		}
 
@@ -499,6 +518,62 @@ if ( ! class_exists( 'Boostify_Header_Footer_Metabox' ) ) {
 			</div>
 			<?php
 
+			die();
+		}
+
+		// For Show Setting type Header, Footer
+		public function display_setting() {
+			check_ajax_referer( 'ht_hf_nonce' );
+			$options = $this->pt_support();
+			$type    = $_GET['type'];
+			if ( 'sub_menu' !== $type ) :
+
+				?>
+				<div class="input-wrapper">
+					<div class="condition-group display--on">
+						<div class="parent-item">
+							<label><?php echo esc_html__( 'Display On', 'boostify' ); ?></label>
+							<select name="bhf_display" class="display-on">
+								<?php
+								foreach ( $options as $key => $option ) :
+
+									?>
+									<option value="<?php echo esc_attr( $key ); ?>"><?php echo esc_html( $option ); ?></option>
+								<?php endforeach ?>
+							</select>
+						</div>
+						<div class="child-item">
+							<div class="input-item-wrapper">
+							</div>
+						</div>
+					</div>
+
+					<div class="condition-group not-display">
+						<div class="parent-item">
+							<label><?php echo esc_html__( 'Do Not Display On', 'boostify' ); ?></label>
+							<select name="bhf_no_display" class="no-display-on">
+								<?php
+								unset( $options['all'] );
+								?>
+								<option value="0"><?php echo esc_html__( 'Select', 'boostify' ); ?></option>
+								<?php
+								foreach ( $options as $key => $option ) :
+
+									?>
+									<option value="<?php echo esc_attr( $key ); ?>" ><?php echo esc_html( $option ); ?></option>
+								<?php endforeach ?>
+							</select>
+						</div>
+						<div class="child-item">
+							<div class="input-item-wrapper">
+							</div>
+						</div>
+
+					</div>
+
+				</div>
+				<?php
+			endif;
 			die();
 		}
 	}

@@ -172,6 +172,7 @@ class Boostify_Header_Footer_Nav_Menu extends Nav_Menu {
 				'options' => array(
 					'background' => 'Background',
 					'underline'  => 'Underline',
+					'overline'   => 'Overline',
 					'none'       => 'None',
 				),
 

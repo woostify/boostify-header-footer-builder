@@ -377,11 +377,11 @@ msgstr ""
 msgid "Have Sub Menu"
 msgstr ""
 
-#: inc/elementor/widgets/class-boostify-header-footer-mega-menu.php:92
+#: inc/elementor/widgets/class-boostify-header-footer-mega-menu.php:92, inc/elementor/widgets/class-boostify-header-footer-mega-menu.php:225
 msgid "Yes"
 msgstr ""
 
-#: inc/elementor/widgets/class-boostify-header-footer-mega-menu.php:93
+#: inc/elementor/widgets/class-boostify-header-footer-mega-menu.php:93, inc/elementor/widgets/class-boostify-header-footer-mega-menu.php:226
 msgid "No"
 msgstr ""
 
@@ -418,14 +418,18 @@ msgid "Pointer"
 msgstr ""
 
 #: inc/elementor/widgets/class-boostify-header-footer-mega-menu.php:223
+msgid "Use Menu Site"
+msgstr ""
+
+#: inc/elementor/widgets/class-boostify-header-footer-mega-menu.php:233
 msgid "Menu Mobile"
 msgstr ""
 
-#: inc/elementor/widgets/class-boostify-header-footer-mega-menu.php:254
+#: inc/elementor/widgets/class-boostify-header-footer-mega-menu.php:264
 msgid "Select Sub Menu"
 msgstr ""
 
-#: inc/elementor/widgets/class-boostify-header-footer-mega-menu.php:383, inc/elementor/widgets/class-boostify-header-footer-nav-menu.php:93
+#: inc/elementor/widgets/class-boostify-header-footer-mega-menu.php:393, inc/elementor/widgets/class-boostify-header-footer-nav-menu.php:93
 msgid "Dropdown navigation"
 msgstr ""
 

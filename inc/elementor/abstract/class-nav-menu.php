@@ -206,7 +206,8 @@ abstract class Nav_Menu extends Base_Widget {
 				'default'   => '#aa3166',
 				'selectors' => array(
 					'{{WRAPPER}} .boostify-menu > li:hover > a' => 'color: {{VALUE}}',
-					'{{WRAPPER}} .boostify--hover-underline .boostify-menu > li:hover > a:after' => 'background-color: {{VALUE}}',
+					'{{WRAPPER}} .boostify--hover-underline .boostify-menu > li:hover > a:before' => 'background-color: {{VALUE}}',
+					'{{WRAPPER}} .boostify--hover-overline .boostify-menu li a:before' => 'background-color: {{VALUE}}',
 				),
 			)
 		);

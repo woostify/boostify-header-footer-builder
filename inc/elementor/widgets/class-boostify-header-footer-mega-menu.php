@@ -65,7 +65,7 @@ class Boostify_Header_Footer_Mega_Menu extends Nav_Menu {
 			'icon',
 			array(
 				'label' => __( 'Icons', 'boostify' ),
-				'type'  => \Elementor\Controls_Manager::ICON,
+				'type'  => \Elementor\Controls_Manager::ICONS,
 			)
 		);
 
@@ -148,6 +148,7 @@ class Boostify_Header_Footer_Mega_Menu extends Nav_Menu {
 					'has_sub'  => 'yes',
 					'sub_type' => 'default',
 				),
+				'description' => esc_html__( 'Enter the name of the menu item you want to get the sub menu', 'boostify' ),
 			)
 		);
 
@@ -168,6 +169,32 @@ class Boostify_Header_Footer_Mega_Menu extends Nav_Menu {
 				),
 			)
 		);
+
+		// $this->add_control(
+		// 	'icon_position',
+		// 	array(
+		// 		'label'   => __( 'Icon Position', 'boostify' ),
+		// 		'type'    => Controls_Manager::SELECT,
+		// 		'default' => 'horizontal',
+		// 		'options' => array(
+		// 			'vertical'   => 'Vertical',
+		// 			'horizontal' => 'Horizontal',
+		// 		),
+		// 	)
+		// );
+
+		// $this->add_control(
+		// 	'icon_space',
+		// 	array(
+		// 		'label'   => __( 'Icon Space', 'boostify' ),
+		// 		'type'    => Controls_Manager::SELECT,
+		// 		'default' => 'vertical',
+		// 		'options' => array(
+		// 			'vertical'   => 'Vertical',
+		// 			'horizontal' => 'Horizontal',
+		// 		),
+		// 	)
+		// );
 
 		$this->add_control(
 			'align',
@@ -204,9 +231,9 @@ class Boostify_Header_Footer_Mega_Menu extends Nav_Menu {
 				'options' => array(
 					'background' => 'Background',
 					'underline'  => 'Underline',
+					'overline'   => 'Overline',
 					'none'       => 'None',
 				),
-
 			)
 		);
 
@@ -304,15 +331,18 @@ class Boostify_Header_Footer_Mega_Menu extends Nav_Menu {
 	 * @param int $post_id
 	 * @return object $sub menu default layout
 	 */
-	protected function sub_menu_default( $menu_id, $child_of ) {
+	protected function sub_menu_default( $menu_id, $child_of = '' ) {
 		$args = array(
 			'menu'       => $menu_id,
-			'level'      => 2,
-			'child_of'   => $child_of,
 			'menu_id'    => '',
 			'menu_class' => 'sub-menu',
 			'container'  => '',
 		);
+		if ( ! empty( $child_of ) ) {
+			$args['level']    = 2;
+			$args['child_of'] = $child_of;
+		}
+
 		wp_nav_menu( $args );
 	}
 
@@ -329,6 +359,7 @@ class Boostify_Header_Footer_Mega_Menu extends Nav_Menu {
 
 		<?php
 		foreach ( $setting_menu as $menu ) {
+			$icon          = $menu[ 'icon' ];
 			$sub_id        = (int) $menu['sub_menu'];
 			$sub_type      = $menu['sub_type'];
 			$menu_location = $menu['menu_register'];
@@ -336,24 +367,35 @@ class Boostify_Header_Footer_Mega_Menu extends Nav_Menu {
 			$item_class    = '';
 
 			if ( 'yes' === $menu['has_sub'] ) {
-				if ( 'no' !== $menu['sub_menu'] ) {
+				if ( 'no' !== $menu['sub_menu'] && 'mega' === $sub_type ) {
 					$item_class = ' menu-item-has-children current-menu-parent menu-item-has-mega';
 				}
-				if ( $child_of && $menu_location ) {
+				if ( $menu_location && 'default' === $sub_type ) {
 					$item_class = ' menu-item-has-children current-menu-parent';
 				}
 			}
-
 			$classes = $menu_item_class . $item_class;
 			?>
 			<li class="<?php echo esc_attr( $classes ); ?>">
+
 				<a href="<?php echo esc_url( $menu['link']['url'] ); ?>">
-					<?php echo esc_html( $menu['item_text'] ); ?>
+					<span class="menu-item-main-info">
+						<?php if ( is_string( $icon['value'] ) ): ?>
+							<span class="menu-item-icon <?php echo esc_attr( $icon['value'] ); ?>"></span>
+						<?php else : ?>
+							<span class="menu-item-icon menu-item-icon-svg">
+								<img src="<?php echo esc_url( $icon['value']['url'] ) ?>" alt="<?php echo esc_attr__( 'Icon Menu ' . $menu['item_text'] ); ?>">
+							</span>
+						<?php endif ?>
+						<span class="menu-item-text">
+							<?php echo esc_html( $menu['item_text'] ); ?>
+						</span>
+					</span>
 				</a>
 				<?php
 				if ( $menu['has_sub'] && 'mega' === $sub_type && 'no' !== $menu['sub_menu'] ) :
 						$this->get_sub_mega_menu( $sub_id );
-				elseif ( $menu['has_sub'] && $menu_location && $child_of ) :
+				elseif ( $menu['has_sub'] && $menu_location ) :
 						$this->sub_menu_default( $menu_location, $child_of );
 
 				endif;
