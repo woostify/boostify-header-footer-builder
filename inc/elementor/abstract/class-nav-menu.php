@@ -543,7 +543,7 @@ abstract class Nav_Menu extends Base_Widget {
 	 * @param int $post_id
 	 * @return object $sub menu default layout
 	 */
-	protected function sub_menu_default( $menu_id, $child_of = '' ) {
+	protected function sub_menu_default( $menu_id, $child_of ) {
 		$args = array(
 			'menu'       => $menu_id,
 			'menu_id'    => '',

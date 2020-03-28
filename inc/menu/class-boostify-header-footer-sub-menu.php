@@ -40,11 +40,11 @@ if ( ! class_exists( 'Boostify_Header_Footer_Sub_Menu' ) ) {
 		/**
 		 * Extends the default function
 		 *
-		 * @param array   $sorted_menu_items
+		 * @param array   $sortedmenu_items
 		 * @param object  $args
 		 * @return array
 		 */
-		public function wp_nav_menu_objects( $sorted_menu_items, $args ) {
+		public function wp_nav_menu_objects( $sortedmenu_items, $args ) {
 			// Add additional args
 			if ( ! isset( $args->level ) ) {
 				$args->level = 0;
@@ -54,12 +54,12 @@ if ( ! class_exists( 'Boostify_Header_Footer_Sub_Menu' ) ) {
 			}
 
 			// Check if we need to do anything
-			if ( ! $sorted_menu_items || ( 0 === $args->level && empty( $args->child_of ) ) ) {
-				return $sorted_menu_items;
+			if ( ! $sortedmenu_items || ( 0 == $args->level && '' == $args->child_of ) ) { //phpcs:ignore
+				return $sortedmenu_items;
 			}
 
 			// Build a tree
-			$this->menu_items = $sorted_menu_items;
+			$this->menu_items = $sortedmenu_items;
 			$temp_array       = array();
 			foreach ( $this->menu_items as $item ) {
 				$temp_array[ $item->menu_item_parent ][] = $item;
@@ -78,6 +78,7 @@ if ( ! class_exists( 'Boostify_Header_Footer_Sub_Menu' ) ) {
 
 		/**
 		 * Builds a tree of menu items recursively
+		 *
 		 * @param  array  $list
 		 * @param  object $parent
 		 * @return array
@@ -88,6 +89,7 @@ if ( ! class_exists( 'Boostify_Header_Footer_Sub_Menu' ) ) {
 				if ( isset( $list[ $l->ID ] ) ) {
 					$l->children = $this->build_items_tree( $list, $list[ $l->ID ], $level + 1 );
 				}
+
 				$l->level = $level;
 				$tree[]   = $l;
 			}
@@ -97,6 +99,7 @@ if ( ! class_exists( 'Boostify_Header_Footer_Sub_Menu' ) ) {
 
 		/**
 		 * Gets items from a particular level
+		 *
 		 * @param  array   $tree
 		 * @param  integer $level
 		 * @param  string  $child_of
@@ -107,15 +110,15 @@ if ( ! class_exists( 'Boostify_Header_Footer_Sub_Menu' ) ) {
 			foreach ( $tree as $item ) {
 				$child_of_flag = false;
 
-				if ( ! $child_of ) {
-					if ( 'integer' === gettype( $child_of ) && $item->menu_item_parent !== $child_of ) {
+				if ( '' != $child_of ) { //phpcs:ignore
+					if ( 'integer' == gettype( $child_of ) && $item->menu_item_parent != $child_of ) { //phpcs:ignore
 						$child_of_flag = true;
-					} elseif ( 'string' === gettype( $child_of ) && $item->menu_item_parent !== $this->get_menu_id_from_title( $child_of ) ) {
+					} elseif ( 'string' == gettype( $child_of ) && $item->menu_item_parent != $this->get_menu_id_from_title( $child_of ) ){ //phpcs:ignore
 						$child_of_flag = true;
 					}
 				}
 
-				if ( $item->level === $level && ! $child_of_flag ) {
+				if ( $item->level == $level && ! $child_of_flag ) { //phpcs:ignore
 					unset( $item->children );
 					$items[] = $item;
 				}
@@ -130,17 +133,19 @@ if ( ! class_exists( 'Boostify_Header_Footer_Sub_Menu' ) ) {
 
 		/**
 		 * Gets a menu ID based on the title of the item
+		 *
 		 * @param  string $name
 		 * @return string
 		 */
 		private function get_menu_id_from_title( $name = '' ) {
 			foreach ( $this->menu_items as $item ) {
-				if ( $item->title === $name ) {
+				if ( $item->title == $name ) { //phpcs:ignore
 					return $item->ID;
 				}
 			}
 
 			return '';
 		}
+
 	}
 }
