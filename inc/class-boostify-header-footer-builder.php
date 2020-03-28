@@ -135,6 +135,14 @@ if ( ! class_exists( 'Boostify_Header_Footer_Builder' ) ) {
 
 
 		public function style() {
+
+			// FontAweSome 5 Free
+			wp_enqueue_style(
+				'fontawesome-5-free',
+				BOOSTIFY_HEADER_FOOTER_URL . 'assets/css/fontawesome/fontawesome.css',
+				array(),
+				BOOSTIFY_HEADER_FOOTER_VER
+			);
 			// Menu
 			wp_enqueue_style(
 				'boostify-hf-nav-menu-css',

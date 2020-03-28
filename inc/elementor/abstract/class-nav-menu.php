@@ -123,6 +123,25 @@ abstract class Nav_Menu extends Base_Widget {
 				'tab'   => Controls_Manager::TAB_STYLE,
 			)
 		);
+		$this->add_control(
+			'menu_item_padding',
+			array(
+				'label'      => __( 'Padding', 'boostify' ),
+				'type'       => Controls_Manager::DIMENSIONS,
+				'size_units' => array( 'px', '%', 'em' ),
+				'default'    => array(
+					'top'    => 0,
+					'bottom' => 0,
+					'left'   => 20,
+					'right'  => 20,
+				),
+				'selectors'  => array(
+					'{{WRAPPER}} .boostify-menu > li > a' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .boostify--hover-overline .boostify-menu>li:hover>a:before' => 'width: calc( 100% - {{RIGHT}}{{UNIT}} - {{LEFT}}{{UNIT}} );',
+					'{{WRAPPER}} .boostify--hover-underline .boostify-menu>li:hover>a:before' => 'width: calc( 100% - {{RIGHT}}{{UNIT}} - {{LEFT}}{{UNIT}} );',
+				),
+			)
+		);
 
 		$this->start_controls_tabs(
 			'menu_style_tabs'
@@ -178,23 +197,7 @@ abstract class Nav_Menu extends Base_Widget {
 			)
 		);
 
-		$this->add_control(
-			'menu_item_padding',
-			array(
-				'label'      => __( 'Padding', 'boostify' ),
-				'type'       => Controls_Manager::DIMENSIONS,
-				'size_units' => array( 'px', '%', 'em' ),
-				'default'    => array(
-					'top'    => 0,
-					'bottom' => 0,
-					'left'   => 20,
-					'right'  => 20,
-				),
-				'selectors'  => array(
-					'{{WRAPPER}} .boostify-menu > li > a' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-				),
-			)
-		);
+
 	}
 
 	protected function menu_style_hover() {
@@ -387,6 +390,9 @@ abstract class Nav_Menu extends Base_Widget {
 				'selectors' => array(
 					'{{WRAPPER}} .boostify--hover-background .boostify-menu .sub-menu > li:hover' => 'background-color: {{VALUE}}',
 				),
+				'condition' => array(
+					'pointer' => 'background',
+				),
 			)
 		);
 	}
@@ -505,4 +511,60 @@ abstract class Nav_Menu extends Base_Widget {
 	 */
 	abstract protected function custom_mobile_menu();
 
+	/**
+	 * Menu Class
+	 * @param array $settings in elementor.
+	 * @return array $classes navigation
+	 */
+	protected function nav_class() {
+		$settings = $this->get_settings_for_display();
+		$name     = $this->get_name();
+		$classes  = array(
+			'boostify-main-navigation',
+			'boostify-header-navigation',
+		);
+		if ( array_key_exists( 'pointer', $settings ) ) {
+			$pointer = $settings['pointer'];
+			array_push( $classes, 'boostify--hover-' . $pointer );
+		}
+		if ( array_key_exists( 'icon_position', $settings ) ) {
+			$icon_position = $settings['icon_position'];
+			array_push( $classes, 'boostify-icon-' . $icon_position );
+		}
+		if ( 'ht-hf-mega-menu' === $name ) {
+			array_push( $classes, 'boostify-mega-menu' );
+		}
+
+		return $classes;
+	}
+
+	/**
+	 * Get Sub Mega Menu Class
+	 * @param int $post_id
+	 * @return object $sub menu default layout
+	 */
+	protected function sub_menu_default( $menu_id, $child_of = '' ) {
+		$args = array(
+			'menu'       => $menu_id,
+			'menu_id'    => '',
+			'menu_class' => 'sub-menu',
+			'container'  => '',
+		);
+		if ( ! empty( $child_of ) ) {
+			$args['level']    = 2;
+			$args['child_of'] = $child_of;
+		}
+
+		wp_nav_menu( $args );
+	}
+
+	protected function get_toggle( $icon ) {
+		?>
+		<a href="#" class="boostify-menu-toggle" aria-expanded="false">
+			<span class="menu-toggle-wrapper <?php echo esc_attr( $icon ); ?>"></span><!-- .menu-toggle-wrapper -->
+			<span class="screen-reader-text menu-toggle-text"><?php esc_html_e( 'Menu', 'boostify' ); ?></span>
+		</a><!-- .menu-toggle -->
+		<?php
+	}
 }
+

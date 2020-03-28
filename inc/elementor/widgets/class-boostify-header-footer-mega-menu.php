@@ -117,7 +117,7 @@ class Boostify_Header_Footer_Mega_Menu extends Nav_Menu {
 				'label'     => __( 'Sub Mega Menu', 'boostify' ),
 				'type'      => \Elementor\Controls_Manager::SELECT,
 				'default'   => 'no',
-				'options'   => $this->get_all_submenu(),
+				'options'   => boostify_header_footer_sub_menu(),
 				'condition' => array(
 					'has_sub'  => 'yes',
 					'sub_type' => 'mega',
@@ -170,31 +170,62 @@ class Boostify_Header_Footer_Mega_Menu extends Nav_Menu {
 			)
 		);
 
-		// $this->add_control(
-		// 	'icon_position',
-		// 	array(
-		// 		'label'   => __( 'Icon Position', 'boostify' ),
-		// 		'type'    => Controls_Manager::SELECT,
-		// 		'default' => 'horizontal',
-		// 		'options' => array(
-		// 			'vertical'   => 'Vertical',
-		// 			'horizontal' => 'Horizontal',
-		// 		),
-		// 	)
-		// );
+		$this->add_control(
+			'icon_position',
+			array(
+				'label'   => __( 'Icon Position', 'boostify' ),
+				'type'    => Controls_Manager::SELECT,
+				'default' => 'horizontal',
+				'options' => array(
+					'vertical'   => 'Vertical',
+					'horizontal' => 'Horizontal',
+				),
+			)
+		);
 
-		// $this->add_control(
-		// 	'icon_space',
-		// 	array(
-		// 		'label'   => __( 'Icon Space', 'boostify' ),
-		// 		'type'    => Controls_Manager::SELECT,
-		// 		'default' => 'vertical',
-		// 		'options' => array(
-		// 			'vertical'   => 'Vertical',
-		// 			'horizontal' => 'Horizontal',
-		// 		),
-		// 	)
-		// );
+		$this->add_control(
+			'icon_space_horizontal',
+			array(
+				'label'      => __( 'Icon Space', 'boostify' ),
+				'type'       => Controls_Manager::SLIDER,
+				'size_units' => array( 'px' ),
+				'condition'  => array(
+					'icon_position' => 'horizontal',
+				),
+				'range'      => array(
+					'px' => array(
+						'min'  => 0,
+						'max'  => 60,
+						'step' => 1,
+					),
+				),
+				'selectors'  => array(
+					'{{WRAPPER}} .boostify-icon-horizontal .boostify-menu > li .menu-item-icon' => 'padding: 0 {{SIZE}}{{UNIT}} 0 0;',
+				),
+			)
+		);
+
+		$this->add_control(
+			'icon_space_vertical',
+			array(
+				'label'      => __( 'Icon Space', 'boostify' ),
+				'type'       => Controls_Manager::SLIDER,
+				'size_units' => array( 'px' ),
+				'condition'  => array(
+					'icon_position_' => 'vertical',
+				),
+				'range'      => array(
+					'px' => array(
+						'min'  => 0,
+						'max'  => 60,
+						'step' => 1,
+					),
+				),
+				'selectors'  => array(
+					'{{WRAPPER}} .boostify-icon-vertical .boostify-menu > li .menu-item-icon' => 'padding: 0 0 {{SIZE}}{{UNIT}} 0;',
+				),
+			)
+		);
 
 		$this->add_control(
 			'align',
@@ -248,7 +279,7 @@ class Boostify_Header_Footer_Mega_Menu extends Nav_Menu {
 			'menu_change',
 			array(
 				'label'        => __( 'Use Menu Site', 'boostify' ),
-				'type'         => \Elementor\Controls_Manager::SWITCHER,
+				'type'         => Controls_Manager::SWITCHER,
 				'label_on'     => __( 'Yes', 'boostify' ),
 				'label_off'    => __( 'No', 'boostify' ),
 				'return_value' => 'yes',
@@ -266,41 +297,6 @@ class Boostify_Header_Footer_Mega_Menu extends Nav_Menu {
 		);
 	}
 
-	/**
-	 * Get Sub Menu Mega
-	 *
-	 * @return List Sub Menu
-	 */
-	protected function get_all_submenu() {
-		$args      = array(
-			'post_type'           => 'btf_builder',
-			'orderby'             => 'name',
-			'order'               => 'ASC',
-			'posts_per_page'      => -1,
-			'ignore_sticky_posts' => 1,
-			'meta_query'          => array(
-				array(
-					'key'     => 'bhf_type',
-					'compare' => 'LIKE',
-					'value'   => 'sub_menu',
-				),
-			),
-		);
-		$sub_menu  = new WP_Query( $args );
-		$list_item = array(
-			'no' => __( 'Select Sub Menu', 'boostify' ),
-		);
-
-		if ( $sub_menu->have_posts() ) {
-			while ( $sub_menu->have_posts() ) {
-				$sub_menu->the_post();
-				$list_item[ get_the_ID() ] = get_the_title();
-			}
-			wp_reset_postdata();
-		}
-
-		return $list_item;
-	}
 
 	/**
 	 * Get Sub Menu Mega
@@ -326,24 +322,32 @@ class Boostify_Header_Footer_Mega_Menu extends Nav_Menu {
 		endif;
 	}
 
-	/**
-	 * Get Sub Mega Menu Class
-	 * @param int $post_id
-	 * @return object $sub menu default layout
-	 */
-	protected function sub_menu_default( $menu_id, $child_of = '' ) {
-		$args = array(
-			'menu'       => $menu_id,
-			'menu_id'    => '',
-			'menu_class' => 'sub-menu',
-			'container'  => '',
+	protected function menu_item_class( $menu ) {
+		$icon            = $menu['icon'];
+		$menu_location   = $menu['menu_register'];
+		$sub_type        = $menu['sub_type'];
+		$menu_item_class = array(
+			'menu-item',
+			'menu-item-type-custom',
 		);
-		if ( ! empty( $child_of ) ) {
-			$args['level']    = 2;
-			$args['child_of'] = $child_of;
+
+		if ( 'yes' === $menu['has_sub'] ) {
+
+			if ( 'no' !== $menu['sub_menu'] && 'mega' === $sub_type ) {
+				$item_class = ' menu-item-has-children current-menu-parent menu-item-has-mega';
+				array_push( $menu_item_class, 'menu-item-has-children', 'menu-item-has-mega' );
+			}
+			if ( $menu_location && 'default' === $sub_type ) {
+				array_push( $menu_item_class, 'menu-item-has-children' );
+			}
+			if ( ! empty( $icon['value'] ) ) {
+				array_push( $menu_item_class, 'menu-item-has-icon' );
+			}
 		}
 
-		wp_nav_menu( $args );
+		$classes = implode( ' ', $menu_item_class );
+
+		return $classes;
 	}
 
 	/**
@@ -352,41 +356,38 @@ class Boostify_Header_Footer_Mega_Menu extends Nav_Menu {
 	 * @return template menu site
 	 */
 	protected function get_menu_site( $setting_menu, $classes = 'boostify-menu' ) {
-		$id_menu         = wp_rand();
-		$menu_item_class = 'menu-item menu-item-type-custom';
+		$id_menu = wp_rand();
 		?>
 		<ul id="menu-<?php echo esc_attr( $id_menu ); ?>" class="menu boostify-mega-menu <?php echo esc_attr( $classes ); ?>">
 
 		<?php
 		foreach ( $setting_menu as $menu ) {
-			$icon          = $menu[ 'icon' ];
+			$icon          = $menu['icon'];
 			$sub_id        = (int) $menu['sub_menu'];
 			$sub_type      = $menu['sub_type'];
 			$menu_location = $menu['menu_register'];
 			$child_of      = $menu['child_of'];
 			$item_class    = '';
-
-			if ( 'yes' === $menu['has_sub'] ) {
-				if ( 'no' !== $menu['sub_menu'] && 'mega' === $sub_type ) {
-					$item_class = ' menu-item-has-children current-menu-parent menu-item-has-mega';
-				}
-				if ( $menu_location && 'default' === $sub_type ) {
-					$item_class = ' menu-item-has-children current-menu-parent';
-				}
-			}
-			$classes = $menu_item_class . $item_class;
+			$classes       = $this->menu_item_class( $menu );
 			?>
 			<li class="<?php echo esc_attr( $classes ); ?>">
 
 				<a href="<?php echo esc_url( $menu['link']['url'] ); ?>">
 					<span class="menu-item-main-info">
-						<?php if ( is_string( $icon['value'] ) ): ?>
-							<span class="menu-item-icon <?php echo esc_attr( $icon['value'] ); ?>"></span>
-						<?php else : ?>
-							<span class="menu-item-icon menu-item-icon-svg">
-								<img src="<?php echo esc_url( $icon['value']['url'] ) ?>" alt="<?php echo esc_attr__( 'Icon Menu ' . $menu['item_text'] ); ?>">
-							</span>
-						<?php endif ?>
+						<?php
+						if ( ! empty( $icon['value'] ) ) :
+							if ( is_string( $icon['value'] ) ) :
+								?>
+								<span class="menu-item-icon <?php echo esc_attr( $icon['value'] ); ?>"></span>
+							<?php else : ?>
+								<span class="menu-item-icon menu-item-icon-svg">
+									<img src="<?php echo esc_url( $icon['value']['url'] ); ?>" alt="<?php echo esc_attr__( 'Icon ' . $menu['item_text'], 'boostify' ); //phpcs:ignore ?>"> 
+								</span>
+								<?php
+							endif;
+						endif;
+						?>
+
 						<span class="menu-item-text">
 							<?php echo esc_html( $menu['item_text'] ); ?>
 						</span>
@@ -417,17 +418,15 @@ class Boostify_Header_Footer_Mega_Menu extends Nav_Menu {
 	 * @access protected
 	 */
 	protected function render() {
-		$settings = $this->get_settings_for_display();
+		$settings  = $this->get_settings_for_display();
+		$arg_class = $this->nav_class();
+		$classes   = implode( ' ', $arg_class );
 		?>
 		<div class="boostify-navigation--widget">
-			<nav class="boostify-nav-mega boostify-menu-layout- boostify-mega-menu boostify-main-navigation <?php echo esc_attr( ' boostify--hover-' . esc_attr( $settings['pointer'] ) ); ?>">
+			<nav class="<?php echo esc_attr( $classes ); ?>">
 				<?php $this->get_menu_site( $settings['menu'] ); ?>
 			</nav>
-			<a href="#" class="boostify-menu-toggle" aria-expanded="false">
-				<span class="menu-toggle-wrapper <?php echo esc_attr( $settings['toggle_icon'] ); ?>"></span><!-- .menu-toggle-wrapper -->
-
-				<span class="screen-reader-text menu-toggle-text"><?php esc_html_e( 'Menu', 'wunderlust' ); ?></span>
-			</a><!-- .menu-toggle -->
+			<?php $this->get_toggle( $settings['toggle_icon'] ); ?>
 
 			<div class="boostify-menu-sidebar boostify--hover-<?php echo esc_attr( $settings['pointer'] ); ?>">
 				<div class="boostify-menu-sidebar--wrapper">

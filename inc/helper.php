@@ -62,3 +62,40 @@ function boostify_header_footer_content() {
 	}
 	load_template( $path );
 }
+
+
+/**
+ * Get Sub Menu Mega
+ *
+ * @return List Sub Menu
+ */
+function boostify_header_footer_sub_menu() {
+	$args      = array(
+		'post_type'           => 'btf_builder',
+		'orderby'             => 'name',
+		'order'               => 'ASC',
+		'posts_per_page'      => -1,
+		'ignore_sticky_posts' => 1,
+		'meta_query'          => array(
+			array(
+				'key'     => 'bhf_type',
+				'compare' => 'LIKE',
+				'value'   => 'sub_menu',
+			),
+		),
+	);
+	$sub_menu  = new WP_Query( $args );
+	$list_item = array(
+		'no' => __( 'Select Sub Menu', 'boostify' ),
+	);
+
+	if ( $sub_menu->have_posts() ) {
+		while ( $sub_menu->have_posts() ) {
+			$sub_menu->the_post();
+			$list_item[ get_the_ID() ] = get_the_title();
+		}
+		wp_reset_postdata();
+	}
+
+	return $list_item;
+}

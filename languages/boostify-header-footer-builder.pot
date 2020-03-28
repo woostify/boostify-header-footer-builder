@@ -21,39 +21,39 @@ msgstr ""
 msgid "Shortcode"
 msgstr ""
 
-#: inc/admin/class-boostify-header-footer-metabox.php:36
+#: inc/admin/class-boostify-header-footer-metabox.php:38
 msgid "Header"
 msgstr ""
 
-#: inc/admin/class-boostify-header-footer-metabox.php:37
+#: inc/admin/class-boostify-header-footer-metabox.php:39
 msgid "Footer"
 msgstr ""
 
-#: inc/admin/class-boostify-header-footer-metabox.php:38, inc/elementor/widgets/class-boostify-header-footer-mega-menu.php:117
+#: inc/admin/class-boostify-header-footer-metabox.php:40, inc/elementor/widgets/class-boostify-header-footer-mega-menu.php:117
 msgid "Sub Mega Menu"
 msgstr ""
 
-#: inc/admin/class-boostify-header-footer-metabox.php:67
+#: inc/admin/class-boostify-header-footer-metabox.php:69
 msgid "Type of Template"
 msgstr ""
 
-#: inc/admin/class-boostify-header-footer-metabox.php:199, inc/admin/class-boostify-header-footer-metabox.php:487
+#: inc/admin/class-boostify-header-footer-metabox.php:218, inc/admin/class-boostify-header-footer-metabox.php:506, inc/admin/class-boostify-header-footer-metabox.php:535
 msgid "Display On"
 msgstr ""
 
-#: inc/admin/class-boostify-header-footer-metabox.php:219, inc/admin/class-boostify-header-footer-metabox.php:281, inc/admin/class-boostify-header-footer-metabox.php:392, inc/admin/class-boostify-header-footer-metabox.php:420
+#: inc/admin/class-boostify-header-footer-metabox.php:238, inc/admin/class-boostify-header-footer-metabox.php:300, inc/admin/class-boostify-header-footer-metabox.php:411, inc/admin/class-boostify-header-footer-metabox.php:439
 msgid "All"
 msgstr ""
 
-#: inc/admin/class-boostify-header-footer-metabox.php:257
+#: inc/admin/class-boostify-header-footer-metabox.php:276, inc/admin/class-boostify-header-footer-metabox.php:553
 msgid "Do Not Display On"
 msgstr ""
 
-#: inc/admin/class-boostify-header-footer-metabox.php:262
+#: inc/admin/class-boostify-header-footer-metabox.php:281, inc/admin/class-boostify-header-footer-metabox.php:558
 msgid "Select"
 msgstr ""
 
-#: inc/admin/class-boostify-header-footer-metabox.php:360
+#: inc/admin/class-boostify-header-footer-metabox.php:379
 msgid "Nothing Found"
 msgstr ""
 
@@ -85,7 +85,7 @@ msgstr ""
 msgid "Toggle Icons"
 msgstr ""
 
-#: inc/elementor/abstract/class-nav-menu.php:89, inc/elementor/widgets/class-boostify-header-footer-nav-menu.php:218
+#: inc/elementor/abstract/class-nav-menu.php:89, inc/elementor/widgets/class-boostify-header-footer-nav-menu.php:219
 msgid "Toggle Align"
 msgstr ""
 
@@ -93,11 +93,11 @@ msgstr ""
 msgid "Menu Style"
 msgstr ""
 
-#: inc/elementor/abstract/class-nav-menu.php:134, inc/elementor/abstract/class-nav-menu.php:292, inc/elementor/abstract/class-nav-menu.php:412, inc/elementor/widgets/class-boostify-header-footer-image-retina.php:319
+#: inc/elementor/abstract/class-nav-menu.php:134, inc/elementor/abstract/class-nav-menu.php:293, inc/elementor/abstract/class-nav-menu.php:413, inc/elementor/widgets/class-boostify-header-footer-image-retina.php:319
 msgid "Normal"
 msgstr ""
 
-#: inc/elementor/abstract/class-nav-menu.php:145, inc/elementor/abstract/class-nav-menu.php:303, inc/elementor/abstract/class-nav-menu.php:423, inc/elementor/widgets/class-boostify-header-footer-image-retina.php:354
+#: inc/elementor/abstract/class-nav-menu.php:145, inc/elementor/abstract/class-nav-menu.php:304, inc/elementor/abstract/class-nav-menu.php:424, inc/elementor/widgets/class-boostify-header-footer-image-retina.php:354
 msgid "Hover"
 msgstr ""
 
@@ -105,47 +105,47 @@ msgstr ""
 msgid "Menu Color"
 msgstr ""
 
-#: inc/elementor/abstract/class-nav-menu.php:175, inc/elementor/abstract/class-nav-menu.php:230, inc/elementor/abstract/class-nav-menu.php:357, inc/elementor/abstract/class-nav-menu.php:467, inc/elementor/widgets/class-boostify-header-footer-site-search.php:253
+#: inc/elementor/abstract/class-nav-menu.php:175, inc/elementor/abstract/class-nav-menu.php:231, inc/elementor/abstract/class-nav-menu.php:358, inc/elementor/abstract/class-nav-menu.php:468, inc/elementor/widgets/class-boostify-header-footer-site-search.php:253
 msgid "Typography"
 msgstr ""
 
-#: inc/elementor/abstract/class-nav-menu.php:184, inc/elementor/abstract/class-nav-menu.php:270, inc/elementor/widgets/class-boostify-header-footer-image-retina.php:475, inc/elementor/widgets/class-boostify-header-footer-site-search.php:181, inc/elementor/widgets/class-boostify-header-footer-site-search.php:196
+#: inc/elementor/abstract/class-nav-menu.php:184, inc/elementor/abstract/class-nav-menu.php:271, inc/elementor/widgets/class-boostify-header-footer-image-retina.php:475, inc/elementor/widgets/class-boostify-header-footer-site-search.php:181, inc/elementor/widgets/class-boostify-header-footer-site-search.php:196
 msgid "Padding"
 msgstr ""
 
-#: inc/elementor/abstract/class-nav-menu.php:217
+#: inc/elementor/abstract/class-nav-menu.php:218
 msgid "Background Item Hover"
 msgstr ""
 
-#: inc/elementor/abstract/class-nav-menu.php:244
+#: inc/elementor/abstract/class-nav-menu.php:245
 msgid "Sub Menu Style"
 msgstr ""
 
-#: inc/elementor/abstract/class-nav-menu.php:252
+#: inc/elementor/abstract/class-nav-menu.php:253
 msgid "Distance"
 msgstr ""
 
-#: inc/elementor/abstract/class-nav-menu.php:316
+#: inc/elementor/abstract/class-nav-menu.php:317
 msgid "SubMenu Border Color"
 msgstr ""
 
-#: inc/elementor/abstract/class-nav-menu.php:330, inc/elementor/widgets/class-boostify-header-footer-site-search.php:263
+#: inc/elementor/abstract/class-nav-menu.php:331, inc/elementor/widgets/class-boostify-header-footer-site-search.php:263
 msgid "Background"
 msgstr ""
 
-#: inc/elementor/abstract/class-nav-menu.php:343, inc/elementor/abstract/class-nav-menu.php:368, inc/elementor/abstract/class-nav-menu.php:453, inc/elementor/abstract/class-nav-menu.php:491
+#: inc/elementor/abstract/class-nav-menu.php:344, inc/elementor/abstract/class-nav-menu.php:369, inc/elementor/abstract/class-nav-menu.php:454, inc/elementor/abstract/class-nav-menu.php:492
 msgid "SubMenu Color"
 msgstr ""
 
-#: inc/elementor/abstract/class-nav-menu.php:383
+#: inc/elementor/abstract/class-nav-menu.php:384
 msgid "Background Submenu Item Hover"
 msgstr ""
 
-#: inc/elementor/abstract/class-nav-menu.php:400
+#: inc/elementor/abstract/class-nav-menu.php:401
 msgid "Menu Mobie Style"
 msgstr ""
 
-#: inc/elementor/abstract/class-nav-menu.php:440, inc/elementor/abstract/class-nav-menu.php:478
+#: inc/elementor/abstract/class-nav-menu.php:441, inc/elementor/abstract/class-nav-menu.php:479
 msgid "Toggle Icon Color"
 msgstr ""
 
@@ -377,11 +377,11 @@ msgstr ""
 msgid "Have Sub Menu"
 msgstr ""
 
-#: inc/elementor/widgets/class-boostify-header-footer-mega-menu.php:92, inc/elementor/widgets/class-boostify-header-footer-mega-menu.php:225
+#: inc/elementor/widgets/class-boostify-header-footer-mega-menu.php:92, inc/elementor/widgets/class-boostify-header-footer-mega-menu.php:252
 msgid "Yes"
 msgstr ""
 
-#: inc/elementor/widgets/class-boostify-header-footer-mega-menu.php:93, inc/elementor/widgets/class-boostify-header-footer-mega-menu.php:226
+#: inc/elementor/widgets/class-boostify-header-footer-mega-menu.php:93, inc/elementor/widgets/class-boostify-header-footer-mega-menu.php:253
 msgid "No"
 msgstr ""
 
@@ -389,7 +389,7 @@ msgstr ""
 msgid "Sub Menu Type"
 msgstr ""
 
-#: inc/elementor/widgets/class-boostify-header-footer-mega-menu.php:131, inc/elementor/widgets/class-boostify-header-footer-mega-menu.php:157, inc/elementor/widgets/class-boostify-header-footer-nav-menu.php:131
+#: inc/elementor/widgets/class-boostify-header-footer-mega-menu.php:131, inc/elementor/widgets/class-boostify-header-footer-mega-menu.php:158, inc/elementor/widgets/class-boostify-header-footer-nav-menu.php:131
 msgid "Menu"
 msgstr ""
 
@@ -401,35 +401,39 @@ msgstr ""
 msgid "Enter parent menu name Ex: Home"
 msgstr ""
 
-#: inc/elementor/widgets/class-boostify-header-footer-mega-menu.php:163
+#: inc/elementor/widgets/class-boostify-header-footer-mega-menu.php:151
+msgid "Enter the name of the menu item you want to get the sub menu"
+msgstr ""
+
+#: inc/elementor/widgets/class-boostify-header-footer-mega-menu.php:164
 msgid "Menu Item 1"
 msgstr ""
 
-#: inc/elementor/widgets/class-boostify-header-footer-mega-menu.php:166
+#: inc/elementor/widgets/class-boostify-header-footer-mega-menu.php:167
 msgid "Menu Item 2"
 msgstr ""
 
-#: inc/elementor/widgets/class-boostify-header-footer-mega-menu.php:175, inc/elementor/widgets/class-boostify-header-footer-nav-menu.php:143, inc/elementor/widgets/class-boostify-header-footer-site-logo.php:93, inc/elementor/widgets/class-boostify-header-footer-site-search.php:126
+#: inc/elementor/widgets/class-boostify-header-footer-mega-menu.php:202, inc/elementor/widgets/class-boostify-header-footer-nav-menu.php:143, inc/elementor/widgets/class-boostify-header-footer-site-logo.php:93, inc/elementor/widgets/class-boostify-header-footer-site-search.php:126
 msgid "Align"
 msgstr ""
 
-#: inc/elementor/widgets/class-boostify-header-footer-mega-menu.php:201, inc/elementor/widgets/class-boostify-header-footer-nav-menu.php:169
+#: inc/elementor/widgets/class-boostify-header-footer-mega-menu.php:228, inc/elementor/widgets/class-boostify-header-footer-nav-menu.php:169
 msgid "Pointer"
 msgstr ""
 
-#: inc/elementor/widgets/class-boostify-header-footer-mega-menu.php:223
+#: inc/elementor/widgets/class-boostify-header-footer-mega-menu.php:250
 msgid "Use Menu Site"
 msgstr ""
 
-#: inc/elementor/widgets/class-boostify-header-footer-mega-menu.php:233
+#: inc/elementor/widgets/class-boostify-header-footer-mega-menu.php:260
 msgid "Menu Mobile"
 msgstr ""
 
-#: inc/elementor/widgets/class-boostify-header-footer-mega-menu.php:264
+#: inc/elementor/widgets/class-boostify-header-footer-mega-menu.php:291
 msgid "Select Sub Menu"
 msgstr ""
 
-#: inc/elementor/widgets/class-boostify-header-footer-mega-menu.php:393, inc/elementor/widgets/class-boostify-header-footer-nav-menu.php:93
+#: inc/elementor/widgets/class-boostify-header-footer-mega-menu.php:435, inc/elementor/widgets/class-boostify-header-footer-nav-menu.php:93
 msgid "Dropdown navigation"
 msgstr ""
 
@@ -457,27 +461,27 @@ msgstr ""
 msgid "Go to the <a href=\"%s\" target=\"_blank\">Menus screen</a> to manage your menus."
 msgstr ""
 
-#: inc/elementor/widgets/class-boostify-header-footer-nav-menu.php:184
+#: inc/elementor/widgets/class-boostify-header-footer-nav-menu.php:185
 msgid "Sub Menu"
 msgstr ""
 
-#: inc/elementor/widgets/class-boostify-header-footer-nav-menu.php:194
+#: inc/elementor/widgets/class-boostify-header-footer-nav-menu.php:195
 msgid "Border Item"
 msgstr ""
 
-#: inc/elementor/widgets/class-boostify-header-footer-nav-menu.php:206
+#: inc/elementor/widgets/class-boostify-header-footer-nav-menu.php:207
 msgid "Show Logo"
 msgstr ""
 
-#: inc/elementor/widgets/class-boostify-header-footer-nav-menu.php:208, inc/elementor/widgets/class-boostify-header-footer-nav-menu.php:249
+#: inc/elementor/widgets/class-boostify-header-footer-nav-menu.php:209, inc/elementor/widgets/class-boostify-header-footer-nav-menu.php:250
 msgid "Show"
 msgstr ""
 
-#: inc/elementor/widgets/class-boostify-header-footer-nav-menu.php:209, inc/elementor/widgets/class-boostify-header-footer-nav-menu.php:250
+#: inc/elementor/widgets/class-boostify-header-footer-nav-menu.php:210, inc/elementor/widgets/class-boostify-header-footer-nav-menu.php:251
 msgid "Hide"
 msgstr ""
 
-#: inc/elementor/widgets/class-boostify-header-footer-nav-menu.php:247
+#: inc/elementor/widgets/class-boostify-header-footer-nav-menu.php:248
 msgid "Show Search"
 msgstr ""
 

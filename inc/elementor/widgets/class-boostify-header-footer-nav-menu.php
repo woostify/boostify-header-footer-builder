@@ -58,11 +58,7 @@ class Boostify_Header_Footer_Nav_Menu extends Nav_Menu {
 				<?php } ?>
 			</nav>
 
-			<a href="#" class="boostify-menu-toggle" aria-expanded="false">
-				<span class="menu-toggle-wrapper <?php echo esc_attr( $settings['toggle_icon'] ); ?>"></span><!-- .menu-toggle-wrapper -->
-
-				<span class="screen-reader-text menu-toggle-text"><?php esc_html_e( 'Menu', 'wunderlust' ); ?></span>
-			</a><!-- .menu-toggle -->
+			<?php $this->get_toggle( $settings['toggle_icon'] ); ?>
 
 			<div class="boostify-menu-sidebar boostify--hover-<?php echo esc_attr( $settings['pointer'] ); ?>">
 				<div class="boostify-menu-sidebar--wrapper">
