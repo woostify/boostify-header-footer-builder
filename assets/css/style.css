@@ -1,3 +1,7 @@
 .boostify-site-footer {
   clear: both;
 }
+
+#ht-hf-primary .sub-menu {
+  margin: 0;
+}

@@ -40,18 +40,28 @@
 					var width = $( window ).width();
 					var left  = item.offset().left;
 					var padding, contentWith;
-					if ( width > 1170 ) {
-						padding     = ( width - 1170 ) / 2;
-						contentWith = 1170;
+					if ( item.hasClass( 'sub-width-default' ) ) {
+						contentWith = 500;
+						padding     = ( width - 500 ) / 2;
 						left        = padding - left;
+						mega.css( { 'left' : 'calc( ( 100% - 500px ) /2 )', 'width' : contentWith + 'px' } );
+					} else if ( item.hasClass( 'sub-width-container' ) ) {
+						if ( width > 1170 ) {
+							padding     = ( width - 1170 ) / 2;
+							contentWith = 1170;
+							left        = padding - left;
 
+						} else {
+							padding     = 15;
+							left        = padding - left;
+							contentWith = ( width - 30 );
+
+						}
+						mega.css( { 'left' : left + 'px', 'width' : contentWith + 'px' } );
 					} else {
-						padding     = 15;
-						left        = padding - left;
-						contentWith = ( width - 30 );
-
+						mega.css( { 'left' : '-' + left + 'px', 'width' : width } );
 					}
-					mega.css( { 'left' : left + 'px', 'width' : contentWith + 'px' } );
+
 				}
 			);
 		}

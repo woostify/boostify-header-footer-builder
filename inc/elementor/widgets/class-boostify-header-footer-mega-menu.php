@@ -126,6 +126,25 @@ class Boostify_Header_Footer_Mega_Menu extends Nav_Menu {
 		);
 
 		$repeater->add_control(
+			'sub_width',
+			array(
+				'label'     => __( 'Width', 'boostify' ),
+				'type'      => \Elementor\Controls_Manager::SELECT,
+				'default'   => 'default',
+				'options'   => array(
+					'default'   => __( 'Default', 'boostify' ),
+					'container' => __( 'Container', 'boostify' ),
+					'full'      => __( 'Full Width' ),
+				),
+				'condition' => array(
+					'has_sub'   => 'yes',
+					'sub_type'  => 'mega',
+					'sub_menu!' => 'no',
+				),
+			)
+		);
+
+		$repeater->add_control(
 			'menu_register',
 			array(
 				'label'     => __( 'Menu', 'boostify' ),
@@ -342,6 +361,10 @@ class Boostify_Header_Footer_Mega_Menu extends Nav_Menu {
 			}
 			if ( ! empty( $icon['value'] ) ) {
 				array_push( $menu_item_class, 'menu-item-has-icon' );
+			}
+			if ( ! empty( $menu['sub_width'] ) ) {
+				$width = $menu['sub_width'];
+				array_push( $menu_item_class, 'sub-width-' . $width );
 			}
 		}
 
