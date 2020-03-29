@@ -1,14 +1,17 @@
 <?php
 
+namespace Boostify_Header_Footer\Widgets;
+
 use Boostify_Header_Footer\Nav_Menu;
 use Elementor\Controls_Manager;
+use Elementor\Group_Control_Border;
 
 /**
  * Boostify Nav Menu
  *
  * Elementor widget for hello world.
  */
-class Boostify_Header_Footer_Nav_Menu extends Nav_Menu {
+class Navigation extends Nav_Menu {
 
 	/**
 	 * Retrieve the widget name.
@@ -179,13 +182,13 @@ class Boostify_Header_Footer_Nav_Menu extends Nav_Menu {
 			'submenu_heading',
 			array(
 				'label'     => __( 'Sub Menu', 'boostify' ),
-				'type'      => Elementor\Controls_Manager::HEADING,
+				'type'      => Controls_Manager::HEADING,
 				'separator' => 'before',
 			)
 		);
 
 		$this->add_group_control(
-			Elementor\Group_Control_Border::get_type(),
+			Group_Control_Border::get_type(),
 			array(
 				'name'     => 'border_item_submenu',
 				'label'    => __( 'Border Item', 'boostify' ),
@@ -201,7 +204,7 @@ class Boostify_Header_Footer_Nav_Menu extends Nav_Menu {
 			'logo',
 			array(
 				'label'        => __( 'Show Logo', 'boostify' ),
-				'type'         => \Elementor\Controls_Manager::SWITCHER,
+				'type'         => Controls_Manager::SWITCHER,
 				'label_on'     => __( 'Show', 'boostify' ),
 				'label_off'    => __( 'Hide', 'boostify' ),
 				'return_value' => 'yes',
@@ -242,7 +245,7 @@ class Boostify_Header_Footer_Nav_Menu extends Nav_Menu {
 			'search',
 			array(
 				'label'        => __( 'Show Search', 'boostify' ),
-				'type'         => \Elementor\Controls_Manager::SWITCHER,
+				'type'         => Controls_Manager::SWITCHER,
 				'label_on'     => __( 'Show', 'boostify' ),
 				'label_off'    => __( 'Hide', 'boostify' ),
 				'return_value' => 'yes',

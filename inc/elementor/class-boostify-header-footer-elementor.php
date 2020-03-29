@@ -6,6 +6,8 @@
  * @since 1.2.0
  */
 
+namespace Boostify_Header_Footer;
+
 if ( ! class_exists( 'Boostify_Header_Footer_Elementor' ) ) {
 
 	class Boostify_Header_Footer_Elementor {
@@ -51,6 +53,20 @@ if ( ! class_exists( 'Boostify_Header_Footer_Elementor' ) ) {
 			);
 		}
 
+		public function get_widgets() {
+			$widgets = array(
+				'Site_Logo',
+				'Site_Search',
+				'Navigation',
+				'Copyright',
+				'Image_Retina',
+				// 'Mega_Menu',
+				'Cart_Icon',
+			);
+
+			return $widgets;
+		}
+
 		/**
 		 * widget_scripts
 		 *
@@ -92,18 +108,36 @@ if ( ! class_exists( 'Boostify_Header_Footer_Elementor' ) ) {
 		 * Load widgets files
 		 *
 		 * @since 1.2.0
-		 * @access private
+		 * @access public
 		 */
-		private function include_widgets_files() {
+		public function autoload_widgets( $classname ) {
+			if ( ! class_exists( $classname ) ) {
+				$filename = strtolower(
+					preg_replace(
+						array(
+							'/^' . __NAMESPACE__ . '\\\/',
+							'/([a-z])([A-Z])/',
+							'/_/',
+							'/\\\/',
+						),
+						array(
+							'',
+							'$1-$2',
+							'-',
+							DIRECTORY_SEPARATOR,
+						),
+						$classname
+					)
+				);
+				$filename = str_replace( 'widgets\\', '', $filename );
+				$filename = BOOSTIFY_HEADER_FOOTER_PATH . 'inc/elementor/widgets/class-' . $filename . '.php';
 
-			$widgets = glob( BOOSTIFY_HEADER_FOOTER_PATH . 'inc/elementor/widgets/*.php' );
-
-			foreach ( $widgets as $key ) {
-				if ( file_exists( $key ) ) {
-					require_once $key;
+				if ( is_readable( $filename ) ) {
+					include $filename;
 				}
 			}
 		}
+
 		/**
 		 * Register Widgets
 		 *
@@ -112,29 +146,21 @@ if ( ! class_exists( 'Boostify_Header_Footer_Elementor' ) ) {
 		 * @since 1.2.0
 		 * @access public
 		 */
-		public function register_widgets() {
+		public function init_widgets() {
 			// Its is now safe to include Widgets files
-			$this->include_widgets_files();
+			$widget_manager = \Elementor\Plugin::instance()->widgets_manager;
+			foreach ( $this->get_widgets() as $widget ) {
+				$class_name = 'Boostify_Header_Footer\Widgets\\' . $widget;
 
-			$widgets = glob( BOOSTIFY_HEADER_FOOTER_PATH . 'inc/elementor/widgets/*.php' );
-			// Register Widgets
-			foreach ( $widgets as $key ) {
-				if ( file_exists( $key ) ) {
-					$paths      = pathinfo( $key );
-					$prefix     = str_replace( '-', ' ', $paths['filename'] );
-					$prefix     = ucwords( $prefix );
-					$class_name = str_replace( ' ', '_', $prefix );
-					$class_name = str_replace( 'Class_', '', $class_name );
-					\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new $class_name() );
-				}
+				$widget_manager->register_widget_type( new $class_name() );
 			}
 		}
 
 		public function init() {
 
-			$this->modules_manager = Boostify_Header_Footer_Sticky::instance();
+			$this->modules_manager = \Boostify_Header_Footer\Module\Sticky::instance();
 
-			$elementor = Elementor\Plugin::$instance;
+			$elementor = \Elementor\Plugin::$instance;
 
 			// Add element category in panel
 			$elementor->elements_manager->add_category(
@@ -158,7 +184,7 @@ if ( ! class_exists( 'Boostify_Header_Footer_Elementor' ) ) {
 			// Register widget scripts
 			add_action( 'elementor/frontend/after_register_scripts', array( $this, 'widget_scripts' ) );
 			// Register widgets
-			add_action( 'elementor/widgets/widgets_registered', array( $this, 'register_widgets' ) );
+			add_action( 'elementor/widgets/widgets_registered', array( $this, 'init_widgets' ) );
 		}
 
 		public function register_abstract() {
@@ -167,7 +193,7 @@ if ( ! class_exists( 'Boostify_Header_Footer_Elementor' ) ) {
 		}
 
 		public function includes() {
-			require BOOSTIFY_HEADER_FOOTER_PATH . 'inc/elementor/module/class-boostify-header-footer-sticky.php';
+			require BOOSTIFY_HEADER_FOOTER_PATH . 'inc/elementor/module/class-sticky.php';
 		}
 
 		/**
@@ -179,6 +205,7 @@ if ( ! class_exists( 'Boostify_Header_Footer_Elementor' ) ) {
 		 * @access public
 		 */
 		public function __construct() {
+			spl_autoload_register( array( $this, 'autoload_widgets' ) );
 			$this->includes();
 
 			$this->setup_hooks();

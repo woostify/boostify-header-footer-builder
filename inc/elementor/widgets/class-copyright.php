@@ -1,7 +1,11 @@
 <?php
 
+namespace Boostify_Header_Footer\Widgets;
+
 use Boostify_Header_Footer\Base_Widget;
 use Elementor\Controls_Manager;
+use Elementor\Group_Control_Typography;
+use Elementor\Scheme_Typography;
 
 /**
  * Copyright
@@ -9,7 +13,7 @@ use Elementor\Controls_Manager;
  * Elementor widget for Copyright.
  * Author: ptp
  */
-class Boostify_Header_Footer_Copyright extends Base_Widget {
+class Copyright extends Base_Widget {
 
 	/**
 	 * Retrieve the widget name.
@@ -108,11 +112,11 @@ class Boostify_Header_Footer_Copyright extends Base_Widget {
 		);
 
 		$this->add_group_control(
-			Elementor\Group_Control_Typography::get_type(),
+			Group_Control_Typography::get_type(),
 			array(
 				'name'     => 'caption_typography',
 				'selector' => '{{WRAPPER}} .boostify-copyright-wrapper, {{WRAPPER}} .boostify-copyright-wrapper a',
-				'scheme'   => Elementor\Scheme_Typography::TYPOGRAPHY_3,
+				'scheme'   => Scheme_Typography::TYPOGRAPHY_3,
 			)
 		);
 	}

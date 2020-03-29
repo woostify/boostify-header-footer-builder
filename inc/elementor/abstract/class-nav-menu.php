@@ -71,7 +71,7 @@ abstract class Nav_Menu extends Base_Widget {
 			'toggle_icon',
 			array(
 				'label'     => __( 'Toggle Icons', 'boostify' ),
-				'type'      => \Elementor\Controls_Manager::ICON,
+				'type'      => Controls_Manager::ICON,
 				'separator' => 'before',
 				'default'   => 'ion-android-menu',
 				'include'   => array(

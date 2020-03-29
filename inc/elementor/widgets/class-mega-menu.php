@@ -1,5 +1,7 @@
 <?php
 
+namespace Boostify_Header_Footer\Widgets;
+
 use Boostify_Header_Footer\Nav_Menu;
 use Elementor\Controls_Manager;
 
@@ -9,7 +11,7 @@ use Elementor\Controls_Manager;
  * Elementor widget for Mega Menu.
  * Author: ptp
  */
-class Boostify_Header_Footer_Mega_Menu extends Nav_Menu {
+class Mega_Menu extends Nav_Menu {
 
 	/**
 	 * Retrieve the widget name.
@@ -327,7 +329,7 @@ class Boostify_Header_Footer_Mega_Menu extends Nav_Menu {
 			'p'         => $post_id,
 			'post_type' => 'btf_builder',
 		);
-		$sub_menu = new WP_Query( $args );
+		$sub_menu = new \WP_Query( $args );
 
 		if ( $post_id && 'no' !== $post_id ) :
 			?>
