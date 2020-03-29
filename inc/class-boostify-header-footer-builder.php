@@ -66,7 +66,6 @@ if ( ! class_exists( 'Boostify_Header_Footer_Builder' ) ) {
 			return $classes;
 		}
 
-		// Register Post Type
 		public function post_types() {
 			register_post_type(
 				'btf_builder',
@@ -88,15 +87,15 @@ if ( ! class_exists( 'Boostify_Header_Footer_Builder' ) ) {
 			);
 		}
 
-		// Listing Teamplate
 		public function init() {
 			new Boostify_Header_Footer_Metabox();
 			new Boostify_Header_Footer_Template_Render();
 			new Boostify_Header_Footer_Sub_Menu();
-			echo class_exists( '\Elementor\Widget_Base' );
 		}
 
-		// Add Icon Elementor
+		/**
+		 * Add icon for elementor.
+		 */
 		public function modify_controls( $controls_registry ) {
 			// Get existing icons
 			$icons = $controls_registry->get_control( 'icon' )->get_settings( 'options' );
@@ -123,7 +122,10 @@ if ( ! class_exists( 'Boostify_Header_Footer_Builder' ) ) {
 			$controls_registry->get_control( 'icon' )->set_settings( 'options', $new_icons );
 		}
 
-		// ADD ICON STYLE IN EDITOR ELEMENTOR MODE
+		/**
+		 * Add ionicons.
+		 *
+		 */
 		public function enqueue_icon() {
 			wp_enqueue_style(
 				'ionicons',
@@ -168,6 +170,10 @@ if ( ! class_exists( 'Boostify_Header_Footer_Builder' ) ) {
 			);
 		}
 
+		/**
+		 * Notice when do not install or active Elementor.
+		 *
+		 */
 		public function notice_plugin() {
 			if ( ! defined( 'ELEMENTOR_VERSION' ) || ! is_callable( 'Elementor\Plugin::instance' ) ) {
 

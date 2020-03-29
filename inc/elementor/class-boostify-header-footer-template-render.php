@@ -54,7 +54,6 @@ class Boostify_Header_Footer_Template_Render {
 		}
 	}
 
-
 	/**
 	 * Enqueue styles and scripts.
 	 */
@@ -113,7 +112,6 @@ class Boostify_Header_Footer_Template_Render {
 	 *
 	 * @param array $atts attributes for shortcode.
 	 */
-
 	protected function builder_template() {
 		$args = array(
 			'post_type'           => 'btf_builder',
@@ -132,5 +130,25 @@ class Boostify_Header_Footer_Template_Render {
 		} else {
 			return false;
 		}
+	}
+
+	/**
+	 * Header Template.
+	 *
+	 * @return Header Template.
+	 */
+	public static function get_header_template() {
+		$id = boostify_header_template_id();
+		return self::$elementor_instance->frontend->get_builder_content_for_display( $id );
+	}
+
+	/**
+	 * Footer Template.
+	 *
+	 * @return Footer Template.
+	 */
+	public static function get_footer_template() {
+		$id = boostify_footer_template_id();
+		return self::$elementor_instance->frontend->get_builder_content_for_display( $id );
 	}
 }

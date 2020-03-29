@@ -21,8 +21,18 @@ if ( ! class_exists( 'Boostify_Header_Footer_Template' ) ) {
 
 		private static $instance;
 
+		/**
+		 * Post ID
+		 *
+		 * @var int
+		 */
 		public $post_id;
 
+		/**
+		 * Post type
+		 *
+		 * @var String
+		 */
 		public $post_type;
 
 		/**
@@ -52,7 +62,6 @@ if ( ! class_exists( 'Boostify_Header_Footer_Template' ) ) {
 
 		}
 
-		// Template single post type
 		public function single_template( $single_template ) {
 			if ( 'btf_builder' == get_post_type() ) { // phpcs:ignore
 				$single_template = BOOSTIFY_HEADER_FOOTER_PATH . 'templates/hf.php';
@@ -61,7 +70,11 @@ if ( ! class_exists( 'Boostify_Header_Footer_Template' ) ) {
 			return $single_template;
 		}
 
-		// Get Header Builder
+		/**
+		 * Get Header Site.
+		 *
+		 * @return Header Site.
+		 */
 		public function render_header() {
 			$page_type       = $this->page_type();
 			$this->post_type = get_post_type();
@@ -80,12 +93,18 @@ if ( ! class_exists( 'Boostify_Header_Footer_Template' ) ) {
 			}
 		}
 
-		// Get Footer Builder
+		/**
+		 * Get Footer Site.
+		 *
+		 * @return Footer Site.
+		 */
 		public function render_footer() {
-			$page_type = $this->page_type();
-			$id        = $this->post_id;
-			$post_type = $this->post_type;
-			if ( $this->display_all( 'footer' ) || $this->display_template( $page_type, 'footer' ) || $this->current_single( $id, $post_type,'footer' ) || $this->all_single( $id, $post_type, 'footer' ) ) {
+			$page_type       = $this->page_type();
+			$this->post_type = get_post_type();
+			$this->post_id   = get_the_ID();
+			$id              = $this->post_id;
+			$post_type       = $this->post_type;
+			if ( $this->display_all( 'footer' ) || $this->display_template( $page_type, 'footer' ) || $this->current_single( $id, $post_type, 'footer' ) || $this->all_single( $id, $post_type, 'footer' ) ) {
 				require BOOSTIFY_HEADER_FOOTER_PATH . 'templates/default/footer.php';
 				$templates   = array();
 				$templates[] = 'footer.php';
@@ -97,8 +116,12 @@ if ( ! class_exists( 'Boostify_Header_Footer_Template' ) ) {
 			}
 		}
 
+		/**
+		 * Get Header Buider width condition.
+		 *
+		 * @return Header template.
+		 */
 		public function header_template() {
-
 			$id        = $this->post_id;
 			$post_type = $this->post_type;
 			$path      = BOOSTIFY_HEADER_FOOTER_PATH . 'templates/content/content-header.php';
@@ -129,7 +152,11 @@ if ( ! class_exists( 'Boostify_Header_Footer_Template' ) ) {
 
 		}
 
-		// Get hf_builder Footer Template
+		/**
+		 * Get Footer Buider width condition.
+		 *
+		 * @return Footer template.
+		 */
 		public function footer_template() {
 			$id        = $this->post_id;
 			$post_type = $this->post_type;
@@ -158,7 +185,11 @@ if ( ! class_exists( 'Boostify_Header_Footer_Template' ) ) {
 
 		}
 
-		// For Template All Page
+		/**
+		 * Template( header or Footer ) width conditon For All.
+		 * @param (string) $type | Type of btf_builder custom post type
+		 * @return Mixed (object) $template or (Boolean) false.
+		 */
 		public function display_all( $type = 'header' ) {
 			$args = array(
 				'post_type'           => 'btf_builder',
@@ -192,7 +223,12 @@ if ( ! class_exists( 'Boostify_Header_Footer_Template' ) ) {
 			}
 		}
 
-		// For Archive, Blog Page, Search Page
+		/**
+		 * Template( header or Footer ) Width Conditon For Archive, Blog Page, Search Page.
+		 * @param (string) $page_type | Type of page
+		 * @param (string) $type | Type of btf_builder custom post type
+		 * @return Mixed (object) $template or (Boolean) false.
+		 */
 		public function display_template( $page_type, $type = 'header' ) {
 			if ( empty( $page_type ) ) {
 				return false;
@@ -226,12 +262,17 @@ if ( ! class_exists( 'Boostify_Header_Footer_Template' ) ) {
 			}
 		}
 
-		// Get Template Builder For Current Single
+		/**
+		 * Template( header or Footer ) Width Conditon For Archive, Blog Page, Search Page.
+		 * @param (int) $id | ID Single Post
+		 * @param (string) $post_type | Post Type Single Post
+		 * @param (string) $type | Type of btf_builder custom post type
+		 * @return Mixed (object) $template or (Boolean) false.
+		 */
 		public function current_single( $id, $post_type, $type = 'header' ) {
 			if ( ! is_single() && ! is_page() ) {
 				return false;
 			}
-
 			$args = array(
 				'post_type'           => 'btf_builder',
 				'orderby'             => 'id',
@@ -270,6 +311,7 @@ if ( ! class_exists( 'Boostify_Header_Footer_Template' ) ) {
 				}
 
 				if ( empty( $current ) ) {
+
 					return false;
 				} else {
 					$header->posts      = $current;
@@ -283,7 +325,13 @@ if ( ! class_exists( 'Boostify_Header_Footer_Template' ) ) {
 			}
 		}
 
-		// Get Template Builder For All Single
+		/**
+		 * Template( header or Footer ) Width Conditon For Archive, Blog Page, Search Page.
+		 * @param (int) $post_id | ID Single Post
+		 * @param (string) $post_type | Post Type Single Post
+		 * @param (string) $type | Type of btf_builder custom post type
+		 * @return Mixed (object) $template or (Boolean) false.
+		 */
 		public function all_single( $post_id, $post_type, $type = 'header' ) {
 			if ( ! is_single() && ! is_page() ) {
 				return false;
@@ -337,7 +385,6 @@ if ( ! class_exists( 'Boostify_Header_Footer_Template' ) ) {
 				}
 				wp_reset_postdata();
 
-
 				return $header;
 			} else {
 
@@ -361,7 +408,7 @@ if ( ! class_exists( 'Boostify_Header_Footer_Template' ) ) {
 			return $page_type;
 		}
 
-		// Get current Template builder.
+
 		public function render( $header, $path ) {
 			if ( $header->have_posts() ) {
 				while ( $header->have_posts() ) {
@@ -372,6 +419,11 @@ if ( ! class_exists( 'Boostify_Header_Footer_Template' ) ) {
 			}
 		}
 
+		/**
+		 * Check condition exclude.
+		 *
+		 * @return (boolean) false | return false if exclude
+		 */
 		public function check_ex_post( $header ) {
 
 			$post_id = $this->post_id;
@@ -414,6 +466,78 @@ if ( ! class_exists( 'Boostify_Header_Footer_Template' ) ) {
 					}
 				}
 				wp_reset_postdata();
+			}
+		}
+
+		/**
+		 * Get Header Template ID.
+		 *
+		 * @return Mixed (int) $id or (Boolean) false | ID Header Teamplate or false if not found
+		 */
+		public function template_header_id() {
+			$page_type = $this->page_type();
+			$post_id   = $this->post_id;
+			$post_type = $this->post_type;
+			$id        = '';
+			if ( $this->display_all() || $this->display_template( $page_type ) || $this->all_single( $post_id, $post_type ) || $this->current_single( $post_id, $post_type ) ) {
+				if ( $this->display_all() ) {
+					$header = $this->display_all();
+				}
+				if ( $this->display_template( $page_type ) ) {
+					$header = $this->display_template( $page_type );
+				}
+				if ( $this->all_single( $post_id, $post_type ) ) {
+					$header = $this->all_single( $post_id, $post_type );
+				}
+				if ( $this->current_single( $post_id, $post_type ) ) {
+					$header = $this->current_single( $post_id, $post_type );
+				}
+
+				while ( $header->have_posts() ) {
+					$header->the_post();
+					$id = get_the_ID();
+				}
+				wp_reset_postdata();
+
+				return $id;
+			} else {
+				return false;
+			}
+		}
+
+		/**
+		 * Get Footer Template ID.
+		 *
+		 * @return Mixed (int) $id or (Boolean) false | ID Footer Teamplate or False if not found
+		 */
+		public function template_footer_id() {
+			$page_type = $this->page_type();
+			$post_id   = $this->post_id;
+			$post_type = $this->post_type;
+			$id        = '';
+			if ( $this->display_all( 'footer' ) || $this->display_template( $page_type, 'footer' ) || $this->all_single( $post_id, $post_type, 'footer' ) || $this->current_single( $post_id, $post_type, 'footer' ) ) {
+				if ( $this->display_all( 'footer' ) ) {
+					$header = $this->display_all( 'footer' );
+				}
+				if ( $this->display_template( $page_type, 'footer' ) ) {
+					$header = $this->display_template( $page_type, 'footer' );
+				}
+				if ( $this->all_single( $post_id, $post_type, 'footer' ) ) {
+					$header = $this->all_single( $post_id, $post_type, 'footer' );
+				}
+				if ( $this->current_single( $post_id, $post_type, 'footer' ) ) {
+					$header = $this->current_single( $post_id, $post_type, 'footer' );
+				}
+
+				while ( $header->have_posts() ) {
+					$header->the_post();
+					$id = get_the_ID();
+				}
+				wp_reset_postdata();
+
+				return $id;
+			} else {
+				return false;
 			}
 		}
 	}

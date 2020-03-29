@@ -154,7 +154,6 @@ if ( ! class_exists( 'Boostify_Header_Footer_Metabox' ) ) {
 					);
 				}
 
-
 				// Ex Post
 				if ( array_key_exists( 'bhf_ex_post', $_POST ) ) {
 					$ex_post = sanitize_text_field( $_POST['bhf_ex_post'] );
@@ -178,7 +177,7 @@ if ( ! class_exists( 'Boostify_Header_Footer_Metabox' ) ) {
 				}
 
 				// Post Type
-				if ( array_key_exists( 'bhf_ex_post_type', $_POST ) ) {
+				if ( array_key_exists( 'bhf_post_type', $_POST ) ) {
 					$post_type = sanitize_text_field( $_POST['bhf_post_type'] );
 
 					update_post_meta(
@@ -189,9 +188,7 @@ if ( ! class_exists( 'Boostify_Header_Footer_Metabox' ) ) {
 				}
 			}
 
-
 		}
-
 
 		public function hf_display( $post ) {
 			$options      = $this->pt_support();
