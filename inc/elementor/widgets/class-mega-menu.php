@@ -57,7 +57,7 @@ class Mega_Menu extends Nav_Menu {
 			'item_text',
 			array(
 				'label'       => __( 'Title', 'boostify' ),
-				'type'        => \Elementor\Controls_Manager::TEXT,
+				'type'        => Controls_Manager::TEXT,
 				'default'     => __( 'Menu Item', 'boostify' ),
 				'label_block' => true,
 			)
@@ -67,7 +67,7 @@ class Mega_Menu extends Nav_Menu {
 			'icon',
 			array(
 				'label' => __( 'Icons', 'boostify' ),
-				'type'  => \Elementor\Controls_Manager::ICONS,
+				'type'  => Controls_Manager::ICONS,
 			)
 		);
 
@@ -75,7 +75,7 @@ class Mega_Menu extends Nav_Menu {
 			'link',
 			array(
 				'label'         => __( 'Link', 'boostify' ),
-				'type'          => \Elementor\Controls_Manager::URL,
+				'type'          => Controls_Manager::URL,
 				'placeholder'   => __( 'https://your-link.com', 'boostify' ),
 				'show_external' => true,
 				'default'       => array(
@@ -90,7 +90,7 @@ class Mega_Menu extends Nav_Menu {
 			'has_sub',
 			array(
 				'label'        => __( 'Have Sub Menu', 'boostify' ),
-				'type'         => \Elementor\Controls_Manager::SWITCHER,
+				'type'         => Controls_Manager::SWITCHER,
 				'label_on'     => __( 'Yes', 'boostify' ),
 				'label_off'    => __( 'No', 'boostify' ),
 				'return_value' => 'yes',
@@ -101,7 +101,7 @@ class Mega_Menu extends Nav_Menu {
 			'sub_type',
 			array(
 				'label'     => __( 'Sub Menu Type', 'boostify' ),
-				'type'      => \Elementor\Controls_Manager::SELECT,
+				'type'      => Controls_Manager::SELECT,
 				'default'   => 'mega',
 				'options'   => array(
 					'mega'    => 'Mega',
@@ -117,7 +117,7 @@ class Mega_Menu extends Nav_Menu {
 			'sub_menu',
 			array(
 				'label'     => __( 'Sub Mega Menu', 'boostify' ),
-				'type'      => \Elementor\Controls_Manager::SELECT,
+				'type'      => Controls_Manager::SELECT,
 				'default'   => 'no',
 				'options'   => boostify_header_footer_sub_menu(),
 				'condition' => array(
@@ -131,7 +131,7 @@ class Mega_Menu extends Nav_Menu {
 			'sub_width',
 			array(
 				'label'     => __( 'Width', 'boostify' ),
-				'type'      => \Elementor\Controls_Manager::SELECT,
+				'type'      => Controls_Manager::SELECT,
 				'default'   => 'default',
 				'options'   => array(
 					'default'   => __( 'Default', 'boostify' ),
@@ -150,7 +150,7 @@ class Mega_Menu extends Nav_Menu {
 			'menu_register',
 			array(
 				'label'     => __( 'Menu', 'boostify' ),
-				'type'      => \Elementor\Controls_Manager::SELECT,
+				'type'      => Controls_Manager::SELECT,
 				'options'   => $this->all_menu_site(),
 				'condition' => array(
 					'has_sub'  => 'yes',
@@ -177,7 +177,7 @@ class Mega_Menu extends Nav_Menu {
 			'menu',
 			array(
 				'label'       => __( 'Menu', 'boostify' ),
-				'type'        => \Elementor\Controls_Manager::REPEATER,
+				'type'        => Controls_Manager::REPEATER,
 				'fields'      => $repeater->get_controls(),
 				'title_field' => '{{{ item_text }}}',
 				'default'     => array(

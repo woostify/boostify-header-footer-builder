@@ -119,6 +119,8 @@ class Copyright extends Base_Widget {
 				'scheme'   => Scheme_Typography::TYPOGRAPHY_3,
 			)
 		);
+
+		$this->end_controls_section();
 	}
 
 	/**
