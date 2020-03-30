@@ -8,7 +8,6 @@
 
 namespace Boostify_Header_Footer;
 
-
 class Elementor {
 	/**
 	 * Instance
@@ -52,6 +51,10 @@ class Elementor {
 		);
 	}
 
+
+	/**
+	 * Widget Class
+	 */
 	public function get_widgets() {
 		$widgets = array(
 			'Site_Logo',
@@ -187,6 +190,7 @@ class Elementor {
 		add_action( 'elementor/frontend/after_register_scripts', array( $this, 'widget_scripts' ) );
 		// Register widgets
 		add_action( 'elementor/widgets/widgets_registered', array( $this, 'init_widgets' ) );
+		add_filter( 'add_to_cart_fragments', array( $this, 'add_to_cart_fragment' ) );
 	}
 
 	public function register_abstract() {
@@ -196,6 +200,19 @@ class Elementor {
 
 	public function includes() {
 		require BOOSTIFY_HEADER_FOOTER_PATH . 'inc/elementor/module/class-sticky.php';
+	}
+
+	public function add_to_cart_fragment( $fragments ) {
+		global $woocommerce;
+		ob_start();
+		?>
+			<span class="boostify-count-product"><?php echo esc_html( WC()->cart->get_cart_contents_count() ); ?></span>
+
+		<?php
+		$fragments['span.boostify-count-product'] = ob_get_clean();//a.cartplus-contents,a.cart-button
+		ob_end_clean();
+		return $fragments;
+
 	}
 
 	/**
@@ -209,7 +226,6 @@ class Elementor {
 	public function __construct() {
 		spl_autoload_register( array( $this, 'autoload_widgets' ) );
 		$this->includes();
-
 		$this->setup_hooks();
 	}
 }

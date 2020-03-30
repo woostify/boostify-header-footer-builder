@@ -273,7 +273,7 @@ msgstr ""
 msgid "Center"
 msgstr ""
 
-#: inc/elementor/widgets/class-cart-icon.php:167
+#: inc/elementor/widgets/class-cart-icon.php:168
 msgid "Please install or active plugin Woocommerce"
 msgstr ""
 

@@ -1,4 +1,5 @@
 <?php
+
 namespace Boostify_Header_Footer\Widgets;
 
 use Boostify_Header_Footer\Base_Widget;
@@ -139,6 +140,7 @@ class Cart_Icon extends Base_Widget {
 		);
 
 		$this->end_controls_section();
+
 	}
 
 	/**
@@ -154,13 +156,22 @@ class Cart_Icon extends Base_Widget {
 		if ( class_exists( 'Woocommerce' ) ) {
 			$url = wc_get_cart_url();
 			?>
-			<div class="boostify-cart-icon widget-cart-icon">
-				<a href="<?php echo esc_url( $url ); ?>">
-					<span class="<?php echo esc_attr( $settings['icon'] ); ?>"></span>
-					<span class="count-product">
-						<?php echo WC()->cart->get_cart_contents_count() ?>
-					</span>
-				</a>
+			<div class="boostify-cart-icon widget-cart-icon boostify-action-<?php echo esc_attr( $settings['action'] ); ?>">
+				<div class="widget-cart-icon--wrapper">
+					<a href="<?php echo esc_url( $url ); ?>" class="cart-link boostify-btn--cart">
+						<span class="icon--wrapper">
+							<span class="boostify-icon--cart <?php echo esc_attr( $settings['icon'] ); ?>"></span>
+							<span class="boostify-count-product">
+								<?php echo WC()->cart->get_cart_contents_count(); //phpcs:ignore ?>
+							</span>
+						</span>
+					</a>
+				</div>
+				<div class="boostify-cart-detail">
+					<div class="cart-detail-wrapper">
+						<?php woocommerce_mini_cart(); ?>
+					</div>
+				</div>
 			</div>
 			<?php
 		} else {

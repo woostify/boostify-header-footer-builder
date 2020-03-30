@@ -168,6 +168,14 @@ if ( ! class_exists( 'Boostify_Header_Footer_Builder' ) ) {
 				array(),
 				BOOSTIFY_HEADER_FOOTER_VER
 			);
+
+			// Cart
+			wp_enqueue_style(
+				'boostify-hf-cart-icon',
+				BOOSTIFY_HEADER_FOOTER_URL . 'assets/css/elementor/cart-icon.css',
+				array(),
+				BOOSTIFY_HEADER_FOOTER_VER
+			);
 		}
 
 		/**
