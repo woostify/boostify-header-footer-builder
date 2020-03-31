@@ -105,7 +105,7 @@ function boostify_header_footer_sub_menu() {
  * @return (int) $id | ID header template
  */
 function boostify_header_template_id() {
-	$id = Boostify_Header_Footer_Template::instance()->template_header_id();
+	$id = Boostify_Header_Footer\Template::instance()->template_header_id();
 
 	return $id;
 }
@@ -116,7 +116,7 @@ function boostify_header_template_id() {
  */
 
 function boostify_get_header_template() {
-	return Boostify_Header_Footer_Template_Render::get_header_template();
+	return Boostify_Header_Footer\Template_Render::get_header_template();
 }
 
 
@@ -125,7 +125,7 @@ function boostify_get_header_template() {
  * @return (int) $id | ID Footer Template
  */
 function boostify_footer_template_id() {
-	$id = Boostify_Header_Footer_Template::instance()->template_footer_id();
+	$id = Boostify_Header_Footer\Template::instance()->template_footer_id();
 
 	return $id;
 }
@@ -135,5 +135,5 @@ function boostify_footer_template_id() {
  * @return html | Footer template
  */
 function boostify_get_footer_template() {
-	return Boostify_Header_Footer_Template_Render::get_footer_template();
+	return Boostify_Header_Footer\Template_Render::get_footer_template();
 }

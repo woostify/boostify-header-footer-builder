@@ -1,5 +1,5 @@
 <?php
-use Elementor\Widget_Base;
+
 defined( 'ABSPATH' ) || exit;
 
 /**
@@ -33,12 +33,12 @@ if ( ! class_exists( 'Boostify_Header_Footer_Builder' ) ) {
 
 		public function includes() {
 			include_once BOOSTIFY_HEADER_FOOTER_PATH . 'inc/helper.php';
-			include_once BOOSTIFY_HEADER_FOOTER_PATH . 'inc/admin/class-boostify-header-footer-admin.php';
-			include_once BOOSTIFY_HEADER_FOOTER_PATH . 'inc/admin/class-boostify-header-footer-metabox.php';
-			include_once BOOSTIFY_HEADER_FOOTER_PATH . 'inc/class-boostify-header-footer-template.php';
-			include_once BOOSTIFY_HEADER_FOOTER_PATH . 'inc/elementor/class-boostify-header-footer-template-render.php';
-			include_once BOOSTIFY_HEADER_FOOTER_PATH . 'inc/elementor/class-boostify-header-footer-elementor.php';
-			include_once BOOSTIFY_HEADER_FOOTER_PATH . 'inc/menu/class-boostify-header-footer-sub-menu.php';
+			include_once BOOSTIFY_HEADER_FOOTER_PATH . 'inc/admin/class-admin.php';
+			include_once BOOSTIFY_HEADER_FOOTER_PATH . 'inc/admin/class-metabox.php';
+			include_once BOOSTIFY_HEADER_FOOTER_PATH . 'inc/class-template.php';
+			include_once BOOSTIFY_HEADER_FOOTER_PATH . 'inc/elementor/class-template-render.php';
+			include_once BOOSTIFY_HEADER_FOOTER_PATH . 'inc/elementor/class-elementor.php';
+			include_once BOOSTIFY_HEADER_FOOTER_PATH . 'inc/menu/class-wp-sub-menu.php';
 
 		}
 
@@ -88,9 +88,9 @@ if ( ! class_exists( 'Boostify_Header_Footer_Builder' ) ) {
 		}
 
 		public function init() {
-			new Boostify_Header_Footer_Metabox();
-			new Boostify_Header_Footer_Template_Render();
-			new Boostify_Header_Footer_Sub_Menu();
+			new Boostify_Header_Footer\Metabox();
+			new Boostify_Header_Footer\Template_Render();
+			new Boostify_Header_Footer\WP_Sub_Menu();
 		}
 
 		/**
@@ -165,6 +165,14 @@ if ( ! class_exists( 'Boostify_Header_Footer_Builder' ) ) {
 			wp_enqueue_style(
 				'boostify-hf-style',
 				BOOSTIFY_HEADER_FOOTER_URL . 'assets/css/style.css',
+				array(),
+				BOOSTIFY_HEADER_FOOTER_VER
+			);
+
+			// Cart
+			wp_enqueue_style(
+				'boostify-hf-cart-icon',
+				BOOSTIFY_HEADER_FOOTER_URL . 'assets/css/elementor/cart-icon.css',
 				array(),
 				BOOSTIFY_HEADER_FOOTER_VER
 			);
