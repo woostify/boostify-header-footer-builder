@@ -69,7 +69,6 @@
 		&::-webkit-scrollbar-thumb:hover {
 		  background: #fc1550;
 		}
-		
 	}
 
 	.woocommerce-mini-cart {
@@ -98,27 +97,49 @@
 			font-weight: 500;
 			text-transform: uppercase;
 			padding: 10px 15px;
+			background-color: #222;
+			color: #fff;
+			position: relative;
 		}
 		.checkout {
 			margin-top: 10px;
 		}
 	}
 
+	ul.product_list_widget li img {
+		float: right;
+		margin-left: 4px;
+		height: auto;
+		box-shadow: none;
+	}
+
+	.quantity {
+		width: 155px;
+		height: 50px;
+		position: relative;
+		margin-right: 10px !important;
+		display: block;
+		text-align: left;
+	}
 }
 
 
 .boostify-cart-detail .woocommerce-mini-cart-item {
 	position: relative;
-	padding: 10px 15px !important;
+	padding: 10px 15px;
 	border-bottom: 1px solid #eaeaec;
+	min-height: 90px;
 	a {
 		font-size: 14px;
-		font-weight: 600!important;
+		font-weight: 600;
+		display: block;
+		color: #222;
+		text-align: left;
 	}
 
 	.attachment-woocommerce_thumbnail {
-		width: 70px!important;
-		margin: 0 40px 0 15px;
+		width: 70px;
+		margin-right: 20px;
 	}
 
 	.quantity,
@@ -130,21 +151,21 @@
 		width: 20px;
 		height: 20px;
 		position: absolute;
-		right: 10px;
-		top: 50%;
+		right: 0;
+		top: calc( ( 100% - 20px )/2 );
 		font-size: 1.5em;
 		color: inherit;
 		opacity: 0;
 		z-index: 2;
-		-webkit-transform: translateY(-50%) translateX(0) rotate(0deg);
-		transform: translateY(-50%) translateX(0) rotate(0deg);
+		-webkit-transform: translateY(0) translateX(0) rotate(0deg);
+		transform: translateY(0) translateX(0) rotate(0deg);
 		transition: all 0.3s;
 
 		&.remove:hover {
 			color: #e31246!important;
 			background: none!important;
-			-webkit-transform: translateY(-50%) translateX(0) rotate(90deg);
-			transform: translateY(-50%) translateX(0) rotate(90deg);
+			-webkit-transform: translateY(0) translateX(0) rotate(90deg);
+			transform: translateY(0) translateX(0) rotate(90deg);
 			opacity: 1;
 		}
 
@@ -153,9 +174,13 @@
 	&:hover {
 		.remove_from_cart_button{
 			opacity: 1;
-			-webkit-transform: translateY(-50%) translateX(0) rotate(90deg);
-			transform: translateY(-50%) translateX(0) rotate(90deg);
+			-webkit-transform: translateY(0) translateX(0) rotate(90deg);
+			transform: translateY(0) translateX(0) rotate(90deg);
 		}
 	}
 }
 
+.woocommerce-mini-cart {
+	padding: 0;
+	list-style: none;
+}

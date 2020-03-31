@@ -134,7 +134,7 @@ class Cart_Icon extends Base_Widget {
 					),
 				),
 				'selectors' => array(
-					'{{WRAPPER}} .boostify-copyright-wrapper' => 'text-align: {{VALUE}};',
+					'{{WRAPPER}} .elementor-widget-container' => 'text-align: {{VALUE}};',
 				),
 			)
 		);
@@ -162,7 +162,15 @@ class Cart_Icon extends Base_Widget {
 						<span class="icon--wrapper">
 							<span class="boostify-icon--cart <?php echo esc_attr( $settings['icon'] ); ?>"></span>
 							<span class="boostify-count-product">
-								<?php echo WC()->cart->get_cart_contents_count(); //phpcs:ignore ?>
+								<?php
+									if ( null === WC()->cart ) {
+										return 0;
+
+									} else {
+										echo WC()->cart->get_cart_contents_count();
+									}
+								 ?>
+								<?php  //phpcs:ignore ?>
 							</span>
 						</span>
 					</a>
