@@ -54,6 +54,7 @@ export const styles = () => {
 		.pipe(server.stream());
 };
 
+
 export const images = () => {
 	return src(paths.images.src)
 		.pipe(gulpif(PRODUCTION, imagemin()))
