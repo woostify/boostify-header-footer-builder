@@ -1,4 +1,4 @@
-<footer id="mastfoot" class="boostify-site-footer">
+<footer id="mastfooter" class="boostify-site-footer">
 	<div class="boostify-footer-inner">
 		<?php the_content(); ?>
 	</div>

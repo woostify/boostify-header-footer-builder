@@ -54,6 +54,7 @@ if ( ! class_exists( 'Boostify_Header_Footer_Builder' ) ) {
 			add_action( 'admin_notices', array( $this, 'notice_plugin' ) );
 			add_shortcode( 'btf_year', array( $this, 'get_year' ) );
 			add_shortcode( 'btf_site_tile', array( $this, 'get_site_name' ) );
+			add_action( 'admin_notices', array( $this, 'notice_theme_support' ) );
 		}
 
 		public function cpt() {
@@ -91,6 +92,11 @@ if ( ! class_exists( 'Boostify_Header_Footer_Builder' ) ) {
 			new Boostify_Header_Footer\Metabox();
 			new Boostify_Header_Footer\Template_Render();
 			new Boostify_Header_Footer\WP_Sub_Menu();
+			
+		}
+
+		public function test($value='') {
+			new Boostify_Header_Footer\Theme_Support();
 		}
 
 		/**
@@ -204,6 +210,20 @@ if ( ! class_exists( 'Boostify_Header_Footer_Builder' ) ) {
 
 		public function get_site_name() {
 			return '<a class="boostify-copyright-info" href="' . esc_url( home_url( '/' ) ) . '">' . esc_html( get_bloginfo( 'name' ) ) . '</a>';
+		}
+
+		/**
+		 * Notice when do not theme Support.
+		 *
+		 */
+		public function notice_theme_support() {
+			if ( ! current_theme_supports( 'boostify-header-footer' ) ) {
+				?>
+				<div class="notice notice-error">
+					<p><?php echo esc_html__( 'Your current theme is not supported Boostify Header Footer Plugin', 'boostify' ) ?></p>
+				</div>
+				<?php
+			}
 		}
 	}
 

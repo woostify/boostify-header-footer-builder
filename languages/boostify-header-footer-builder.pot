@@ -57,24 +57,28 @@ msgstr ""
 msgid "Nothing Found"
 msgstr ""
 
-#: inc/class-boostify-header-footer-builder.php:79
+#: inc/class-boostify-header-footer-builder.php:82
 msgid "Boostify Header Footer Builder"
 msgstr ""
 
-#: inc/class-boostify-header-footer-builder.php:80
+#: inc/class-boostify-header-footer-builder.php:83
 msgid "Add New Header, Footer"
 msgstr ""
 
-#: inc/class-boostify-header-footer-builder.php:81
+#: inc/class-boostify-header-footer-builder.php:84
 msgid "Edit Header, Footer"
 msgstr ""
 
-#: inc/class-boostify-header-footer-builder.php:82
+#: inc/class-boostify-header-footer-builder.php:85
 msgid "All Header, Footer"
 msgstr ""
 
-#: inc/class-boostify-header-footer-builder.php:83
+#: inc/class-boostify-header-footer-builder.php:86
 msgid "Elementor Builder"
+msgstr ""
+
+#: inc/class-boostify-header-footer-builder.php:221
+msgid "Your current theme is not supported Boostify Header Footer Plugin"
 msgstr ""
 
 #: inc/elementor/abstract/class-nav-menu.php:75
@@ -101,7 +105,7 @@ msgstr ""
 msgid "Normal"
 msgstr ""
 
-#: inc/elementor/abstract/class-nav-menu.php:175, inc/elementor/abstract/class-nav-menu.php:316, inc/elementor/abstract/class-nav-menu.php:439, inc/elementor/widgets/class-cart-icon.php:94, inc/elementor/widgets/class-image-retina.php:357
+#: inc/elementor/abstract/class-nav-menu.php:175, inc/elementor/abstract/class-nav-menu.php:316, inc/elementor/abstract/class-nav-menu.php:439, inc/elementor/widgets/class-image-retina.php:357
 msgid "Hover"
 msgstr ""
 
@@ -157,7 +161,7 @@ msgstr ""
 msgid "Boostify Header Footer"
 msgstr ""
 
-#: inc/elementor/class-elementor.php:174
+#: inc/elementor/class-elementor.php:170
 msgid "Header Sticky"
 msgstr ""
 
@@ -229,54 +233,6 @@ msgstr ""
 msgid "Choose menu color after scrolling"
 msgstr ""
 
-#: inc/elementor/widgets/class-cart-icon.php:39, inc/elementor/widgets/class-cart-icon.php:59
-msgid "Cart Icon"
-msgstr ""
-
-#: inc/elementor/widgets/class-cart-icon.php:65
-msgid "Icon"
-msgstr ""
-
-#: inc/elementor/widgets/class-cart-icon.php:79
-msgid "Subtotal"
-msgstr ""
-
-#: inc/elementor/widgets/class-cart-icon.php:81, inc/elementor/widgets/class-navigation.php:208, inc/elementor/widgets/class-navigation.php:249
-msgid "Show"
-msgstr ""
-
-#: inc/elementor/widgets/class-cart-icon.php:82, inc/elementor/widgets/class-navigation.php:209, inc/elementor/widgets/class-navigation.php:250
-msgid "Hide"
-msgstr ""
-
-#: inc/elementor/widgets/class-cart-icon.php:91, inc/elementor/widgets/class-cart-icon.php:104
-msgid "Action"
-msgstr ""
-
-#: inc/elementor/widgets/class-cart-icon.php:95
-msgid "Click"
-msgstr ""
-
-#: inc/elementor/widgets/class-cart-icon.php:107, inc/elementor/widgets/class-cart-icon.php:132, inc/elementor/widgets/class-copyright.php:92, inc/elementor/widgets/class-image-retina.php:130
-msgid "Right"
-msgstr ""
-
-#: inc/elementor/widgets/class-cart-icon.php:108, inc/elementor/widgets/class-cart-icon.php:124, inc/elementor/widgets/class-copyright.php:84, inc/elementor/widgets/class-image-retina.php:122
-msgid "Left"
-msgstr ""
-
-#: inc/elementor/widgets/class-cart-icon.php:120, inc/elementor/widgets/class-copyright.php:80, inc/elementor/widgets/class-image-retina.php:118
-msgid "Alignment"
-msgstr ""
-
-#: inc/elementor/widgets/class-cart-icon.php:128, inc/elementor/widgets/class-copyright.php:88, inc/elementor/widgets/class-image-retina.php:126
-msgid "Center"
-msgstr ""
-
-#: inc/elementor/widgets/class-cart-icon.php:178
-msgid "Please install or active plugin Woocommerce"
-msgstr ""
-
 #: inc/elementor/widgets/class-copyright.php:41, inc/elementor/widgets/class-copyright.php:61
 msgid "Copyright"
 msgstr ""
@@ -287,6 +243,22 @@ msgstr ""
 
 #: inc/elementor/widgets/class-copyright.php:73
 msgid "Copyright © [btf_year] [btf_site_tile] | All Rights Reserved. Designed by [btf_site_tile]."
+msgstr ""
+
+#: inc/elementor/widgets/class-copyright.php:80, inc/elementor/widgets/class-image-retina.php:118
+msgid "Alignment"
+msgstr ""
+
+#: inc/elementor/widgets/class-copyright.php:84, inc/elementor/widgets/class-image-retina.php:122
+msgid "Left"
+msgstr ""
+
+#: inc/elementor/widgets/class-copyright.php:88, inc/elementor/widgets/class-image-retina.php:126
+msgid "Center"
+msgstr ""
+
+#: inc/elementor/widgets/class-copyright.php:92, inc/elementor/widgets/class-image-retina.php:130
+msgid "Right"
 msgstr ""
 
 #: inc/elementor/widgets/class-copyright.php:105, inc/elementor/widgets/class-image-retina.php:434
@@ -515,6 +487,14 @@ msgstr ""
 
 #: inc/elementor/widgets/class-navigation.php:206
 msgid "Show Logo"
+msgstr ""
+
+#: inc/elementor/widgets/class-navigation.php:208, inc/elementor/widgets/class-navigation.php:249
+msgid "Show"
+msgstr ""
+
+#: inc/elementor/widgets/class-navigation.php:209, inc/elementor/widgets/class-navigation.php:250
+msgid "Hide"
 msgstr ""
 
 #: inc/elementor/widgets/class-navigation.php:247

@@ -137,3 +137,26 @@ function boostify_footer_template_id() {
 function boostify_get_footer_template() {
 	return Boostify_Header_Footer\Template_Render::get_footer_template();
 }
+
+
+function boostify_header_active() {
+	$header_id = boostify_header_template_id();
+	$status    = false;
+
+	if ( $header_id ) {
+		$status = true;
+	}
+
+	return apply_filters( 'boostify_header_active', $status );
+}
+
+function boostify_footer_active() {
+	$header_id = boostify_footer_template_id();
+	$status    = false;
+
+	if ( $header_id ) {
+		$status = true;
+	}
+
+	return apply_filters( 'boostify_footer_active', $status );
+}

@@ -48,17 +48,21 @@ class Template {
 	 * Hook in methods.
 	 */
 	public function __construct() {
+		add_action( 'wp',  array( $this, 'hooks' ) );
 		add_filter( 'single_template', array( $this, 'single_template' ) );
-		add_action( 'get_header', array( $this, 'render_header' ) );
-		add_action( 'get_footer', array( $this, 'render_footer' ) );
+
 		// Get header Template
 		add_action( 'boostify_hf_get_header', array( $this, 'header_template' ), 10 );
 
 		// Get Footer Template
 		add_action( 'boostify_hf_get_footer', array( $this, 'footer_template' ), 10 );
-		$this->post_type = get_post_type();
-		$this->post_id   = get_the_ID();
+	}
 
+	public function hooks(){
+		if ( ! current_theme_supports( 'boostify-header-footer' ) ) {
+			add_action( 'get_header', array( $this, 'render_header' ) );
+			add_action( 'get_footer', array( $this, 'render_footer' ) );
+		}
 	}
 
 	public function single_template( $single_template ) {
@@ -75,12 +79,10 @@ class Template {
 	 * @return Header Site.
 	 */
 	public function render_header() {
-		$page_type       = $this->page_type();
 		$this->post_type = get_post_type();
 		$this->post_id   = get_the_ID();
-		$id              = $this->post_id;
-		$post_type       = $this->post_type;
-		if ( $this->display_all() || $this->display_template( $page_type ) || $this->current_single( $id, $post_type ) || $this->all_single( $id, $post_type ) ) {
+		$header_id = $this->template_header_id();
+		if ( $header_id ) {
 			require BOOSTIFY_HEADER_FOOTER_PATH . 'templates/default/header.php';
 			$templates   = array();
 			$templates[] = 'header.php';
@@ -90,6 +92,7 @@ class Template {
 			locate_template( $templates, true );
 			ob_get_clean();
 		}
+
 	}
 
 	/**
@@ -98,12 +101,10 @@ class Template {
 	 * @return Footer Site.
 	 */
 	public function render_footer() {
-		$page_type       = $this->page_type();
 		$this->post_type = get_post_type();
 		$this->post_id   = get_the_ID();
-		$id              = $this->post_id;
-		$post_type       = $this->post_type;
-		if ( $this->display_all( 'footer' ) || $this->display_template( $page_type, 'footer' ) || $this->current_single( $id, $post_type, 'footer' ) || $this->all_single( $id, $post_type, 'footer' ) ) {
+		$footer_id       = $this->template_footer_id();
+		if ( $footer_id ) {
 			require BOOSTIFY_HEADER_FOOTER_PATH . 'templates/default/footer.php';
 			$templates   = array();
 			$templates[] = 'footer.php';
@@ -121,11 +122,10 @@ class Template {
 	 * @return Header template.
 	 */
 	public function header_template() {
-		$id        = $this->post_id;
-		$post_type = $this->post_type;
+		$id              = $this->post_id;
+		$post_type       = $this->post_type;
 		$path      = BOOSTIFY_HEADER_FOOTER_PATH . 'templates/content/content-header.php';
 		$page_type = $this->page_type();
-
 		if ( ! empty( $page_type ) ) {
 			$header = $this->display_template( $page_type );
 			if ( ! $header ) {
@@ -157,8 +157,9 @@ class Template {
 	 * @return Footer template.
 	 */
 	public function footer_template() {
-		$id        = $this->post_id;
-		$post_type = $this->post_type;
+
+		$id              = $this->post_id;
+		$post_type       = $this->post_type;
 		$path      = BOOSTIFY_HEADER_FOOTER_PATH . 'templates/content/content-footer.php';
 		$page_type = $this->page_type();
 		if ( ! empty( $page_type ) ) {
@@ -425,7 +426,7 @@ class Template {
 	 */
 	public function check_ex_post( $header ) {
 
-		$post_id = $this->post_id;
+		$post_id        = $this->post_id;
 
 		if ( $header->have_posts() ) {
 			while ( $header->have_posts() ) {

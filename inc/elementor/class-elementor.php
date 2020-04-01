@@ -65,10 +65,6 @@ class Elementor {
 			'Image_Retina',
 		);
 
-		if ( class_exists( 'Woocommerce' ) ) {
-			array_push( $widgets, 'Cart_Icon' );
-		}
-
 		return $widgets;
 	}
 
