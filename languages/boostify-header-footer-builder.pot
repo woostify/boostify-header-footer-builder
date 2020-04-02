@@ -57,23 +57,23 @@ msgstr ""
 msgid "Nothing Found"
 msgstr ""
 
-#: inc/class-boostify-header-footer-builder.php:79
+#: inc/class-boostify-header-footer-builder.php:80
 msgid "Boostify Header Footer Builder"
 msgstr ""
 
-#: inc/class-boostify-header-footer-builder.php:80
+#: inc/class-boostify-header-footer-builder.php:81
 msgid "Add New Header, Footer"
 msgstr ""
 
-#: inc/class-boostify-header-footer-builder.php:81
+#: inc/class-boostify-header-footer-builder.php:82
 msgid "Edit Header, Footer"
 msgstr ""
 
-#: inc/class-boostify-header-footer-builder.php:82
+#: inc/class-boostify-header-footer-builder.php:83
 msgid "All Header, Footer"
 msgstr ""
 
-#: inc/class-boostify-header-footer-builder.php:83
+#: inc/class-boostify-header-footer-builder.php:84
 msgid "Elementor Builder"
 msgstr ""
 
@@ -229,6 +229,10 @@ msgstr ""
 msgid "Choose menu color after scrolling"
 msgstr ""
 
+#: inc/elementor/module/class-woocommerce.php:24
+msgid "No products in the cart."
+msgstr ""
+
 #: inc/elementor/widgets/class-cart-icon.php:40, inc/elementor/widgets/class-cart-icon.php:60
 msgid "Cart Icon"
 msgstr ""
@@ -273,7 +277,7 @@ msgstr ""
 msgid "Center"
 msgstr ""
 
-#: inc/elementor/widgets/class-cart-icon.php:191
+#: inc/elementor/widgets/class-cart-icon.php:189
 msgid "Please install or active plugin Woocommerce"
 msgstr ""
 

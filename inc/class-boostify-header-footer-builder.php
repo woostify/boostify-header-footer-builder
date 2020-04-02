@@ -32,13 +32,13 @@ if ( ! class_exists( 'Boostify_Header_Footer_Builder' ) ) {
 		}
 
 		public function includes() {
-			include_once BOOSTIFY_HEADER_FOOTER_PATH . 'inc/helper.php';
+			include_once BOOSTIFY_HEADER_FOOTER_PATH . 'inc/elementor/class-elementor.php';
 			include_once BOOSTIFY_HEADER_FOOTER_PATH . 'inc/admin/class-admin.php';
 			include_once BOOSTIFY_HEADER_FOOTER_PATH . 'inc/admin/class-metabox.php';
 			include_once BOOSTIFY_HEADER_FOOTER_PATH . 'inc/class-template.php';
 			include_once BOOSTIFY_HEADER_FOOTER_PATH . 'inc/elementor/class-template-render.php';
-			include_once BOOSTIFY_HEADER_FOOTER_PATH . 'inc/elementor/class-elementor.php';
 			include_once BOOSTIFY_HEADER_FOOTER_PATH . 'inc/menu/class-wp-sub-menu.php';
+			include_once BOOSTIFY_HEADER_FOOTER_PATH . 'inc/helper.php';
 			// require BOOSTIFY_HEADER_FOOTER_PATH . 'inc/elementor/module/class-woocommerce.php';
 
 		}
@@ -47,7 +47,6 @@ if ( ! class_exists( 'Boostify_Header_Footer_Builder' ) ) {
 			add_action( 'init', array( $this, 'post_types' ) );
 			add_action( 'plugins_loaded', array( $this, 'init' ) );
 			add_action( 'body_class', array( $this, 'body_ver' ) );
-			add_action( 'elementor/controls/controls_registered', array( $this, 'modify_controls' ), 10, 1 );
 			add_action( 'elementor/editor/wp_head', array( $this, 'enqueue_icon' ) );
 			add_action( 'wp_enqueue_scripts', array( $this, 'style' ), 99 );
 			add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_icon' ), 99 );
@@ -92,35 +91,6 @@ if ( ! class_exists( 'Boostify_Header_Footer_Builder' ) ) {
 			new Boostify_Header_Footer\Metabox();
 			new Boostify_Header_Footer\Template_Render();
 			new Boostify_Header_Footer\WP_Sub_Menu();
-		}
-
-		/**
-		 * Add icon for elementor.
-		 */
-		public function modify_controls( $controls_registry ) {
-			// Get existing icons
-			$icons = $controls_registry->get_control( 'icon' )->get_settings( 'options' );
-			// Append new icons
-			$new_icons = array_merge(
-				array(
-					'ion-android-arrow-dropdown'  => 'Ion Dropdown',
-					'ion-android-arrow-dropright' => 'Ion Dropright',
-					'ion-android-arrow-forward'   => 'Ion Forward',
-					'ion-chevron-right'           => 'Ion Right',
-					'ion-chevron-down'            => 'Ion Downr',
-					'ion-ios-arrow-down'          => 'Ion Ios Down',
-					'ion-ios-arrow-forward'       => 'Ion Ios Forward',
-					'ion-ios-arrow-thin-right'    => 'Thin Right',
-					'ion-navicon'                 => 'Ion Navicon',
-					'ion-navicon-round'           => 'Navicon Round',
-					'ion-android-menu'            => 'Menu',
-					'ion-ios-search'              => 'Search',
-					'ion-ios-search-strong'       => 'Search Strong',
-				),
-				$icons
-			);
-			// Then we set a new list of icons as the options of the icon control
-			$controls_registry->get_control( 'icon' )->set_settings( 'options', $new_icons );
 		}
 
 		/**

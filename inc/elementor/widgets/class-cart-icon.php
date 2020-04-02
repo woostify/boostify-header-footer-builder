@@ -53,6 +53,10 @@ class Cart_Icon extends Base_Widget {
 		return 'eicon-cart';//eicon-cart
 	}
 
+	public function get_script_depends() {
+		return array( 'boostify_hf_cart_icon' );
+	}
+
 	public function _register_controls() { //phpcs:ignore
 		$this->start_controls_section(
 			'cart_icon',
@@ -66,7 +70,7 @@ class Cart_Icon extends Base_Widget {
 				'label'   => esc_html__( 'Icon', 'boostify' ),
 				'type'    => Controls_Manager::SELECT,
 				'options' => array(
-					'ion-ios-cart'         => 'Ion Cart',
+					'ion-ios-cart'         => 'Cart Solid',
 					'ion-ios-cart-outline' => 'Cart Outline',
 					'ion-bag'              => 'Bag',
 				),
@@ -100,7 +104,7 @@ class Cart_Icon extends Base_Widget {
 		);
 
 		$this->add_control(
-			'mini_cart_position',
+			'position',
 			array(
 				'label'     => esc_html__( 'Action', 'boostify' ),
 				'type'      => Controls_Manager::SELECT,
@@ -140,6 +144,18 @@ class Cart_Icon extends Base_Widget {
 			)
 		);
 
+
+		$this->end_controls_section();
+
+		$this->start_controls_section(
+			'style_icon',
+			array(
+				'label' => __( 'Icon', 'boostify' ),
+				'tab'   => Controls_Manager::TAB_STYLE,
+			)
+		);
+
+
 		$this->end_controls_section();
 
 	}
@@ -155,39 +171,33 @@ class Cart_Icon extends Base_Widget {
 	protected function render() {
 		$settings = $this->get_settings_for_display();
 		if ( class_exists( 'Woocommerce' ) ) {
-			global $woocommerce;
-			ob_start();
-			$url = wc_get_cart_url();
-			?>
-			<div class="boostify-cart-icon widget-cart-icon boostify-action-<?php echo esc_attr( $settings['action'] ); ?>">
-				<div class="widget-cart-icon--wrapper">
-					<a href="<?php echo esc_url( $url ); ?>" class="cart-link boostify-btn--cart">
-						<span class="icon--wrapper">
-							<span class="boostify-icon--cart <?php echo esc_attr( $settings['icon'] ); ?>"></span>
-							<span class="boostify-count-product">
-								<?php
-									if ( null === WC()->cart ) {
-										return 0;
 
-									} else {
-										// echo WC()->cart->get_cart_contents_count();
-									}
-								 ?>
-								<?php  //phpcs:ignore ?>
-							</span>
-						</span>
-					</a>
-				</div>
-				<div class="boostify-cart-detail">
-					<div class="cart-detail-wrapper">
-						<?php //woocommerce_mini_cart(); ?>
-					</div>
-				</div>
+			$classes = array(
+				'boostify-cart-icon',
+				'widget-cart-icon',
+				'boostify-action-' . $settings['action'],
+				'boostify-icon-' . $settings['icon'],
+			);
+			if ( 'click' === $settings['action'] ) {
+				array_push( $classes, 'sidebar-position-' . $settings['position'] );
+			}
+
+			$classes = implode( ' ', $classes );
+
+			?>
+			<div class="<?php echo esc_attr( $classes ); ?>">
+
+				<?php \Boostify_Header_Footer\Module\Woocommerce::render_cart(); ?>
+
 			</div>
+			<?php if ( 'click' === $settings['action'] ): ?>
+				<div class="boostify-cart-overlay">
+					<span class="ion-android-close"></span>
+				</div>
+			<?php endif ?>
 			<?php
 		} else {
 			echo esc_html__( 'Please install or active plugin Woocommerce', 'boostify' );
 		}
 	}
-
 }

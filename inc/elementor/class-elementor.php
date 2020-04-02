@@ -104,6 +104,15 @@ class Elementor {
 			BOOSTIFY_HEADER_FOOTER_VER,
 			true
 		);
+
+		// Cart Icon
+		wp_register_script(
+			'boostify_hf_cart_icon',
+			BOOSTIFY_HEADER_FOOTER_URL . 'assets/js/cart-icon' . boostify_header_footer_suffix() . '.js',
+			array( 'jquery' ),
+			BOOSTIFY_HEADER_FOOTER_VER,
+			true
+		);
 	}
 	/**
 	 * Include Widgets files
@@ -177,6 +186,35 @@ class Elementor {
 		do_action( 'elementor_controls/init' ); // phpcs:ignore
 	}
 
+		/**
+		 * Add icon for elementor.
+		 */
+	public function modify_controls( $controls_registry ) {
+		// Get existing icons
+		$icons = $controls_registry->get_control( 'icon' )->get_settings( 'options' );
+		// Append new icons
+		$new_icons = array_merge(
+			array(
+				'ion-android-arrow-dropdown'  => 'Ion Dropdown',
+				'ion-android-arrow-dropright' => 'Ion Dropright',
+				'ion-android-arrow-forward'   => 'Ion Forward',
+				'ion-chevron-right'           => 'Ion Right',
+				'ion-chevron-down'            => 'Ion Downr',
+				'ion-ios-arrow-down'          => 'Ion Ios Down',
+				'ion-ios-arrow-forward'       => 'Ion Ios Forward',
+				'ion-ios-arrow-thin-right'    => 'Thin Right',
+				'ion-navicon'                 => 'Ion Navicon',
+				'ion-navicon-round'           => 'Navicon Round',
+				'ion-android-menu'            => 'Menu',
+				'ion-ios-search'              => 'Search',
+				'ion-ios-search-strong'       => 'Search Strong',
+			),
+			$icons
+		);
+		// Then we set a new list of icons as the options of the icon control
+		$controls_registry->get_control( 'icon' )->set_settings( 'options', $new_icons );
+	}
+
 	private function setup_hooks() {
 		// Register Module.
 		add_action( 'elementor/init', array( $this, 'init' ) );
@@ -187,10 +225,8 @@ class Elementor {
 		add_action( 'elementor/frontend/after_register_scripts', array( $this, 'widget_scripts' ) );
 		// Register widgets
 		add_action( 'elementor/widgets/widgets_registered', array( $this, 'init_widgets' ) );
-		// add_filter( 'add_to_cart_fragments', array( $this, 'add_to_cart_fragment' ) );
-
-		// add_action( 'elementor/editor/before_enqueue_scripts', [ $this, 'maybe_init_cart' ] );
-		add_action( 'elementor/init', [ $this, 'maybe_init_cart' ] );
+		add_action( 'elementor/init', array( $this, 'maybe_init_cart' ) );
+		add_action( 'elementor/controls/controls_registered', array( $this, 'modify_controls' ), 10, 1 );
 	}
 
 	public function register_abstract() {
@@ -203,18 +239,6 @@ class Elementor {
 		require BOOSTIFY_HEADER_FOOTER_PATH . 'inc/elementor/module/class-sticky.php';
 	}
 
-	public function add_to_cart_fragment( $fragments ) {
-		global $woocommerce;
-		ob_start();
-		?>
-			<span class="boostify-count-product"><?php echo esc_html( WC()->cart->get_cart_contents_count() ); ?></span>
-
-		<?php
-		$fragments['span.boostify-count-product'] = ob_get_clean();//a.cartplus-contents,a.cart-button
-		ob_end_clean();
-		return $fragments;
-
-	}
 
 	public function maybe_init_cart() {
 		new \Boostify_Header_Footer\Module\Woocommerce();
