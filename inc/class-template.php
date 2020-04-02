@@ -308,6 +308,7 @@ class Template {
 					}
 				}
 			}
+			wp_reset_postdata();
 
 			if ( empty( $current ) ) {
 

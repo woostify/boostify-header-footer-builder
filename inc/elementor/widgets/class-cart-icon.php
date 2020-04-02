@@ -3,6 +3,7 @@
 namespace Boostify_Header_Footer\Widgets;
 
 use Boostify_Header_Footer\Base_Widget;
+use Boostify_Header_Footer\Module\Woocommerce;
 use Elementor\Controls_Manager;
 
 /**
@@ -154,6 +155,8 @@ class Cart_Icon extends Base_Widget {
 	protected function render() {
 		$settings = $this->get_settings_for_display();
 		if ( class_exists( 'Woocommerce' ) ) {
+			global $woocommerce;
+			ob_start();
 			$url = wc_get_cart_url();
 			?>
 			<div class="boostify-cart-icon widget-cart-icon boostify-action-<?php echo esc_attr( $settings['action'] ); ?>">
@@ -167,7 +170,7 @@ class Cart_Icon extends Base_Widget {
 										return 0;
 
 									} else {
-										echo WC()->cart->get_cart_contents_count();
+										// echo WC()->cart->get_cart_contents_count();
 									}
 								 ?>
 								<?php  //phpcs:ignore ?>
@@ -177,7 +180,7 @@ class Cart_Icon extends Base_Widget {
 				</div>
 				<div class="boostify-cart-detail">
 					<div class="cart-detail-wrapper">
-						<?php woocommerce_mini_cart(); ?>
+						<?php //woocommerce_mini_cart(); ?>
 					</div>
 				</div>
 			</div>

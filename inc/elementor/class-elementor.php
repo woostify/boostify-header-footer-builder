@@ -50,8 +50,6 @@ class Elementor {
 			)
 		);
 	}
-
-
 	/**
 	 * Widget Class
 	 */
@@ -156,7 +154,6 @@ class Elementor {
 		$widget_manager = \Elementor\Plugin::instance()->widgets_manager;
 		foreach ( $this->get_widgets() as $widget ) {
 			$class_name = 'Boostify_Header_Footer\Widgets\\' . $widget;
-
 			$widget_manager->register_widget_type( new $class_name() );
 		}
 	}
@@ -190,12 +187,16 @@ class Elementor {
 		add_action( 'elementor/frontend/after_register_scripts', array( $this, 'widget_scripts' ) );
 		// Register widgets
 		add_action( 'elementor/widgets/widgets_registered', array( $this, 'init_widgets' ) );
-		add_filter( 'add_to_cart_fragments', array( $this, 'add_to_cart_fragment' ) );
+		// add_filter( 'add_to_cart_fragments', array( $this, 'add_to_cart_fragment' ) );
+
+		// add_action( 'elementor/editor/before_enqueue_scripts', [ $this, 'maybe_init_cart' ] );
+		add_action( 'elementor/init', [ $this, 'maybe_init_cart' ] );
 	}
 
 	public function register_abstract() {
 		require BOOSTIFY_HEADER_FOOTER_PATH . 'inc/elementor/abstract/class-base-widget.php';
 		require BOOSTIFY_HEADER_FOOTER_PATH . 'inc/elementor/abstract/class-nav-menu.php';
+		require BOOSTIFY_HEADER_FOOTER_PATH . 'inc/elementor/module/class-woocommerce.php';
 	}
 
 	public function includes() {
@@ -215,6 +216,10 @@ class Elementor {
 
 	}
 
+	public function maybe_init_cart() {
+		new \Boostify_Header_Footer\Module\Woocommerce();
+	}
+
 	/**
 	 *  Plugin class constructor
 	 *
@@ -229,6 +234,6 @@ class Elementor {
 		$this->setup_hooks();
 	}
 }
-// Instantiate Boostify_Header_Footer_Elementor Class
+// Instantiate Elementor Class
 Elementor::instance();
 
