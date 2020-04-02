@@ -57,27 +57,27 @@ msgstr ""
 msgid "Nothing Found"
 msgstr ""
 
-#: inc/class-boostify-header-footer-builder.php:82
+#: inc/class-boostify-header-footer-builder.php:80
 msgid "Boostify Header Footer Builder"
 msgstr ""
 
-#: inc/class-boostify-header-footer-builder.php:83
+#: inc/class-boostify-header-footer-builder.php:81
 msgid "Add New Header, Footer"
 msgstr ""
 
-#: inc/class-boostify-header-footer-builder.php:84
+#: inc/class-boostify-header-footer-builder.php:82
 msgid "Edit Header, Footer"
 msgstr ""
 
-#: inc/class-boostify-header-footer-builder.php:85
+#: inc/class-boostify-header-footer-builder.php:83
 msgid "All Header, Footer"
 msgstr ""
 
-#: inc/class-boostify-header-footer-builder.php:86
+#: inc/class-boostify-header-footer-builder.php:84
 msgid "Elementor Builder"
 msgstr ""
 
-#: inc/class-boostify-header-footer-builder.php:221
+#: inc/class-boostify-header-footer-builder.php:223
 msgid "Your current theme is not supported Boostify Header Footer Plugin"
 msgstr ""
 
