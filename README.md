@@ -48,20 +48,20 @@ Boostify Header Footer Builder for Elementor works with all themes. For some the
 
 Let's get you started
 
-* Step #1: â†’ Visit Dashboard > Boostify Header Footer Builder and click on the â€˜Add Newâ€™.
-* Step #2: â†’ Select 'Type of Template' (header/footer). Choose the Display On (Page, custom post type, archive)
-* Step #3: â†’ Publish it.
-* Step #4: â†’ Edit & design it with Elementor
-* Step #5: â†’ Save it!
+* Step #1: → Visit Dashboard > Boostify Header Footer Builder and click on the ‘Add New’.
+* Step #2: → Select 'Type of Template' (header/footer). Choose the Display On (Page, custom post type, archive)
+* Step #3: → Publish it.
+* Step #4: → Edit & design it with Elementor
+* Step #5: → Save it!
 
 == Installation ==
 
-* Step #0: â†’ Go to `Plugins -> Add New` and search for Boostify Header Footer Builder.
-* Step #1: â†’ Visit Dashboard > Boostify Header Footer Builder and click on the â€˜Add Newâ€™.
-* Step #2: â†’ Select 'Type of Template' (header/footer). Choose the Display On (Page, custom post type, archive)
-* Step #3: â†’ Publish it.
-* Step #4: â†’ Edit & design it with Elementor
-* Step #5: â†’ Save it!
+* Step #0: → Go to `Plugins -> Add New` and search for Boostify Header Footer Builder.
+* Step #1: → Visit Dashboard > Boostify Header Footer Builder and click on the ‘Add New’.
+* Step #2: → Select 'Type of Template' (header/footer). Choose the Display On (Page, custom post type, archive)
+* Step #3: → Publish it.
+* Step #4: → Edit & design it with Elementor
+* Step #5: → Save it!
 
 
 == Screenshots ==
@@ -72,7 +72,7 @@ Let's get you started
 
 = How to get support? =
 
-If you have any questions post in the [Pluginâ€™s Forum](https://wordpress.org/support/plugin/boostify-header-footer-builder/ "Pluginâ€™s Forum")
+If you have any questions post in the [Plugin’s Forum](https://wordpress.org/support/plugin/boostify-header-footer-builder/ "Plugin’s Forum")
 
 == Changelog ==
 
