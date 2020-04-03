@@ -134,7 +134,6 @@ class Woocommerce {
 		}
 	}
 
-
 	public static function render_cart() {
 		if ( null === WC()->cart ) {
 			return;
@@ -167,35 +166,46 @@ class Woocommerce {
 						<button id="boostify-close-cart-sidebar" class="ion-android-close boostify-close-cart-sidebar"></button>
 					</div>
 					<?php do_action( 'woocommerce_before_mini_cart' ); ?>
-					<ul class="woocommerce-mini-cart boostify-cart cart_list product_list_widget">
-						<?php
-						do_action( 'woocommerce_before_mini_cart_contents' );
-
-						foreach ( WC()->cart->get_cart() as $cart_item_key => $cart_item ) {
-							self::cart_item_detail( $cart_item_key, $cart_item );
-						}
-
-						do_action( 'woocommerce_mini_cart_contents' );
+					<?php
+					if ( empty( WC()->cart->get_cart() ) ) {
+						self::render_cart_empty();
+					} else {
 						?>
-					</ul>
-					<div class="woocommerce-mini-cart-bottom boostify-cart-sidebar-bottom">
-						<div class="woocommerce-mini-cart__total total">
-							<?php
-							/**
-							 * Hook: woocommerce_widget_shopping_cart_total.
-							 *
-							 * @hooked woocommerce_widget_shopping_cart_subtotal - 10
-							 */
-							do_action( 'woocommerce_widget_shopping_cart_total' );
-							?>
+						<ul class="woocommerce-mini-cart boostify-cart cart_list product_list_widget">
+						<?php
+
+							do_action( 'woocommerce_before_mini_cart_contents' );
+
+							foreach ( WC()->cart->get_cart() as $cart_item_key => $cart_item ) {
+								self::cart_item_detail( $cart_item_key, $cart_item );
+							}
+
+							do_action( 'woocommerce_mini_cart_contents' );
+						?>
+						</ul>
+						<div class="woocommerce-mini-cart-bottom boostify-cart-sidebar-bottom">
+							<div class="woocommerce-mini-cart__total total">
+								<?php
+								/**
+								 * Hook: woocommerce_widget_shopping_cart_total.
+								 *
+								 * @hooked woocommerce_widget_shopping_cart_subtotal - 10
+								 */
+								do_action( 'woocommerce_widget_shopping_cart_total' );
+								?>
+							</div>
+
+							<?php do_action( 'woocommerce_widget_shopping_cart_before_buttons' ); ?>
+
+							<div class="woocommerce-mini-cart__buttons buttons"><?php do_action( 'woocommerce_widget_shopping_cart_buttons' ); ?></div>
+
+							<?php do_action( 'woocommerce_widget_shopping_cart_after_buttons' ); ?>
 						</div>
+					<?php
+					}
+					?>
 
-						<?php do_action( 'woocommerce_widget_shopping_cart_before_buttons' ); ?>
 
-						<div class="woocommerce-mini-cart__buttons buttons"><?php do_action( 'woocommerce_widget_shopping_cart_buttons' ); ?></div>
-
-						<?php do_action( 'woocommerce_widget_shopping_cart_after_buttons' ); ?>
-					</div>
 				</div>
 			</div>
 		</div>

@@ -10,33 +10,44 @@
 		var sidebar = $scope.find( '.boostify-cart-detail' );
 		var overlay = $scope.find( '.boostify-cart-overlay' );
 		var close   = $scope.find( '#boostify-close-cart-sidebar' );
-		cart.on(
+		$scope.on(
 			'click',
+			'.boostify-btn--cart',
 			function ( e ) {
-				e.preventDefault();
-				sidebar.addClass( 'active' );
-				overlay.addClass( 'active' );
+				var btn = $( this );
+				openSidebar( e, btn );
 			}
 		);
 
-
-		close.on(
+		$scope.on(
 			'click',
+			'#boostify-close-cart-sidebar',
 			function(e) {
-				closeSidebar();
+				var btn = $( this );
+				closeSidebar( btn );
 			}
 		);
 
-		overlay.on(
+		$scope.on(
 			'click',
+			'.boostify-cart-overlay',
 			function(e) {
-				closeSidebar();
+				var btn = $( this );
+				closeSidebar( btn );
 			}
 		);
 
-		function closeSidebar() {
+		function closeSidebar( $this ) {
+			var sidebar = $this.parents( '.boostify-cart-icon' ).find( '.boostify-cart-detail' );
 			sidebar.removeClass( 'active' );
 			overlay.removeClass( 'active' );
+		}
+
+		function openSidebar( e, $this ) {
+			e.preventDefault();
+			var sidebar = $this.parents( '.boostify-cart-icon' ).find( '.boostify-cart-detail' );
+			sidebar.addClass( 'active' );
+			overlay.addClass( 'active' );
 		}
 	};
 
