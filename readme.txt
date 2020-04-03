@@ -4,8 +4,8 @@ Donate link: https://woostify.com/contact/
 Tags: elementor, header builder, footer builder, elementor header, sticky menu, elementor sticky, header footer builder
 Requires at least: 4.0
 Requires PHP: 5.3
-Tested up to: 5.3
-Stable tag: 1.0.7
+Tested up to: 5.4
+Stable tag: 1.0.8
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -40,7 +40,7 @@ Not like other plugins, the plugin gives the built-in widgets for the header so 
 Build a sticky header is easily with the plugin. It offers enabling the sticky in mobile, tablet or desktop. 
 Uploading custom logo for sticky menu, change the background menu, all can be done via Elementor.
 
-= Sticky Header = 
+= Mega menu = 
 
 Build a mega menu is easyly with Elementor. Go to Boostify Header Footer builder -> Add new, in Type, select 'sub mega menu' option. 
 Then build this sub mega menu.
