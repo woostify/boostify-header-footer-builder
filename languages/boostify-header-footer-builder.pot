@@ -157,7 +157,7 @@ msgstr ""
 msgid "Boostify Header Footer"
 msgstr ""
 
-#: inc/elementor/class-elementor.php:180
+#: inc/elementor/class-elementor.php:166
 msgid "Header Sticky"
 msgstr ""
 
