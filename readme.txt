@@ -40,7 +40,7 @@ Not like other plugins, the plugin gives the built-in widgets for the header so 
 Build a sticky header is easily with the plugin. It offers enabling the sticky in mobile, tablet or desktop. 
 Uploading custom logo for sticky menu, change the background menu, all can be done via Elementor.
 
-= Mega menu = 
+= Mega Menu = 
 
 Build a mega menu is easyly with Elementor. Go to Boostify Header Footer builder -> Add new, in Type, select 'sub mega menu' option. 
 Then build this sub mega menu.
