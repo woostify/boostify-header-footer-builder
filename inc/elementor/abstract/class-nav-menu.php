@@ -6,13 +6,13 @@ use Elementor\Controls_Manager;
 use Elementor\Group_Control_Background;
 use Elementor\Group_Control_Typography;
 use Elementor\Scheme_Typography;
-use Boostify_Header_Footer\Base_Widget;
+use Elementor\Widget_Base;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 
-abstract class Nav_Menu extends Base_Widget {
+abstract class Nav_Menu extends Widget_Base {
 
 	/**
 	 * Retrieve the widget icon.
@@ -21,6 +21,17 @@ abstract class Nav_Menu extends Base_Widget {
 	 */
 	public function get_icon() {
 		return 'eicon-nav-menu';
+	}
+
+	/**
+	 * Retrieve the list of categories the widget belongs to.
+	 *
+	 * Used to determine where to display the widget in the editor.
+	 *
+	 * @return array Widget categories.
+	 */
+	public function get_categories() {
+		return array( 'ht_hf_builder' );
 	}
 
 	/**
@@ -71,7 +82,7 @@ abstract class Nav_Menu extends Base_Widget {
 			'toggle_icon',
 			array(
 				'label'     => __( 'Toggle Icons', 'boostify' ),
-				'type'      => \Elementor\Controls_Manager::ICON,
+				'type'      => Controls_Manager::ICON,
 				'separator' => 'before',
 				'default'   => 'ion-android-menu',
 				'include'   => array(
@@ -196,8 +207,6 @@ abstract class Nav_Menu extends Base_Widget {
 				'selector' => '{{WRAPPER}} .boostify-menu > li > a',
 			)
 		);
-
-
 	}
 
 	protected function menu_style_hover() {

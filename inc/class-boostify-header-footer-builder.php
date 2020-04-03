@@ -1,5 +1,5 @@
 <?php
-use Elementor\Widget_Base;
+
 defined( 'ABSPATH' ) || exit;
 
 /**
@@ -33,12 +33,12 @@ if ( ! class_exists( 'Boostify_Header_Footer_Builder' ) ) {
 
 		public function includes() {
 			include_once BOOSTIFY_HEADER_FOOTER_PATH . 'inc/helper.php';
-			include_once BOOSTIFY_HEADER_FOOTER_PATH . 'inc/admin/class-boostify-header-footer-admin.php';
-			include_once BOOSTIFY_HEADER_FOOTER_PATH . 'inc/admin/class-boostify-header-footer-metabox.php';
-			include_once BOOSTIFY_HEADER_FOOTER_PATH . 'inc/class-boostify-header-footer-template.php';
-			include_once BOOSTIFY_HEADER_FOOTER_PATH . 'inc/elementor/class-boostify-header-footer-template-render.php';
-			include_once BOOSTIFY_HEADER_FOOTER_PATH . 'inc/elementor/class-boostify-header-footer-elementor.php';
-			include_once BOOSTIFY_HEADER_FOOTER_PATH . 'inc/menu/class-boostify-header-footer-sub-menu.php';
+			include_once BOOSTIFY_HEADER_FOOTER_PATH . 'inc/admin/class-admin.php';
+			include_once BOOSTIFY_HEADER_FOOTER_PATH . 'inc/admin/class-metabox.php';
+			include_once BOOSTIFY_HEADER_FOOTER_PATH . 'inc/class-template.php';
+			include_once BOOSTIFY_HEADER_FOOTER_PATH . 'inc/elementor/class-template-render.php';
+			include_once BOOSTIFY_HEADER_FOOTER_PATH . 'inc/elementor/class-elementor.php';
+			include_once BOOSTIFY_HEADER_FOOTER_PATH . 'inc/menu/class-wp-sub-menu.php';
 
 		}
 
@@ -54,6 +54,7 @@ if ( ! class_exists( 'Boostify_Header_Footer_Builder' ) ) {
 			add_action( 'admin_notices', array( $this, 'notice_plugin' ) );
 			add_shortcode( 'btf_year', array( $this, 'get_year' ) );
 			add_shortcode( 'btf_site_tile', array( $this, 'get_site_name' ) );
+			add_action( 'admin_notices', array( $this, 'notice_theme_support' ) );
 		}
 
 		public function cpt() {
@@ -66,7 +67,6 @@ if ( ! class_exists( 'Boostify_Header_Footer_Builder' ) ) {
 			return $classes;
 		}
 
-		// Register Post Type
 		public function post_types() {
 			register_post_type(
 				'btf_builder',
@@ -88,15 +88,20 @@ if ( ! class_exists( 'Boostify_Header_Footer_Builder' ) ) {
 			);
 		}
 
-		// Listing Teamplate
 		public function init() {
-			new Boostify_Header_Footer_Metabox();
-			new Boostify_Header_Footer_Template_Render();
-			new Boostify_Header_Footer_Sub_Menu();
-			echo class_exists( '\Elementor\Widget_Base' );
+			new Boostify_Header_Footer\Metabox();
+			new Boostify_Header_Footer\Template_Render();
+			new Boostify_Header_Footer\WP_Sub_Menu();
+			
 		}
 
-		// Add Icon Elementor
+		public function test($value='') {
+			new Boostify_Header_Footer\Theme_Support();
+		}
+
+		/**
+		 * Add icon for elementor.
+		 */
 		public function modify_controls( $controls_registry ) {
 			// Get existing icons
 			$icons = $controls_registry->get_control( 'icon' )->get_settings( 'options' );
@@ -123,7 +128,10 @@ if ( ! class_exists( 'Boostify_Header_Footer_Builder' ) ) {
 			$controls_registry->get_control( 'icon' )->set_settings( 'options', $new_icons );
 		}
 
-		// ADD ICON STYLE IN EDITOR ELEMENTOR MODE
+		/**
+		 * Add ionicons.
+		 *
+		 */
 		public function enqueue_icon() {
 			wp_enqueue_style(
 				'ionicons',
@@ -166,8 +174,20 @@ if ( ! class_exists( 'Boostify_Header_Footer_Builder' ) ) {
 				array(),
 				BOOSTIFY_HEADER_FOOTER_VER
 			);
+
+			// Cart
+			wp_enqueue_style(
+				'boostify-hf-cart-icon',
+				BOOSTIFY_HEADER_FOOTER_URL . 'assets/css/elementor/cart-icon.css',
+				array(),
+				BOOSTIFY_HEADER_FOOTER_VER
+			);
 		}
 
+		/**
+		 * Notice when do not install or active Elementor.
+		 *
+		 */
 		public function notice_plugin() {
 			if ( ! defined( 'ELEMENTOR_VERSION' ) || ! is_callable( 'Elementor\Plugin::instance' ) ) {
 
@@ -190,6 +210,20 @@ if ( ! class_exists( 'Boostify_Header_Footer_Builder' ) ) {
 
 		public function get_site_name() {
 			return '<a class="boostify-copyright-info" href="' . esc_url( home_url( '/' ) ) . '">' . esc_html( get_bloginfo( 'name' ) ) . '</a>';
+		}
+
+		/**
+		 * Notice when do not theme Support.
+		 *
+		 */
+		public function notice_theme_support() {
+			if ( ! current_theme_supports( 'boostify-header-footer' ) ) {
+				?>
+				<div class="notice notice-error">
+					<p><?php echo esc_html__( 'Your current theme is not supported Boostify Header Footer Plugin', 'boostify' ) ?></p>
+				</div>
+				<?php
+			}
 		}
 	}
 

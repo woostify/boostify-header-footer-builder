@@ -1,13 +1,20 @@
 <?php
+
+namespace Boostify_Header_Footer\Widgets;
+
 use Boostify_Header_Footer\Base_Widget;
 use Elementor\Controls_Manager;
+use Elementor\Group_Control_Typography;
+use Elementor\Group_Control_Border;
+use Elementor\Group_Control_Background;
+use Elementor\Scheme_Typography;
 
 /**
  * Site Search Widget
  *
  * Elementor widget for Site Search.
  */
-class Boostify_Header_Footer_Site_Search extends Base_Widget {
+class Site_Search extends Base_Widget {
 
 	/**
 	 * Retrieve the widget name.
@@ -226,7 +233,7 @@ class Boostify_Header_Footer_Site_Search extends Base_Widget {
 			'heading_icon',
 			array(
 				'label'     => __( 'Icon Layout', 'boostify' ),
-				'type'      => \Elementor\Controls_Manager::HEADING,
+				'type'      => Controls_Manager::HEADING,
 				'separator' => 'before',
 			)
 		);
@@ -235,11 +242,7 @@ class Boostify_Header_Footer_Site_Search extends Base_Widget {
 			'icon_color',
 			array(
 				'label'     => __( 'Icon Color', 'boostify' ),
-				'type'      => \Elementor\Controls_Manager::COLOR,
-				'scheme'    => array(
-					'type'  => \Elementor\Scheme_Color::get_type(),
-					'value' => \Elementor\Scheme_Color::COLOR_1,
-				),
+				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
 					'{{WRAPPER}} .boostify-search-icon--toggle' => 'color: {{VALUE}}',
 				),
@@ -247,17 +250,17 @@ class Boostify_Header_Footer_Site_Search extends Base_Widget {
 		);
 
 		$this->add_group_control(
-			Elementor\Group_Control_Typography::get_type(),
+			Group_Control_Typography::get_type(),
 			array(
 				'name'     => 'content_typography',
 				'label'    => __( 'Typography', 'boostify' ),
-				'scheme'   => Elementor\Scheme_Typography::TYPOGRAPHY_1,
+				'scheme'   => Scheme_Typography::TYPOGRAPHY_1,
 				'selector' => '{{WRAPPER}} .boostify-search-icon--toggle',
 			)
 		);
 
 		$this->add_group_control(
-			Elementor\Group_Control_Background::get_type(),
+			Group_Control_Background::get_type(),
 			array(
 				'name'     => 'background',
 				'label'    => __( 'Background', 'boostify' ),
@@ -267,7 +270,7 @@ class Boostify_Header_Footer_Site_Search extends Base_Widget {
 		);
 
 		$this->add_group_control(
-			Elementor\Group_Control_Border::get_type(),
+			Group_Control_Border::get_type(),
 			array(
 				'name'     => 'border',
 				'label'    => __( 'Border', 'boostify' ),

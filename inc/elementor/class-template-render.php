@@ -4,11 +4,11 @@
  *
  * @package Boostify Header Footer Builder
  */
-
+namespace Boostify_Header_Footer;
 /**
  * Class Boostify_Hf_Template_Render
  */
-class Boostify_Header_Footer_Template_Render {
+class Template_Render {
 
 	/**
 	 * Current theme template
@@ -32,7 +32,7 @@ class Boostify_Header_Footer_Template_Render {
 
 		if ( defined( 'ELEMENTOR_VERSION' ) && is_callable( 'Elementor\Plugin::instance' ) ) {
 
-			self::$elementor_instance = Elementor\Plugin::instance();
+			self::$elementor_instance = \Elementor\Plugin::instance();
 
 			// Scripts and styles.
 			add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
@@ -53,7 +53,6 @@ class Boostify_Header_Footer_Template_Render {
 			$url = network_admin_url() . 'plugin-install.php?s=elementor';
 		}
 	}
-
 
 	/**
 	 * Enqueue styles and scripts.
@@ -113,7 +112,6 @@ class Boostify_Header_Footer_Template_Render {
 	 *
 	 * @param array $atts attributes for shortcode.
 	 */
-
 	protected function builder_template() {
 		$args = array(
 			'post_type'           => 'btf_builder',
@@ -121,7 +119,7 @@ class Boostify_Header_Footer_Template_Render {
 			'ignore_sticky_posts' => 1,
 		);
 
-		$template = new WP_Query( $args );
+		$template = new \WP_Query( $args );
 
 		if ( $template->have_posts() ) {
 			while ( $template->have_posts() ) {
@@ -132,5 +130,25 @@ class Boostify_Header_Footer_Template_Render {
 		} else {
 			return false;
 		}
+	}
+
+	/**
+	 * Header Template.
+	 *
+	 * @return Header Template.
+	 */
+	public static function get_header_template() {
+		$id = boostify_header_template_id();
+		return self::$elementor_instance->frontend->get_builder_content_for_display( $id );
+	}
+
+	/**
+	 * Footer Template.
+	 *
+	 * @return Footer Template.
+	 */
+	public static function get_footer_template() {
+		$id = boostify_footer_template_id();
+		return self::$elementor_instance->frontend->get_builder_content_for_display( $id );
 	}
 }

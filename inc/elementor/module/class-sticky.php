@@ -1,5 +1,7 @@
 <?php
 
+namespace Boostify_Header_Footer\Module;
+
 use Elementor\Controls_Manager;
 use Elementor\Element_Base;
 use Elementor\Plugin;
@@ -14,7 +16,7 @@ use Elementor\Core\Base\Module;
 .*
  * Author: ptp
  */
-class Boostify_Header_Footer_Sticky {
+class Sticky {
 
 	/**
 	 * Instance

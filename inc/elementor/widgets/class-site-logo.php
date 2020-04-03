@@ -1,14 +1,17 @@
 <?php
 
+namespace Boostify_Header_Footer\Widgets;
+
 use Boostify_Header_Footer\Base_Widget;
 use Elementor\Controls_Manager;
+use Elementor\Group_Control_Image_Size;
 
 /**
  * Site Logo
  *
  * Elementor widget for Site Logo.
  */
-class Boostify_Header_Footer_Site_Logo extends Base_Widget {
+class Site_Logo extends Base_Widget {
 
 	/**
 	 * Retrieve the widget name.
@@ -75,7 +78,7 @@ class Boostify_Header_Footer_Site_Logo extends Base_Widget {
 		);
 
 		$this->add_group_control(
-			\Elementor\Group_Control_Image_Size::get_type(),
+			Group_Control_Image_Size::get_type(),
 			array(
 				'name'        => 'thumbnail',
 				'default'     => 'full',
@@ -142,7 +145,7 @@ class Boostify_Header_Footer_Site_Logo extends Base_Widget {
 				endif;
 			} else {
 
-				$url = Elementor\Group_Control_Image_Size::get_attachment_image_src( $settings['image']['id'], 'thumbnail', $settings );
+				$url = Group_Control_Image_Size::get_attachment_image_src( $settings['image']['id'], 'thumbnail', $settings );
 				?>
 				<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
 					<img src="<?php echo esc_url( $url ); ?>" alt="Logo" class="custom-logo">
