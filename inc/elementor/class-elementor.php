@@ -122,26 +122,11 @@ class Elementor {
 	 * @since 1.2.0
 	 * @access public
 	 */
-	public function autoload_widgets( $classname ) {
-		if ( ! class_exists( $classname ) ) {
-			$filename = strtolower(
-				preg_replace(
-					array(
-						'/^' . __NAMESPACE__ . '\\\/',
-						'/([a-z])([A-Z])/',
-						'/_/',
-						'/\\\/',
-					),
-					array(
-						'',
-						'$1-$2',
-						'-',
-						DIRECTORY_SEPARATOR,
-					),
-					$classname
-				)
-			);
-			$filename = str_replace( 'widgets\\', '', $filename );
+	public function autoload_widgets() {
+		$widgets = $this->get_widgets();
+		foreach ( $widgets as $widget ) {
+			$filename = strtolower( $widget );
+			$filename = str_replace( '_', '-', $filename );
 			$filename = BOOSTIFY_HEADER_FOOTER_PATH . 'inc/elementor/widgets/class-' . $filename . '.php';
 
 			if ( is_readable( $filename ) ) {
@@ -159,6 +144,7 @@ class Elementor {
 	 * @access public
 	 */
 	public function init_widgets() {
+		$this->autoload_widgets();
 		// Its is now safe to include Widgets files
 		$widget_manager = \Elementor\Plugin::instance()->widgets_manager;
 		foreach ( $this->get_widgets() as $widget ) {
@@ -253,7 +239,6 @@ class Elementor {
 	 * @access public
 	 */
 	public function __construct() {
-		spl_autoload_register( array( $this, 'autoload_widgets' ) );
 		$this->includes();
 		$this->setup_hooks();
 	}
