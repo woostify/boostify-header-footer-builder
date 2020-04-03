@@ -29,8 +29,7 @@ Not like other plugins, the plugin gives the built-in widgets for the header so 
 <ul>
 	<li><strong>Logo</strong> - Automatically get a logo from the customizer. You can even set a custom image as a logo with a custom link and caption.</li>
 	<li><strong>Nav Menu</strong> - Offers you list of already created menus on your website. You just need to choose the required one. </li>
-	<li><strong>Nav Mega Menu</strong> - Support to build Mega menu. </li>
-	<li><strong>Site Search</strong> - Create a search widget, it support 2 layouts: icon search and form search </li>
+    <li><strong>Site Search</strong> - Create a search widget, it support 2 layouts: icon search and form search </li>
 	<li><strong>Retina Logo</strong> - Add Retina image for retina display </li>
 	<li><strong>Copyright</strong> - Support copyright shortcode for the footer [btf_year] [btf_site_tile][btf_site_tile] </li>
 </ul>
@@ -39,12 +38,6 @@ Not like other plugins, the plugin gives the built-in widgets for the header so 
 
 Build a sticky header is easily with the plugin. It offers enabling the sticky in mobile, tablet or desktop. 
 Uploading custom logo for sticky menu, change the background menu, all can be done via Elementor.
-
-= Sticky Header = 
-
-Build a mega menu is easyly with Elementor. Go to Boostify Header Footer builder -> Add new, in Type, select 'sub mega menu' option. 
-Then build this sub mega menu.
-To add it to the header layout, in the header builder, select Nav mega menu, in this widget, select sub mega menu that's in step one.
 
 = Work With All Themes =
 
@@ -84,9 +77,6 @@ If you have any questions post in the [Plugin’s Forum](https://wordpress.org/s
 == Changelog ==
 
 ## Changelog
-= 1.0.8 =
-- Add Mega menu widget
-
 = 1.0.7 =
 - Improve Performance
 
