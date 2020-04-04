@@ -141,8 +141,11 @@
 .boostify-cart-detail ul.product_list_widget li.woocommerce-mini-cart-item {
 	position: relative;
 	padding: 10px 15px;
-	border-bottom: 1px solid #eaeaec;
 	min-height: 90px;
+
+	&:not( :last-child ) {
+		border-bottom: 1px solid #eaeaec;
+	}
 	a {
 		font-size: 14px;
 		font-weight: 600;

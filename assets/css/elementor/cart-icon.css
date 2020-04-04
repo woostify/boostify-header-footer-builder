@@ -134,8 +134,11 @@
 .boostify-cart-detail ul.product_list_widget li.woocommerce-mini-cart-item {
   position: relative;
   padding: 10px 15px;
-  border-bottom: 1px solid #eaeaec;
   min-height: 90px;
+}
+
+.boostify-cart-detail ul.product_list_widget li.woocommerce-mini-cart-item:not(:last-child) {
+  border-bottom: 1px solid #eaeaec;
 }
 
 .boostify-cart-detail ul.product_list_widget li.woocommerce-mini-cart-item a {

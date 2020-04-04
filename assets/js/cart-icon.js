@@ -49,6 +49,14 @@
 			sidebar.addClass( 'active' );
 			overlay.addClass( 'active' );
 		}
+
+		$( document.body ).on(
+			'removed_from_cart',
+			function () {
+				var sidebar = $scope.find( '.boostify-cart-detail' );
+				sidebar.addClass( 'active' );
+			}
+		)
 	};
 
 	$( window ).on(
