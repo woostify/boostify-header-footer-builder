@@ -306,7 +306,7 @@
 	}
 
 	.woocommerce-mini-cart {
-		height: calc( 100% - 270px );
+		max-height: calc( 100% - 265px );
 	}
 
 }
