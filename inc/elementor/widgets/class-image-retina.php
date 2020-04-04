@@ -1,9 +1,16 @@
 <?php
 
+namespace Boostify_Header_Footer\Widgets;
+
 use Boostify_Header_Footer\Base_Widget;
 use Elementor\Controls_Manager;
 use Elementor\Utils;
 use Elementor\Group_Control_Css_Filter;
+use Elementor\Group_Control_Image_Size;
+use Elementor\Group_Control_Typography;
+use Elementor\Group_Control_Border;
+use Elementor\Group_Control_Background;
+use Elementor\Scheme_Typography;
 
 /**
  * Image Retina
@@ -11,7 +18,7 @@ use Elementor\Group_Control_Css_Filter;
  * Elementor widget for Image Retina.
  * Aurhor: ptp
  */
-class Boostify_Header_Footer_Image_Retina extends Base_Widget {
+class Image_Retina extends Base_Widget {
 
 	/**
 	 * Retrieve the widget name.
@@ -80,7 +87,7 @@ class Boostify_Header_Footer_Image_Retina extends Base_Widget {
 					'active' => true,
 				),
 				'default' => array(
-					'url' => Elementor\Utils::get_placeholder_image_src(),
+					'url' => Utils::get_placeholder_image_src(),
 				),
 			)
 		);
@@ -93,12 +100,12 @@ class Boostify_Header_Footer_Image_Retina extends Base_Widget {
 					'active' => true,
 				),
 				'default' => array(
-					'url' => Elementor\Utils::get_placeholder_image_src(),
+					'url' => Utils::get_placeholder_image_src(),
 				),
 			)
 		);
 		$this->add_group_control(
-			Elementor\Group_Control_Image_Size::get_type(),
+			Group_Control_Image_Size::get_type(),
 			array(
 				'name'    => 'retina_image',
 				'label'   => __( 'Image Size', 'boostify' ),
@@ -285,10 +292,6 @@ class Boostify_Header_Footer_Image_Retina extends Base_Widget {
 			array(
 				'label'     => __( 'Border Color', 'boostify' ),
 				'type'      => Controls_Manager::COLOR,
-				'scheme'    => array(
-					'type'  => Elementor\Scheme_Color::get_type(),
-					'value' => Elementor\Scheme_Color::COLOR_1,
-				),
 				'condition' => array(
 					'retina_image_border!' => 'none',
 				),
@@ -339,7 +342,7 @@ class Boostify_Header_Footer_Image_Retina extends Base_Widget {
 		);
 
 		$this->add_group_control(
-			Elementor\Group_Control_Css_Filter::get_type(),
+			Group_Control_Css_Filter::get_type(),
 			array(
 				'name'     => 'css_filters',
 				'selector' => '{{WRAPPER}} .boostify-retina-image img',
@@ -373,7 +376,7 @@ class Boostify_Header_Footer_Image_Retina extends Base_Widget {
 		);
 
 		$this->add_group_control(
-			Elementor\Group_Control_Css_Filter::get_type(),
+			Group_Control_Css_Filter::get_type(),
 			array(
 				'name'     => 'css_filters_hover',
 				'selector' => '{{WRAPPER}} .boostify-retina-image:hover img',
@@ -434,10 +437,6 @@ class Boostify_Header_Footer_Image_Retina extends Base_Widget {
 				'selectors' => array(
 					'{{WRAPPER}} .widget-image-caption' => 'color: {{VALUE}};',
 				),
-				'scheme'    => array(
-					'type'  => Elementor\Scheme_Color::get_type(),
-					'value' => Elementor\Scheme_Color::COLOR_1,
-				),
 			)
 		);
 
@@ -453,19 +452,11 @@ class Boostify_Header_Footer_Image_Retina extends Base_Widget {
 		);
 
 		$this->add_group_control(
-			Elementor\Group_Control_Typography::get_type(),
+			Group_Control_Typography::get_type(),
 			array(
 				'name'     => 'caption_typography',
 				'selector' => '{{WRAPPER}} .widget-image-caption',
-				'scheme'   => Elementor\Scheme_Typography::TYPOGRAPHY_1,
-			)
-		);
-
-		$this->add_group_control(
-			Elementor\Group_Control_Text_Shadow::get_type(),
-			array(
-				'name'     => 'caption_text_shadow',
-				'selector' => '{{WRAPPER}} .widget-image-caption',
+				'scheme'   => Scheme_Typography::TYPOGRAPHY_1,
 			)
 		);
 
