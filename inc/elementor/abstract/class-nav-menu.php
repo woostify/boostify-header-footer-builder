@@ -196,8 +196,6 @@ abstract class Nav_Menu extends Base_Widget {
 				'selector' => '{{WRAPPER}} .boostify-menu > li > a',
 			)
 		);
-
-
 	}
 
 	protected function menu_style_hover() {
@@ -269,11 +267,24 @@ abstract class Nav_Menu extends Base_Widget {
 		);
 
 		$this->add_control(
-			'padding_submenu_item',
+			'padding_submenu',
 			array(
 				'label'      => __( 'Padding', 'boostify' ),
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px' ),
+				'selectors'  => array(
+					'{{WRAPPER}} .boostify-menu .menu-item .boostify-menu-child .sub-menu' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}}!important;',
+				),
+			)
+		);
+
+		$this->add_control(
+			'padding_submenu_item',
+			array(
+				'label'      => __( 'Padding Menu Item', 'boostify' ),
+				'type'       => Controls_Manager::DIMENSIONS,
+				'size_units' => array( 'px' ),
+				'separator'  => 'before',
 				'default'    => array(
 					'top'    => 15,
 					'bottom' => 15,
@@ -347,7 +358,6 @@ abstract class Nav_Menu extends Base_Widget {
 				'label'     => __( 'SubMenu Color', 'boostify' ),
 				'type'      => Controls_Manager::COLOR,
 				'default'   => '#000',
-				'separator' => 'before',
 				'selectors' => array(
 					'{{WRAPPER}} .boostify-menu .menu-item-has-children .sub-menu a' => 'color: {{VALUE}}',
 				),
