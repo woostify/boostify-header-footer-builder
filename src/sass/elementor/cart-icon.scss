@@ -307,6 +307,7 @@
 
 	.woocommerce-mini-cart {
 		max-height: calc( 100% - 265px );
+		flex-grow: 1;
 	}
 
 }

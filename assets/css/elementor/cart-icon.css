@@ -292,6 +292,7 @@
 
 .boostify-action-click .woocommerce-mini-cart {
   max-height: calc( 100% - 265px);
+  flex-grow: 1;
 }
 
 ul.product_list_widget li img {
