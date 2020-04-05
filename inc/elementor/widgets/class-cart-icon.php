@@ -689,6 +689,37 @@ class Cart_Icon extends Base_Widget {
 		);
 
 		$this->add_control(
+			'product_image_heading',
+			array(
+				'label'     => __( 'Product Image', 'boostify' ),
+				'type'      => Controls_Manager::HEADING,
+				'separator' => 'before',
+			)
+		);
+
+		$this->add_control(
+			'position_image',
+			array(
+				'label'     => __( 'Alignment', 'boostify' ),
+				'type'      => Controls_Manager::CHOOSE,
+				'options'   => array(
+					'row'         => array(
+						'title' => __( 'Left', 'boostify' ),
+						'icon'  => 'eicon-h-align-left',
+					),
+					'row-reverse' => array(
+						'title' => __( 'Right', 'boostify' ),
+						'icon'  => 'eicon-h-align-right',
+					),
+				),
+				'default'   => 'row-reverse',
+				'selectors' => array(
+					'{{WRAPPER}} .boostify-cart-item-info' => 'flex-direction: {{VALUE}};',
+				),
+			)
+		);
+
+		$this->add_control(
 			'product_name_heading',
 			array(
 				'label'     => __( 'Product Name', 'boostify' ),

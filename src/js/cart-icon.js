@@ -73,7 +73,7 @@
 				var miniCart = $scope.find( '.boostify-cart-detail' );
 				miniCart.css(
 					{
-						'z-index' : '9999',
+						'z-index' : '99999',
 						'opacity' : '1',
 						'visibility' : 'visible',
 						'transform' : 'translateY(0)',
