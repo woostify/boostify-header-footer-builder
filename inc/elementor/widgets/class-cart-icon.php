@@ -92,6 +92,7 @@ class Cart_Icon extends Base_Widget {
 				'widget-cart-icon',
 				'boostify-action-' . $settings['action'],
 				'boostify-icon-' . $settings['icon'],
+				'boostify-subtotal-' . $show_subtotal,
 			);
 			if ( 'click' === $settings['action'] ) {
 				array_push( $classes, 'sidebar-position-' . $settings['position'] );

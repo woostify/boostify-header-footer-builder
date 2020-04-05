@@ -39,6 +39,14 @@
   height: auto;
 }
 
+.boostify-cart-icon.boostify-subtotal-yes .boostify-subtotal {
+  display: inline-block;
+}
+
+.boostify-cart-icon .boostify-subtotal {
+  display: none;
+}
+
 .boostify-action-hover .boostify-cart-detail {
   position: absolute;
   width: 250px;

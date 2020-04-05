@@ -38,6 +38,16 @@
 			height: auto;
 		}
 	}
+
+	&.boostify-subtotal-yes {
+		.boostify-subtotal {
+			display: inline-block;
+		}
+	}
+
+	.boostify-subtotal {
+		display: none;
+	}
 }
 
 .boostify-action-hover {
