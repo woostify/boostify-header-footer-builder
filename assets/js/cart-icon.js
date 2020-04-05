@@ -10,6 +10,11 @@
 		var sidebar = $scope.find( '.boostify-cart-detail' );
 		var overlay = $scope.find( '.boostify-cart-overlay' );
 		var close   = $scope.find( '#boostify-close-cart-sidebar' );
+		var widget  = $scope.find( '.boostify-cart-icon' );
+		// var content = widget.attr( 'icon-content' );
+		// var font    = widget.attr( 'icon-font' );
+		// var icon    = widget.find( '.icon-cart' );
+		// $scope.find( '.icon-cart' ).addClass( content );
 		$scope.on(
 			'click',
 			'.boostify-btn--cart',
@@ -44,19 +49,47 @@
 		}
 
 		function openSidebar( e, $this ) {
+			var parents = $this.parents( '.boostify-cart-icon' );
+			console.log( parents.hasClass( '.boostify-action-hover' ) );
+			if ( parents.hasClass( 'boostify-action-hover' ) ) {
+				return;
+			}
 			e.preventDefault();
-			var sidebar = $this.parents( '.boostify-cart-icon' ).find( '.boostify-cart-detail' );
+			var sidebar = parents.find( '.boostify-cart-detail' );
 			sidebar.addClass( 'active' );
 			overlay.addClass( 'active' );
 		}
 
 		$( document.body ).on(
-			'removed_from_cart',
+			'added_to_cart removed_from_cart',
 			function () {
+				// $scope.find( '.icon-cart' ).addClass( content );
 				var sidebar = $scope.find( '.boostify-cart-detail' );
 				sidebar.addClass( 'active' );
+				if ( ! overlay.hasClass() ) {
+					overlay.addClass( 'active' );
+				}
+
+				var miniCart = $scope.find( '.boostify-cart-detail' );
+				miniCart.css(
+					{
+						'z-index' : '9999',
+						'opacity' : '1',
+						'visibility' : 'visible',
+						'transform' : 'translateY(0)',
+						'height' : 'auto',
+					}
+				);
 			}
-		)
+		);
+
+		$( 'body' ).on(
+			'click',
+			function () {
+				var miniCart = $scope.find( '.boostify-cart-detail' );
+				miniCart.attr( 'style', '' );
+			}
+		);
 	};
 
 	$( window ).on(

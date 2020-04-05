@@ -8,6 +8,7 @@ use Elementor\Controls_Manager;
 use Elementor\Scheme_Typography;
 use Elementor\Group_Control_Typography;
 use Elementor\Group_Control_Background;
+use Elementor\Group_Control_Border;
 
 /**
  * Cart Icon
@@ -82,9 +83,10 @@ class Cart_Icon extends Base_Widget {
 	 * @access protected
 	 */
 	protected function render() {
-		$settings = $this->get_settings_for_display();
+		$settings      = $this->get_settings_for_display();
+		$icon          = $settings['icon'];
+		$show_subtotal = $settings['show_subtotal'];
 		if ( class_exists( 'Woocommerce' ) ) {
-
 			$classes = array(
 				'boostify-cart-icon',
 				'widget-cart-icon',
@@ -102,14 +104,16 @@ class Cart_Icon extends Base_Widget {
 			$classes = implode( ' ', $classes );
 
 			?>
-			<div class="<?php echo esc_attr( $classes ); ?>">
+			<div class="<?php echo esc_attr( $classes ); ?>" icon-content="<?php echo esc_attr( $icon ); ?>" icon-font="Ionicons">
 
-				<?php \Boostify_Header_Footer\Module\Woocommerce::render_cart(); ?>
-				<?php if ( 'click' === $settings['action'] ) : ?>
-					<div class="boostify-cart-overlay">
-						<span class="ion-android-close"></span>
-					</div>
-				<?php endif ?>
+			<?php
+			\Boostify_Header_Footer\Module\Woocommerce::render_cart();
+			if ( 'click' === $settings['action'] ) :
+				?>
+				<div class="boostify-cart-overlay">
+					<span class="ion-android-close"></span>
+				</div>
+			<?php endif ?>
 
 			</div>
 
@@ -143,13 +147,25 @@ class Cart_Icon extends Base_Widget {
 		$this->add_control(
 			'action',
 			array(
-				'label'   => esc_html__( 'Action', 'boostify' ),
+				'label'   => esc_html__( 'Style', 'boostify' ),
 				'type'    => Controls_Manager::SELECT,
 				'options' => array(
-					'hover' => __( 'Hover', 'boostify' ),
-					'click' => __( 'Click', 'boostify' ),
+					'hover' => __( 'Mini Cart', 'boostify' ),
+					'click' => __( 'Cart SideBar', 'boostify' ),
 				),
 				'default' => 'hover',
+			)
+		);
+
+		$this->add_control(
+			'show_subtotal',
+			array(
+				'label'        => __( 'Subtotal', 'boostify' ),
+				'type'         => Controls_Manager::SWITCHER,
+				'label_on'     => __( 'Show', 'boostify' ),
+				'label_off'    => __( 'Hide', 'boostify' ),
+				'return_value' => 'yes',
+				'default'      => 'yes',
 			)
 		);
 
@@ -182,7 +198,7 @@ class Cart_Icon extends Base_Widget {
 		$this->add_control(
 			'position',
 			array(
-				'label'     => esc_html__( 'Action', 'boostify' ),
+				'label'     => esc_html__( 'Position', 'boostify' ),
 				'type'      => Controls_Manager::SELECT,
 				'options'   => array(
 					'right' => __( 'Right', 'boostify' ),
@@ -232,15 +248,16 @@ class Cart_Icon extends Base_Widget {
 			)
 		);
 
-		$this->add_group_control(
-			Group_Control_Background::get_type(),
+		$this->add_control(
+			'heading_background',
 			array(
-				'name'      => 'heading_background',
 				'label'     => __( 'Background', 'boostify' ),
-				'types'     => array( 'classic', 'gradient' ),
-				'selector'  => '{{WRAPPER}} .cart-sidebar-head',
+				'type'      => Controls_Manager::COLOR,
 				'condition' => array(
 					'action' => 'click',
+				),
+				'selectors' => array(
+					'{{WRAPPER}} .cart-sidebar-head' => 'background-color: {{VALUE}};',
 				),
 			)
 		);
@@ -325,13 +342,15 @@ class Cart_Icon extends Base_Widget {
 			)
 		);
 
-		$this->add_group_control(
-			Group_Control_Background::get_type(),
+		$this->add_control(
+			'background_color_count',
 			array(
-				'name'      => 'background',
 				'label'     => __( 'Background', 'boostify' ),
-				'types'     => array( 'classic', 'gradient' ),
-				'selector'  => '{{WRAPPER}} .cart-sidebar-head .count',
+				'type'      => Controls_Manager::COLOR,
+				'default'   => '#d9534f',
+				'selectors' => array(
+					'{{WRAPPER}} .cart-sidebar-head .count' => 'background-color: {{VALUE}}',
+				),
 				'condition' => array(
 					'action' => 'click',
 				),
@@ -396,6 +415,101 @@ class Cart_Icon extends Base_Widget {
 			array(
 				'label' => __( 'Cart Icon', 'boostify' ),
 				'tab'   => Controls_Manager::TAB_STYLE,
+			)
+		);
+
+		$this->add_control(
+			'padding',
+			array(
+				'label'      => __( 'Padding', 'boostify' ),
+				'type'       => Controls_Manager::DIMENSIONS,
+				'size_units' => array( 'px' ),
+				'selectors'  => array(
+					'{{WRAPPER}} .boostify-btn--cart' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				),
+			)
+		);
+
+		$this->add_group_control(
+			Group_Control_Border::get_type(),
+			array(
+				'name'     => 'border',
+				'label'    => __( 'Border', 'boostify' ),
+				'selector' => '{{WRAPPER}} .boostify-btn--cart',
+			)
+		);
+
+		$this->add_control(
+			'border-radius',
+			array(
+				'label'      => __( 'Border Radius', 'boostify' ),
+				'type'       => Controls_Manager::DIMENSIONS,
+				'size_units' => array( 'px', '%' ),
+				'selectors'  => array(
+					'{{WRAPPER}} .boostify-btn--cart' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				),
+			)
+		);
+
+		$this->add_control(
+			'subtotal_heading',
+			array(
+				'label'     => __( 'Subtotal', 'boostify' ),
+				'type'      => Controls_Manager::HEADING,
+				'separator' => 'before',
+				'condition' => array(
+					'show_subtotal' => 'yes',
+				),
+			)
+		);
+
+		$this->add_control(
+			'color_subtotal',
+			array(
+				'label'     => __( 'Color', 'boostify' ),
+				'type'      => Controls_Manager::COLOR,
+				'default'   => '#000',
+				'selectors' => array(
+					'{{WRAPPER}} .boostify-subtotal .woocommerce-Price-amount' => 'color: {{VALUE}}',
+				),
+				'condition' => array(
+					'show_subtotal' => 'yes',
+				),
+			)
+		);
+
+		$this->add_group_control(
+			Group_Control_Typography::get_type(),
+			array(
+				'name'      => 'subtotal_typography',
+				'label'     => __( 'Typography', 'boostify' ),
+				'scheme'    => Scheme_Typography::TYPOGRAPHY_1,
+				'selector'  => '{{WRAPPER}} .boostify-subtotal .woocommerce-Price-amount',
+				'condition' => array(
+					'show_subtotal' => 'yes',
+				),
+			)
+		);
+
+		$this->add_responsive_control(
+			'space',
+			array(
+				'label'      => __( 'Space', 'boostify' ),
+				'type'       => Controls_Manager::SLIDER,
+				'size_units' => array( 'px' ),
+				'range'      => array(
+					'px' => array(
+						'min'  => 00,
+						'max'  => 50,
+						'step' => 1,
+					),
+				),
+				'selectors'  => array(
+					'{{WRAPPER}} .boostify-subtotal .woocommerce-Price-amount' => 'margin-right: {{SIZE}}{{UNIT}};',
+				),
+				'condition'  => array(
+					'show_subtotal' => 'yes',
+				),
 			)
 		);
 
@@ -467,7 +581,7 @@ class Cart_Icon extends Base_Widget {
 				'type'      => Controls_Manager::COLOR,
 				'default'   => '#fff',
 				'selectors' => array(
-					'{{WRAPPER}} ..boostify-count-product' => 'color: {{VALUE}}',
+					'{{WRAPPER}} .boostify-count-product' => 'color: {{VALUE}}',
 				),
 			)
 		);
@@ -485,13 +599,56 @@ class Cart_Icon extends Base_Widget {
 			)
 		);
 
-		$this->add_group_control(
-			Group_Control_Background::get_type(),
+		$this->add_control(
+			'icon_counter_background',
 			array(
-				'name'     => 'icon_counter_background',
-				'label'    => __( 'Background', 'boostify' ),
-				'types'    => array( 'classic', 'gradient' ),
-				'selector' => '{{WRAPPER}} .boostify-count-product',
+				'label'     => __( 'Background', 'boostify' ),
+				'type'      => Controls_Manager::COLOR,
+				'default'   => '#d9534f',
+				'selectors' => array(
+					'{{WRAPPER}} .boostify-count-product' => 'background-color: {{VALUE}}',
+				),
+				'condition' => array(
+					'action' => 'click',
+				),
+			)
+		);
+
+		$this->add_control(
+			'distance-top',
+			array(
+				'label'      => __( 'Distance Top', 'boostify' ),
+				'type'       => Controls_Manager::SLIDER,
+				'size_units' => array( 'px' ),
+				'range'      => array(
+					'px' => array(
+						'min'  => -50,
+						'max'  => 50,
+						'step' => 1,
+					),
+				),
+				'selectors'  => array(
+					'{{WRAPPER}} .boostify-cart-icon .boostify-count-product' => 'top: {{SIZE}}{{UNIT}};',
+				),
+			)
+		);
+
+		$this->add_control(
+			'distance-right',
+			array(
+				'label'      => __( 'Distance Right', 'boostify' ),
+				'type'       => Controls_Manager::SLIDER,
+				'size_units' => array( 'px' ),
+				'range'      => array(
+					'px' => array(
+						'min'  => -50,
+						'max'  => 50,
+						'step' => 1,
+					),
+				),
+				'selectors'  => array(
+					'{{WRAPPER}} .boostify-cart-icon .boostify-count-product' => 'right: {{SIZE}}{{UNIT}};',
+				),
 			)
 		);
 
@@ -514,18 +671,19 @@ class Cart_Icon extends Base_Widget {
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px' ),
 				'selectors'  => array(
-					'{{WRAPPER}} .boostify-cart-detail .woocommerce-mini-cart' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .boostify-cart-detail .woocommerce--mini-cart' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				),
 			)
 		);
 
-		$this->add_group_control(
-			Group_Control_Background::get_type(),
+		$this->add_control(
+			'cart_content_background',
 			array(
-				'name'     => 'cart_content_background',
-				'label'    => __( 'Background', 'boostify' ),
-				'types'    => array( 'classic', 'gradient' ),
-				'selector' => '{{WRAPPER}} .woocommerce-mini-cart',
+				'label'     => __( 'Background', 'boostify' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => array(
+					'{{WRAPPER}} .woocommerce--mini-cart' => 'background-color: {{VALUE}}',
+				),
 			)
 		);
 
@@ -577,6 +735,7 @@ class Cart_Icon extends Base_Widget {
 				'default'   => '#666',
 				'selectors' => array(
 					'{{WRAPPER}} .mini-cart-item-detail .quantity' => 'color: {{VALUE}}',
+					'{{WRAPPER}} .mini-cart-item-detail .quantity .woocommerce-Price-amount' => 'color: {{VALUE}}',
 				),
 			)
 		);
@@ -629,7 +788,7 @@ class Cart_Icon extends Base_Widget {
 				'type'      => Controls_Manager::COLOR,
 				'default'   => '#333',
 				'selectors' => array(
-					'{{WRAPPER}} .woocommerce-Price-amount' => 'color: {{VALUE}}',
+					'{{WRAPPER}} .boostify-mini-cart__total .woocommerce-Price-amount' => 'color: {{VALUE}}',
 				),
 			)
 		);
@@ -644,13 +803,14 @@ class Cart_Icon extends Base_Widget {
 			)
 		);
 
-		$this->add_group_control(
-			Group_Control_Background::get_type(),
+		$this->add_control(
+			'total_button_background',
 			array(
-				'name'     => 'total_button_background',
-				'label'    => __( 'Background', 'boostify' ),
-				'types'    => array( 'classic', 'gradient' ),
-				'selector' => '{{WRAPPER}} .woocommerce-mini-cart__total',
+				'label'     => __( 'Background', 'boostify' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => array(
+					'{{WRAPPER}} .woocommerce-mini-cart__total' => 'background-color: {{VALUE}}',
+				),
 			)
 		);
 
@@ -673,18 +833,19 @@ class Cart_Icon extends Base_Widget {
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px' ),
 				'selectors'  => array(
-					'{{WRAPPER}} .boostify-cart-detail .woocommerce-mini-cart__buttons' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .boostify-cart-detail .boostify-mini-cart__buttons' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				),
 			)
 		);
 
-		$this->add_group_control(
-			Group_Control_Background::get_type(),
+		$this->add_control(
+			'button_background',
 			array(
-				'name'     => 'button_background',
-				'label'    => __( 'Background', 'boostify' ),
-				'types'    => array( 'classic', 'gradient' ),
-				'selector' => '{{WRAPPER}} .boostify-cart-detail .woocommerce-mini-cart__buttons',
+				'label'     => __( 'Background', 'boostify' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => array(
+					'{{WRAPPER}} .boostify-cart-detail .boostify-mini-cart__buttons' => 'background-color: {{VALUE}}',
+				),
 			)
 		);
 
@@ -702,6 +863,18 @@ class Cart_Icon extends Base_Widget {
 				'label'     => __( 'View Cart', 'boostify' ),
 				'type'      => Controls_Manager::HEADING,
 				'separator' => 'before',
+			)
+		);
+
+		$this->add_control(
+			'padding_view_cart',
+			array(
+				'label'      => __( 'Padding', 'boostify' ),
+				'type'       => Controls_Manager::DIMENSIONS,
+				'size_units' => array( 'px' ),
+				'selectors'  => array(
+					'{{WRAPPER}} .boostify-cart-detail .boostify-mini-cart__buttons .button:first-child' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				),
 			)
 		);
 
@@ -726,13 +899,14 @@ class Cart_Icon extends Base_Widget {
 			)
 		);
 
-		$this->add_group_control(
-			Group_Control_Background::get_type(),
+		$this->add_control(
+			'view_cart_background',
 			array(
-				'name'     => 'view_cart_background',
-				'label'    => __( 'Background', 'boostify' ),
-				'types'    => array( 'classic', 'gradient' ),
-				'selector' => '{{WRAPPER}} .woocommerce-mini-cart__buttons .button:first-child',
+				'label'     => __( 'Background', 'boostify' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => array(
+					'{{WRAPPER}} .woocommerce-mini-cart__buttons .button:first-child' => 'background: {{VALUE}}',
+				),
 			)
 		);
 
@@ -757,13 +931,14 @@ class Cart_Icon extends Base_Widget {
 			)
 		);
 
-		$this->add_group_control(
-			Group_Control_Background::get_type(),
+		$this->add_control(
+			'view_cart_background_hover',
 			array(
-				'name'     => 'view_cart_background_hover',
-				'label'    => __( 'Background', 'boostify' ),
-				'types'    => array( 'classic', 'gradient' ),
-				'selector' => '{{WRAPPER}} .woocommerce-mini-cart__buttons .button:first-child:hover',
+				'label'     => __( 'Background', 'boostify' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => array(
+					'{{WRAPPER}} .woocommerce-mini-cart__buttons .button:first-child:hover' => 'background-color: {{VALUE}}',
+				),
 			)
 		);
 
@@ -777,7 +952,7 @@ class Cart_Icon extends Base_Widget {
 				'name'     => 'view_cart_typography',
 				'label'    => __( 'Typography', 'boostify' ),
 				'scheme'   => Scheme_Typography::TYPOGRAPHY_1,
-				'selector' => '{{WRAPPER}} .woocommerce-mini-cart__buttons .button:last-child',
+				'selector' => '{{WRAPPER}} .woocommerce-mini-cart__buttons .button:first-child',
 			)
 		);
 	}
@@ -791,6 +966,19 @@ class Cart_Icon extends Base_Widget {
 				'separator' => 'before',
 			)
 		);
+
+		$this->add_control(
+			'padding_checkout',
+			array(
+				'label'      => __( 'Padding', 'boostify' ),
+				'type'       => Controls_Manager::DIMENSIONS,
+				'size_units' => array( 'px' ),
+				'selectors'  => array(
+					'{{WRAPPER}} .boostify-cart-detail .boostify-mini-cart__buttons .button:last-child' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				),
+			)
+		);
+
 		$this->start_controls_tabs( 'checkout' );
 
 		$this->start_controls_tab(
@@ -812,13 +1000,14 @@ class Cart_Icon extends Base_Widget {
 			)
 		);
 
-		$this->add_group_control(
-			Group_Control_Background::get_type(),
+		$this->add_control(
+			'checkout_background',
 			array(
-				'name'     => 'checkout_background',
-				'label'    => __( 'Background', 'boostify' ),
-				'types'    => array( 'classic', 'gradient' ),
-				'selector' => '{{WRAPPER}} .woocommerce-mini-cart__buttons .button:last-child',
+				'label'     => __( 'Background', 'boostify' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => array(
+					'{{WRAPPER}} .woocommerce-mini-cart__buttons .button:last-child' => 'background-color: {{VALUE}}',
+				),
 			)
 		);
 
@@ -840,21 +1029,17 @@ class Cart_Icon extends Base_Widget {
 				'selectors' => array(
 					'{{WRAPPER}} .woocommerce-mini-cart__buttons .button:last-child:hover' => 'color: {{VALUE}}',
 				),
-				'condition' => array(
-					'action' => 'click',
-				),
 			)
 		);
 
-		$this->add_group_control(
-			Group_Control_Background::get_type(),
+		$this->add_control(
+			'checkout_background_hover',
 			array(
-				'name'      => 'checkout_background_hover',
 				'label'     => __( 'Background', 'boostify' ),
-				'types'     => array( 'classic', 'gradient' ),
-				'selector'  => '{{WRAPPER}} .woocommerce-mini-cart__buttons .button:last-child:hover',
-				'condition' => array(
-					'action' => 'click',
+				'type'      => Controls_Manager::COLOR,
+				'default'   => '#fff',
+				'selectors' => array(
+					'{{WRAPPER}} .woocommerce-mini-cart__buttons .button:last-child:hover' => 'background-color: {{VALUE}}',
 				),
 			)
 		);

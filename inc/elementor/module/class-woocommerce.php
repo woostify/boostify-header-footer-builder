@@ -14,6 +14,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class Woocommerce {
 
+	public static $icon;
+
+
 	public function __construct() {
 		add_filter( 'add_to_cart_fragments', array( $this, 'add_to_cart_fragment' ) );
 		add_action( 'elementor/editor/before_enqueue_scripts', array( $this, 'maybe_init_cart' ) );
@@ -24,7 +27,9 @@ class Woocommerce {
 
 	public static function render_cart_empty() {
 		?>
-		<div class="woocommerce-mini-cart__empty-message"><?php esc_attr_e( 'No products in the cart.', 'boostify' ); ?></div>
+		<div class="boostify-mini-cart-empty-message">
+			<span><?php esc_attr_e( 'No products in the cart.', 'boostify' ); ?></span>
+		</div>
 		<?php
 	}
 
@@ -45,7 +50,7 @@ class Woocommerce {
 		global $woocommerce;
 		ob_start();
 		self::render_cart();
-		$menu_cart_html = ob_get_clean();
+		$menu_cart_html = ob_get_clean(); // phpcs:ignore
 		$fragments['div.widget-cart-icon--wrapper'] = $menu_cart_html;//a.cartplus-contents,a.cart-button
 		ob_end_clean();
 
@@ -66,7 +71,7 @@ class Woocommerce {
 			$product_price     = apply_filters( 'woocommerce_cart_item_price', WC()->cart->get_product_price( $_product ), $cart_item, $cart_item_key );
 			$product_permalink = apply_filters( 'woocommerce_cart_item_permalink', $_product->is_visible() ? $_product->get_permalink( $cart_item ) : '', $cart_item, $cart_item_key );
 			?>
-			<li class="woocommerce-mini-cart-item <?php echo esc_attr( apply_filters( 'woocommerce_mini_cart_item_class', 'mini_cart_item', $cart_item, $cart_item_key ) ); ?>">
+			<li class="woocommerce-mini-cart--item boostify-mini-cart-item">
 				<div class="mini-cart-item-wrapper">
 					<?php
 					echo apply_filters( // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
@@ -82,51 +87,54 @@ class Woocommerce {
 						$cart_item_key
 					);
 					?>
-				<?php
-				if ( empty( $product_permalink ) ) :
-					?>
-					<div class="mini-cart-item-thumbnail">
-						<?php echo $thumbnail; //phpcs:ignore ?>
-					</div>
-					<?php
-
-				else :
-					?>
-					<div class="mini-cart-item-thumbnail">
-						<a href="<?php echo esc_url( $product_permalink ); ?>">
-							<?php echo $thumbnail; //phpcs:ignore ?>
-						</a>
-					</div>
-				<?php endif; ?>
-				<?php
-				if ( empty( $product_permalink ) ) :
-					?>
-					<div class="mini-cart-item-detail">
-						<span class="mini-cart-item-name">
-							<?php echo esc_html( $product_name ); ?>
-						</span>
-
+					<div class="boostify-cart-item-info">
 						<?php
-							echo wc_get_formatted_cart_item_data( $cart_item ); //phpcs:ignore
-							echo apply_filters( 'woocommerce_widget_cart_item_quantity', '<span class="quantity">' . sprintf( '%s &times; %s', $cart_item['quantity'], $product_price ) . '</span>', $cart_item, $cart_item_key ); //phpcs:ignore
+						if ( empty( $product_permalink ) ) :
+							?>
+							<div class="mini-cart-item-thumbnail">
+								<?php echo $thumbnail; //phpcs:ignore ?>
+							</div>
+							<?php
+
+						else :
+							?>
+							<div class="mini-cart-item-thumbnail">
+								<a href="<?php echo esc_url( $product_permalink ); ?>">
+									<?php echo $thumbnail; //phpcs:ignore ?>
+								</a>
+							</div>
+							<?php
+						endif;
+
+						if ( empty( $product_permalink ) ) :
+							?>
+							<div class="mini-cart-item-detail">
+								<span class="mini-cart-item-name">
+									<?php echo esc_html( $product_name ); ?>
+								</span>
+
+								<?php
+									echo wc_get_formatted_cart_item_data( $cart_item ); //phpcs:ignore
+									echo apply_filters( 'woocommerce_widget_cart_item_quantity', '<span class="quantity">' . sprintf( '%s &times; %s', $cart_item['quantity'], $product_price ) . '</span>', $cart_item, $cart_item_key ); //phpcs:ignore
+								?>
+							</div>
+							<?php
+						else :
+							?>
+							<div class="mini-cart-item-detail">
+								<a href="<?php echo esc_url( $product_permalink ); ?>" class="mini-cart-item-name">
+									<?php echo esc_html( $product_name ); ?>
+								</a>
+								<?php
+									echo wc_get_formatted_cart_item_data( $cart_item ); //phpcs:ignore
+									echo apply_filters( 'woocommerce_widget_cart_item_quantity', '<span class="quantity">' . sprintf( '%s &times; %s', $cart_item['quantity'], $product_price ) . '</span>', $cart_item, $cart_item_key ); //phpcs:ignore
+								?>
+
+							</div>
+							<?php
+						endif;
 						?>
 					</div>
-					<?php
-				else :
-					?>
-					<div class="mini-cart-item-detail">
-						<a href="<?php echo esc_url( $product_permalink ); ?>" class="mini-cart-item-name">
-							<?php echo esc_html( $product_name ); ?>
-						</a>
-						<?php
-							echo wc_get_formatted_cart_item_data( $cart_item ); //phpcs:ignore
-							echo apply_filters( 'woocommerce_widget_cart_item_quantity', '<span class="quantity">' . sprintf( '%s &times; %s', $cart_item['quantity'], $product_price ) . '</span>', $cart_item, $cart_item_key ); //phpcs:ignore
-						?>
-
-					</div>
-					<?php
-				endif;
-				?>
 
 				</div>
 			</li>
@@ -134,6 +142,14 @@ class Woocommerce {
 		}
 	}
 
+	/**
+	 * Render Mini Cart.
+	 *
+	 * @param $.
+	 *
+	 * @since 1.2.0
+	 * @access protected
+	 */
 	public static function render_cart() {
 		if ( null === WC()->cart ) {
 			return;
@@ -144,15 +160,22 @@ class Woocommerce {
 		$cart_items            = WC()->cart->get_cart();
 		$toggle_button_link    = $widget_cart_is_hidden ? wc_get_cart_url() : '#';
 		$url                   = wc_get_cart_url();
-
 		?>
 		<div class="widget-cart-icon--wrapper">
 			<a href="<?php echo esc_url( $url ); ?>" class="cart-link boostify-btn--cart">
 				<span class="icon--wrapper">
-					<span class="boostify-icon--cart"></span>
-					<span class="boostify-count-product">
-						<?php echo WC()->cart->get_cart_contents_count();//phpcs:ignore ?>
+
+						<span class="boostify-subtotal">
+							<?php echo $sub_total; //phpcs:ignore ?>
+						</span>
+
+					<span class="boostify-icon--cart">
+						<span class="icon-cart"></span>
+						<span class="boostify-count-product">
+							<?php echo WC()->cart->get_cart_contents_count();//phpcs:ignore ?>
+						</span>
 					</span>
+
 				</span>
 			</a>
 			<div class="boostify-cart-detail">
@@ -165,26 +188,27 @@ class Woocommerce {
 
 						<button id="boostify-close-cart-sidebar" class="ion-android-close boostify-close-cart-sidebar"></button>
 					</div>
-					<?php do_action( 'woocommerce_before_mini_cart' ); ?>
+
 					<?php
-					if ( empty( WC()->cart->get_cart() ) ) {
+					do_action( 'woocommerce_before_mini_cart' );
+					if ( empty( $cart_items ) ) {
 						self::render_cart_empty();
 					} else {
 						?>
-						<ul class="woocommerce-mini-cart boostify-cart cart_list product_list_widget">
+						<ul class="woocommerce--mini-cart boostify-mini-cart boostify-cart_list boostify-product_list_widget">
 						<?php
 
-							do_action( 'woocommerce_before_mini_cart_contents' );
+						do_action( 'woocommerce_before_mini_cart_contents' );
 
-							foreach ( WC()->cart->get_cart() as $cart_item_key => $cart_item ) {
-								self::cart_item_detail( $cart_item_key, $cart_item );
-							}
+						foreach ( $cart_items as $cart_item_key => $cart_item ) {
+							self::cart_item_detail( $cart_item_key, $cart_item );
+						}
 
-							do_action( 'woocommerce_mini_cart_contents' );
+						do_action( 'woocommerce_mini_cart_contents' );
 						?>
 						</ul>
 						<div class="woocommerce-mini-cart-bottom boostify-cart-sidebar-bottom">
-							<div class="woocommerce-mini-cart__total total">
+							<div class="boostify-mini-cart__total total">
 								<?php
 								/**
 								 * Hook: woocommerce_widget_shopping_cart_total.
@@ -197,11 +221,11 @@ class Woocommerce {
 
 							<?php do_action( 'woocommerce_widget_shopping_cart_before_buttons' ); ?>
 
-							<div class="woocommerce-mini-cart__buttons buttons"><?php do_action( 'woocommerce_widget_shopping_cart_buttons' ); ?></div>
+							<div class="boostify-mini-cart__buttons buttons"><?php do_action( 'woocommerce_widget_shopping_cart_buttons' ); ?></div>
 
 							<?php do_action( 'woocommerce_widget_shopping_cart_after_buttons' ); ?>
 						</div>
-					<?php
+						<?php
 					}
 					?>
 
