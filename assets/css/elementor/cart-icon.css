@@ -140,10 +140,38 @@
   margin-top: 10px;
 }
 
+.boostify-action-hover .boostify-mini-cart-empty-message {
+  min-height: 100px;
+}
+
 .boostify-cart-detail ul.boostify-mini-cart li.boostify-mini-cart-item {
   position: relative;
   padding: 10px 15px;
-  min-height: 90px;
+}
+
+.boostify-cart-detail ul.boostify-mini-cart li.boostify-mini-cart-item.remove:before {
+  content: '';
+  background-color: #000;
+  opacity: 0.3;
+  z-index: 10;
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+.boostify-cart-detail ul.boostify-mini-cart li.boostify-mini-cart-item.remove:after {
+  content: url("../../images/load/preloader.gif");
+  position: absolute;
+  top: calc( ( 100% - 30px )/2);
+  left: calc( ( 100% - 30px )/2);
+  z-index: 99;
+}
+
+.boostify-cart-detail ul.boostify-mini-cart li.boostify-mini-cart-item .mini-cart-item-wrapper {
+  width: 100%;
 }
 
 .boostify-cart-detail ul.boostify-mini-cart li.boostify-mini-cart-item:not(:last-child) {
@@ -158,9 +186,13 @@
   text-align: left;
 }
 
+.boostify-cart-detail ul.boostify-mini-cart li.boostify-mini-cart-item .mini-cart-item-thumbnail {
+  width: 90px;
+  padding-right: 20px;
+}
+
 .boostify-cart-detail ul.boostify-mini-cart li.boostify-mini-cart-item .attachment-woocommerce_thumbnail {
   width: 70px;
-  margin-right: 20px;
 }
 
 .boostify-cart-detail ul.boostify-mini-cart li.boostify-mini-cart-item .quantity,
@@ -326,6 +358,19 @@
   transition: all 0.3s;
 }
 
+.remove-item-mini-cart .boostify-action-click .boostify-cart-detail {
+  -webkit-transition: unset;
+  transition: unset;
+}
+
+.remove-item-mini-cart .boostify-action-click .boostify-cart-detail.active {
+  visibility: visible;
+  pointer-events: auto;
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  transition: unset;
+}
+
 @media (min-width: 601px) {
   .admin-bar .boostify-action-click .boostify-cart-detail {
     top: 46px;
@@ -435,8 +480,8 @@
 }
 
 .boostify-cart-item-info .mini-cart-item-detail {
-  flex-grow: 1;
   padding-right: 20px;
+  width: calc( 100% - 90px);
 }
 
 .boostify-cart-icon .boostify-icon--cart:after {

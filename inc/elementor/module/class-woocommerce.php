@@ -23,6 +23,8 @@ class Woocommerce {
 		if ( ! empty( $_REQUEST['action'] ) && 'elementor' === $_REQUEST['action'] && is_admin() ) { // phpcs:ignore
 			add_action( 'init', array( $this, 'register_wc_hooks' ), 5 );
 		}
+		add_action( 'wp_ajax_boostify_product_remove', 'product_remove' );
+		add_action( 'wp_ajax_nopriv_boostify_product_remove', 'product_remove' );
 	}
 
 	public static function render_cart_empty() {
@@ -44,6 +46,32 @@ class Woocommerce {
 			WC()->cart     = new \WC_Cart();
 			WC()->customer = new \WC_Customer( get_current_user_id(), true );
 		}
+	}
+
+	public function product_remove() {
+		// Get mini cart
+		ob_start();
+		$carts = WC()->cart->get_cart();
+
+		foreach ( $carts as $cart_item_key => $cart_item ) {
+			if( $cart_item['product_id'] === $_POST['product_id'] && $cart_item_key === $_POST['cart_item_key'] ) {
+				WC()->cart->remove_cart_item( $cart_item_key );
+			}
+		}
+
+		WC()->cart->calculate_totals();
+		WC()->cart->maybe_set_cart_cookies();
+
+		woocommerce_mini_cart();
+
+		$mini_cart = ob_get_clean();
+
+		// Fragments and mini cart are returned
+		$data = array();
+
+		wp_send_json( $mini_cart );
+
+		die();
 	}
 
 	public function add_to_cart_fragment( $fragments ) {

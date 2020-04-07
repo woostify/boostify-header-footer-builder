@@ -712,7 +712,7 @@ class Cart_Icon extends Base_Widget {
 						'icon'  => 'eicon-h-align-right',
 					),
 				),
-				'default'   => 'row-reverse',
+				'default'   => 'row',
 				'selectors' => array(
 					'{{WRAPPER}} .boostify-cart-item-info' => 'flex-direction: {{VALUE}};',
 				),
@@ -798,7 +798,7 @@ class Cart_Icon extends Base_Widget {
 				'type'      => Controls_Manager::COLOR,
 				'default'   => '#333',
 				'selectors' => array(
-					'{{WRAPPER}} .woocommerce-mini-cart__total strong' => 'color: {{VALUE}}',
+					'{{WRAPPER}} .boostify-mini-cart__total strong' => 'color: {{VALUE}}',
 				),
 			)
 		);
@@ -809,7 +809,7 @@ class Cart_Icon extends Base_Widget {
 				'name'     => 'sub_total_typography',
 				'label'    => __( 'Subtotal Typography', 'boostify' ),
 				'scheme'   => Scheme_Typography::TYPOGRAPHY_1,
-				'selector' => '{{WRAPPER}} .woocommerce-mini-cart__total strong',
+				'selector' => '{{WRAPPER}} .boostify-mini-cart__total strong',
 			)
 		);
 
@@ -841,7 +841,7 @@ class Cart_Icon extends Base_Widget {
 				'label'     => __( 'Background', 'boostify' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					'{{WRAPPER}} .woocommerce-mini-cart__total' => 'background-color: {{VALUE}}',
+					'{{WRAPPER}} .boostify-mini-cart__total' => 'background-color: {{VALUE}}',
 				),
 			)
 		);
@@ -926,7 +926,7 @@ class Cart_Icon extends Base_Widget {
 				'type'      => Controls_Manager::COLOR,
 				'default'   => '#fff',
 				'selectors' => array(
-					'{{WRAPPER}} .woocommerce-mini-cart__buttons .button:first-child' => 'color: {{VALUE}}',
+					'{{WRAPPER}} .boostify-mini-cart__buttons .button:first-child' => 'color: {{VALUE}}',
 				),
 			)
 		);
@@ -937,7 +937,7 @@ class Cart_Icon extends Base_Widget {
 				'label'     => __( 'Background', 'boostify' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					'{{WRAPPER}} .woocommerce-mini-cart__buttons .button:first-child' => 'background: {{VALUE}}',
+					'{{WRAPPER}} .boostify-mini-cart__buttons .button:first-child' => 'background: {{VALUE}}',
 				),
 			)
 		);
@@ -958,7 +958,7 @@ class Cart_Icon extends Base_Widget {
 				'type'      => Controls_Manager::COLOR,
 				'default'   => '#fff',
 				'selectors' => array(
-					'{{WRAPPER}} .woocommerce-mini-cart__buttons .button:first-child:hover' => 'color: {{VALUE}}',
+					'{{WRAPPER}} .boostify-mini-cart__buttons .button:first-child:hover' => 'color: {{VALUE}}',
 				),
 			)
 		);
@@ -969,7 +969,7 @@ class Cart_Icon extends Base_Widget {
 				'label'     => __( 'Background', 'boostify' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					'{{WRAPPER}} .woocommerce-mini-cart__buttons .button:first-child:hover' => 'background-color: {{VALUE}}',
+					'{{WRAPPER}} .boostify-mini-cart__buttons .button:first-child:hover' => 'background-color: {{VALUE}}',
 				),
 			)
 		);
@@ -984,7 +984,7 @@ class Cart_Icon extends Base_Widget {
 				'name'     => 'view_cart_typography',
 				'label'    => __( 'Typography', 'boostify' ),
 				'scheme'   => Scheme_Typography::TYPOGRAPHY_1,
-				'selector' => '{{WRAPPER}} .woocommerce-mini-cart__buttons .button:first-child',
+				'selector' => '{{WRAPPER}} .boostify-mini-cart__buttons .button:first-child',
 			)
 		);
 	}
@@ -1027,7 +1027,7 @@ class Cart_Icon extends Base_Widget {
 				'type'      => Controls_Manager::COLOR,
 				'default'   => '#fff',
 				'selectors' => array(
-					'{{WRAPPER}} .woocommerce-mini-cart__buttons .button:last-child' => 'color: {{VALUE}}',
+					'{{WRAPPER}} .boostify-mini-cart__buttons .button:last-child' => 'color: {{VALUE}}',
 				),
 			)
 		);
@@ -1038,7 +1038,7 @@ class Cart_Icon extends Base_Widget {
 				'label'     => __( 'Background', 'boostify' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					'{{WRAPPER}} .woocommerce-mini-cart__buttons .button:last-child' => 'background-color: {{VALUE}}',
+					'{{WRAPPER}} .boostify-mini-cart__buttons .button:last-child' => 'background-color: {{VALUE}}',
 				),
 			)
 		);
@@ -1059,7 +1059,7 @@ class Cart_Icon extends Base_Widget {
 				'type'      => Controls_Manager::COLOR,
 				'default'   => '#fff',
 				'selectors' => array(
-					'{{WRAPPER}} .woocommerce-mini-cart__buttons .button:last-child:hover' => 'color: {{VALUE}}',
+					'{{WRAPPER}} .boostify-mini-cart__buttons .button:last-child:hover' => 'color: {{VALUE}}',
 				),
 			)
 		);
@@ -1071,7 +1071,7 @@ class Cart_Icon extends Base_Widget {
 				'type'      => Controls_Manager::COLOR,
 				'default'   => '#fff',
 				'selectors' => array(
-					'{{WRAPPER}} .woocommerce-mini-cart__buttons .button:last-child:hover' => 'background-color: {{VALUE}}',
+					'{{WRAPPER}} .boostify-mini-cart__buttons .button:last-child:hover' => 'background-color: {{VALUE}}',
 				),
 			)
 		);
@@ -1086,7 +1086,7 @@ class Cart_Icon extends Base_Widget {
 				'name'      => 'checkout_typography',
 				'label'     => __( 'Typography', 'boostify' ),
 				'scheme'    => Scheme_Typography::TYPOGRAPHY_1,
-				'selector'  => '{{WRAPPER}} .woocommerce-mini-cart__buttons .button:last-child',
+				'selector'  => '{{WRAPPER}} .boostify-mini-cart__buttons .button:last-child',
 				'condition' => array(
 					'action' => 'click',
 				),
