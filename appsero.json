@@ -1,0 +1,14 @@
+{
+    "exclude": [
+        "README.md",
+        "appsero.json",
+        "composer.json",
+        "composer.lock",
+        ".gitignore",
+        "assets/src",
+        "dist/",
+        ".babelrc",
+        "gulpfile.babel.json", 
+        "project.json"
+    ]
+}
