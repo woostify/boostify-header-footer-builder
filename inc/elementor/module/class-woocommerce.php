@@ -67,9 +67,21 @@ class Woocommerce {
 		$mini_cart = ob_get_clean();
 
 		// Fragments and mini cart are returned
-		$data = array();
+		$data = array(
+			'fragments' => apply_filters(
+				'woocommerce_add_to_cart_fragments',
+				array(
+					'div.widget_shopping_cart_content' => '<div class="widget_shopping_cart_content">' . $mini_cart . '</div>',
+				)
+			),
+			'cart_hash' => apply_filters(
+				'woocommerce_add_to_cart_hash',
+				WC()->cart->get_cart_for_session() ? md5( json_encode( WC()->cart->get_cart_for_session() ) ) : '',
+				WC()->cart->get_cart_for_session()
+			)
+		);
 
-		wp_send_json( $mini_cart );
+		wp_send_json( $data );
 
 		die();
 	}

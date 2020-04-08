@@ -225,11 +225,11 @@ msgstr ""
 msgid "Choose menu color after scrolling"
 msgstr ""
 
-#: inc/elementor/module/class-woocommerce.php:31
+#: inc/elementor/module/class-woocommerce.php:33
 msgid "No products in the cart."
 msgstr ""
 
-#: inc/elementor/module/class-woocommerce.php:185
+#: inc/elementor/module/class-woocommerce.php:225
 msgid "Shopping Cart"
 msgstr ""
 

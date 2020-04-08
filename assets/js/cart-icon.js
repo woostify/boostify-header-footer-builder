@@ -105,7 +105,6 @@
 				var product_id    = $( this ).attr( "data-product_id" ),
 				cart_item_key     = $( this ).attr( "data-cart_item_key" ),
 				product_container = $( this ).parents( '.boostify-mini-cart-item' );
-
 				$.ajax(
 					{
 						type: 'POST',
@@ -139,8 +138,6 @@
 									}
 								);
 							}
-
-
 						}
 					}
 				);

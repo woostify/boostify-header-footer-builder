@@ -831,7 +831,7 @@ class Cart_Icon extends Base_Widget {
 				'name'     => 'price_typography',
 				'label'    => __( 'Price Typography', 'boostify' ),
 				'scheme'   => Scheme_Typography::TYPOGRAPHY_1,
-				'selector' => '{{WRAPPER}} .woocommerce-Price-amount',
+				'selector' => '{{WRAPPER}} .boostify-mini-cart__total .woocommerce-Price-amount',
 			)
 		);
 
