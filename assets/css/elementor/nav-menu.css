@@ -188,6 +188,7 @@
 .boostify-menu-sidebar .boostify-menu-dropdown {
   height: 100%;
   overflow-y: scroll;
+  width: 100%;
   /* width */
   /* Handle */
   /* Handle on hover */

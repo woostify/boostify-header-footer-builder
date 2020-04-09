@@ -346,7 +346,7 @@
 		transform: translate3d(100%, 0, 0);
 		-webkit-transition: all 0.5s;
 		transition: all 0.5s;
-		border-left: 2px solid #f5f5f5;
+		box-shadow: 4px 6px 8px rgba( 0,0,0,0.5 );
 
 		&.active {
 			visibility: visible;
@@ -366,34 +366,33 @@
 		transform: translate3d(-100%, 0, 0);
 		-webkit-transition: all 0.5s;
 		transition: all 0.5s;
-		border-right: 2px solid #f5f5f5;
+		box-shadow: -6px 6px 14px rgba(0, 0, 0, 0.5);
 
 		&.active {
 			visibility: visible;
 			pointer-events: auto;
 			-webkit-transform: translate3d(0, 0, 0);
 			transform: translate3d(0, 0, 0);
-			transition: all 0.3s;
+			transition: all 0.5s;
+
 		}
 	}
-
 }
 
 .remove-item-mini-cart {
 	.boostify-action-click {
-	.boostify-cart-detail {
-		-webkit-transition: unset;
-		transition: unset;
-
-
-		&.active {
-			visibility: visible;
-			pointer-events: auto;
-			-webkit-transform: translate3d(0, 0, 0);
-			transform: translate3d(0, 0, 0);
+		.boostify-cart-detail {
+			-webkit-transition: unset;
 			transition: unset;
+
+			&.active {
+				visibility: visible;
+				pointer-events: auto;
+				-webkit-transform: translate3d(0, 0, 0);
+				transform: translate3d(0, 0, 0);
+				transition: unset;
+			}
 		}
-	}
 	}
 }
 
@@ -433,6 +432,41 @@
 
 .boostify-cart-detail {
 	height: 100vh;
+
+
+	&.active.loading {
+		.cart-detail-wrapper {
+			position: relative;
+			&:after {
+				content: '';
+				position: absolute;
+				top: 0;
+				right: 0;
+				bottom: 0;
+				left: 0;
+				display: flex;
+				background-color: #fff;
+			}
+
+			&:before {
+				content:'';
+				display: block;
+				border: 4px solid #f4f4f4;
+				border-radius: 50%;
+				border-top: 4px solid #000;
+				width: 40px;
+				height: 40px;
+				-webkit-animation: loading 0.4s linear infinite; /* Safari */
+				animation: loading 0.4s linear infinite;
+				position: absolute;
+				z-index: 999;
+				top: calc( ( 100% - 60px - 50px)/2 );
+				left: calc( ( 100% - 50px)/2 );
+			}
+		}
+	}
+
+
 	.boostify-mini-cart__buttons {
 		padding: 20px;
 		border-top: 1px solid #eee;
@@ -530,4 +564,15 @@
 
 .boostify-icon-ion-ios-cart-outline .boostify-icon--cart:after {
 	content: '\f3f7';
+}
+
+/* Safari */
+@-webkit-keyframes loading {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes loading {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }

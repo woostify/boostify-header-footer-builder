@@ -1,4 +1,4 @@
-(function ($) {
+( function ($) {
 	'use strict';
 
 	/**
@@ -47,7 +47,6 @@
 
 		function openSidebar( e, $this ) {
 			var parents = $this.parents( '.boostify-cart-icon' );
-			console.log( parents.hasClass( '.boostify-action-hover' ) );
 			if ( parents.hasClass( 'boostify-action-hover' ) ) {
 				return;
 			}
@@ -58,34 +57,26 @@
 		}
 
 		$( document.body ).on(
-			'removed_from_cart',// removed_from_cart
+			'added_to_cart removed_from_cart',// removed_from_cart
 			function () {
 				var sidebar = $scope.find( '.boostify-cart-detail' );
+				if ( ! overlay.hasClass() ) {
+					overlay.addClass( 'active' );
+				}
 				sidebar.addClass( 'active' );
-				if ( ! overlay.hasClass() ) {
-					overlay.addClass( 'active' );
-				}
-			}
-		);
-
-		$( document.body ).on(
-			'added_to_cart',// removed_from_cart
-			function () {
-
-				if ( ! overlay.hasClass() ) {
-					overlay.addClass( 'active' );
-				}
-
 				var miniCart = $scope.find( '.boostify-cart-detail' );
-				miniCart.css(
-					{
-						'z-index' : '99999',
-						'opacity' : '1',
-						'visibility' : 'visible',
-						'transform' : 'translateY(0)',
-						'height' : 'auto',
-					}
-				);
+				var parents  = $scope.parents( '.boostify-cart-icon' );
+				if ( parents.hasClass( 'boostify-action-hover' ) ) {
+					miniCart.css(
+						{
+							'z-index' : '99999',
+							'opacity' : '1',
+							'visibility' : 'visible',
+							'transform' : 'translateY(0)',
+							'height' : 'auto',
+						}
+					);
+				}
 			}
 		);
 
@@ -143,6 +134,47 @@
 				);
 			}
 		);
+
+
+		$( 'body' ).on(
+			'click',
+			'.ajax_add_to_cart',
+			function (e) {
+				e.preventDefault();
+				var btn      = $( this ),
+				$qty         = btn.attr( 'data-quantity' ),
+				$id          = btn.attr( 'data-product_id' ),
+				variation_id = 0,
+				data         = {
+					action: 'boostify_ajax_add_to_cart',
+					product_id: $id,
+					variation_id: variation_id,
+					sku: '',
+					quantity: $qty,
+					_ajax_nonce: admin.nonce,
+				};
+				$.ajax(
+					{
+						type: 'post',
+						url: wc_add_to_cart_params.ajax_url,
+						data: data,
+						beforeSend: function (data) {
+							var sidebar = $scope.find( '.boostify-cart-detail' );
+							if ( ! overlay.hasClass() ) {
+								overlay.addClass( 'active' );
+							}
+							sidebar.addClass( 'active' );
+							sidebar.addClass( 'loading' );
+						},
+						success: function (data) {
+							sidebar.removeClass( 'loading' );
+						},
+					}
+				);
+			return false;
+			}
+		);
+
 	};
 
 	$( window ).on(

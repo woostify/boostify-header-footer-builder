@@ -113,6 +113,17 @@ class Elementor {
 			BOOSTIFY_HEADER_FOOTER_VER,
 			true
 		);
+
+		$admin_vars = array(
+			'url'   => admin_url( 'admin-ajax.php' ),
+			'nonce' => wp_create_nonce( 'boostify_nonce' ),
+		);
+
+		wp_localize_script(
+			'boostify_hf_cart_icon',
+			'admin',
+			$admin_vars
+		);
 	}
 	/**
 	 * Include Widgets files

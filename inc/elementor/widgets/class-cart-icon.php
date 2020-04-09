@@ -112,7 +112,6 @@ class Cart_Icon extends Base_Widget {
 			if ( 'click' === $settings['action'] ) :
 				?>
 				<div class="boostify-cart-overlay">
-					<span class="ion-android-close"></span>
 				</div>
 			<?php endif ?>
 
