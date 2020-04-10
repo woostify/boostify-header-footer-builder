@@ -181,6 +181,23 @@
 // Menu Sidebar
 
 .boostify-menu-sidebar {
+
+	&.show-logo-yes {
+		.boostify-menu-dropdown {
+			max-height: calc( 100vh - 20px - 60px );
+		}
+
+		&.show-form-yes .boostify-menu-dropdown {
+			max-height: calc( 100vh - 20px - 130px );
+		}
+	}
+
+	&.show-form-yes {
+		.boostify-menu-dropdown {
+			max-height: calc( 100vh - 20px - 70px );
+		}
+	}
+
 	.menu-item-has-children {
 		&>a:after {
 			content: '\f3d0';

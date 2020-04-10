@@ -164,6 +164,18 @@
   z-index: 999999;
 }
 
+.boostify-menu-sidebar.show-logo-yes .boostify-menu-dropdown {
+  max-height: calc( 100vh - 20px - 60px);
+}
+
+.boostify-menu-sidebar.show-logo-yes.show-form-yes .boostify-menu-dropdown {
+  max-height: calc( 100vh - 20px - 130px);
+}
+
+.boostify-menu-sidebar.show-form-yes .boostify-menu-dropdown {
+  max-height: calc( 100vh - 20px - 70px);
+}
+
 .boostify-menu-sidebar .menu-item-has-children > a:after {
   content: '\f3d0';
   font-family: "Ionicons";
