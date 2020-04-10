@@ -1,4 +1,5 @@
 <?php
+namespace Boostify_Header_Footer;
 /**
  * Comments
  *
@@ -10,8 +11,6 @@
  */
 
 defined( 'ABSPATH' ) || exit;
-
-namespace Boostify_Header_Footer;
 /**
  * Boostify Header Footer Template Class.
  */
