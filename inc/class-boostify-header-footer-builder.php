@@ -39,7 +39,6 @@ if ( ! class_exists( 'Boostify_Header_Footer_Builder' ) ) {
 			include_once BOOSTIFY_HEADER_FOOTER_PATH . 'inc/elementor/class-template-render.php';
 			include_once BOOSTIFY_HEADER_FOOTER_PATH . 'inc/menu/class-wp-sub-menu.php';
 			include_once BOOSTIFY_HEADER_FOOTER_PATH . 'inc/helper.php';
-			// require BOOSTIFY_HEADER_FOOTER_PATH . 'inc/elementor/module/class-woocommerce.php';
 
 		}
 
