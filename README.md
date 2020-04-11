@@ -5,7 +5,7 @@ Tags: elementor, header builder, footer builder, elementor header, sticky menu, 
 Requires at least: 4.0
 Requires PHP: 5.3
 Tested up to: 5.4
-Stable tag: 1.1.0
+Stable tag: 1.1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -32,6 +32,7 @@ Not like other plugins, the plugin gives the built-in widgets for the header so 
     <li><strong>Site Search</strong> - Create a search widget, it support 2 layouts: icon search and form search </li>
 	<li><strong>Retina Logo</strong> - Add Retina image for retina display </li>
 	<li><strong>Copyright</strong> - Support copyright shortcode for the footer [btf_year] [btf_site_tile][btf_site_tile] </li>
+	<li><strong>Menu Cart</strong> - Support cart icon when using WooCommerce </li>
 </ul>
 
 = Sticky Header = 
@@ -43,6 +44,15 @@ Uploading custom logo for sticky menu, change the background menu, all can be do
 
 Boostify Header Footer Builder for Elementor works with all themes. For some themes, that use action/filter in the header.php, you can intergrade it with a hook.
 
+= Cart WooCommerce = 
+Create a cart icon is supported on the header. It offers 2 layout for the cart content such as mini cart and sidebar cart.
+It also supports Ajax add to cart feature
+
+= Mega Menu = 
+
+Build a mega menu is easyly with Elementor. Go to Boostify Header Footer builder -> Add new, in Type, select 'sub mega menu' option. 
+Then build this sub mega menu.
+To add it to the header layout, in the header builder, select Nav mega menu, in this widget, select sub mega menu that's in step one.
 
 == Getting Started: ==
 
@@ -77,6 +87,9 @@ If you have any questions post in the [Plugin’s Forum](https://wordpress.org/s
 == Changelog ==
 
 ## Changelog
+= 1.1.0 =
+- Add cart icon for WooCommerce
+
 = 1.1.0 =
 - Support hook
 
