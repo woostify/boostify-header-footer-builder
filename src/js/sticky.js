@@ -125,10 +125,14 @@ function stickyHeader() {
 				} );
 			}
 
-			$j(window).resize(function() {
-				width = $j(window).width();
-				sticky.css({ 'width' : width + 'px'});
-			} );
+			$j( window ).resize(
+				function() {
+					width = $j( window ).width();
+					sticky.css( { 'width' : width + 'px' } );
+					var bodyTop = $j( 'body' ).offset().top;
+					sticky.css( { 'top' : bodyTop + 'px' } );
+				}
+			);
 		} );
 	}
 

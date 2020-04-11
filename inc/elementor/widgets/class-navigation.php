@@ -63,7 +63,7 @@ class Navigation extends Nav_Menu {
 
 			<?php $this->get_toggle( $settings['toggle_icon'] ); ?>
 
-			<div class="boostify-menu-sidebar boostify--hover-<?php echo esc_attr( $settings['pointer'] ); ?>">
+			<div class="boostify-menu-sidebar boostify--hover-<?php echo esc_attr( $settings['pointer'] . ' show-logo-' . $settings['logo'] . ' show-form-' . $settings['search'] ); ?>">
 				<div class="boostify-menu-sidebar--wrapper">
 					<?php if ( 'yes' === $settings['logo'] ) : ?>
 						<div class="logo-sidebar">
