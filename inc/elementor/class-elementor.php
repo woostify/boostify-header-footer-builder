@@ -238,7 +238,9 @@ class Elementor {
 
 
 	public function maybe_init_cart() {
-		new \Boostify_Header_Footer\Module\Woocommerce();
+		if ( class_exists( 'Woocommerce' ) ) {
+			new \Boostify_Header_Footer\Module\Woocommerce();
+		}
 	}
 
 	/**

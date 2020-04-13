@@ -619,7 +619,7 @@ class Image_Retina extends Base_Widget {
 			<div class="boostify-retina-image-set">
 				<div class="boostify-retina-image-container">
 					<?php $this->link_open( $link ); ?>
-					<img class="boostify-retina-img <?php echo esc_attr( $class_animation ); ?>" src="<?php echo esc_url( $image_url ); ?>" srcset="<?php echo esc_url( $image_url ) . esc_attr( ' 1x' ) . ',' . esc_url( $retina_image_url ) . esc_attr( ' 2x' ); ?>"/>
+					<img class="boostify-retina-img <?php echo esc_attr( $class_animation ); ?>" src="<?php echo esc_url( $image_url ); ?>" srcset="<?php echo esc_url( $image_url ) . esc_attr( ' 1x' ) . ',' . esc_url( $retina_image_url ) . esc_attr( ' 2x' ); ?>" alt="Image Retina">
 					<?php $this->link_close( $link ); ?>
 				</div>
 			</div>
