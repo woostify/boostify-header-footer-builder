@@ -4,7 +4,9 @@
  *
  * @package Boostify Header Footer Builder
  */
+
 namespace Boostify_Header_Footer;
+
 /**
  * Class Boostify_Hf_Template_Render
  */
@@ -28,8 +30,6 @@ class Template_Render {
 	 */
 	public function __construct() {
 
-		$this->template = get_template();
-
 		if ( defined( 'ELEMENTOR_VERSION' ) && is_callable( 'Elementor\Plugin::instance' ) ) {
 
 			self::$elementor_instance = \Elementor\Plugin::instance();
@@ -38,7 +38,6 @@ class Template_Render {
 			add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
 			add_shortcode( 'bhf', array( $this, 'render_template' ) );
 		}
-
 	}
 
 

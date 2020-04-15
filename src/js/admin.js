@@ -188,8 +188,14 @@
 			var listPost = $( 'input[name=bhf_post]' ).val();
 			var render   = $( '.boostify-section-render--post' );
 			var parent   = render.parents( '.boostify-section-select-post' );
-			listPost     = listPost.replace( ',' + id, '' );
-			listPost     = listPost.replace( id, '' );
+			var condition = parent.parents( '.condition-group' );
+			if ( ! listPost || 'all' == listPost ) {
+				listPost = [];
+			} else {
+				listPost     = listPost.replace( ',' + id, '' );
+				listPost     = listPost.replace( id, '' );
+			}
+
 			if ( listPost == '' ) {
 				listPost = 'all';
 				render.addClass( 'hidden' );
@@ -198,7 +204,12 @@
 				render.siblings( '.boostify-select-all-post' ).removeClass( 'hidden' );
 				$( '.boostify-data' ).html( '' );
 			}
-			$( 'input[name=bhf_post]' ).val( listPost );
+			if ( condition.hasClass( 'not-display' ) ) {
+				$( 'input[name=bhf_ex_post]' ).val( listPost );
+			} else {
+				$( 'input[name=bhf_post]' ).val( listPost );
+			}
+			
 			$( this ).parents( '.boostify-auto-complete-key' ).remove();
 		}
 	);

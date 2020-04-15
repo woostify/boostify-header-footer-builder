@@ -37,19 +37,19 @@ msgstr ""
 msgid "Type of Template"
 msgstr ""
 
-#: inc/admin/class-metabox.php:217, inc/admin/class-metabox.php:505, inc/admin/class-metabox.php:534
+#: inc/admin/class-metabox.php:241, inc/admin/class-metabox.php:529, inc/admin/class-metabox.php:558
 msgid "Display On"
 msgstr ""
 
-#: inc/admin/class-metabox.php:237, inc/admin/class-metabox.php:299, inc/admin/class-metabox.php:410, inc/admin/class-metabox.php:438
+#: inc/admin/class-metabox.php:261, inc/admin/class-metabox.php:323, inc/admin/class-metabox.php:434, inc/admin/class-metabox.php:462
 msgid "All"
 msgstr ""
 
-#: inc/admin/class-metabox.php:275, inc/admin/class-metabox.php:552
+#: inc/admin/class-metabox.php:299, inc/admin/class-metabox.php:576
 msgid "Do Not Display On"
 msgstr ""
 
-#: inc/admin/class-metabox.php:280, inc/admin/class-metabox.php:557
+#: inc/admin/class-metabox.php:304, inc/admin/class-metabox.php:581
 msgid "Select"
 msgstr ""
 

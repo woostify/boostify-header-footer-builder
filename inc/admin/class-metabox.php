@@ -154,6 +154,12 @@ class Metabox {
 					'bhf_post',
 					$post
 				);
+			} else {
+				update_post_meta(
+					$post_id,
+					'bhf_post',
+					''
+				);
 			}
 
 			// Ex Post
@@ -164,6 +170,12 @@ class Metabox {
 					$post_id,
 					'bhf_ex_post',
 					$ex_post
+				);
+			} else {
+				update_post_meta(
+					$post_id,
+					'bhf_ex_post',
+					''
 				);
 			}
 
@@ -176,6 +188,12 @@ class Metabox {
 					'bhf_ex_post_type',
 					$ex_post_type
 				);
+			} else {
+				update_post_meta(
+					$post_id,
+					'bhf_ex_post_type',
+					''
+				);
 			}
 
 			// Post Type
@@ -186,6 +204,12 @@ class Metabox {
 					$post_id,
 					'bhf_post_type',
 					$post_type
+				);
+			} else {
+				update_post_meta(
+					$post_id,
+					'bhf_post_type',
+					''
 				);
 			}
 		}

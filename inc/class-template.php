@@ -61,7 +61,20 @@ class Template {
 		if ( ! current_theme_supports( 'boostify-header-footer' ) ) {
 			add_action( 'get_header', array( $this, 'render_header' ) );
 			add_action( 'get_footer', array( $this, 'render_footer' ) );
+		} else {
+			add_action( 'get_header', array( $this, 'post' ) );
+			add_action( 'get_footer', array( $this, 'post' ) );
 		}
+	}
+
+	/**
+	 * Get Header Site.
+	 *
+	 * @return Header Site.
+	 */
+	public function post() {
+		$this->post_type = get_post_type();
+		$this->post_id   = get_the_ID();
 	}
 
 	public function single_template( $single_template ) {
@@ -80,7 +93,7 @@ class Template {
 	public function render_header() {
 		$this->post_type = get_post_type();
 		$this->post_id   = get_the_ID();
-		$header_id = $this->template_header_id();
+		$header_id       = $this->template_header_id();
 		if ( $header_id ) {
 			require BOOSTIFY_HEADER_FOOTER_PATH . 'templates/default/header.php';
 			$templates   = array();
@@ -121,8 +134,8 @@ class Template {
 	 * @return Header template.
 	 */
 	public function header_template() {
-		$id              = $this->post_id;
-		$post_type       = $this->post_type;
+		$id        = $this->post_id;
+		$post_type = $this->post_type;
 		$path      = BOOSTIFY_HEADER_FOOTER_PATH . 'templates/content/content-header.php';
 		$page_type = $this->page_type();
 		if ( ! empty( $page_type ) ) {
@@ -156,9 +169,8 @@ class Template {
 	 * @return Footer template.
 	 */
 	public function footer_template() {
-
-		$id              = $this->post_id;
-		$post_type       = $this->post_type;
+		$id        = $this->post_id;
+		$post_type = $this->post_type;
 		$path      = BOOSTIFY_HEADER_FOOTER_PATH . 'templates/content/content-footer.php';
 		$page_type = $this->page_type();
 		if ( ! empty( $page_type ) ) {
@@ -425,9 +437,7 @@ class Template {
 	 * @return (boolean) false | return false if exclude
 	 */
 	public function check_ex_post( $header ) {
-
-		$post_id        = $this->post_id;
-
+		$post_id = $this->post_id;
 		if ( $header->have_posts() ) {
 			while ( $header->have_posts() ) {
 				$header->the_post();
