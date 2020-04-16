@@ -92,4 +92,19 @@
 		}
 
 	}
+
+	.site-search-form {
+		overflow: hidden;
+	}
+
+	.search-field {
+		border: none;
+	}
+}
+
+.elementor-widget-ht-hf-site-search .boostify--search-sidebar-wrapper{
+	.site-search-field,
+	.site-search-form ::placeholder {
+		font-weight: normal;
+	}
 }

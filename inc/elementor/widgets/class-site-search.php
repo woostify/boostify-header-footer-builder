@@ -175,6 +175,7 @@ class Site_Search extends Base_Widget {
 				),
 				'selectors'  => array(
 					'{{WRAPPER}} .boostify-search-form-header .site-search-field' => 'height: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .boostify-search-form-header .btn-boostify-search-form' => 'width: {{SIZE}}{{UNIT}};',
 				),
 				'condition'  => array(
 					'layout' => 'form',
@@ -245,6 +246,7 @@ class Site_Search extends Base_Widget {
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
 					'{{WRAPPER}} .boostify-search-icon--toggle' => 'color: {{VALUE}}',
+					'{{WRAPPER}} .btn-boostify-search-form'     => 'color: {{VALUE}}',
 				),
 			)
 		);
@@ -255,7 +257,7 @@ class Site_Search extends Base_Widget {
 				'name'     => 'content_typography',
 				'label'    => __( 'Typography', 'boostify' ),
 				'scheme'   => Scheme_Typography::TYPOGRAPHY_1,
-				'selector' => '{{WRAPPER}} .boostify-search-icon--toggle',
+				'selector' => '{{WRAPPER}} .boostify-search-icon--toggle, {{WRAPPER}} .btn-boostify-search-form',
 			)
 		);
 
@@ -274,7 +276,7 @@ class Site_Search extends Base_Widget {
 			array(
 				'name'     => 'border',
 				'label'    => __( 'Border', 'boostify' ),
-				'selector' => '{{WRAPPER}} .boostify-search-icon--toggle',
+				'selector' => '{{WRAPPER}} .boostify-search-icon--toggle, {{WRAPPER}} .site-search-form',
 			)
 		);
 
@@ -286,6 +288,85 @@ class Site_Search extends Base_Widget {
 				'size_units' => array( 'px' ),
 				'selectors'  => array(
 					'{{WRAPPER}} .boostify-search-icon--toggle' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .site-search-form' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				),
+			)
+		);
+
+		$this->add_control(
+			'placeholder_header',
+			array(
+				'label'     => __( 'Placeholder', 'boostify' ),
+				'type'      => Controls_Manager::HEADING,
+				'separator' => 'before',
+				'condition' => array(
+					'layout' => 'form',
+				),
+			)
+		);
+
+		$this->add_control(
+			'placeholder_color',
+			array(
+				'label'     => __( 'Color', 'boostify' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => array(
+					'{{WRAPPER}} .site-search-form ::placeholder ' => 'color: {{VALUE}}',
+				),
+				'condition' => array(
+					'layout' => 'form',
+				),
+			)
+		);
+
+		$this->add_group_control(
+			Group_Control_Typography::get_type(),
+			array(
+				'name'     => 'placeholder_typography',
+				'label'    => __( 'Typography', 'boostify' ),
+				'scheme'   => Scheme_Typography::TYPOGRAPHY_1,
+				'selector' => '{{WRAPPER}} .site-search-form ::placeholder',
+				'condition' => array(
+					'layout' => 'form',
+				),
+			)
+		);
+
+		$this->add_control(
+			'input_header',
+			array(
+				'label'     => __( 'Input', 'boostify' ),
+				'type'      => Controls_Manager::HEADING,
+				'separator' => 'before',
+				'condition' => array(
+					'layout' => 'form',
+				),
+			)
+		);
+
+		$this->add_control(
+			'input_color',
+			array(
+				'label'     => __( 'Color', 'boostify' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => array(
+					'{{WRAPPER}} .site-search-field' => 'color: {{VALUE}}',
+				),
+				'condition' => array(
+					'layout' => 'form',
+				),
+			)
+		);
+
+		$this->add_group_control(
+			Group_Control_Typography::get_type(),
+			array(
+				'name'     => 'input_typography',
+				'label'    => __( 'Typography', 'boostify' ),
+				'scheme'   => Scheme_Typography::TYPOGRAPHY_1,
+				'selector' => '{{WRAPPER}} .site-search-field',
+				'condition' => array(
+					'layout' => 'form',
 				),
 			)
 		);

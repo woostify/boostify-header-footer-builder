@@ -88,3 +88,16 @@
   width: auto;
   min-width: 30px;
 }
+
+.boostify-search-form-header .site-search-form {
+  overflow: hidden;
+}
+
+.boostify-search-form-header .search-field {
+  border: none;
+}
+
+.elementor-widget-ht-hf-site-search .boostify--search-sidebar-wrapper .site-search-field,
+.elementor-widget-ht-hf-site-search .boostify--search-sidebar-wrapper .site-search-form ::placeholder {
+  font-weight: normal;
+}
