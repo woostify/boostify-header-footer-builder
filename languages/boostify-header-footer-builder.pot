@@ -93,7 +93,7 @@ msgstr ""
 msgid "Menu Style"
 msgstr ""
 
-#: inc/elementor/abstract/class-nav-menu.php:140, inc/elementor/abstract/class-nav-menu.php:283, inc/elementor/widgets/class-cart-icon.php:424, inc/elementor/widgets/class-cart-icon.php:670, inc/elementor/widgets/class-cart-icon.php:863, inc/elementor/widgets/class-cart-icon.php:903, inc/elementor/widgets/class-cart-icon.php:1004, inc/elementor/widgets/class-image-retina.php:466, inc/elementor/widgets/class-site-search.php:188, inc/elementor/widgets/class-site-search.php:203
+#: inc/elementor/abstract/class-nav-menu.php:140, inc/elementor/abstract/class-nav-menu.php:283, inc/elementor/widgets/class-cart-icon.php:424, inc/elementor/widgets/class-cart-icon.php:670, inc/elementor/widgets/class-cart-icon.php:863, inc/elementor/widgets/class-cart-icon.php:903, inc/elementor/widgets/class-cart-icon.php:1004, inc/elementor/widgets/class-image-retina.php:466, inc/elementor/widgets/class-site-search.php:189, inc/elementor/widgets/class-site-search.php:204
 msgid "Padding"
 msgstr ""
 
@@ -109,7 +109,7 @@ msgstr ""
 msgid "Menu Color"
 msgstr ""
 
-#: inc/elementor/abstract/class-nav-menu.php:205, inc/elementor/abstract/class-nav-menu.php:243, inc/elementor/abstract/class-nav-menu.php:382, inc/elementor/abstract/class-nav-menu.php:495, inc/elementor/widgets/class-cart-icon.php:296, inc/elementor/widgets/class-cart-icon.php:336, inc/elementor/widgets/class-cart-icon.php:485, inc/elementor/widgets/class-cart-icon.php:593, inc/elementor/widgets/class-cart-icon.php:746, inc/elementor/widgets/class-cart-icon.php:778, inc/elementor/widgets/class-cart-icon.php:984, inc/elementor/widgets/class-cart-icon.php:1086, inc/elementor/widgets/class-site-search.php:256
+#: inc/elementor/abstract/class-nav-menu.php:205, inc/elementor/abstract/class-nav-menu.php:243, inc/elementor/abstract/class-nav-menu.php:382, inc/elementor/abstract/class-nav-menu.php:495, inc/elementor/widgets/class-cart-icon.php:296, inc/elementor/widgets/class-cart-icon.php:336, inc/elementor/widgets/class-cart-icon.php:485, inc/elementor/widgets/class-cart-icon.php:593, inc/elementor/widgets/class-cart-icon.php:746, inc/elementor/widgets/class-cart-icon.php:778, inc/elementor/widgets/class-cart-icon.php:984, inc/elementor/widgets/class-cart-icon.php:1086, inc/elementor/widgets/class-site-search.php:258, inc/elementor/widgets/class-site-search.php:326, inc/elementor/widgets/class-site-search.php:365
 msgid "Typography"
 msgstr ""
 
@@ -133,7 +133,7 @@ msgstr ""
 msgid "SubMenu Border Color"
 msgstr ""
 
-#: inc/elementor/abstract/class-nav-menu.php:356, inc/elementor/widgets/class-cart-icon.php:254, inc/elementor/widgets/class-cart-icon.php:348, inc/elementor/widgets/class-cart-icon.php:605, inc/elementor/widgets/class-cart-icon.php:682, inc/elementor/widgets/class-cart-icon.php:840, inc/elementor/widgets/class-cart-icon.php:875, inc/elementor/widgets/class-cart-icon.php:936, inc/elementor/widgets/class-cart-icon.php:968, inc/elementor/widgets/class-cart-icon.php:1037, inc/elementor/widgets/class-cart-icon.php:1069, inc/elementor/widgets/class-site-search.php:266
+#: inc/elementor/abstract/class-nav-menu.php:356, inc/elementor/widgets/class-cart-icon.php:254, inc/elementor/widgets/class-cart-icon.php:348, inc/elementor/widgets/class-cart-icon.php:605, inc/elementor/widgets/class-cart-icon.php:682, inc/elementor/widgets/class-cart-icon.php:840, inc/elementor/widgets/class-cart-icon.php:875, inc/elementor/widgets/class-cart-icon.php:936, inc/elementor/widgets/class-cart-icon.php:968, inc/elementor/widgets/class-cart-icon.php:1037, inc/elementor/widgets/class-cart-icon.php:1069, inc/elementor/widgets/class-site-search.php:268
 msgid "Background"
 msgstr ""
 
@@ -217,7 +217,7 @@ msgstr ""
 msgid "Choose background color after scrolling"
 msgstr ""
 
-#: inc/elementor/module/class-sticky.php:148, inc/elementor/widgets/class-cart-icon.php:280, inc/elementor/widgets/class-cart-icon.php:320, inc/elementor/widgets/class-cart-icon.php:375, inc/elementor/widgets/class-cart-icon.php:469, inc/elementor/widgets/class-cart-icon.php:528, inc/elementor/widgets/class-cart-icon.php:733, inc/elementor/widgets/class-cart-icon.php:764, inc/elementor/widgets/class-cart-icon.php:924, inc/elementor/widgets/class-cart-icon.php:956, inc/elementor/widgets/class-cart-icon.php:1025, inc/elementor/widgets/class-cart-icon.php:1057
+#: inc/elementor/module/class-sticky.php:148, inc/elementor/widgets/class-cart-icon.php:280, inc/elementor/widgets/class-cart-icon.php:320, inc/elementor/widgets/class-cart-icon.php:375, inc/elementor/widgets/class-cart-icon.php:469, inc/elementor/widgets/class-cart-icon.php:528, inc/elementor/widgets/class-cart-icon.php:733, inc/elementor/widgets/class-cart-icon.php:764, inc/elementor/widgets/class-cart-icon.php:924, inc/elementor/widgets/class-cart-icon.php:956, inc/elementor/widgets/class-cart-icon.php:1025, inc/elementor/widgets/class-cart-icon.php:1057, inc/elementor/widgets/class-site-search.php:311, inc/elementor/widgets/class-site-search.php:350
 msgid "Color"
 msgstr ""
 
@@ -249,7 +249,7 @@ msgstr ""
 msgid "Icon"
 msgstr ""
 
-#: inc/elementor/widgets/class-cart-icon.php:150, inc/elementor/widgets/class-site-search.php:227
+#: inc/elementor/widgets/class-cart-icon.php:150, inc/elementor/widgets/class-site-search.php:228
 msgid "Style"
 msgstr ""
 
@@ -317,11 +317,11 @@ msgstr ""
 msgid "Font Size"
 msgstr ""
 
-#: inc/elementor/widgets/class-cart-icon.php:437, inc/elementor/widgets/class-site-search.php:276
+#: inc/elementor/widgets/class-cart-icon.php:437, inc/elementor/widgets/class-site-search.php:278
 msgid "Border"
 msgstr ""
 
-#: inc/elementor/widgets/class-cart-icon.php:445, inc/elementor/widgets/class-image-retina.php:308, inc/elementor/widgets/class-site-search.php:284
+#: inc/elementor/widgets/class-cart-icon.php:445, inc/elementor/widgets/class-image-retina.php:308, inc/elementor/widgets/class-site-search.php:286
 msgid "Border Radius"
 msgstr ""
 
@@ -661,7 +661,7 @@ msgstr ""
 msgid "Enter Label"
 msgstr ""
 
-#: inc/elementor/widgets/class-site-search.php:124
+#: inc/elementor/widgets/class-site-search.php:124, inc/elementor/widgets/class-site-search.php:299
 msgid "Placeholder"
 msgstr ""
 
@@ -673,19 +673,23 @@ msgstr ""
 msgid "Height"
 msgstr ""
 
-#: inc/elementor/widgets/class-site-search.php:235
+#: inc/elementor/widgets/class-site-search.php:236
 msgid "Icon Layout"
 msgstr ""
 
-#: inc/elementor/widgets/class-site-search.php:244
+#: inc/elementor/widgets/class-site-search.php:245
 msgid "Icon Color"
 msgstr ""
 
-#: inc/elementor/widgets/class-site-search.php:315
+#: inc/elementor/widgets/class-site-search.php:338
+msgid "Input"
+msgstr ""
+
+#: inc/elementor/widgets/class-site-search.php:396
 msgid "Enter Keyword"
 msgstr ""
 
-#: inc/elementor/widgets/class-site-search.php:324
+#: inc/elementor/widgets/class-site-search.php:405
 msgid "Close"
 msgstr ""
 

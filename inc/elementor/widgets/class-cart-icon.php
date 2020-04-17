@@ -608,9 +608,6 @@ class Cart_Icon extends Base_Widget {
 				'selectors' => array(
 					'{{WRAPPER}} .boostify-count-product' => 'background-color: {{VALUE}}',
 				),
-				'condition' => array(
-					'action' => 'click',
-				),
 			)
 		);
 
