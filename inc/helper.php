@@ -116,7 +116,7 @@ function boostify_header_template_id() {
  */
 
 function boostify_get_header_template() {
-	return Boostify_Header_Footer\Template_Render::get_header_template();
+	echo Boostify_Header_Footer\Template_Render::get_header_template(); //phpcs:ignore
 }
 
 
@@ -135,7 +135,7 @@ function boostify_footer_template_id() {
  * @return html | Footer template
  */
 function boostify_get_footer_template() {
-	return Boostify_Header_Footer\Template_Render::get_footer_template();
+	echo Boostify_Header_Footer\Template_Render::get_footer_template(); //phpcs:ignore
 }
 
 
