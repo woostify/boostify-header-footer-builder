@@ -153,7 +153,6 @@ function boostify_header_active() {
 function boostify_footer_active() {
 	$header_id = boostify_footer_template_id();
 	$status    = false;
-
 	if ( $header_id ) {
 		$status = true;
 	}
