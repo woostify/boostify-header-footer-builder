@@ -1,5 +1,7 @@
 <?php
+
 namespace Boostify_Header_Footer;
+
 /**
  * Comments
  *
@@ -47,24 +49,25 @@ class Template {
 	 * Hook in methods.
 	 */
 	public function __construct() {
-		add_action( 'wp',  array( $this, 'hooks' ) );
+		add_action( 'wp', array( $this, 'hooks' ) );
+		add_action( 'wp_head', array( $this, 'wp_head' ) );
 		add_filter( 'single_template', array( $this, 'single_template' ) );
-
 		// Get header Template
 		add_action( 'boostify_hf_get_header', array( $this, 'header_template' ), 10 );
-
 		// Get Footer Template
 		add_action( 'boostify_hf_get_footer', array( $this, 'footer_template' ), 10 );
+
 	}
 
-	public function hooks(){
+	public function hooks() {
 		if ( ! current_theme_supports( 'boostify-header-footer' ) ) {
 			add_action( 'get_header', array( $this, 'render_header' ) );
 			add_action( 'get_footer', array( $this, 'render_footer' ) );
-		} else {
-			add_action( 'get_header', array( $this, 'post' ) );
-			add_action( 'get_footer', array( $this, 'post' ) );
 		}
+	}
+
+	public function wp_head() {
+		wp_reset_postdata();
 	}
 
 	/**
@@ -72,11 +75,6 @@ class Template {
 	 *
 	 * @return Header Site.
 	 */
-	public function post() {
-		$this->post_type = get_post_type();
-		$this->post_id   = get_the_ID();
-	}
-
 	public function single_template( $single_template ) {
 		if ( 'btf_builder' == get_post_type() ) { // phpcs:ignore
 			$single_template = BOOSTIFY_HEADER_FOOTER_PATH . 'templates/hf.php';
@@ -91,9 +89,7 @@ class Template {
 	 * @return Header Site.
 	 */
 	public function render_header() {
-		$this->post_type = get_post_type();
-		$this->post_id   = get_the_ID();
-		$header_id       = $this->template_header_id();
+		$header_id = $this->template_header_id();
 		if ( $header_id ) {
 			require BOOSTIFY_HEADER_FOOTER_PATH . 'templates/default/header.php';
 			$templates   = array();
@@ -104,7 +100,6 @@ class Template {
 			locate_template( $templates, true );
 			ob_get_clean();
 		}
-
 	}
 
 	/**
@@ -113,9 +108,8 @@ class Template {
 	 * @return Footer Site.
 	 */
 	public function render_footer() {
-		$this->post_type = get_post_type();
-		$this->post_id   = get_the_ID();
-		$footer_id       = $this->template_footer_id();
+
+		$footer_id = $this->template_footer_id();
 		if ( $footer_id ) {
 			require BOOSTIFY_HEADER_FOOTER_PATH . 'templates/default/footer.php';
 			$templates   = array();
@@ -152,15 +146,12 @@ class Template {
 
 			if ( ! $header ) {
 				$header = $this->all_single( $id, $post_type );
-
 				if ( ! $header ) {
 					$header = $this->display_all();
 				}
 			}
-
 			$this->render( $header, $path );
 		}
-
 	}
 
 	/**
@@ -485,10 +476,13 @@ class Template {
 	 * @return Mixed (int) $id or (Boolean) false | ID Header Teamplate or false if not found
 	 */
 	public function template_header_id() {
-		$page_type = $this->page_type();
-		$post_id   = $this->post_id;
-		$post_type = $this->post_type;
-		$id        = '';
+		global $post;
+		$this->post_id    = $post->ID;
+		$this->post_title = get_post_type( $post->ID );
+		$page_type        = $this->page_type();
+		$post_id          = $this->post_id;
+		$post_type        = $this->post_type;
+		$id               = '';
 		if ( $this->display_all() || $this->display_template( $page_type ) || $this->all_single( $post_id, $post_type ) || $this->current_single( $post_id, $post_type ) ) {
 			if ( $this->display_all() ) {
 				$header = $this->display_all();
@@ -521,10 +515,13 @@ class Template {
 	 * @return Mixed (int) $id or (Boolean) false | ID Footer Teamplate or False if not found
 	 */
 	public function template_footer_id() {
-		$page_type = $this->page_type();
-		$post_id   = $this->post_id;
-		$post_type = $this->post_type;
-		$id        = '';
+		global $post;
+		$post_id          = $post->ID;
+		$post_type        = get_post_type( $post->ID );
+		$this->post_id    = $post_id;
+		$this->post_title = $post_type;
+		$page_type        = $this->page_type();
+		$id               = '';
 		if ( $this->display_all( 'footer' ) || $this->display_template( $page_type, 'footer' ) || $this->all_single( $post_id, $post_type, 'footer' ) || $this->current_single( $post_id, $post_type, 'footer' ) ) {
 			if ( $this->display_all( 'footer' ) ) {
 				$header = $this->display_all( 'footer' );

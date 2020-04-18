@@ -212,7 +212,7 @@ class Site_Search extends Base_Widget {
 					'right'  => 10,
 				),
 				'selectors'          => array(
-					'{{WRAPPER}} .boostify-search-form-header .btn-boostify-search-form' => 'padding: 0{{UNIT}} {{RIGHT}}{{UNIT}} 0{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .boostify-search-form-header .site-search-field' => 'padding: 0{{UNIT}} {{RIGHT}}{{UNIT}} 0{{UNIT}} {{LEFT}}{{UNIT}};',
 				),
 				'condition'          => array(
 					'layout' => 'form',
