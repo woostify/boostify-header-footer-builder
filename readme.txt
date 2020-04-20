@@ -97,6 +97,12 @@ Learn more about how [Appsero collects and uses this data](https://appsero.com/p
 == Changelog ==
 
 ## Changelog
+= 1.1.3 =
+- Change render function
+- Fix icon widget issue
+- Fix background color of counter
+- Fix conflict plugin
+
 = 1.1.2 =
 - Fix WooCommerce Fata error
 - Fix Retina Logo issue 
@@ -129,6 +135,10 @@ GNU GPL v2.0.
 
 == Frequently Asked Questions ==
 
-**Q1: Can I use this plugin with my theme? ?**
+**Q1: Can I use this plugin with my theme?**
 
-**Ans:** Yes, it works with all the theme
+**Ans:** Yes, it works with all the theme by default
+
+**Q1: I'm author of the theme. How Can I support it to my theme?**
+
+**Ans:** Yes, please read the instruction [here] (https://github.com/woostify/boostify-header-footer-builder/wiki/Support-Boostify-Header-Footer-for-your-theme)
