@@ -39,7 +39,6 @@ if ( ! class_exists( 'Boostify_Header_Footer_Builder' ) ) {
 			include_once BOOSTIFY_HEADER_FOOTER_PATH . 'inc/elementor/class-template-render.php';
 			include_once BOOSTIFY_HEADER_FOOTER_PATH . 'inc/menu/class-wp-sub-menu.php';
 			include_once BOOSTIFY_HEADER_FOOTER_PATH . 'inc/helper.php';
-
 		}
 
 		public function hooks() {
@@ -53,7 +52,6 @@ if ( ! class_exists( 'Boostify_Header_Footer_Builder' ) ) {
 			add_action( 'admin_notices', array( $this, 'notice_plugin' ) );
 			add_shortcode( 'btf_year', array( $this, 'get_year' ) );
 			add_shortcode( 'btf_site_tile', array( $this, 'get_site_name' ) );
-			// add_action( 'admin_notices', array( $this, 'notice_theme_support' ) );
 		}
 
 		public function cpt() {

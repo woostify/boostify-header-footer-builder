@@ -118,6 +118,9 @@ class Metabox {
 
 		// Type of Template Builder
 		$type = sanitize_text_field( $_POST['bhf_type'] );
+		if ( empty( $type ) ) {
+			$type = 'header';
+		}
 
 		update_post_meta(
 			$post_id,

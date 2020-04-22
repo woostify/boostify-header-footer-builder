@@ -274,4 +274,20 @@
 		}
 	);
 
+	var bhf = $( '#menu-posts-btf_builder' );
+	var addNew = bhf.find( '.wp-submenu-wrap li:last-child' );
+
+	addNew.on(
+		'click',
+		function( e ) {
+			e.preventDefault();
+			createPost();
+
+		}
+	);
+
+	function createPost() {
+		
+	}
+
 } )( jQuery );

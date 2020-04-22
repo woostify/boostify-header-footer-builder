@@ -13,7 +13,7 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: inc/admin/class-admin.php:77
+#: inc/admin/class-admin.php:77, inc/elementor/settings/post.php:48
 msgid "Type"
 msgstr ""
 
@@ -21,15 +21,15 @@ msgstr ""
 msgid "Shortcode"
 msgstr ""
 
-#: inc/admin/class-metabox.php:40
+#: inc/admin/class-metabox.php:40, inc/elementor/settings/post.php:51
 msgid "Header"
 msgstr ""
 
-#: inc/admin/class-metabox.php:41
+#: inc/admin/class-metabox.php:41, inc/elementor/settings/post.php:52
 msgid "Footer"
 msgstr ""
 
-#: inc/admin/class-metabox.php:42, inc/elementor/widgets/class-mega-menu.php:119
+#: inc/admin/class-metabox.php:42, inc/elementor/settings/post.php:53, inc/elementor/widgets/class-mega-menu.php:119
 msgid "Sub Mega Menu"
 msgstr ""
 
@@ -37,43 +37,43 @@ msgstr ""
 msgid "Type of Template"
 msgstr ""
 
-#: inc/admin/class-metabox.php:241, inc/admin/class-metabox.php:529, inc/admin/class-metabox.php:558
+#: inc/admin/class-metabox.php:244, inc/admin/class-metabox.php:532, inc/admin/class-metabox.php:561
 msgid "Display On"
 msgstr ""
 
-#: inc/admin/class-metabox.php:261, inc/admin/class-metabox.php:323, inc/admin/class-metabox.php:434, inc/admin/class-metabox.php:462
+#: inc/admin/class-metabox.php:264, inc/admin/class-metabox.php:326, inc/admin/class-metabox.php:437, inc/admin/class-metabox.php:465
 msgid "All"
 msgstr ""
 
-#: inc/admin/class-metabox.php:299, inc/admin/class-metabox.php:576
+#: inc/admin/class-metabox.php:302, inc/admin/class-metabox.php:579
 msgid "Do Not Display On"
 msgstr ""
 
-#: inc/admin/class-metabox.php:304, inc/admin/class-metabox.php:581
+#: inc/admin/class-metabox.php:307, inc/admin/class-metabox.php:584
 msgid "Select"
 msgstr ""
 
-#: inc/class-boostify-header-footer-builder.php:79
+#: inc/class-boostify-header-footer-builder.php:78
 msgid "Boostify Header Footer Builder"
 msgstr ""
 
-#: inc/class-boostify-header-footer-builder.php:80
+#: inc/class-boostify-header-footer-builder.php:79
 msgid "Add New Header, Footer"
 msgstr ""
 
-#: inc/class-boostify-header-footer-builder.php:81
+#: inc/class-boostify-header-footer-builder.php:80
 msgid "Edit Header, Footer"
 msgstr ""
 
-#: inc/class-boostify-header-footer-builder.php:82
+#: inc/class-boostify-header-footer-builder.php:81
 msgid "All Header, Footer"
 msgstr ""
 
-#: inc/class-boostify-header-footer-builder.php:83
+#: inc/class-boostify-header-footer-builder.php:82
 msgid "Elementor Builder"
 msgstr ""
 
-#: inc/class-boostify-header-footer-builder.php:193
+#: inc/class-boostify-header-footer-builder.php:192
 msgid "Your current theme is not supported Boostify Header Footer Plugin"
 msgstr ""
 

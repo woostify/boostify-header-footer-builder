@@ -3,7 +3,7 @@
 namespace Boostify_Header_Footer\Widgets;
 
 use Boostify_Header_Footer\Base_Widget;
-use Boostify_Header_Footer\Module\Woocommerce;
+use Boostify_Header_Footer\Module\Woocommerce as BoostifyWoocommerce;
 use Elementor\Controls_Manager;
 use Elementor\Scheme_Typography;
 use Elementor\Group_Control_Typography;
@@ -108,7 +108,7 @@ class Cart_Icon extends Base_Widget {
 			<div class="<?php echo esc_attr( $classes ); ?>" icon-content="<?php echo esc_attr( $icon ); ?>" icon-font="Ionicons">
 
 			<?php
-			\Boostify_Header_Footer\Module\Woocommerce::render_cart();
+			BoostifyWoocommerce::render_cart();
 			if ( 'click' === $settings['action'] ) :
 				?>
 				<div class="boostify-cart-overlay">
