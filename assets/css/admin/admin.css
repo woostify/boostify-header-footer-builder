@@ -253,7 +253,7 @@
   text-transform: capitalize;
 }
 
-.dialog-widget-content {
+.boostify-boostify-dialog-widget-content {
   background-color: #fff;
   position: absolute;
   -webkit-border-radius: 3px;
@@ -284,7 +284,7 @@
   user-select: none;
 }
 
-.boostify-lightbox .dialog-widget-content {
+.boostify-lightbox .boostify-dialog-widget-content {
   margin: auto;
   width: 375px;
 }
@@ -389,7 +389,7 @@
   height: 0;
 }
 
-.boostify-templates-modal .dialog-widget-content {
+.boostify-templates-modal .boostify-dialog-widget-content {
   font-family: Roboto, Arial, Helvetica, Verdana, sans-serif;
   background-color: #f1f3f5;
   width: calc( 100% - 30px);
@@ -397,14 +397,14 @@
 }
 
 @media (max-width: 1439px) {
-  .boostify-templates-modal .dialog-widget-content {
+  .boostify-templates-modal .boostify-dialog-widget-content {
     width: 990px;
     left: calc( ( 100vw - 900px )/2);
   }
 }
 
 @media (min-width: 1440px) {
-  .boostify-templates-modal .dialog-widget-content {
+  .boostify-templates-modal .boostify-dialog-widget-content {
     width: 1200px;
     left: calc( ( 100vw - 1200px )/2);
   }
@@ -451,7 +451,6 @@
 
 .boostify-templates-modal .dialog-message {
   height: 80vh;
-  overflow: auto;
   padding-top: 25px;
 }
 
@@ -502,11 +501,11 @@
   align-items: center;
 }
 
-.boostify-templates-modal__header__logo__icon-wrapper {
+.boostify-header-logo-icon-wrapper {
   margin-right: 10px;
 }
 
-.boostify-templates-modal__header__logo__title {
+.boostify-header-logo-title {
   padding-top: 2px;
 }
 
@@ -712,6 +711,25 @@
   border-radius: 3px;
   -webkit-box-shadow: 0 2px 30px 0 rgba(0, 0, 0, 0.08);
   box-shadow: 0 2px 30px 0 rgba(0, 0, 0, 0.08);
+  height: calc( 100% - 50px - 30px);
+  overflow-y: scroll;
+  /* width */
+  /* Handle */
+  /* Handle on hover */
+}
+
+#boostify-new-template__form::-webkit-scrollbar {
+  width: 3px;
+  height: 10px;
+}
+
+#boostify-new-template__form::-webkit-scrollbar-thumb {
+  background: #1f3d70;
+  border-radius: 50px;
+}
+
+#boostify-new-template__form::-webkit-scrollbar-thumb:hover {
+  background: #fc1550;
 }
 
 .boostify-new-template__form__title {
@@ -734,6 +752,45 @@
   color: #495157;
   border: 1px solid;
   outline: none;
+  max-width: 100%;
+}
+
+#boostify-new-template__form .boostify-select-all-post,
+#boostify-new-template__form .boostify-auto-complete-field {
+  width: 100%;
+  max-width: 100%;
+}
+
+#boostify-new-template__form .boostify-section-select-post.render--post .boostify-section-render--post {
+  width: 100%;
+  border-color: #d5dadf;
+}
+
+#boostify-new-template__form .boostify-select-all-post,
+#boostify-new-template__form .boostify-auto-complete-field,
+#boostify-new-template__form .boostify--hf-post-name {
+  border-color: #d5dadf;
+  min-height: 45px;
+}
+
+#boostify-new-template__form .boostify-select-all {
+  font-size: 14px;
+}
+
+#boostify-new-template__form .input-item-wrapper .boostify-data .boostify-hf-list-post {
+  max-width: 100%;
+}
+
+#boostify-new-template__form .input-item-wrapper .boostify-data .hf-list-post {
+  border-color: #d5dadf;
+  line-height: 30px;
+  font-size: 13px;
+}
+
+#boostify-new-template__form .boostify-auto-complete-field {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
 }
 
 #boostify-new-template__form .boostify-form-field input:not(:focus),
@@ -805,4 +862,21 @@
   margin: 25px 0 7px;
   font-size: 14px;
   line-height: 1;
+}
+
+.boostify-form-field__select__wrapper {
+  position: relative;
+  z-index: 1;
+}
+
+.boostify-form-field__select__wrapper:after {
+  font-family: "Ionicons";
+  content: "\f123";
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  z-index: -1;
 }

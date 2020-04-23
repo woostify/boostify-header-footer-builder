@@ -13,23 +13,43 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: inc/admin/class-admin.php:77, inc/elementor/settings/post.php:48
+#: inc/admin/class-admin.php:78
 msgid "Type"
 msgstr ""
 
-#: inc/admin/class-admin.php:78
+#: inc/admin/class-admin.php:79
 msgid "Shortcode"
 msgstr ""
 
-#: inc/admin/class-metabox.php:40, inc/elementor/settings/post.php:51
+#: inc/admin/class-admin.php:134, inc/elementor/widgets/class-site-search.php:405
+msgid "Close"
+msgstr ""
+
+#: inc/admin/class-admin.php:151
+msgid "Choose Template Type"
+msgstr ""
+
+#: inc/admin/class-admin.php:155
+msgid "Select the type of template you want to work on"
+msgstr ""
+
+#: inc/admin/class-admin.php:176
+msgid "Name your template"
+msgstr ""
+
+#: inc/admin/class-admin.php:183
+msgid "Create Template"
+msgstr ""
+
+#: inc/admin/class-metabox.php:40
 msgid "Header"
 msgstr ""
 
-#: inc/admin/class-metabox.php:41, inc/elementor/settings/post.php:52
+#: inc/admin/class-metabox.php:41
 msgid "Footer"
 msgstr ""
 
-#: inc/admin/class-metabox.php:42, inc/elementor/settings/post.php:53, inc/elementor/widgets/class-mega-menu.php:119
+#: inc/admin/class-metabox.php:42, inc/elementor/widgets/class-mega-menu.php:119
 msgid "Sub Mega Menu"
 msgstr ""
 
@@ -53,27 +73,27 @@ msgstr ""
 msgid "Select"
 msgstr ""
 
-#: inc/class-boostify-header-footer-builder.php:78
+#: inc/class-boostify-header-footer-builder.php:77
 msgid "Boostify Header Footer Builder"
 msgstr ""
 
-#: inc/class-boostify-header-footer-builder.php:79
+#: inc/class-boostify-header-footer-builder.php:78
 msgid "Add New Header, Footer"
 msgstr ""
 
-#: inc/class-boostify-header-footer-builder.php:80
+#: inc/class-boostify-header-footer-builder.php:79
 msgid "Edit Header, Footer"
 msgstr ""
 
-#: inc/class-boostify-header-footer-builder.php:81
+#: inc/class-boostify-header-footer-builder.php:80
 msgid "All Header, Footer"
 msgstr ""
 
-#: inc/class-boostify-header-footer-builder.php:82
+#: inc/class-boostify-header-footer-builder.php:81
 msgid "Elementor Builder"
 msgstr ""
 
-#: inc/class-boostify-header-footer-builder.php:192
+#: inc/class-boostify-header-footer-builder.php:191
 msgid "Your current theme is not supported Boostify Header Footer Plugin"
 msgstr ""
 
@@ -687,10 +707,6 @@ msgstr ""
 
 #: inc/elementor/widgets/class-site-search.php:396
 msgid "Enter Keyword"
-msgstr ""
-
-#: inc/elementor/widgets/class-site-search.php:405
-msgid "Close"
 msgstr ""
 
 #: inc/helper.php:26

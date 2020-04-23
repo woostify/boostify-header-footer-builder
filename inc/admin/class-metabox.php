@@ -34,17 +34,6 @@ class Metabox {
 		add_action( 'wp_ajax_nopriv_boostify_hf_type', array( $this, 'display_setting' ) );
 	}
 
-	// Type Builder
-	public function type_builder() {
-		$type = array(
-			'header'   => __( 'Header', 'boostify' ),
-			'footer'   => __( 'Footer', 'boostify' ),
-			'sub_menu' => __( 'Sub Mega Menu', 'boostify' ),
-		);
-
-		return $type;
-	}
-
 	// Meta Box In btf_builder post type
 	public function pagesetting_meta_box() {
 		add_meta_box( 'ht_hf_setting', 'Template Settings', array( $this, 'ht_hfsetting_output' ), 'btf_builder', 'side', 'high' );
@@ -53,7 +42,7 @@ class Metabox {
 
 	// Screen meta box in btf_builder post type
 	public function ht_hfsetting_output( $post ) {
-		$types         = $this->type_builder();
+		$types         = boostify_type_builder();
 		$type          = get_post_meta( $post->ID, 'bhf_type', true );
 		$display       = get_post_meta( $post->ID, 'bhf_display', true );
 		$posts         = get_post_meta( $post->ID, 'bhf_post', true );
@@ -220,7 +209,8 @@ class Metabox {
 	}
 
 	public function hf_display( $post ) {
-		$options      = $this->pt_support();
+
+		$options      = boostify_pt_support();
 		$display      = get_post_meta( $post->ID, 'bhf_display', true );
 		$no_display   = get_post_meta( $post->ID, 'bhf_no_display', true );
 		$post_id      = get_post_meta( $post->ID, 'bhf_post', true );
@@ -481,50 +471,11 @@ class Metabox {
 		die();
 	}
 
-	// Get all post title in Site.
-	public function pt_support() {
-		$post_types       = get_post_types();
-		$post_types_unset = array(
-			'attachment'          => 'attachment',
-			'revision'            => 'revision',
-			'nav_menu_item'       => 'nav_menu_item',
-			'custom_css'          => 'custom_css',
-			'customize_changeset' => 'customize_changeset',
-			'oembed_cache'        => 'oembed_cache',
-			'user_request'        => 'user_request',
-			'wp_block'            => 'wp_block',
-			'elementor_library'   => 'elementor_library',
-			'btf_builder'         => 'btf_builder',
-			'elementor-hf'        => 'elementor-hf',
-			'elementor_font'      => 'elementor_font',
-			'elementor_icons'     => 'elementor_icons',
-			'wpforms'             => 'wpforms',
-			'wpforms_log'         => 'wpforms_log',
-			'acf-field-group'     => 'acf-field-group',
-			'acf-field'           => 'acf-field',
-			'booked_appointments' => 'booked_appointments',
-			'wpcf7_contact_form'  => 'wpcf7_contact_form',
-			'scheduled-action'    => 'scheduled-action',
-			'shop_order'          => 'shop_order',
-			'shop_order_refund'   => 'shop_order_refund',
-			'shop_coupon'         => 'shop_coupon',
-		);
-		$diff             = array_diff( $post_types, $post_types_unset );
-		$default          = array(
-			'all'       => 'All',
-			'blog'      => 'Blog Page',
-			'archive'   => 'Archive Page',
-			'search'    => 'Search Page',
-			'not_found' => '404 Page',
-		);
-		$options          = array_merge( $default, $diff );
-
-		return $options;
-	}
 
 	public function parent_rule() {
 		check_ajax_referer( 'ht_hf_nonce' );
-		$options = $this->pt_support();
+
+		$options = boostify_pt_support();
 		$length  = $_GET['length'];
 		?>
 		<div class="condition-group">
@@ -550,7 +501,8 @@ class Metabox {
 	// For Show Setting type Header, Footer
 	public function display_setting() {
 		check_ajax_referer( 'ht_hf_nonce' );
-		$options = $this->pt_support();
+
+		$options = boostify_pt_support();
 		$type    = $_GET['type'];
 		if ( 'sub_menu' !== $type ) :
 

@@ -33,6 +33,8 @@ class Admin {
 		add_filter( 'manage_btf_builder_posts_columns', array( $this, 'columns_head' ) );
 		add_action( 'manage_btf_builder_posts_custom_column', array( $this, 'columns_content' ), 10, 2 );
 		add_action( 'admin_footer', array( $this, 'lightbox' ) );
+		add_action( 'wp_ajax_boostify_create_post', array( $this, 'create_bhf_post' ) );
+		add_action( 'wp_ajax_nopriv_boostify_create_post', array( $this, 'create_bhf_post' ) );
 	}
 
 	public function load_admin_style() {
@@ -109,24 +111,28 @@ class Admin {
 	}
 
 	public function lightbox() {
-		$object    = get_current_screen();
-		$post_type = $object->post_type;
-		$action    = $object->action;
+		$object     = get_current_screen();
+		$post_type  = $object->post_type;
+		$action     = $object->action;
+		$type       = boostify_type_builder();
+		$post_types = boostify_pt_support();
 		if ( 'btf_builder' === $post_type && 'add' === $action ) {
 			?>
 			<div class="dialog-widget dialog-lightbox-widget boostify-lightbox boostify-templates-modal" id="boostify-new-template-modal">
-				<div class="dialog-widget-content dialog-lightbox-widget-content">
+				<div class="boostify-dialog-widget-content dialog-lightbox-widget-content">
 					<div class="dialog-header dialog-lightbox-header">
 						<div class="boostify-templates-modal__header">
 							<div class="boostify-templates-modal__header__logo-area">
 								<div class="boostify-templates-modal__header__logo">
-									<span class="boostify-templates-modal__header__logo__icon-wrapper boostify-gradient-logo">
+									<span class="boostify-header-logo-icon-wrapper boostify-gradient-logo">
 										<i class="eicon-elementor"></i>
 									</span>
-									<span class="boostify-templates-modal__header__logo__title">New Template</span>
+									<span class="boostify-header-logo-title">
+										<?php echo esc_html__( 'New Template', 'boostify' ); ?>
+									</span>
 								</div>
 							</div>
-							<div class="boostify-templates-modal__header__menu-area"></div>
+
 							<div class="boostify-templates-modal__header__items-area">
 								<div class="boostify-templates-modal__header__close boostify-templates-modal__header__close--normal boostify-templates-modal__header__item">
 									<i class="eicon-close" aria-hidden="true" title="Close"></i>
@@ -142,43 +148,89 @@ class Admin {
 					<div class="dialog-message dialog-lightbox-message">
 						<div class="dialog-content dialog-lightbox-content">
 							<div id="boostify-new-template-dialog-content">
-
+								<div id="boostify-new-template__description">
+									<div id="boostify-new-template__description__title">
+										Templates Help You <span>Work Efficiently</span>
+									</div>
+									<div id="boostify-new-template__description__content">
+										Use templates to create the different pieces of your site, and reuse them with one click whenever needed.
+									</div>
+								</div>
 								<form id="boostify-new-template__form" action="">
-									<input type="hidden" name="post_type" value="boostify_library">
-									<input type="hidden" name="action" value="boostify_new_post">
-									<input type="hidden" name="_wpnonce" value="d819496b97">
-									<span class="boostify-new-template__form__title">
+									<input type="hidden" name="post_type" value="btf_builder">
+
+									<div id="elementor-new-template__form__title">
+
 										<?php echo esc_html__( 'Choose Template Type', 'boostify' ); ?>
-									</span>
-									<div id="boostify-new-template__form__template-type__wrapper" class="boostify-form-field">
-										<label for="boostify-new-template__form__template-type" class="boostify-form-field__label">
-											<?php echo esc_html__( 'Select the type of template you want to work on', 'boostify' ); ?>
-										</label>
-										<div class="boostify-form-field__select__wrapper">
-											<select id="boostify-new-template__form__template-type" class="boostify-form-field__select" name="template_type" required="">
-												<option value="">Select...</option>
-												<option value="page">Page</option><option value="section">Section</option><option value="popup">Popup</option><option value="header">Header</option><option value="footer">Footer</option><option value="single">Single</option><option value="archive">Archive</option>				</select>
+									</div>
+									<div class="boostify-template-first-row">
+										<div id="boostify-post-title-wrapper" class="boostify-form-field">
+											<label for="boostify-new-template__form__post-title" class="boostify-form-field__label"><?php echo esc_html__( 'Name your template', 'boostify' ); ?></label>
+											<div class="boostify-form-field__text__wrapper">
+												<input type="text" placeholder="Enter template name (optional)" id="boostify-new-template__form__post-title" class="boostify-form-field__text" name="post_title">
+											</div>
+										</div>
+										<div id="boostify-new-template__form__template-type__wrapper" class="boostify-form-field">
+											<label for="boostify-template-type" class="boostify-form-field__label">
+												<?php echo esc_html__( 'Select the type of template you want to work on', 'boostify' ); ?>
+											</label>
+											<div class="boostify-form-field__select__wrapper">
+												<select id="boostify-template-type" class="boostify-form-field__select" name="template_type" required="">
+													<?php foreach ( $type as $val => $name ) : ?>
+														<option value="<?php echo esc_attr( $val ); ?>"><?php echo esc_html( $name ); ?></option>
+													<?php endforeach ?>
+												</select>
+											</div>
 										</div>
 									</div>
-									<div id="boostify-new-template__form__post-type__wrapper" class="boostify-form-field" style="display: none;">
-										<label for="boostify-new-template__form__post-type" class="boostify-form-field__label">
-											Select Post Type</label>
-										<div class="boostify-form-field__select__wrapper">
-											<select id="boostify-new-template__form__post-type" class="boostify-form-field__select" name="_boostify_template_sub_type">
-												<option value="">
-													Select...
-												</option>
-												<option value="post">Post</option><option value="page">Page</option><option value="btf_builder">Elementor Builder</option><option value="lp_course">Course</option><option value="lp_lesson">Lesson</option><option value="lp_quiz">Quiz</option><option value="not_found404">404 Page</option>				</select>
+									<div class="boostify-template--row">
+										<div class="condition-group display--on">
+											<div class="parent-item boostify-form-field ">
+												<label class="boostify-form-field__label" >
+													<?php echo esc_html__( 'Display On', 'boostify' ); ?>
+												</label>
+												<div class="boostify-form-field__select__wrapper">
+													<select name="bhf_display" class="display-on boostify-form-field__select">
+														<?php foreach ( $post_types as $post_type => $name ) : ?>
+															<option value="<?php echo esc_attr( $post_type ); ?>">
+																<?php echo esc_html( $name ); ?>
+															</option>
+														<?php endforeach ?>
+
+													</select>
+												</div>
+											</div>
+
+											<div class="child-item">
+												<div class="input-item-wrapper">
+												</div>
+											</div>
+										</div>
+										<div class="condition-group not-display">
+											<div class="parent-item boostify-form-field">
+												<label  class="boostify-form-field__label">
+													<?php echo esc_html__( 'Do Not Display On', 'boostify' ); ?>
+												</label>
+												<?php unset( $post_types['all'] ); ?>
+												<div class="boostify-form-field__select__wrapper">
+													<select name="bhf_no_display" class="no-display-on boostify-form-field__select">
+														<option value="0">Select</option>
+														<?php foreach ( $post_types as $post_type => $name ) : ?>
+															<option value="<?php echo esc_attr( $post_type ); ?>">
+																<?php echo esc_html( $name ); ?>
+															</option>
+														<?php endforeach ?>
+													</select>
+												</div>
+											</div>
+
+											<div class="child-item">
+												<div class="input-item-wrapper">
+												</div>
+											</div>
 										</div>
 									</div>
-									<div id="boostify-new-template__form__post-title__wrapper" class="boostify-form-field">
-										<label for="boostify-new-template__form__post-title" class="boostify-form-field__label">
-											<?php echo esc_html__( 'Name your template', 'boostify' ); ?>
-										</label>
-										<div class="boostify-form-field__text__wrapper">
-											<input type="text" placeholder="Enter template name (optional)" id="boostify-new-template__form__post-title" class="boostify-form-field__text" name="post_data[post_title]">
-										</div>
-									</div>
+
 									<button id="boostify-new-template__form__submit" class="boostify-button boostify-button-success">
 										<?php echo esc_html__( 'Create Template', 'boostify' ); ?>
 									</button>
@@ -191,7 +243,51 @@ class Admin {
 			</div>
 			<?php
 		}
+	}
 
+	public function create_bhf_post() {
+		check_ajax_referer( 'ht_hf_nonce' );
+		$post_type        = $_GET['post_type'];
+		$post_title       = $_GET['post_title'];
+		$template_type    = $_GET['template_type'];
+		$display          = $_GET['bhf_display'];
+		$no_display       = $_GET['bhf_no_display'];
+		$bhf_post_type    = '';
+		$bhf_post         = '';
+		$bhf_ex_post_type = '';
+		$bhf_ex_post      = '';
+		$url              = admin_url( '/' );
+		if ( array_key_exists( 'bhf_post_type', $_GET ) ) {
+			$bhf_post_type = $_GET['bhf_post_type'];
+		}
+		if ( array_key_exists( 'bhf_post', $_GET ) ) {
+			$bhf_post = $_GET['bhf_post'];
+		}
+		if ( array_key_exists( 'bhf_ex_post_type', $_GET ) ) {
+			$bhf_ex_post_type = $_GET['bhf_ex_post_type'];
+		}
+		if ( array_key_exists( 'bhf_ex_post', $_GET ) ) {
+			$bhf_ex_post = $_GET['bhf_ex_post'];
+		}
+		$args = array(
+			'post_title'  => $post_title,
+			'post_type'   => $post_type,
+			'post_status' => 'publish',
+		);
+
+		$post_id = wp_insert_post( $args );
+
+		add_post_meta( $post_id, 'bhf_type', $template_type );
+		add_post_meta( $post_id, 'bhf_display', $display );
+		add_post_meta( $post_id, 'bhf_no_display', $no_display );
+		add_post_meta( $post_id, 'bhf_post_type', $bhf_post_type );
+		add_post_meta( $post_id, 'bhf_post', $bhf_post );
+		add_post_meta( $post_id, 'bhf_ex_post_type', $bhf_ex_post_type );
+		add_post_meta( $post_id, 'bhf_ex_post', $bhf_ex_post );
+		$url .= 'post.php?post=' . $post_id . '&action=elementor';
+		wp_send_json( $url );
+
+		die();
 	}
 }
 
