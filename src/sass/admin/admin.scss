@@ -400,23 +400,27 @@
 .boostify-templates-modal .boostify-dialog-widget-content {
 	font-family: Roboto, Arial, Helvetica, Verdana, sans-serif;
 	background-color: #f1f3f5;
-	width: calc( 100% - 30px );
 	margin: 0 auto;
-}
+	height: 90vh;
+	top: calc( ( 100% - 90vh + 32px )/2 );
+	position: fixed;
+	width: 90vw;
+	left: calc( ( 100% - 90vw )/2 );
 
-@media (max-width: 1439px) {
-	.boostify-templates-modal .boostify-dialog-widget-content {
+
+	@media ( min-width: 992px ) {
+		width: 900px;
+		left: calc( ( 100% - 900px )/2 );
+	}
+
+	@media (min-width: 1024px) {
 		width: 990px;
-		left: calc( ( 100vw - 900px )/2 );
+		left: calc( ( 100% - 990px )/2 );
 	}
 }
 
-@media (min-width: 1440px) {
-	.boostify-templates-modal .boostify-dialog-widget-content {
-		width: 1200px;
-		left: calc( ( 100vw - 1200px )/2 );
-	}
-}
+
+
 
 .boostify-templates-modal .dialog-header {
 	padding: 0;
@@ -695,7 +699,7 @@
 	padding: 55px;
 	background-color: #fff;
 	-webkit-border-radius: 3px;
-	border-radius: 3px;
+	border-radius: 5px;
 	-webkit-box-shadow: 0 2px 30px 0 rgba(0, 0, 0, 0.08);
 	box-shadow: 0 2px 30px 0 rgba(0, 0, 0, 0.08);
 	height: calc( 100% - 50px - 30px );
@@ -710,7 +714,7 @@
 
 		/* Handle */
 		&::-webkit-scrollbar-thumb {
-		  background: #1f3d70;
+		  background: transparent;
 		  border-radius: 50px;
 		}
 
@@ -819,7 +823,7 @@
 	margin-top: 25px;
 	font-size: 13px;
 	text-decoration: none;
-	padding: 15px 40px;
+	padding: 0 40px;
 }
 
 .boostify-button.boostify-button-success:not([disabled]):hover {
@@ -871,5 +875,53 @@
 		-ms-transform: translateY(-50%);
 		transform: translateY(-50%);
 		z-index: -1;
+	}
+}
+
+#boostify-new-template__form__submit {
+	cursor: pointer;
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	&.loading {
+		&:after {
+			border: 2px solid #f3f3f3; /* Light grey */
+			border-top: 2px solid #007cba; /* Blue */
+			border-radius: 50%;
+			width: 18px;
+			height: 18px;
+			animation: spin 0.5s linear infinite;
+			content: '';
+			z-index: 10;
+			margin-left: 10px;
+		}
+	}
+}
+
+#boostify-new-template-dialog-content {
+	padding: 0 50px;
+}
+
+@media ( max-width: 991px ) {
+	#boostify-new-template__description {
+		display: none;
+	}
+
+	#boostify-new-template-dialog-content {
+		padding: 0 30px;
+		display: flex;
+		justify-content: center;
+	}
+}
+
+@media ( max-width: 767px ) {
+	#boostify-new-template__form {
+		padding: 50px 30px;
+	}
+
+	#boostify-new-template-dialog-content {
+		padding: 0;
 	}
 }

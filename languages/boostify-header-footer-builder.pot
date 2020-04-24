@@ -13,63 +13,55 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: inc/admin/class-admin.php:78
+#: inc/admin/class-admin.php:80
 msgid "Type"
 msgstr ""
 
-#: inc/admin/class-admin.php:79
+#: inc/admin/class-admin.php:81
 msgid "Shortcode"
 msgstr ""
 
-#: inc/admin/class-admin.php:134, inc/elementor/widgets/class-site-search.php:405
+#: inc/admin/class-admin.php:131
+msgid "New Template"
+msgstr ""
+
+#: inc/admin/class-admin.php:140, inc/elementor/widgets/class-site-search.php:405
 msgid "Close"
 msgstr ""
 
-#: inc/admin/class-admin.php:151
+#: inc/admin/class-admin.php:164
 msgid "Choose Template Type"
 msgstr ""
 
-#: inc/admin/class-admin.php:155
-msgid "Select the type of template you want to work on"
-msgstr ""
-
-#: inc/admin/class-admin.php:176
+#: inc/admin/class-admin.php:168
 msgid "Name your template"
 msgstr ""
 
-#: inc/admin/class-admin.php:183
-msgid "Create Template"
+#: inc/admin/class-admin.php:175
+msgid "Select the type of template you want to work on"
 msgstr ""
 
-#: inc/admin/class-metabox.php:40
-msgid "Header"
-msgstr ""
-
-#: inc/admin/class-metabox.php:41
-msgid "Footer"
-msgstr ""
-
-#: inc/admin/class-metabox.php:42, inc/elementor/widgets/class-mega-menu.php:119
-msgid "Sub Mega Menu"
-msgstr ""
-
-#: inc/admin/class-metabox.php:71
-msgid "Type of Template"
-msgstr ""
-
-#: inc/admin/class-metabox.php:244, inc/admin/class-metabox.php:532, inc/admin/class-metabox.php:561
+#: inc/admin/class-admin.php:190, inc/admin/class-metabox.php:234, inc/admin/class-metabox.php:483, inc/admin/class-metabox.php:513
 msgid "Display On"
 msgstr ""
 
-#: inc/admin/class-metabox.php:264, inc/admin/class-metabox.php:326, inc/admin/class-metabox.php:437, inc/admin/class-metabox.php:465
-msgid "All"
-msgstr ""
-
-#: inc/admin/class-metabox.php:302, inc/admin/class-metabox.php:579
+#: inc/admin/class-admin.php:212, inc/admin/class-metabox.php:292, inc/admin/class-metabox.php:531
 msgid "Do Not Display On"
 msgstr ""
 
-#: inc/admin/class-metabox.php:307, inc/admin/class-metabox.php:584
+#: inc/admin/class-admin.php:235
+msgid "Create Template"
+msgstr ""
+
+#: inc/admin/class-metabox.php:60
+msgid "Type of Template"
+msgstr ""
+
+#: inc/admin/class-metabox.php:254, inc/admin/class-metabox.php:316, inc/admin/class-metabox.php:427, inc/admin/class-metabox.php:455
+msgid "All"
+msgstr ""
+
+#: inc/admin/class-metabox.php:297, inc/admin/class-metabox.php:536
 msgid "Select"
 msgstr ""
 
@@ -549,6 +541,10 @@ msgstr ""
 msgid "Sub Menu Type"
 msgstr ""
 
+#: inc/elementor/widgets/class-mega-menu.php:119, inc/helper.php:19
+msgid "Sub Mega Menu"
+msgstr ""
+
 #: inc/elementor/widgets/class-mega-menu.php:137
 msgid "Default"
 msgstr ""
@@ -661,7 +657,7 @@ msgstr ""
 msgid "Site Search"
 msgstr ""
 
-#: inc/elementor/widgets/class-site-search.php:60, inc/helper.php:36
+#: inc/elementor/widgets/class-site-search.php:60, inc/helper.php:86
 msgid "Search"
 msgstr ""
 
@@ -709,11 +705,19 @@ msgstr ""
 msgid "Enter Keyword"
 msgstr ""
 
-#: inc/helper.php:26
+#: inc/helper.php:17
+msgid "Header"
+msgstr ""
+
+#: inc/helper.php:18
+msgid "Footer"
+msgstr ""
+
+#: inc/helper.php:76
 msgctxt "label"
 msgid "Search for:"
 msgstr ""
 
-#: inc/helper.php:89
+#: inc/helper.php:139
 msgid "Select Sub Menu"
 msgstr ""

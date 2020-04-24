@@ -273,25 +273,26 @@
 		}
 	);
 
-	var addNew = $( '#boostify-new-template__form__submit' );
+	var addNew    = $( '#boostify-new-template__form__submit' );
+	var btnAddNew = $( '#boostify-new-template__form__submit' );
+	var back      = $( '.boostify-templates-modal__header__close--normal' );
 
 	addNew.on(
 		'click',
 		function( e ) {
 			e.preventDefault();
 			var data = $( '#boostify-new-template__form' ).serialize();
-			data += '&_ajax_nonce=' + admin.nonce + '&action=boostify_create_post';
-			console.log( data );
+			data    += '&_ajax_nonce=' + admin.nonce + '&action=boostify_create_post';
 			$.ajax(
 				{
 					type: 'GET',
 					url: admin.url,
 					data: data,
 					beforeSend: function (response) {
-						
+						btnAddNew.addClass( 'loading' );
 					},
 					success: function (response) {
-						console.log( response );
+						btnAddNew.removeClass( 'loading' );
 						window.location.href = response;
 					},
 				}
@@ -299,5 +300,13 @@
 		}
 	);
 
+	back.on(
+		'click',
+		function( e ) {
+			e.preventDefault();
+			var url              = admin.edit;
+			window.location.href = url;
+		}
+	);
 
 } )( jQuery );

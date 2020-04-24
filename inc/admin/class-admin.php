@@ -64,6 +64,7 @@ class Admin {
 		$admin_vars = array(
 			'url'   => admin_url( 'admin-ajax.php' ),
 			'nonce' => wp_create_nonce( 'ht_hf_nonce' ),
+			'edit'  => admin_url( 'edit.php?post_type=btf_builder' ),
 		);
 
 		wp_localize_script(
@@ -135,9 +136,9 @@ class Admin {
 
 							<div class="boostify-templates-modal__header__items-area">
 								<div class="boostify-templates-modal__header__close boostify-templates-modal__header__close--normal boostify-templates-modal__header__item">
-									<i class="eicon-close" aria-hidden="true" title="Close"></i>
+									<i class="eicon-close" aria-hidden="true" title="Back"></i>
 									<span class="boostify-screen-only">
-										<?php echo esc_html__( 'Close', 'boostify' ); ?>
+										<?php echo esc_html__( 'Back', 'boostify' ); ?>
 									</span>
 								</div>
 
