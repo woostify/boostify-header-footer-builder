@@ -125,7 +125,7 @@ class Admin {
 							<div class="boostify-templates-modal__header__logo-area">
 								<div class="boostify-templates-modal__header__logo">
 									<span class="boostify-header-logo-icon-wrapper boostify-gradient-logo">
-										<i class="eicon-elementor"></i>
+										<img src="<?php echo esc_url( BOOSTIFY_HEADER_FOOTER_URL . 'assets/images/boostify.png' ); ?>" alt="<?php echo esc_attr( 'Boostify Logo' ); ?>">
 									</span>
 									<span class="boostify-header-logo-title">
 										<?php echo esc_html__( 'New Template', 'boostify' ); ?>
@@ -148,14 +148,6 @@ class Admin {
 					<div class="dialog-message dialog-lightbox-message">
 						<div class="dialog-content dialog-lightbox-content">
 							<div id="boostify-new-template-dialog-content">
-								<div id="boostify-new-template__description">
-									<div id="boostify-new-template__description__title">
-										Templates Help You <span>Work Efficiently</span>
-									</div>
-									<div id="boostify-new-template__description__content">
-										Use templates to create the different pieces of your site, and reuse them with one click whenever needed.
-									</div>
-								</div>
 								<form id="boostify-new-template__form" action="">
 									<input type="hidden" name="post_type" value="btf_builder">
 

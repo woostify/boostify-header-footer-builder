@@ -639,13 +639,11 @@
 }
 
 .boostify-gradient-logo {
-  background-image: -webkit-linear-gradient(225deg, #f2295b, #434363);
-  background-image: -o-linear-gradient(225deg, #f2295b, #434363);
-  background-image: linear-gradient(-135deg, #f2295b, #434363);
-  display: inline-block;
-  padding: 0.6em;
-  -webkit-border-radius: 0.2em;
-  border-radius: 0.2em;
+  max-width: 30px;
+}
+
+.boostify-gradient-logo img {
+  width: 100%;
 }
 
 .boostify-gradient-logo i {
@@ -687,6 +685,7 @@
   height: 100%;
   text-align: left;
   color: #6d7882;
+  justify-content: center;
 }
 
 #boostify-new-template-dialog-content {
