@@ -549,7 +549,6 @@ class Image_Retina extends Base_Widget {
 			if ( 'custom' !== $size ) {
 				$image_size = $size;
 			} else {
-				require_once ELEMENTOR_PATH . 'includes/libraries/bfi-thumb/bfi-thumb.php';
 
 				$image_dimension = $settings['retina_image_custom_dimension'];
 
