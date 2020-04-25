@@ -273,6 +273,20 @@
 		}
 	);
 
+	$( '#boostify-template-type' ).on(
+		'change',
+		function() {
+			var btn       = $( this );
+			var type      = $( this ).val();
+			var condition = btn.parents( '.boostify-template-first-row' ).siblings( '.boostify-template-row-condition' );
+			if ( 'sub_menu' == type ) {
+				condition.css( 'display', 'none' );
+			} else {
+				condition.css( 'display', 'block' );
+			}
+		}
+	);
+
 	var addNew    = $( '#boostify-new-template__form__submit' );
 	var btnAddNew = $( '#boostify-new-template__form__submit' );
 	var back      = $( '.boostify-templates-modal__header__close--normal' );

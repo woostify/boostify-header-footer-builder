@@ -76,7 +76,6 @@ class Admin {
 
 	public function columns_head( $columns ) {
 		$date_column = $columns['date'];
-
 		unset( $columns['date'] );
 		$columns['type']      = __( 'Type', 'boostify' );
 		$columns['shortcode'] = __( 'Shortcode', 'boostify' );
@@ -184,7 +183,7 @@ class Admin {
 											</div>
 										</div>
 									</div>
-									<div class="boostify-template--row">
+									<div class="boostify-template--row boostify-template-row-condition">
 										<div class="condition-group display--on">
 											<div class="parent-item boostify-form-field ">
 												<label class="boostify-form-field__label" >

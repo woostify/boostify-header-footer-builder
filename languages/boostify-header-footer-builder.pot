@@ -25,8 +25,8 @@ msgstr ""
 msgid "New Template"
 msgstr ""
 
-#: inc/admin/class-admin.php:140, inc/elementor/widgets/class-site-search.php:405
-msgid "Close"
+#: inc/admin/class-admin.php:140
+msgid "Back"
 msgstr ""
 
 #: inc/admin/class-admin.php:164
@@ -65,27 +65,27 @@ msgstr ""
 msgid "Select"
 msgstr ""
 
-#: inc/class-boostify-header-footer-builder.php:77
+#: inc/class-boostify-header-footer-builder.php:78
 msgid "Boostify Header Footer Builder"
 msgstr ""
 
-#: inc/class-boostify-header-footer-builder.php:78
+#: inc/class-boostify-header-footer-builder.php:79
 msgid "Add New Header, Footer"
 msgstr ""
 
-#: inc/class-boostify-header-footer-builder.php:79
+#: inc/class-boostify-header-footer-builder.php:80
 msgid "Edit Header, Footer"
 msgstr ""
 
-#: inc/class-boostify-header-footer-builder.php:80
+#: inc/class-boostify-header-footer-builder.php:81
 msgid "All Header, Footer"
 msgstr ""
 
-#: inc/class-boostify-header-footer-builder.php:81
+#: inc/class-boostify-header-footer-builder.php:82
 msgid "Elementor Builder"
 msgstr ""
 
-#: inc/class-boostify-header-footer-builder.php:191
+#: inc/class-boostify-header-footer-builder.php:195
 msgid "Your current theme is not supported Boostify Header Footer Plugin"
 msgstr ""
 
@@ -703,6 +703,10 @@ msgstr ""
 
 #: inc/elementor/widgets/class-site-search.php:396
 msgid "Enter Keyword"
+msgstr ""
+
+#: inc/elementor/widgets/class-site-search.php:405
+msgid "Close"
 msgstr ""
 
 #: inc/helper.php:17

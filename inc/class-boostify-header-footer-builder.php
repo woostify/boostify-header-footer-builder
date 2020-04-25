@@ -43,6 +43,7 @@ if ( ! class_exists( 'Boostify_Header_Footer_Builder' ) ) {
 
 		public function hooks() {
 			add_action( 'init', array( $this, 'post_types' ) );
+			add_action( 'init', array( $this, 'translate' ) );
 			add_action( 'plugins_loaded', array( $this, 'init' ) );
 			add_action( 'body_class', array( $this, 'body_ver' ) );
 			add_action( 'elementor/editor/wp_head', array( $this, 'enqueue_icon' ) );
@@ -85,15 +86,18 @@ if ( ! class_exists( 'Boostify_Header_Footer_Builder' ) ) {
 			);
 		}
 
+		public function translate() {
+			load_plugin_textdomain(
+				'boostify',
+				false,
+				BOOSTIFY_HEADER_FOOTER_PATH . 'languages/'
+			);
+		}
+
 		public function init() {
 			new Boostify_Header_Footer\Metabox();
 			new Boostify_Header_Footer\Template_Render();
 			new Boostify_Header_Footer\WP_Sub_Menu();
-			
-		}
-
-		public function test($value='') {
-			new Boostify_Header_Footer\Theme_Support();
 		}
 
 		/**
