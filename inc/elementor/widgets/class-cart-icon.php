@@ -105,7 +105,7 @@ class Cart_Icon extends Base_Widget {
 			$classes = implode( ' ', $classes );
 
 			?>
-			<div class="<?php echo esc_attr( $classes ); ?>" icon-content="<?php echo esc_attr( $icon ); ?>" icon-font="Ionicons">
+			<div class="<?php echo esc_attr( $classes ); ?>">
 
 			<?php
 			BoostifyWoocommerce::render_cart();
