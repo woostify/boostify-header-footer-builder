@@ -58,14 +58,38 @@ class Template_Render {
 	 */
 	public function enqueue_scripts() {
 		$builder_template = $this->builder_template();
-		if ( $builder_template ) {
+		if ( class_exists( '\Elementor\Plugin' ) ) {
+			$elementor = \Elementor\Plugin::instance();
+			$elementor->frontend->enqueue_styles();
+		}
+
+		if ( class_exists( '\ElementorPro\Plugin' ) ) {
+			$elementor_pro = \ElementorPro\Plugin::instance();
+			$elementor_pro->enqueue_styles();
+		}
+		$header_id = boostify_header_template_id();
+		$header_id = boostify_footer_template_id();
+
+		if ( self::get_header_template() ) {
 			if ( class_exists( '\Elementor\Plugin' ) ) {
 				$elementor = \Elementor\Plugin::instance();
 				$elementor->frontend->enqueue_styles();
 				if ( class_exists( '\Elementor\Core\Files\CSS\Post' ) ) {
 					$css_file = new \Elementor\Core\Files\CSS\Post( $builder_template );
 				} elseif ( class_exists( '\Elementor\Post_CSS_File' ) ) {
-					$css_file = new \Elementor\Post_CSS_File( $builder_template );
+					$css_file = new \Elementor\Post_CSS_File( $header_id );
+				}
+				$css_file->enqueue();
+			}
+		}
+		if ( self::get_footer_template() ) {
+			if ( class_exists( '\Elementor\Plugin' ) ) {
+				$elementor = \Elementor\Plugin::instance();
+				$elementor->frontend->enqueue_styles();
+				if ( class_exists( '\Elementor\Core\Files\CSS\Post' ) ) {
+					$css_file = new \Elementor\Core\Files\CSS\Post( $builder_template );
+				} elseif ( class_exists( '\Elementor\Post_CSS_File' ) ) {
+					$css_file = new \Elementor\Post_CSS_File( $footer_id );
 				}
 				$css_file->enqueue();
 			}
@@ -106,30 +130,6 @@ class Template_Render {
 		return self::$elementor_instance->frontend->get_builder_content_for_display( $id );
 	}
 
-	/**
-	 * Callback to shortcode.
-	 *
-	 * @param array $atts attributes for shortcode.
-	 */
-	protected function builder_template() {
-		$args = array(
-			'post_type'           => 'btf_builder',
-			'posts_per_page'      => -1,
-			'ignore_sticky_posts' => 1,
-		);
-
-		$template = new \WP_Query( $args );
-
-		if ( $template->have_posts() ) {
-			while ( $template->have_posts() ) {
-				$template->the_post();
-				return get_the_ID();
-			}
-			wp_reset_postdata();
-		} else {
-			return false;
-		}
-	}
 
 	/**
 	 * Header Template.

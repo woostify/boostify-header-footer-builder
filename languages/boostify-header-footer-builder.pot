@@ -29,27 +29,27 @@ msgstr ""
 msgid "Back"
 msgstr ""
 
-#: inc/admin/class-admin.php:164
+#: inc/admin/class-admin.php:156
 msgid "Choose Template Type"
 msgstr ""
 
-#: inc/admin/class-admin.php:168
+#: inc/admin/class-admin.php:160
 msgid "Name your template"
 msgstr ""
 
-#: inc/admin/class-admin.php:175
+#: inc/admin/class-admin.php:167
 msgid "Select the type of template you want to work on"
 msgstr ""
 
-#: inc/admin/class-admin.php:190, inc/admin/class-metabox.php:234, inc/admin/class-metabox.php:483, inc/admin/class-metabox.php:513
+#: inc/admin/class-admin.php:182, inc/admin/class-metabox.php:234, inc/admin/class-metabox.php:483, inc/admin/class-metabox.php:513
 msgid "Display On"
 msgstr ""
 
-#: inc/admin/class-admin.php:212, inc/admin/class-metabox.php:292, inc/admin/class-metabox.php:531
+#: inc/admin/class-admin.php:204, inc/admin/class-metabox.php:292, inc/admin/class-metabox.php:531
 msgid "Do Not Display On"
 msgstr ""
 
-#: inc/admin/class-admin.php:235
+#: inc/admin/class-admin.php:227
 msgid "Create Template"
 msgstr ""
 
