@@ -57,7 +57,7 @@ class Template_Render {
 	 * Enqueue styles and scripts.
 	 */
 	public function enqueue_scripts() {
-		$builder_template = $this->builder_template();
+
 		if ( class_exists( '\Elementor\Plugin' ) ) {
 			$elementor = \Elementor\Plugin::instance();
 			$elementor->frontend->enqueue_styles();
@@ -68,14 +68,14 @@ class Template_Render {
 			$elementor_pro->enqueue_styles();
 		}
 		$header_id = boostify_header_template_id();
-		$header_id = boostify_footer_template_id();
+		$footer_id = boostify_footer_template_id();
 
 		if ( self::get_header_template() ) {
 			if ( class_exists( '\Elementor\Plugin' ) ) {
 				$elementor = \Elementor\Plugin::instance();
 				$elementor->frontend->enqueue_styles();
 				if ( class_exists( '\Elementor\Core\Files\CSS\Post' ) ) {
-					$css_file = new \Elementor\Core\Files\CSS\Post( $builder_template );
+					$css_file = new \Elementor\Core\Files\CSS\Post( $header_id );
 				} elseif ( class_exists( '\Elementor\Post_CSS_File' ) ) {
 					$css_file = new \Elementor\Post_CSS_File( $header_id );
 				}
@@ -87,7 +87,7 @@ class Template_Render {
 				$elementor = \Elementor\Plugin::instance();
 				$elementor->frontend->enqueue_styles();
 				if ( class_exists( '\Elementor\Core\Files\CSS\Post' ) ) {
-					$css_file = new \Elementor\Core\Files\CSS\Post( $builder_template );
+					$css_file = new \Elementor\Core\Files\CSS\Post( $footer_id );
 				} elseif ( class_exists( '\Elementor\Post_CSS_File' ) ) {
 					$css_file = new \Elementor\Post_CSS_File( $footer_id );
 				}
