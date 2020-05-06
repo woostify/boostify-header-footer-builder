@@ -1083,9 +1083,6 @@ class Cart_Icon extends Base_Widget {
 				'label'     => __( 'Typography', 'boostify' ),
 				'scheme'    => Scheme_Typography::TYPOGRAPHY_1,
 				'selector'  => '{{WRAPPER}} .boostify-mini-cart__buttons .button:last-child',
-				'condition' => array(
-					'action' => 'click',
-				),
 			)
 		);
 	}

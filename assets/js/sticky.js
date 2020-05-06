@@ -1,26 +1,26 @@
-var $j = jQuery.noConflict();
+var $ = jQuery.noConflict();
 
-$j( window ).on( 'load', function() {
+$( window ).on( 'load', function() {
 	"use strict";
 	stickyHeader();
 
 });
 
 function stickyHeader() {
-	var $sticky = $j( '.boostify-sticky-yes' );
+	var $sticky = $( '.boostify-sticky-yes' );
 	if ( $sticky.length != 0 ) {
 		$sticky.each( function ( index ) {
-			var sticky = $j( this );
+			var sticky = $( this );
 			var copyElem = sticky.siblings('.elementor-section');
 			if ( copyElem.hasClass( 'elementor-sticky--active' ) || ( copyElem.hasClass( 'elementor-sticky--active' ) && copyElem.hasClass( 'she-header-yes' ) ) ) {
 				return;
 			}
-			var bodyTop = $j('body').offset().top;
+			var bodyTop = $('body').offset().top;
 			var top = sticky.offset().top;
 			var left = sticky.offset().left;
 			var width = sticky.width();
 			var height = sticky.height();
-			var widthScreen = $j(window).width();
+			var widthScreen = $(window).width();
 			var data = sticky.attr('data-settings');
 			data = JSON.parse(data);
 			var screen = data.bstick_on;
@@ -67,18 +67,17 @@ function stickyHeader() {
 					copy.css({
 						'visibility' : 'hidden',
 						'transition' : 'none 0s ease 0s',
-						// 'margin-top' : top + margin.unit
 					});
 				}
 
 				sticky.css({ 
+					'top' : top + 'px',
 					'position' : 'fixed',
 					'left' : left + 'px',
 					'width' : width + 'px',
-					// 'margin-top' : margin.size + margin.unit,
 				});
 				var copyMargin = top + margin.size;
-				if ( $j(window).scrollTop() > top ) {
+				if ( $(window).scrollTop() > top ) {
 					sticky.css({'top' : bodyTop + 'px' });
 					if ( menuColor && menuColor != '' ) {
 						sticky.find( '.boostify-menu > li > a' ).css({ 'color' : menuColor });
@@ -91,13 +90,16 @@ function stickyHeader() {
 					sticky.addClass('boostify-sticky--active');
 					sticky.css({'background-color' : data.bsticky_background });
 				} else {
-					if ( ( top - $j(window).scrollTop() ) > 0 ) {
-						sticky.css({'top': ( top - $j(window).scrollTop() ) + 'px'});
+					var defaultTop = copy.offset().top;
+					sticky.css( 'top', defaultTop + 'px');
+					if ( ( top - $(window).scrollTop() ) > 0 ) {
+						sticky.css({'top': ( top - $(window).scrollTop() ) + 'px'});
+						console.log( defaultTop );
 					}
 				}
 
-				$j(window).scroll(function() {
-					var scroll = $j(window).scrollTop();
+				$(window).scroll(function() {
+					var scroll = $(window).scrollTop();
 
 					if ( ( top - scroll ) >= 0 ) {
 						sticky.css({'top': ( top - scroll ) + 'px'});
@@ -125,12 +127,20 @@ function stickyHeader() {
 				} );
 			}
 
-			$j( window ).resize(
+			$( window ).resize(
 				function() {
-					width = $j( window ).width();
+					width = $( window ).width();
 					sticky.css( { 'width' : width + 'px' } );
-					var bodyTop = $j( 'body' ).offset().top;
+					var bodyTop = $( 'body' ).offset().top;
 					sticky.css( { 'top' : bodyTop + 'px' } );
+					if ( $(window).scrollTop() > top ) {
+						sticky.css({'top' : bodyTop + 'px' });
+					} else {
+						if ( ( top - $(window).scrollTop() ) > 0 ) {
+							sticky.css({'top': ( top - $(window).scrollTop() ) + 'px'});
+							// sticky.css({'top': 0 + 'px'});
+						}
+					}
 				}
 			);
 		} );
