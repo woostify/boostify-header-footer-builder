@@ -150,6 +150,8 @@ abstract class Nav_Menu extends Widget_Base {
 					'{{WRAPPER}} .boostify-menu > li > a' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 					'{{WRAPPER}} .boostify--hover-overline .boostify-menu>li:hover>a:before' => 'width: calc( 100% - {{RIGHT}}{{UNIT}} - {{LEFT}}{{UNIT}} );',
 					'{{WRAPPER}} .boostify--hover-underline .boostify-menu>li:hover>a:before' => 'width: calc( 100% - {{RIGHT}}{{UNIT}} - {{LEFT}}{{UNIT}} );',
+					'{{WRAPPER}} .boostify--hover-overline .boostify-menu>licurrent-menu-item>a:before' => 'width: calc( 100% - {{RIGHT}}{{UNIT}} - {{LEFT}}{{UNIT}} );',
+					'{{WRAPPER}} .boostify--hover-underline .boostify-menu>licurrent-menu-item>a:before' => 'width: calc( 100% - {{RIGHT}}{{UNIT}} - {{LEFT}}{{UNIT}} );',
 				),
 			)
 		);
@@ -220,6 +222,9 @@ abstract class Nav_Menu extends Widget_Base {
 					'{{WRAPPER}} .boostify-menu > li:hover > a' => 'color: {{VALUE}}',
 					'{{WRAPPER}} .boostify--hover-underline .boostify-menu > li:hover > a:before' => 'background-color: {{VALUE}}',
 					'{{WRAPPER}} .boostify--hover-overline .boostify-menu li a:before' => 'background-color: {{VALUE}}',
+					'{{WRAPPER}} .boostify-menu li.current-menu-item a' => 'color: {{VALUE}}',
+					'{{WRAPPER}} .boostify--hover-underline .boostify-menu > li.current-menu-item > a:before' => 'background-color: {{VALUE}}',
+					'{{WRAPPER}} .boostify--hover-overline .boostify-menu li a.current-menu-item > a:before' => 'background-color: {{VALUE}}',
 				),
 			)
 		);
