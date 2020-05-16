@@ -3,7 +3,7 @@
  * Plugin Name: Boostify Header Footer Builder
  * Plugin URI: https://boostifythemes.com
  * Description: Create Header and Footer for your site using Elementor Page Builder.
- * Version: 1.1.4
+ * Version: 1.1.5
  * Author: Woostify
  * Author URI: https://woostify.com
  * Text Domain: boostify
@@ -11,7 +11,7 @@
 
 define( 'BOOSTIFY_HEADER_FOOTER_PATH', plugin_dir_path( __FILE__ ) );
 define( 'BOOSTIFY_HEADER_FOOTER_URL', plugin_dir_url( __FILE__ ) );
-define( 'BOOSTIFY_HEADER_FOOTER_VER', '1.1.4' );
+define( 'BOOSTIFY_HEADER_FOOTER_VER', '1.1.5' );
 
 
 /**
@@ -28,7 +28,7 @@ function appsero_init_tracker_boostify_header_footer_builder() {
 	$client = new Appsero\Client( '745cf48e-22cd-49a0-abb5-3f225d08b708', 'Boostify Header Footer Builder for Elementor', __FILE__ );
 
 	// Active insights
-	$client->insights()->hide_notice()->init();
+	$client->insights()->init();
 
 }
 

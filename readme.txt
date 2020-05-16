@@ -5,7 +5,7 @@ Tags: elementor, header builder, footer builder, elementor header, sticky menu, 
 Requires at least: 4.0
 Requires PHP: 5.3
 Tested up to: 5.4
-Stable tag: 1.1.4
+Stable tag: 1.1.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -18,7 +18,7 @@ Boostify Header Footer Builder for Elementor is a powerful plugin that allows yo
 - Header
 - Footer
 
-= Pick Display Locations =
+## Pick Display Locations 
 
 A custom header & footer can be displayed on a specific page or all the pages from the custom field.
 
@@ -36,22 +36,24 @@ Not like other plugins, the plugin gives the built-in widgets for the header so 
 	<li><strong>Menu Cart</strong> - Support cart icon when using WooCommerce </li>
 </ul>
 
-= Sticky Header = 
+## Sticky Header 
 
 Build a sticky header is easily with the plugin. It offers enabling the sticky in mobile, tablet or desktop. 
 Uploading custom logo for sticky menu, change the background menu, all can be done via Elementor.
+[View Tutorial](https://www.loom.com/share/c069549ad20a41729cb43da1e3ab5e0a)
 
-= Mega Menu = 
+## Mega Menu 
 
 Build a mega menu is easyly with Elementor. Go to Boostify Header Footer builder -> Add new, in Type, select 'sub mega menu' option. 
 Then build this sub mega menu.
 To add it to the header layout, in the header builder, select Nav mega menu, in this widget, select sub mega menu that's in step one.
+[View Tutorial](https://www.loom.com/share/ff726f36bec64d67adcd78d63b8243c4)
 
-= Work With All Themes =
+## Work With All Themes 
 
 Boostify Header Footer Builder for Elementor works with all themes. For some themes, that use action/filter in the header.php, you can intergrade it with a hook.
 
-= Cart WooCommerce = 
+## Support WooCommerce 
 Create a cart icon is supported on the header. It offers 2 layout for the cart content such as mini cart and sidebar cart.
 It also supports Ajax add to cart feature
 
@@ -85,7 +87,7 @@ Let's get you started
 
 If you have any questions post in the [Plugin’s Forum](https://wordpress.org/support/plugin/boostify-header-footer-builder/ "Plugin’s Forum")
 
-## Privacy Policy
+== Privacy Policy ==
 Boostify Header Footer Builder for Elementor uses [Appsero](https://appsero.com) SDK to collect some telemetry data upon user's confirmation. This helps us to troubleshoot problems faster & make product improvements.
 
 Appsero SDK **does not gather any data by default.** The SDK only starts gathering basic telemetry data **when a user allows it via the admin notice**. We collect the data to ensure a great user experience for all our users.
@@ -97,6 +99,9 @@ Learn more about how [Appsero collects and uses this data](https://appsero.com/p
 == Changelog ==
 
 ## Changelog
+= 1.1.5 = 
+- Fix no active menu in Nav widget
+
 = 1.1.4 =
 - Optimize preloading
 - Fix retina logo
@@ -141,10 +146,10 @@ GNU GPL v2.0.
 
 == Frequently Asked Questions ==
 
-**Q1: Can I use this plugin with my theme?**
+**Q1: The preview could not be loaded. How can I fix?**
 
-**Ans:** Yes, it works with all the theme by default
+**Ans:** When you have this issue when edit with Elementor, try go to Settings -> Permalink, make sure select Post name and click Save change to reset permalink
 
-**Q1: I'm author of the theme. How Can I support it to my theme?**
+**Q2: How can I remove compatible message to fully support plugin?**
 
-**Ans:** Yes, please read the instruction [here] (https://github.com/woostify/boostify-header-footer-builder/wiki/Support-Boostify-Header-Footer-for-your-theme)
+**Ans:** Please follow the instruction [here](https://github.com/woostify/boostify-header-footer-builder/wiki/Support-Boostify-Header-Footer-for-your-theme)
