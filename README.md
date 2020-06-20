@@ -5,7 +5,7 @@ Tags: elementor, header builder, footer builder, elementor header, sticky menu, 
 Requires at least: 4.0
 Requires PHP: 5.3
 Tested up to: 5.4
-Stable tag: 1.1.5
+Stable tag: 1.1.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -99,6 +99,9 @@ Learn more about how [Appsero collects and uses this data](https://appsero.com/p
 == Changelog ==
 
 ## Changelog
+= 1.1.6 = 
+- Update Appsero client
+
 = 1.1.5 = 
 - Fix no active menu in Nav widget
 
