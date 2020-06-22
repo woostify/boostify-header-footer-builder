@@ -477,6 +477,9 @@ class Template {
 	 */
 	public function template_header_id() {
 		global $post;
+		if ( empty( $post ) ) {
+			return false;
+		}
 		$this->post_id    = $post->ID;
 		$this->post_title = get_post_type( $post->ID );
 		$page_type        = $this->page_type();
@@ -516,6 +519,9 @@ class Template {
 	 */
 	public function template_footer_id() {
 		global $post;
+		if ( empty( $post ) ) {
+			return false;
+		}
 		$post_id          = $post->ID;
 		$post_type        = get_post_type( $post->ID );
 		$this->post_id    = $post_id;

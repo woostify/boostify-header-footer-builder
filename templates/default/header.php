@@ -24,7 +24,10 @@
 	if ( function_exists( 'wp_body_open' ) ) {
 		wp_body_open();
 	}
-	?>
+	do_action( 'boostify_hf_header' );
+?>
+
 <div id="page" class="bhf-site">
 <?php
+
 do_action( 'boostify_hf_get_header' );

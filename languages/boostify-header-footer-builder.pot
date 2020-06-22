@@ -65,6 +65,10 @@ msgstr ""
 msgid "Select"
 msgstr ""
 
+#: inc/admin/class-metabox.php:395
+msgid "Nothing Found"
+msgstr ""
+
 #: inc/class-boostify-header-footer-builder.php:78
 msgid "Boostify Header Footer Builder"
 msgstr ""
@@ -255,6 +259,10 @@ msgstr ""
 
 #: inc/elementor/widgets/class-cart-icon.php:44, inc/elementor/widgets/class-cart-icon.php:130, inc/elementor/widgets/class-cart-icon.php:416
 msgid "Cart Icon"
+msgstr ""
+
+#: inc/elementor/widgets/class-cart-icon.php:122
+msgid "Please install or active plugin Woocommerce"
 msgstr ""
 
 #: inc/elementor/widgets/class-cart-icon.php:136, inc/elementor/widgets/class-cart-icon.php:519
@@ -607,6 +615,14 @@ msgstr ""
 
 #: inc/elementor/widgets/class-navigation.php:47
 msgid "Primary navigation"
+msgstr ""
+
+#: inc/elementor/widgets/class-navigation.php:60, inc/elementor/widgets/class-navigation.php:104
+msgid "Add a Primary Menu"
+msgstr ""
+
+#: inc/elementor/widgets/class-navigation.php:75, inc/elementor/widgets/class-site-logo.php:139
+msgid "Please go to customize choose logo for site"
 msgstr ""
 
 #: inc/elementor/widgets/class-navigation.php:123, inc/elementor/widgets/class-site-search.php:67
