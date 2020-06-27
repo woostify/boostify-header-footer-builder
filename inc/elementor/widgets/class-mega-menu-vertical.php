@@ -347,7 +347,7 @@ class Mega_Menu_Vertical extends Nav_Menu {
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .boostify-mega-menu-vertical--widget' => 'width: {{SIZE}}{{UNIT}};',
-					'{{WRAPPER}} .boostify-mega-menu-vertical--widget .boostify-mega-menu-vetical .sub-menu' => 'left: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .boostify-mega-menu-vertical--widget .boostify-mega-menu-vetical .sub-mega-menu' => 'left: {{SIZE}}{{UNIT}};',
 				),
 			)
 		);
@@ -369,6 +369,7 @@ class Mega_Menu_Vertical extends Nav_Menu {
 				'return_value' => 'yes',
 			)
 		);
+
 		$this->add_control(
 			'menu_mobile',
 			array(

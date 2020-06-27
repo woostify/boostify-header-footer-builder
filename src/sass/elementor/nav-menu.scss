@@ -436,6 +436,11 @@
 		flex-direction: column;
 		.sub-menu {
 			top: -49px;
+			left: 100%;
+			min-width: 270px;
+		}
+		.sub-mega-menu {
+			top: -49px;
 			left: 270px;
 			min-width: 270px;
 		}
