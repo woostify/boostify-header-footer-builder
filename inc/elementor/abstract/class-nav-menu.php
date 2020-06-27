@@ -183,7 +183,7 @@ abstract class Nav_Menu extends Widget_Base {
 				'type'      => Controls_Manager::COLOR,
 				'default'   => '#ffffff',
 				'selectors' => array(
-					'{{WRAPPER}} .boostify-mega-menu-vertical--widget .boostify-mega-menu-vetical' => 'background-color: {{VALUE}}',
+					'{{WRAPPER}} .boostify-menu > li > a' => 'background-color: {{VALUE}}',
 				),
 			)
 		);

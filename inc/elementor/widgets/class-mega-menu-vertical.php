@@ -381,7 +381,7 @@ class Mega_Menu_Vertical extends Nav_Menu {
 					'size' => 270,
 				),
 				'selectors' => array(
-					'{{WRAPPER}} .boostify-mega-menu-vertical--widget' => 'width: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .boostify-mega-menu-vertical--widget,{{WRAPPER}} .boostify-menu > li > a' => 'width: {{SIZE}}{{UNIT}};',
 					'{{WRAPPER}} .boostify-mega-menu-vertical--widget .boostify-mega-menu-vetical .sub-mega-menu' => 'left: {{SIZE}}{{UNIT}};',
 				),
 			)
