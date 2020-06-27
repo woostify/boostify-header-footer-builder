@@ -34,6 +34,10 @@
 		}
 	}
 
+	&>li.menu-item-has-mega {
+		position: inherit;
+	}
+
 	a {
 		line-height: 50px;
 		display: inline-block;
@@ -65,7 +69,6 @@
 
 		.boostify-menu-child {
 			left: 100%;
-
 		}
 
 	}
@@ -438,10 +441,14 @@
 			top: -49px;
 			left: 100%;
 			min-width: 270px;
+			.boostify-menu-child {
+				left: 100%;
+			}
 		}
 		.sub-mega-menu {
-			top: -49px;
+			top: 0;
 			left: 270px;
+			min-height: 300px;
 			min-width: 270px;
 		}
 
@@ -454,6 +461,18 @@
 					font-family: "Ionicons";
 					position: absolute;
 					right: 30px;
+				}
+			}
+		}
+
+		.menu-item-has-mega {
+			position: inherit;
+			&>a {
+				&:after {
+					content: '\f10a';
+					font-family: "Ionicons";
+					position: inherit;
+					margin-left: 100px;
 				}
 			}
 		}
