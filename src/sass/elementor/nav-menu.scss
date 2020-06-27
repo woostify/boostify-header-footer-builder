@@ -425,3 +425,62 @@
 		display: none;
 	}
 }
+
+// Mega Menu Vertical.
+.boostify-mega-menu-vertical--widget {
+	text-align: center;
+	height: 66px;
+	width: 270px;
+	.boostify-mega-menu-vetical {
+		display: flex;
+		flex-direction: column;
+		.sub-menu {
+			top: -49px;
+			left: 270px;
+			min-width: 270px;
+		}
+
+		.menu-item-has-children {
+			position: relative;
+
+			&>a {
+				&:after {
+					content: '\f10a';
+					font-family: "Ionicons";
+					position: absolute;
+					right: 30px;
+				}
+			}
+		}
+	}
+
+	.boostify-main-navigation {
+		display: none;
+
+		&.show {
+			display: block;
+			z-index: 99999;
+			ul li a {
+				z-index: 99999;
+			}
+		}
+	}
+
+	.boostify-menu-toggle-vertical {
+		width: 270px;
+		color: #ffffff;
+		margin-top: 20px;
+		margin-bottom: 18px;
+		background-color: #2a2c3c;
+		border: none;
+		border-left: 1px solid #4a4b59;
+		border-right: 1px solid #4a4b59;
+		.fa {
+			margin-left: 25px;
+		}
+
+		@media( max-width: 768px ) {
+			display: none;
+		}
+	}
+}

@@ -1,5 +1,5 @@
 /**
- * Mega Menu JS
+ * Mega Menu Vertical JS
  *
  * @package boostify
  */
@@ -8,19 +8,20 @@
 	'use strict';
 
 	/**
-	 * WidgetMegaMenu
+	 * WidgetMegaMenuVertical
 	 *
 	 * @param $scope The widget wrapper element as a jQuery element
 	 * @param $ The jQuery alias
 	 */
-	var WidgetMegaMenu = function ($scope, $) {
-		var main     = $scope.find( '.boostify-main-navigation' );
-		var sub      = main.find( '.sub-menu' );
-		var itemMega = main.find( '.menu-item-has-mega' );
-		var toggle   = $scope.find( '.boostify-menu-toggle' );
-		var nav      = $scope.find( '.boostify-menu-sidebar' );
-		var overlay  = $scope.find( '.boostify-overlay' );
-		var close    = $scope.find( '.boostify--close-menu-side-bar' );
+	var WidgetMegaMenuVertical = function ($scope, $) {
+		var main          = $scope.find( '.boostify-main-navigation' ),
+			sub           = main.find( '.sub-menu' ),
+			itemMega      = main.find( '.menu-item-has-mega' ),
+			toggle        = $scope.find( '.boostify-menu-toggle' ),
+			toggleVetical = $scope.find( '.boostify-menu-toggle-vertical' ),
+			nav           = $scope.find( '.boostify-menu-sidebar' ),
+			overlay       = $scope.find( '.boostify-overlay' ),
+			close         = $scope.find( '.boostify--close-menu-side-bar' );
 
 		sub.each(
 			function ( index ) {
@@ -32,47 +33,18 @@
 			}
 		);
 
-		// Set With Mega Menu.
-		megaWidth();
-
-		$( window ).resize(
-			function() {
-				megaWidth();
+		// Menu Vertical toggle.
+		toggleVetical.on(
+			'click',
+			function(e) {
+				e.preventDefault();
+				if ( main.hasClass( 'show' ) ) {
+					main.removeClass( 'show' );
+				} else {
+					main.addClass( 'show' );
+				}
 			}
 		);
-		function megaWidth() {
-			itemMega.each(
-				function( index ) {
-					var item  = $( this );
-					var mega  = item.find( '.boostify-mega-sub' );
-					var width = $( window ).width();
-					var left  = item.offset().left;
-					var padding, contentWith;
-					if ( item.hasClass( 'sub-width-default' ) ) {
-						contentWith = 500;
-						padding     = ( width - 500 ) / 2;
-						left        = padding - left;
-						mega.css( { 'left' : 'calc( ( 100% - 500px ) /2 )', 'width' : contentWith + 'px' } );
-					} else if ( item.hasClass( 'sub-width-container' ) ) {
-						if ( width > 1170 ) {
-							padding     = ( width - 1170 ) / 2;
-							contentWith = 1170;
-							left        = padding - left;
-
-						} else {
-							padding     = 15;
-							left        = padding - left;
-							contentWith = ( width - 30 );
-
-						}
-						mega.css( { 'left' : left + 'px', 'width' : contentWith + 'px' } );
-					} else {
-						mega.css( { 'left' : '-' + left + 'px', 'width' : width } );
-					}
-
-				}
-			);
-		}
 
 		// Show Menu Mobile.
 		toggle.on(
@@ -147,7 +119,7 @@
 	$( window ).on(
 		'elementor/frontend/init',
 		function () {
-			elementorFrontend.hooks.addAction( 'frontend/element_ready/ht-hf-mega-menu.default', WidgetMegaMenu );
+			elementorFrontend.hooks.addAction( 'frontend/element_ready/ht-hf-mega-menu-vertical.default', WidgetMegaMenuVertical );
 		}
 	);
 } )( jQuery );

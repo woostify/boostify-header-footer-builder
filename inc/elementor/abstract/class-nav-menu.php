@@ -9,7 +9,7 @@ use Elementor\Scheme_Typography;
 use Elementor\Widget_Base;
 
 if ( ! defined( 'ABSPATH' ) ) {
-	exit; // Exit if accessed directly
+	exit; // Exit if accessed directly.
 }
 
 abstract class Nav_Menu extends Widget_Base {
@@ -58,12 +58,138 @@ abstract class Nav_Menu extends Widget_Base {
 		$this->menu_style();
 		$this->submenu_style();
 		$this->menu_sidebar_style();
+		$this->style_mega_menu_vertical();
 	}
 
 	/**
 	 * Get Settings For Main Menu
 	 */
 	abstract protected function main_menu();
+
+	/**
+	 * Get Settings Style Vertical Mega Menu
+	 */
+	protected function style_mega_menu_vertical() {
+		$this->start_controls_section(
+			'title_style',
+			array(
+				'label' => esc_html__( 'Button Mega Menu', 'boostify' ),
+				'tab'   => Controls_Manager::TAB_STYLE,
+			)
+		);
+
+		$this->add_group_control(
+			Group_Control_Typography::get_type(),
+			array(
+				'name'     => 'title_typo',
+				'selector' => '{{WRAPPER}} .boostify-mega-menu-vertical--widget .boostify-menu-toggle-vertical',
+			)
+		);
+
+		$this->add_control(
+			'title_color',
+			array(
+				'label'     => esc_html__( 'Color', 'boostify' ),
+				'type'      => Controls_Manager::COLOR,
+				'default'   => '#ffffff',
+				'selectors' => array(
+					'{{WRAPPER}} .boostify-mega-menu-vertical--widget .boostify-menu-toggle-vertical' => 'color: {{VALUE}}',
+				),
+			)
+		);
+
+		$this->add_control(
+			'border_color',
+			array(
+				'label'     => esc_html__( 'Border Color', 'boostify' ),
+				'type'      => Controls_Manager::COLOR,
+				'default'   => '#4a4b59',
+				'selectors' => array(
+					'{{WRAPPER}} .boostify-mega-menu-vertical--widget .boostify-menu-toggle-vertical' => 'border-color: {{VALUE}}',
+				),
+			)
+		);
+
+		$this->add_responsive_control(
+			'bg_button_color',
+			array(
+				'label'     => esc_html__( 'Background Button Color', 'boostify' ),
+				'type'      => Controls_Manager::COLOR,
+				'default'   => '#fc5a34',
+				'selectors' => array(
+					'{{WRAPPER}} .boostify-mega-menu-vertical--widget' => 'background-color: {{VALUE}}',
+				),
+			)
+		);
+
+		$this->add_control(
+			'bg_title_color',
+			array(
+				'label'     => esc_html__( 'Background Title Color', 'boostify' ),
+				'type'      => Controls_Manager::COLOR,
+				'default'   => '#fc5a34',
+				'selectors' => array(
+					'{{WRAPPER}} .boostify-mega-menu-vertical--widget .boostify-menu-toggle-vertical' => 'background-color: {{VALUE}}',
+				),
+			)
+		);
+
+		$this->end_controls_section();
+
+		$this->start_controls_section(
+			'submenu_vertical_style',
+			array(
+				'label' => esc_html__( 'Submenu', 'boostify' ),
+				'tab'   => Controls_Manager::TAB_STYLE,
+			)
+		);
+
+		$this->add_control(
+			'submenu_vertical_space',
+			array(
+				'label'     => esc_html__( 'Space', 'boostify' ),
+				'type'      => Controls_Manager::SLIDER,
+				'range'     => array(
+					'px' => array(
+						'min' => 0,
+						'max' => 30,
+					),
+				),
+				'default'   => array(
+					'size' => 0,
+				),
+				'selectors' => array(
+					'{{WRAPPER}} .boostify-mega-menu-vertical--widget .boostify-mega-menu-vetical' => 'margin-top: {{SIZE}}{{UNIT}};',
+				),
+			)
+		);
+
+		$this->add_control(
+			'border_radius',
+			array(
+				'label'      => __( 'Border Radius', 'boostify' ),
+				'type'       => Controls_Manager::DIMENSIONS,
+				'size_units' => array( 'px' ),
+				'selectors'  => array(
+					'{{WRAPPER}} .boostify-mega-menu-vertical--widget .boostify-mega-menu-vetical' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				),
+			)
+		);
+
+		$this->add_control(
+			'sub_bg_color',
+			array(
+				'label'     => esc_html__( 'Background Color', 'boostify' ),
+				'type'      => Controls_Manager::COLOR,
+				'default'   => '#ffffff',
+				'selectors' => array(
+					'{{WRAPPER}} .boostify-mega-menu-vertical--widget .boostify-mega-menu-vetical' => 'background-color: {{VALUE}}',
+				),
+			)
+		);
+
+		$this->end_controls_section();
+	}
 
 	/**
 	 * Get Settings For Mobile Menu
