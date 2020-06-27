@@ -188,6 +188,15 @@ abstract class Nav_Menu extends Widget_Base {
 			)
 		);
 
+		$this->add_group_control(
+			\Elementor\Group_Control_Border::get_type(),
+			array(
+				'name'     => 'sub_border_vertical',
+				'label'    => __( 'Border Submenu Vertical', 'boostify' ),
+				'selector' => '{{WRAPPER}} .boostify-mega-menu-vertical--widget .boostify-mega-menu-vetical',
+			)
+		);
+
 		$this->end_controls_section();
 	}
 

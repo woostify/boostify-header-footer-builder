@@ -222,6 +222,16 @@ class Mega_Menu_Vertical extends Nav_Menu {
 		);
 
 		$this->add_control(
+			'text_button',
+			array(
+				'label'       => esc_html__( 'Text Button', 'boostify' ),
+				'type'        => Controls_Manager::TEXT,
+				'placeholder' => esc_html__( 'Shop Departments', 'boostify' ),
+				'default'     => esc_html__( 'Shop Departments', 'boostify' ),
+			)
+		);
+
+		$this->add_control(
 			'icon_position',
 			array(
 				'label'   => __( 'Icon Position', 'boostify' ),
@@ -334,7 +344,7 @@ class Mega_Menu_Vertical extends Nav_Menu {
 		$this->add_responsive_control(
 			'width_button',
 			array(
-				'label'     => esc_html__( 'Width', 'apar' ),
+				'label'     => esc_html__( 'Width', 'boostify' ),
 				'type'      => Controls_Manager::SLIDER,
 				'range'     => array(
 					'px' => array(
@@ -515,7 +525,10 @@ class Mega_Menu_Vertical extends Nav_Menu {
 		}
 		?>
 		<div class="boostify-mega-menu-vertical--widget">
-			<?php $this->get_toggle_vertical(); ?>
+			<button class="boostify-menu-toggle-vertical">
+				<?php echo esc_html( $settings['text_button'] ); ?>
+				<i class="fa fa-caret-down"></i>
+			</button>
 			<nav class="<?php echo esc_attr( $classes ); ?> <?php echo esc_attr( $show_sub_vertical ); ?>">
 				<?php $this->get_menu_site( $settings['menu'] ); ?>
 			</nav>
@@ -545,23 +558,6 @@ class Mega_Menu_Vertical extends Nav_Menu {
 		<div class="boostify-overlay">
 			<a href="#" class="boostify--close-menu-side-bar ion-android-close"></a>
 		</div>
-		<?php
-	}
-
-	/**
-	 * Render toggle vertical
-	 *
-	 * Written in PHP and used to generate the final HTML.
-	 *
-	 * @since 1.2.0
-	 * @access protected
-	 */
-	protected function get_toggle_vertical() {
-		?>
-		<button class="boostify-menu-toggle-vertical">
-			<?php echo esc_html__( 'Shop Departments', 'boostify' ); ?>
-			<i class="fa fa-caret-down"></i>
-		</button>
 		<?php
 	}
 }
