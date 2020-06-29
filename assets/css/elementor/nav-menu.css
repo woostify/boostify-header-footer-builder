@@ -397,6 +397,10 @@
   min-width: 270px;
 }
 
+.boostify-mega-menu-vertical--widget .boostify-mega-menu-vetical .sub-mega-menu .elementor-icon-list-items .elementor-icon-list-item a {
+  padding: 8px 0;
+}
+
 .boostify-mega-menu-vertical--widget .boostify-mega-menu-vetical .menu-item-has-children {
   position: relative;
 }
@@ -412,11 +416,15 @@
   position: inherit;
 }
 
+.boostify-mega-menu-vertical--widget .boostify-mega-menu-vetical .menu-item-has-mega > a {
+  position: relative;
+}
+
 .boostify-mega-menu-vertical--widget .boostify-mega-menu-vetical .menu-item-has-mega > a:after {
   content: '\f10a';
   font-family: "Ionicons";
-  position: inherit;
-  margin-left: 100px;
+  position: absolute;
+  right: 30px;
 }
 
 .boostify-mega-menu-vertical--widget .boostify-main-navigation {

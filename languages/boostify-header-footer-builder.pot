@@ -209,7 +209,7 @@ msgstr ""
 msgid "Toggle Icon Color"
 msgstr ""
 
-#: inc/elementor/abstract/class-nav-menu.php:726, inc/elementor/widgets/class-mega-menu-vertical.php:182, inc/elementor/widgets/class-mega-menu-vertical.php:209, inc/elementor/widgets/class-mega-menu.php:152, inc/elementor/widgets/class-mega-menu.php:179, inc/elementor/widgets/class-navigation.php:130
+#: inc/elementor/abstract/class-nav-menu.php:726, inc/elementor/widgets/class-mega-menu-vertical.php:207, inc/elementor/widgets/class-mega-menu-vertical.php:234, inc/elementor/widgets/class-mega-menu.php:152, inc/elementor/widgets/class-mega-menu.php:179, inc/elementor/widgets/class-navigation.php:130
 msgid "Menu"
 msgstr ""
 
@@ -485,7 +485,7 @@ msgstr ""
 msgid "https://your-link.com"
 msgstr ""
 
-#: inc/elementor/widgets/class-image-retina.php:180, inc/elementor/widgets/class-mega-menu-vertical.php:157, inc/elementor/widgets/class-mega-menu-vertical.php:347, inc/elementor/widgets/class-mega-menu.php:133
+#: inc/elementor/widgets/class-image-retina.php:180, inc/elementor/widgets/class-mega-menu-vertical.php:157, inc/elementor/widgets/class-mega-menu-vertical.php:372, inc/elementor/widgets/class-mega-menu.php:133
 msgid "Width"
 msgstr ""
 
@@ -557,11 +557,11 @@ msgstr ""
 msgid "Have Sub Menu"
 msgstr ""
 
-#: inc/elementor/widgets/class-mega-menu-vertical.php:118, inc/elementor/widgets/class-mega-menu-vertical.php:339, inc/elementor/widgets/class-mega-menu-vertical.php:377, inc/elementor/widgets/class-mega-menu.php:94, inc/elementor/widgets/class-mega-menu.php:304
+#: inc/elementor/widgets/class-mega-menu-vertical.php:118, inc/elementor/widgets/class-mega-menu-vertical.php:364, inc/elementor/widgets/class-mega-menu-vertical.php:402, inc/elementor/widgets/class-mega-menu.php:94, inc/elementor/widgets/class-mega-menu.php:304
 msgid "Yes"
 msgstr ""
 
-#: inc/elementor/widgets/class-mega-menu-vertical.php:119, inc/elementor/widgets/class-mega-menu-vertical.php:338, inc/elementor/widgets/class-mega-menu-vertical.php:378, inc/elementor/widgets/class-mega-menu.php:95, inc/elementor/widgets/class-mega-menu.php:305
+#: inc/elementor/widgets/class-mega-menu-vertical.php:119, inc/elementor/widgets/class-mega-menu-vertical.php:363, inc/elementor/widgets/class-mega-menu-vertical.php:403, inc/elementor/widgets/class-mega-menu.php:95, inc/elementor/widgets/class-mega-menu.php:305
 msgid "No"
 msgstr ""
 
@@ -573,63 +573,63 @@ msgstr ""
 msgid "Sub Mega Menu"
 msgstr ""
 
-#: inc/elementor/widgets/class-mega-menu-vertical.php:195, inc/elementor/widgets/class-mega-menu.php:165
-msgid "Sub Menu Of"
-msgstr ""
-
-#: inc/elementor/widgets/class-mega-menu-vertical.php:197, inc/elementor/widgets/class-mega-menu.php:167
-msgid "Enter parent menu name Ex: Home"
-msgstr ""
-
-#: inc/elementor/widgets/class-mega-menu-vertical.php:202, inc/elementor/widgets/class-mega-menu.php:172
-msgid "Enter the name of the menu item you want to get the sub menu"
-msgstr ""
-
-#: inc/elementor/widgets/class-mega-menu-vertical.php:215, inc/elementor/widgets/class-mega-menu.php:185
-msgid "Menu Item 1"
-msgstr ""
-
-#: inc/elementor/widgets/class-mega-menu-vertical.php:218, inc/elementor/widgets/class-mega-menu.php:188
-msgid "Menu Item 2"
-msgstr ""
-
-#: inc/elementor/widgets/class-mega-menu-vertical.php:227
-msgid "Text Button"
-msgstr ""
-
-#: inc/elementor/widgets/class-mega-menu-vertical.php:229, inc/elementor/widgets/class-mega-menu-vertical.php:230
-msgid "Shop Departments"
-msgstr ""
-
-#: inc/elementor/widgets/class-mega-menu-vertical.php:237, inc/elementor/widgets/class-mega-menu.php:197
+#: inc/elementor/widgets/class-mega-menu-vertical.php:182, inc/elementor/widgets/class-mega-menu-vertical.php:262, inc/elementor/widgets/class-mega-menu.php:197
 msgid "Icon Position"
 msgstr ""
 
-#: inc/elementor/widgets/class-mega-menu-vertical.php:250, inc/elementor/widgets/class-mega-menu-vertical.php:272, inc/elementor/widgets/class-mega-menu.php:210, inc/elementor/widgets/class-mega-menu.php:232
+#: inc/elementor/widgets/class-mega-menu-vertical.php:220, inc/elementor/widgets/class-mega-menu.php:165
+msgid "Sub Menu Of"
+msgstr ""
+
+#: inc/elementor/widgets/class-mega-menu-vertical.php:222, inc/elementor/widgets/class-mega-menu.php:167
+msgid "Enter parent menu name Ex: Home"
+msgstr ""
+
+#: inc/elementor/widgets/class-mega-menu-vertical.php:227, inc/elementor/widgets/class-mega-menu.php:172
+msgid "Enter the name of the menu item you want to get the sub menu"
+msgstr ""
+
+#: inc/elementor/widgets/class-mega-menu-vertical.php:240, inc/elementor/widgets/class-mega-menu.php:185
+msgid "Menu Item 1"
+msgstr ""
+
+#: inc/elementor/widgets/class-mega-menu-vertical.php:243, inc/elementor/widgets/class-mega-menu.php:188
+msgid "Menu Item 2"
+msgstr ""
+
+#: inc/elementor/widgets/class-mega-menu-vertical.php:252
+msgid "Text Button"
+msgstr ""
+
+#: inc/elementor/widgets/class-mega-menu-vertical.php:254, inc/elementor/widgets/class-mega-menu-vertical.php:255
+msgid "Shop Departments"
+msgstr ""
+
+#: inc/elementor/widgets/class-mega-menu-vertical.php:275, inc/elementor/widgets/class-mega-menu-vertical.php:297, inc/elementor/widgets/class-mega-menu.php:210, inc/elementor/widgets/class-mega-menu.php:232
 msgid "Icon Space"
 msgstr ""
 
-#: inc/elementor/widgets/class-mega-menu-vertical.php:294, inc/elementor/widgets/class-mega-menu.php:254, inc/elementor/widgets/class-navigation.php:142, inc/elementor/widgets/class-site-logo.php:96, inc/elementor/widgets/class-site-search.php:133
+#: inc/elementor/widgets/class-mega-menu-vertical.php:319, inc/elementor/widgets/class-mega-menu.php:254, inc/elementor/widgets/class-navigation.php:142, inc/elementor/widgets/class-site-logo.php:96, inc/elementor/widgets/class-site-search.php:133
 msgid "Align"
 msgstr ""
 
-#: inc/elementor/widgets/class-mega-menu-vertical.php:320, inc/elementor/widgets/class-mega-menu.php:280, inc/elementor/widgets/class-navigation.php:168
+#: inc/elementor/widgets/class-mega-menu-vertical.php:345, inc/elementor/widgets/class-mega-menu.php:280, inc/elementor/widgets/class-navigation.php:168
 msgid "Pointer"
 msgstr ""
 
-#: inc/elementor/widgets/class-mega-menu-vertical.php:335
+#: inc/elementor/widgets/class-mega-menu-vertical.php:360
 msgid "Show Menu Vertical"
 msgstr ""
 
-#: inc/elementor/widgets/class-mega-menu-vertical.php:375, inc/elementor/widgets/class-mega-menu.php:302
+#: inc/elementor/widgets/class-mega-menu-vertical.php:400, inc/elementor/widgets/class-mega-menu.php:302
 msgid "Use Menu Site"
 msgstr ""
 
-#: inc/elementor/widgets/class-mega-menu-vertical.php:386, inc/elementor/widgets/class-mega-menu.php:312
+#: inc/elementor/widgets/class-mega-menu-vertical.php:411, inc/elementor/widgets/class-mega-menu.php:312
 msgid "Menu Mobile"
 msgstr ""
 
-#: inc/elementor/widgets/class-mega-menu-vertical.php:540, inc/elementor/widgets/class-mega-menu.php:459, inc/elementor/widgets/class-navigation.php:92
+#: inc/elementor/widgets/class-mega-menu-vertical.php:565, inc/elementor/widgets/class-mega-menu.php:459, inc/elementor/widgets/class-navigation.php:92
 msgid "Dropdown navigation"
 msgstr ""
 

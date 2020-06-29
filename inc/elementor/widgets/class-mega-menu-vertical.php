@@ -163,35 +163,10 @@ class Mega_Menu_Vertical extends Nav_Menu {
 					),
 				),
 				'default'   => array(
-					'size' => 270,
+					'size' => 918,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .boostify-menu .boostify-menu-child .sub-menu.sub-mega-menu' => 'width: {{SIZE}}{{UNIT}};',
-				),
-				'condition' => array(
-					'has_sub'   => 'yes',
-					'sub_type'  => 'mega',
-					'sub_menu!' => 'no',
-				),
-			)
-		);
-
-		$repeater->add_control(
-			'icon_space_megamenu',
-			array(
-				'label'     => __( 'Icon Position', 'boostify' ),
-				'type'      => Controls_Manager::SLIDER,
-				'range'     => array(
-					'px' => array(
-						'min' => 0,
-						'max' => 110,
-					),
-				),
-				'default'   => array(
-					'size' => 100,
-				),
-				'selectors' => array(
-					'{{WRAPPER}} .boostify-mega-menu-vertical--widget .boostify-mega-menu-vetical .menu-item-has-mega > a:after' => 'margin-left: {{SIZE}}{{UNIT}};',
 				),
 				'condition' => array(
 					'has_sub'   => 'yes',

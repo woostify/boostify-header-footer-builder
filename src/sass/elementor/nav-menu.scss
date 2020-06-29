@@ -450,6 +450,13 @@
 			left: 270px;
 			min-height: 300px;
 			min-width: 270px;
+			.elementor-icon-list-items {
+				.elementor-icon-list-item {
+					a {
+						padding: 8px 0;
+					}
+				}
+			}
 		}
 
 		.menu-item-has-children {
@@ -468,11 +475,13 @@
 		.menu-item-has-mega {
 			position: inherit;
 			&>a {
+				position: relative;
+				
 				&:after {
 					content: '\f10a';
 					font-family: "Ionicons";
-					position: inherit;
-					margin-left: 100px;
+					position: absolute;
+					right: 30px;
 				}
 			}
 		}
