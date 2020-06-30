@@ -147,7 +147,7 @@ abstract class Nav_Menu extends Widget_Base {
 		$this->add_control(
 			'submenu_vertical_space',
 			array(
-				'label'     => esc_html__( 'Space', 'boostify' ),
+				'label'     => esc_html__( 'Space Top', 'boostify' ),
 				'type'      => Controls_Manager::SLIDER,
 				'range'     => array(
 					'px' => array(
@@ -160,6 +160,27 @@ abstract class Nav_Menu extends Widget_Base {
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .boostify-mega-menu-vertical--widget .boostify-mega-menu-vetical' => 'margin-top: {{SIZE}}{{UNIT}};',
+				),
+			)
+		);
+
+		$this->add_control(
+			'padding_submenu_vertical',
+			array(
+				'label'     => __( 'Space Top & Bottom Submenu', 'boostify' ),
+				'type'      => Controls_Manager::SLIDER,
+				'range'     => array(
+					'px' => array(
+						'min' => 0,
+						'max' => 50,
+					),
+				),
+				'default'   => array(
+					'size' => 0,
+				),
+				'selectors' => array(
+					'{{WRAPPER}} .boostify-menu > li:first-child a' => 'padding-top: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .boostify-menu > li:last-child' => 'padding-bottom: {{SIZE}}{{UNIT}};',
 				),
 			)
 		);
