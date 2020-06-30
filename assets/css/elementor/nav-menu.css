@@ -431,13 +431,14 @@
   display: none;
 }
 
-.boostify-mega-menu-vertical--widget .boostify-main-navigation.show {
-  display: block;
-  z-index: 99999;
-}
-
-.boostify-mega-menu-vertical--widget .boostify-main-navigation.show ul li a {
-  z-index: 99999;
+@media (min-width: 780px) {
+  .boostify-mega-menu-vertical--widget .boostify-main-navigation.show {
+    display: block;
+    z-index: 99999;
+  }
+  .boostify-mega-menu-vertical--widget .boostify-main-navigation.show ul li a {
+    z-index: 99999;
+  }
 }
 
 .boostify-mega-menu-vertical--widget .boostify-menu-toggle-vertical {
