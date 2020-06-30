@@ -179,8 +179,8 @@ abstract class Nav_Menu extends Widget_Base {
 					'size' => 0,
 				),
 				'selectors' => array(
-					'{{WRAPPER}} .boostify-menu > li:first-child a' => 'padding-top: {{SIZE}}{{UNIT}};',
-					'{{WRAPPER}} .boostify-menu > li:last-child' => 'padding-bottom: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .boostify-mega-menu-vetical > .menu-item-has-mega:first-child > a' => 'padding-top: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .boostify-mega-menu-vetical > .menu-item-has-mega:last-child > a' => 'padding-bottom: {{SIZE}}{{UNIT}};',
 				),
 			)
 		);
