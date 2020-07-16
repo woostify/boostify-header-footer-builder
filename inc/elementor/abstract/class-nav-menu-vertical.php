@@ -1,4 +1,9 @@
 <?php
+/**
+ * Nav Menu Vertical
+ *
+ * @package boostify
+ */
 
 namespace Boostify_Header_Footer;
 
@@ -12,7 +17,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
-abstract class Nav_Menu extends Widget_Base {
+/**
+ * Nav Menu Vertical
+ */
+abstract class Nav_Menu_Vertical extends Widget_Base {
 
 	/**
 	 * Retrieve the widget icon.
@@ -58,12 +66,168 @@ abstract class Nav_Menu extends Widget_Base {
 		$this->menu_style();
 		$this->submenu_style();
 		$this->menu_sidebar_style();
+		$this->style_mega_menu_vertical();
 	}
 
 	/**
 	 * Get Settings For Main Menu
 	 */
 	abstract protected function main_menu();
+
+	/**
+	 * Get Settings Style Vertical Mega Menu
+	 */
+	protected function style_mega_menu_vertical() {
+		$this->start_controls_section(
+			'title_style',
+			array(
+				'label' => esc_html__( 'Button Mega Menu', 'boostify' ),
+				'tab'   => Controls_Manager::TAB_STYLE,
+			)
+		);
+
+		$this->add_group_control(
+			Group_Control_Typography::get_type(),
+			array(
+				'name'     => 'title_typo',
+				'selector' => '{{WRAPPER}} .boostify-mega-menu-vertical--widget .boostify-menu-toggle-vertical',
+			)
+		);
+
+		$this->add_control(
+			'title_color',
+			array(
+				'label'     => esc_html__( 'Color', 'boostify' ),
+				'type'      => Controls_Manager::COLOR,
+				'default'   => '#ffffff',
+				'selectors' => array(
+					'{{WRAPPER}} .boostify-mega-menu-vertical--widget .boostify-menu-toggle-vertical' => 'color: {{VALUE}}',
+				),
+			)
+		);
+
+		$this->add_control(
+			'border_color',
+			array(
+				'label'     => esc_html__( 'Border Color', 'boostify' ),
+				'type'      => Controls_Manager::COLOR,
+				'default'   => '#4a4b59',
+				'selectors' => array(
+					'{{WRAPPER}} .boostify-mega-menu-vertical--widget .boostify-menu-toggle-vertical' => 'border-color: {{VALUE}}',
+				),
+			)
+		);
+
+		$this->add_responsive_control(
+			'bg_button_color',
+			array(
+				'label'     => esc_html__( 'Background Button Color', 'boostify' ),
+				'type'      => Controls_Manager::COLOR,
+				'default'   => '#fc5a34',
+				'selectors' => array(
+					'{{WRAPPER}} .boostify-mega-menu-vertical--widget' => 'background-color: {{VALUE}}',
+				),
+			)
+		);
+
+		$this->add_control(
+			'bg_title_color',
+			array(
+				'label'     => esc_html__( 'Background Title Color', 'boostify' ),
+				'type'      => Controls_Manager::COLOR,
+				'default'   => '#fc5a34',
+				'selectors' => array(
+					'{{WRAPPER}} .boostify-mega-menu-vertical--widget .boostify-menu-toggle-vertical' => 'background-color: {{VALUE}}',
+				),
+			)
+		);
+
+		$this->end_controls_section();
+
+		$this->start_controls_section(
+			'submenu_vertical_style',
+			array(
+				'label' => esc_html__( 'Submenu', 'boostify' ),
+				'tab'   => Controls_Manager::TAB_STYLE,
+			)
+		);
+
+		$this->add_control(
+			'submenu_vertical_space',
+			array(
+				'label'     => esc_html__( 'Space Top', 'boostify' ),
+				'type'      => Controls_Manager::SLIDER,
+				'range'     => array(
+					'px' => array(
+						'min' => 0,
+						'max' => 30,
+					),
+				),
+				'default'   => array(
+					'size' => 0,
+				),
+				'selectors' => array(
+					'{{WRAPPER}} .boostify-mega-menu-vertical--widget .boostify-mega-menu-vetical' => 'margin-top: {{SIZE}}{{UNIT}};',
+				),
+			)
+		);
+
+		$this->add_control(
+			'padding_submenu_vertical',
+			array(
+				'label'     => __( 'Space Top & Bottom Submenu', 'boostify' ),
+				'type'      => Controls_Manager::SLIDER,
+				'range'     => array(
+					'px' => array(
+						'min' => 0,
+						'max' => 50,
+					),
+				),
+				'default'   => array(
+					'size' => 0,
+				),
+				'selectors' => array(
+					'{{WRAPPER}} .boostify-mega-menu-vetical > .menu-item-has-mega:first-child > a' => 'padding-top: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .boostify-mega-menu-vetical > .menu-item-has-mega:last-child > a' => 'padding-bottom: {{SIZE}}{{UNIT}};',
+				),
+			)
+		);
+
+		$this->add_control(
+			'border_radius',
+			array(
+				'label'      => __( 'Border Radius', 'boostify' ),
+				'type'       => Controls_Manager::DIMENSIONS,
+				'size_units' => array( 'px' ),
+				'selectors'  => array(
+					'{{WRAPPER}} .boostify-mega-menu-vertical--widget .boostify-mega-menu-vetical' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				),
+			)
+		);
+
+		$this->add_control(
+			'sub_bg_color',
+			array(
+				'label'     => esc_html__( 'Background Color', 'boostify' ),
+				'type'      => Controls_Manager::COLOR,
+				'default'   => '#ffffff',
+				'selectors' => array(
+					'{{WRAPPER}} .boostify-menu > li > a' => 'background-color: {{VALUE}}',
+				),
+			)
+		);
+
+		$this->add_group_control(
+			\Elementor\Group_Control_Border::get_type(),
+			array(
+				'name'     => 'sub_border_vertical',
+				'label'    => __( 'Border Submenu Vertical', 'boostify' ),
+				'selector' => '{{WRAPPER}} .boostify-mega-menu-vertical--widget .boostify-mega-menu-vetical',
+			)
+		);
+
+		$this->end_controls_section();
+	}
 
 	/**
 	 * Get Settings For Mobile Menu
@@ -187,6 +351,9 @@ abstract class Nav_Menu extends Widget_Base {
 		$this->end_controls_section();
 	}
 
+	/**
+	 * Menu style nornal
+	 */
 	protected function menu_style_nornal() {
 		$this->add_control(
 			'menucolor',
@@ -211,6 +378,9 @@ abstract class Nav_Menu extends Widget_Base {
 		);
 	}
 
+	/**
+	 * Menu style hover
+	 */
 	protected function menu_style_hover() {
 		$this->add_control(
 			'menu_color_hover',
@@ -367,6 +537,9 @@ abstract class Nav_Menu extends Widget_Base {
 		$this->end_controls_section();
 	}
 
+	/**
+	 * Submenu style nornal
+	 */
 	protected function submenu_style_nornal() {
 		$this->add_control(
 			'color_submenu',
@@ -391,6 +564,9 @@ abstract class Nav_Menu extends Widget_Base {
 		);
 	}
 
+	/**
+	 * Submenu style hover
+	 */
 	public function submenu_style_hover() {
 		$this->add_control(
 			'color_submenu_hover',
@@ -466,6 +642,9 @@ abstract class Nav_Menu extends Widget_Base {
 		$this->end_controls_section();
 	}
 
+	/**
+	 * Menu sidebar style nornal
+	 */
 	public function menu_sidebar_style_nornal() {
 		$this->add_control(
 			'color_toggle',
@@ -504,6 +683,9 @@ abstract class Nav_Menu extends Widget_Base {
 		);
 	}
 
+	/**
+	 * Menu sidebar style hover
+	 */
 	public function menu_sidebar_style_hover() {
 		$this->add_control(
 			'color_toggle_hover',
@@ -539,8 +721,6 @@ abstract class Nav_Menu extends Widget_Base {
 
 	/**
 	 * Menu Class
-	 * @param array $settings in elementor.
-	 * @return array $classes navigation
 	 */
 	protected function nav_class() {
 		$settings = $this->get_settings_for_display();
@@ -566,8 +746,9 @@ abstract class Nav_Menu extends Widget_Base {
 
 	/**
 	 * Get Sub Mega Menu Class
-	 * @param int $post_id
-	 * @return object $sub menu default layout
+	 *
+	 * @param  [type] $menu_id  type.
+	 * @param  [type] $child_of type.
 	 */
 	protected function sub_menu_default( $menu_id, $child_of ) {
 		$args = array(
@@ -584,6 +765,11 @@ abstract class Nav_Menu extends Widget_Base {
 		wp_nav_menu( $args );
 	}
 
+	/**
+	 * [get_toggle description]
+	 *
+	 * @param  [type] $icon type.
+	 */
 	protected function get_toggle( $icon ) {
 		?>
 		<a href="#" class="boostify-menu-toggle" aria-expanded="false">

@@ -7,7 +7,7 @@
 
 namespace Boostify_Header_Footer\Widgets;
 
-use Boostify_Header_Footer\Nav_Menu;
+use Boostify_Header_Footer\Nav_Menu_Vertical;
 use Elementor\Controls_Manager;
 use Elementor\Group_Control_Typography;
 
@@ -16,7 +16,7 @@ use Elementor\Group_Control_Typography;
  *
  * Elementor widget for Mega Menu Vertical.
  */
-class Mega_Menu_Vertical extends Nav_Menu {
+class Mega_Menu_Vertical extends Nav_Menu_Vertical {
 
 	/**
 	 * Retrieve the widget name.
