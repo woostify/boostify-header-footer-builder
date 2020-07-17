@@ -93,123 +93,83 @@ msgstr ""
 msgid "Your current theme is not supported Boostify Header Footer Plugin"
 msgstr ""
 
-#: inc/elementor/abstract/class-nav-menu.php:76
-msgid "Button Mega Menu"
-msgstr ""
-
-#: inc/elementor/abstract/class-nav-menu.php:92, inc/elementor/module/class-sticky.php:148, inc/elementor/widgets/class-cart-icon.php:280, inc/elementor/widgets/class-cart-icon.php:320, inc/elementor/widgets/class-cart-icon.php:375, inc/elementor/widgets/class-cart-icon.php:469, inc/elementor/widgets/class-cart-icon.php:528, inc/elementor/widgets/class-cart-icon.php:730, inc/elementor/widgets/class-cart-icon.php:761, inc/elementor/widgets/class-cart-icon.php:921, inc/elementor/widgets/class-cart-icon.php:953, inc/elementor/widgets/class-cart-icon.php:1022, inc/elementor/widgets/class-cart-icon.php:1054, inc/elementor/widgets/class-site-search.php:311, inc/elementor/widgets/class-site-search.php:350
-msgid "Color"
-msgstr ""
-
-#: inc/elementor/abstract/class-nav-menu.php:104, inc/elementor/widgets/class-image-retina.php:293
-msgid "Border Color"
-msgstr ""
-
-#: inc/elementor/abstract/class-nav-menu.php:116
-msgid "Background Button Color"
-msgstr ""
-
-#: inc/elementor/abstract/class-nav-menu.php:128
-msgid "Background Title Color"
-msgstr ""
-
-#: inc/elementor/abstract/class-nav-menu.php:142
-msgid "Submenu"
-msgstr ""
-
-#: inc/elementor/abstract/class-nav-menu.php:150, inc/elementor/widgets/class-cart-icon.php:497
-msgid "Space"
-msgstr ""
-
-#: inc/elementor/abstract/class-nav-menu.php:170, inc/elementor/widgets/class-cart-icon.php:445, inc/elementor/widgets/class-image-retina.php:308, inc/elementor/widgets/class-site-search.php:286
-msgid "Border Radius"
-msgstr ""
-
-#: inc/elementor/abstract/class-nav-menu.php:182, inc/elementor/widgets/class-image-retina.php:446
-msgid "Background Color"
-msgstr ""
-
-#: inc/elementor/abstract/class-nav-menu.php:195
-msgid "Border Submenu Vertical"
-msgstr ""
-
-#: inc/elementor/abstract/class-nav-menu.php:210
+#: inc/elementor/abstract/class-nav-menu.php:75
 msgid "Mobile Menu"
 msgstr ""
 
-#: inc/elementor/abstract/class-nav-menu.php:219
+#: inc/elementor/abstract/class-nav-menu.php:84
 msgid "Toggle Icons"
 msgstr ""
 
-#: inc/elementor/abstract/class-nav-menu.php:235, inc/elementor/widgets/class-navigation.php:218
+#: inc/elementor/abstract/class-nav-menu.php:100, inc/elementor/widgets/class-navigation.php:218
 msgid "Toggle Align"
 msgstr ""
 
-#: inc/elementor/abstract/class-nav-menu.php:268
+#: inc/elementor/abstract/class-nav-menu.php:133
 msgid "Menu Style"
 msgstr ""
 
-#: inc/elementor/abstract/class-nav-menu.php:275, inc/elementor/abstract/class-nav-menu.php:423, inc/elementor/widgets/class-cart-icon.php:424, inc/elementor/widgets/class-cart-icon.php:667, inc/elementor/widgets/class-cart-icon.php:860, inc/elementor/widgets/class-cart-icon.php:900, inc/elementor/widgets/class-cart-icon.php:1001, inc/elementor/widgets/class-image-retina.php:466, inc/elementor/widgets/class-site-search.php:189, inc/elementor/widgets/class-site-search.php:204
+#: inc/elementor/abstract/class-nav-menu.php:140, inc/elementor/abstract/class-nav-menu.php:288, inc/elementor/widgets/class-cart-icon.php:424, inc/elementor/widgets/class-cart-icon.php:667, inc/elementor/widgets/class-cart-icon.php:860, inc/elementor/widgets/class-cart-icon.php:900, inc/elementor/widgets/class-cart-icon.php:1001, inc/elementor/widgets/class-image-retina.php:466, inc/elementor/widgets/class-site-search.php:189, inc/elementor/widgets/class-site-search.php:204
 msgid "Padding"
 msgstr ""
 
-#: inc/elementor/abstract/class-nav-menu.php:301, inc/elementor/abstract/class-nav-menu.php:458, inc/elementor/abstract/class-nav-menu.php:580, inc/elementor/widgets/class-cart-icon.php:914, inc/elementor/widgets/class-cart-icon.php:1015, inc/elementor/widgets/class-image-retina.php:322
+#: inc/elementor/abstract/class-nav-menu.php:166, inc/elementor/abstract/class-nav-menu.php:323, inc/elementor/abstract/class-nav-menu.php:445, inc/elementor/widgets/class-cart-icon.php:914, inc/elementor/widgets/class-cart-icon.php:1015, inc/elementor/widgets/class-image-retina.php:322
 msgid "Normal"
 msgstr ""
 
-#: inc/elementor/abstract/class-nav-menu.php:312, inc/elementor/abstract/class-nav-menu.php:469, inc/elementor/abstract/class-nav-menu.php:591, inc/elementor/widgets/class-cart-icon.php:946, inc/elementor/widgets/class-cart-icon.php:1047, inc/elementor/widgets/class-image-retina.php:357
+#: inc/elementor/abstract/class-nav-menu.php:177, inc/elementor/abstract/class-nav-menu.php:334, inc/elementor/abstract/class-nav-menu.php:456, inc/elementor/widgets/class-cart-icon.php:946, inc/elementor/widgets/class-cart-icon.php:1047, inc/elementor/widgets/class-image-retina.php:357
 msgid "Hover"
 msgstr ""
 
-#: inc/elementor/abstract/class-nav-menu.php:329, inc/elementor/abstract/class-nav-menu.php:353, inc/elementor/module/class-sticky.php:175, inc/elementor/module/class-sticky.php:194
+#: inc/elementor/abstract/class-nav-menu.php:194, inc/elementor/abstract/class-nav-menu.php:218, inc/elementor/module/class-sticky.php:175, inc/elementor/module/class-sticky.php:194
 msgid "Menu Color"
 msgstr ""
 
-#: inc/elementor/abstract/class-nav-menu.php:342, inc/elementor/abstract/class-nav-menu.php:383, inc/elementor/abstract/class-nav-menu.php:522, inc/elementor/abstract/class-nav-menu.php:635, inc/elementor/widgets/class-cart-icon.php:296, inc/elementor/widgets/class-cart-icon.php:336, inc/elementor/widgets/class-cart-icon.php:485, inc/elementor/widgets/class-cart-icon.php:593, inc/elementor/widgets/class-cart-icon.php:743, inc/elementor/widgets/class-cart-icon.php:775, inc/elementor/widgets/class-cart-icon.php:981, inc/elementor/widgets/class-cart-icon.php:1083, inc/elementor/widgets/class-site-search.php:258, inc/elementor/widgets/class-site-search.php:326, inc/elementor/widgets/class-site-search.php:365
+#: inc/elementor/abstract/class-nav-menu.php:207, inc/elementor/abstract/class-nav-menu.php:248, inc/elementor/abstract/class-nav-menu.php:387, inc/elementor/abstract/class-nav-menu.php:500, inc/elementor/widgets/class-cart-icon.php:296, inc/elementor/widgets/class-cart-icon.php:336, inc/elementor/widgets/class-cart-icon.php:485, inc/elementor/widgets/class-cart-icon.php:593, inc/elementor/widgets/class-cart-icon.php:743, inc/elementor/widgets/class-cart-icon.php:775, inc/elementor/widgets/class-cart-icon.php:981, inc/elementor/widgets/class-cart-icon.php:1083, inc/elementor/widgets/class-site-search.php:258, inc/elementor/widgets/class-site-search.php:326, inc/elementor/widgets/class-site-search.php:365
 msgid "Typography"
 msgstr ""
 
-#: inc/elementor/abstract/class-nav-menu.php:370
+#: inc/elementor/abstract/class-nav-menu.php:235
 msgid "Background Item Hover"
 msgstr ""
 
-#: inc/elementor/abstract/class-nav-menu.php:397
+#: inc/elementor/abstract/class-nav-menu.php:262
 msgid "Sub Menu Style"
 msgstr ""
 
-#: inc/elementor/abstract/class-nav-menu.php:405
+#: inc/elementor/abstract/class-nav-menu.php:270
 msgid "Distance"
 msgstr ""
 
-#: inc/elementor/abstract/class-nav-menu.php:435
+#: inc/elementor/abstract/class-nav-menu.php:300
 msgid "Padding Menu Item"
 msgstr ""
 
-#: inc/elementor/abstract/class-nav-menu.php:482
+#: inc/elementor/abstract/class-nav-menu.php:347
 msgid "SubMenu Border Color"
 msgstr ""
 
-#: inc/elementor/abstract/class-nav-menu.php:496, inc/elementor/widgets/class-cart-icon.php:254, inc/elementor/widgets/class-cart-icon.php:348, inc/elementor/widgets/class-cart-icon.php:605, inc/elementor/widgets/class-cart-icon.php:679, inc/elementor/widgets/class-cart-icon.php:837, inc/elementor/widgets/class-cart-icon.php:872, inc/elementor/widgets/class-cart-icon.php:933, inc/elementor/widgets/class-cart-icon.php:965, inc/elementor/widgets/class-cart-icon.php:1034, inc/elementor/widgets/class-cart-icon.php:1066, inc/elementor/widgets/class-site-search.php:268
+#: inc/elementor/abstract/class-nav-menu.php:361, inc/elementor/widgets/class-cart-icon.php:254, inc/elementor/widgets/class-cart-icon.php:348, inc/elementor/widgets/class-cart-icon.php:605, inc/elementor/widgets/class-cart-icon.php:679, inc/elementor/widgets/class-cart-icon.php:837, inc/elementor/widgets/class-cart-icon.php:872, inc/elementor/widgets/class-cart-icon.php:933, inc/elementor/widgets/class-cart-icon.php:965, inc/elementor/widgets/class-cart-icon.php:1034, inc/elementor/widgets/class-cart-icon.php:1066, inc/elementor/widgets/class-site-search.php:268
 msgid "Background"
 msgstr ""
 
-#: inc/elementor/abstract/class-nav-menu.php:509, inc/elementor/abstract/class-nav-menu.php:533, inc/elementor/abstract/class-nav-menu.php:621, inc/elementor/abstract/class-nav-menu.php:659
+#: inc/elementor/abstract/class-nav-menu.php:374, inc/elementor/abstract/class-nav-menu.php:398, inc/elementor/abstract/class-nav-menu.php:486, inc/elementor/abstract/class-nav-menu.php:524
 msgid "SubMenu Color"
 msgstr ""
 
-#: inc/elementor/abstract/class-nav-menu.php:548
+#: inc/elementor/abstract/class-nav-menu.php:413
 msgid "Background Submenu Item Hover"
 msgstr ""
 
-#: inc/elementor/abstract/class-nav-menu.php:568
+#: inc/elementor/abstract/class-nav-menu.php:433
 msgid "Menu Mobie Style"
 msgstr ""
 
-#: inc/elementor/abstract/class-nav-menu.php:608, inc/elementor/abstract/class-nav-menu.php:646
+#: inc/elementor/abstract/class-nav-menu.php:473, inc/elementor/abstract/class-nav-menu.php:511
 msgid "Toggle Icon Color"
 msgstr ""
 
-#: inc/elementor/abstract/class-nav-menu.php:726, inc/elementor/widgets/class-mega-menu-vertical.php:182, inc/elementor/widgets/class-mega-menu-vertical.php:209, inc/elementor/widgets/class-mega-menu.php:152, inc/elementor/widgets/class-mega-menu.php:179, inc/elementor/widgets/class-navigation.php:130
+#: inc/elementor/abstract/class-nav-menu.php:591, inc/elementor/widgets/class-mega-menu-vertical.php:182, inc/elementor/widgets/class-mega-menu-vertical.php:209, inc/elementor/widgets/class-mega-menu.php:152, inc/elementor/widgets/class-mega-menu.php:179, inc/elementor/widgets/class-navigation.php:130
 msgid "Menu"
 msgstr ""
 
@@ -271,6 +231,10 @@ msgstr ""
 
 #: inc/elementor/module/class-sticky.php:137
 msgid "Choose background color after scrolling"
+msgstr ""
+
+#: inc/elementor/module/class-sticky.php:148, inc/elementor/widgets/class-cart-icon.php:280, inc/elementor/widgets/class-cart-icon.php:320, inc/elementor/widgets/class-cart-icon.php:375, inc/elementor/widgets/class-cart-icon.php:469, inc/elementor/widgets/class-cart-icon.php:528, inc/elementor/widgets/class-cart-icon.php:730, inc/elementor/widgets/class-cart-icon.php:761, inc/elementor/widgets/class-cart-icon.php:921, inc/elementor/widgets/class-cart-icon.php:953, inc/elementor/widgets/class-cart-icon.php:1022, inc/elementor/widgets/class-cart-icon.php:1054, inc/elementor/widgets/class-mega-menu-vertical.php:405, inc/elementor/widgets/class-site-search.php:311, inc/elementor/widgets/class-site-search.php:350
+msgid "Color"
 msgstr ""
 
 #: inc/elementor/module/class-sticky.php:162
@@ -375,6 +339,14 @@ msgstr ""
 
 #: inc/elementor/widgets/class-cart-icon.php:437, inc/elementor/widgets/class-site-search.php:278
 msgid "Border"
+msgstr ""
+
+#: inc/elementor/widgets/class-cart-icon.php:445, inc/elementor/widgets/class-image-retina.php:308, inc/elementor/widgets/class-mega-menu-vertical.php:494, inc/elementor/widgets/class-site-search.php:286
+msgid "Border Radius"
+msgstr ""
+
+#: inc/elementor/widgets/class-cart-icon.php:497
+msgid "Space"
 msgstr ""
 
 #: inc/elementor/widgets/class-cart-icon.php:540
@@ -521,6 +493,10 @@ msgstr ""
 msgid "Border Width"
 msgstr ""
 
+#: inc/elementor/widgets/class-image-retina.php:293, inc/elementor/widgets/class-mega-menu-vertical.php:417
+msgid "Border Color"
+msgstr ""
+
 #: inc/elementor/widgets/class-image-retina.php:329, inc/elementor/widgets/class-image-retina.php:363
 msgid "Opacity"
 msgstr ""
@@ -535,6 +511,10 @@ msgstr ""
 
 #: inc/elementor/widgets/class-image-retina.php:426
 msgid "Caption"
+msgstr ""
+
+#: inc/elementor/widgets/class-image-retina.php:446, inc/elementor/widgets/class-mega-menu-vertical.php:506
+msgid "Background Color"
 msgstr ""
 
 #: inc/elementor/widgets/class-image-retina.php:477
@@ -629,7 +609,27 @@ msgstr ""
 msgid "Menu Mobile"
 msgstr ""
 
-#: inc/elementor/widgets/class-mega-menu-vertical.php:540, inc/elementor/widgets/class-mega-menu.php:459, inc/elementor/widgets/class-navigation.php:92
+#: inc/elementor/widgets/class-mega-menu-vertical.php:429
+msgid "Background Button Color"
+msgstr ""
+
+#: inc/elementor/widgets/class-mega-menu-vertical.php:441
+msgid "Background Title Color"
+msgstr ""
+
+#: inc/elementor/widgets/class-mega-menu-vertical.php:453
+msgid "Space Top"
+msgstr ""
+
+#: inc/elementor/widgets/class-mega-menu-vertical.php:473
+msgid "Space Top & Bottom Submenu"
+msgstr ""
+
+#: inc/elementor/widgets/class-mega-menu-vertical.php:519
+msgid "Border Submenu Vertical"
+msgstr ""
+
+#: inc/elementor/widgets/class-mega-menu-vertical.php:669, inc/elementor/widgets/class-mega-menu.php:459, inc/elementor/widgets/class-navigation.php:92
 msgid "Dropdown navigation"
 msgstr ""
 

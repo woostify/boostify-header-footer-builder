@@ -239,7 +239,6 @@ class Elementor {
 	public function register_abstract() {
 		require BOOSTIFY_HEADER_FOOTER_PATH . 'inc/elementor/abstract/class-base-widget.php';
 		require BOOSTIFY_HEADER_FOOTER_PATH . 'inc/elementor/abstract/class-nav-menu.php';
-		require BOOSTIFY_HEADER_FOOTER_PATH . 'inc/elementor/abstract/class-nav-menu-vertical.php';
 		require BOOSTIFY_HEADER_FOOTER_PATH . 'inc/elementor/module/class-woocommerce.php';
 	}
 

@@ -7,7 +7,7 @@
 
 namespace Boostify_Header_Footer\Widgets;
 
-use Boostify_Header_Footer\Nav_Menu_Vertical;
+use Boostify_Header_Footer\Nav_Menu;
 use Elementor\Controls_Manager;
 use Elementor\Group_Control_Typography;
 
@@ -16,7 +16,7 @@ use Elementor\Group_Control_Typography;
  *
  * Elementor widget for Mega Menu Vertical.
  */
-class Mega_Menu_Vertical extends Nav_Menu_Vertical {
+class Mega_Menu_Vertical extends Nav_Menu {
 
 	/**
 	 * Retrieve the widget name.
@@ -390,8 +390,137 @@ class Mega_Menu_Vertical extends Nav_Menu_Vertical {
 				'default'      => 'no',
 			)
 		);
-	}
 
+		$this->add_group_control(
+			Group_Control_Typography::get_type(),
+			array(
+				'name'     => 'title_typo',
+				'selector' => '{{WRAPPER}} .boostify-mega-menu-vertical--widget .boostify-menu-toggle-vertical',
+			)
+		);
+
+		$this->add_control(
+			'title_color',
+			array(
+				'label'     => esc_html__( 'Color', 'boostify' ),
+				'type'      => Controls_Manager::COLOR,
+				'default'   => '#ffffff',
+				'selectors' => array(
+					'{{WRAPPER}} .boostify-mega-menu-vertical--widget .boostify-menu-toggle-vertical' => 'color: {{VALUE}}',
+				),
+			)
+		);
+
+		$this->add_control(
+			'border_color',
+			array(
+				'label'     => esc_html__( 'Border Color', 'boostify' ),
+				'type'      => Controls_Manager::COLOR,
+				'default'   => '#4a4b59',
+				'selectors' => array(
+					'{{WRAPPER}} .boostify-mega-menu-vertical--widget .boostify-menu-toggle-vertical' => 'border-color: {{VALUE}}',
+				),
+			)
+		);
+
+		$this->add_responsive_control(
+			'bg_button_color',
+			array(
+				'label'     => esc_html__( 'Background Button Color', 'boostify' ),
+				'type'      => Controls_Manager::COLOR,
+				'default'   => '#fc5a34',
+				'selectors' => array(
+					'{{WRAPPER}} .boostify-mega-menu-vertical--widget' => 'background-color: {{VALUE}}',
+				),
+			)
+		);
+
+		$this->add_control(
+			'bg_title_color',
+			array(
+				'label'     => esc_html__( 'Background Title Color', 'boostify' ),
+				'type'      => Controls_Manager::COLOR,
+				'default'   => '#fc5a34',
+				'selectors' => array(
+					'{{WRAPPER}} .boostify-mega-menu-vertical--widget .boostify-menu-toggle-vertical' => 'background-color: {{VALUE}}',
+				),
+			)
+		);
+
+		$this->add_control(
+			'submenu_vertical_space',
+			array(
+				'label'     => esc_html__( 'Space Top', 'boostify' ),
+				'type'      => Controls_Manager::SLIDER,
+				'range'     => array(
+					'px' => array(
+						'min' => 0,
+						'max' => 30,
+					),
+				),
+				'default'   => array(
+					'size' => 0,
+				),
+				'selectors' => array(
+					'{{WRAPPER}} .boostify-mega-menu-vertical--widget .boostify-mega-menu-vetical' => 'margin-top: {{SIZE}}{{UNIT}};',
+				),
+			)
+		);
+
+		$this->add_control(
+			'padding_submenu_vertical',
+			array(
+				'label'     => __( 'Space Top & Bottom Submenu', 'boostify' ),
+				'type'      => Controls_Manager::SLIDER,
+				'range'     => array(
+					'px' => array(
+						'min' => 0,
+						'max' => 50,
+					),
+				),
+				'default'   => array(
+					'size' => 0,
+				),
+				'selectors' => array(
+					'{{WRAPPER}} .boostify-mega-menu-vetical > .menu-item-has-mega:first-child > a' => 'padding-top: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .boostify-mega-menu-vetical > .menu-item-has-mega:last-child > a' => 'padding-bottom: {{SIZE}}{{UNIT}};',
+				),
+			)
+		);
+
+		$this->add_control(
+			'border_radius',
+			array(
+				'label'      => __( 'Border Radius', 'boostify' ),
+				'type'       => Controls_Manager::DIMENSIONS,
+				'size_units' => array( 'px' ),
+				'selectors'  => array(
+					'{{WRAPPER}} .boostify-mega-menu-vertical--widget .boostify-mega-menu-vetical' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				),
+			)
+		);
+
+		$this->add_control(
+			'sub_bg_color',
+			array(
+				'label'     => esc_html__( 'Background Color', 'boostify' ),
+				'type'      => Controls_Manager::COLOR,
+				'default'   => '#ffffff',
+				'selectors' => array(
+					'{{WRAPPER}} .boostify-menu > li > a' => 'background-color: {{VALUE}}',
+				),
+			)
+		);
+
+		$this->add_group_control(
+			\Elementor\Group_Control_Border::get_type(),
+			array(
+				'name'     => 'sub_border_vertical',
+				'label'    => __( 'Border Submenu Vertical', 'boostify' ),
+				'selector' => '{{WRAPPER}} .boostify-mega-menu-vertical--widget .boostify-mega-menu-vetical',
+			)
+		);
+	}
 
 	/**
 	 * Get Sub Menu Mega
