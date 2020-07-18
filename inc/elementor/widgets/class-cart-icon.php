@@ -86,6 +86,8 @@ class Cart_Icon extends Base_Widget {
 		$settings      = $this->get_settings_for_display();
 		$icon          = $settings['icon'];
 		$show_subtotal = $settings['show_subtotal'];
+		$disable_sidebar = $settings['disable_cart_sidebar'];
+
 		if ( class_exists( 'Woocommerce' ) ) {
 			$classes = array(
 				'boostify-cart-icon',
@@ -100,6 +102,10 @@ class Cart_Icon extends Base_Widget {
 
 			if ( 'hover' === $settings['action'] ) {
 				array_push( $classes, 'hover-position-' . $settings['hover_position'] );
+			}
+
+			if ( 'yes' !== $disable_sidebar ) {
+				array_push( $classes, 'boostify-ajax-add-to-cart' );
 			}
 
 			$classes = implode( ' ', $classes );
@@ -206,6 +212,21 @@ class Cart_Icon extends Base_Widget {
 				),
 				'default'   => 'right',
 				'condition' => array(
+					'action' => 'click',
+				),
+			)
+		);
+
+		$this->add_control(
+			'disable_cart_sidebar',
+			array(
+				'label'        => __( 'Disable when add to cart', 'boostify' ),
+				'type'         => Controls_Manager::SWITCHER,
+				'label_on'     => __( 'Yes', 'boostify' ),
+				'label_off'    => __( 'No', 'boostify' ),
+				'return_value' => 'yes',
+				'default'      => 'yes',
+				'condition'    => array(
 					'action' => 'click',
 				),
 			)
