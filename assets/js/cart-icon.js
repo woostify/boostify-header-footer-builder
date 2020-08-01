@@ -100,7 +100,7 @@
 					{
 						type: 'POST',
 						dataType: 'json',
-						url: wc_add_to_cart_params.ajax_url,
+						url: admin.url,
 						data: {
 							action: "boostify_product_remove",
 							product_id: product_id,
@@ -156,7 +156,7 @@
 					$.ajax(
 						{
 							type: 'post',
-							url: wc_add_to_cart_params.ajax_url,
+							url: admin.url,
 							data: data,
 							beforeSend: function (data) {
 								var sidebar = $scope.find( '.boostify-cart-detail' );
