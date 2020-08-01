@@ -1,7 +1,15 @@
+/**
+ * Mega Menu JS
+ *
+ * @package boostify
+ */
+
 (function ($) {
 	'use strict';
 
 	/**
+	 * WidgetMegaMenu
+	 *
 	 * @param $scope The widget wrapper element as a jQuery element
 	 * @param $ The jQuery alias
 	 */
@@ -13,7 +21,7 @@
 		var nav      = $scope.find( '.boostify-menu-sidebar' );
 		var overlay  = $scope.find( '.boostify-overlay' );
 		var close    = $scope.find( '.boostify--close-menu-side-bar' );
-		console.log( sub );
+
 		sub.each(
 			function ( index ) {
 				if ( sub.hasClass( 'sub-mega-menu' ) ) {
@@ -24,7 +32,7 @@
 			}
 		);
 
-		// Set With Mega Menu
+		// Set With Mega Menu.
 		megaWidth();
 
 		$( window ).resize(
@@ -66,7 +74,7 @@
 			);
 		}
 
-		// Show Menu Mobile
+		// Show Menu Mobile.
 		toggle.on(
 			'click',
 			function(e) {
@@ -81,7 +89,7 @@
 			}
 		);
 
-		// Close menu mobile when click overlay
+		// Close menu mobile when click overlay.
 		overlay.on(
 			'click',
 			function(e) {
@@ -90,7 +98,7 @@
 			}
 		);
 
-		// Close menu mobile when click icon close
+		// Close menu mobile when click icon close.
 		close.on(
 			'click',
 			function(e) {
@@ -99,7 +107,7 @@
 			}
 		);
 
-		// Close menu mobile when click ESC
+		// Close menu mobile when click ESC.
 		$( document ).on(
 			'keyup',
 			function (e) {

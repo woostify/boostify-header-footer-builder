@@ -59,6 +59,7 @@ class Elementor {
 			'Site_Search',
 			'Navigation',
 			'Mega_Menu',
+			'Mega_Menu_Vertical',
 			'Copyright',
 			'Image_Retina',
 		);
@@ -71,7 +72,7 @@ class Elementor {
 	}
 
 	/**
-	 * widget_scripts
+	 * Widget scripts
 	 *
 	 * Load required plugin core files.
 	 *
@@ -87,7 +88,7 @@ class Elementor {
 			true
 		);
 
-		// Search
+		// Search.
 		wp_register_script(
 			'boostify_hf_search',
 			BOOSTIFY_HEADER_FOOTER_URL . 'assets/js/search' . boostify_header_footer_suffix() . '.js',
@@ -96,7 +97,7 @@ class Elementor {
 			true
 		);
 
-		// Mega Menu
+		// Mega Menu.
 		wp_register_script(
 			'boostify_hf_nav_mega',
 			BOOSTIFY_HEADER_FOOTER_URL . 'assets/js/mega-menu' . boostify_header_footer_suffix() . '.js',
@@ -105,7 +106,16 @@ class Elementor {
 			true
 		);
 
-		// Cart Icon
+		// Mega Menu Vertical.
+		wp_register_script(
+			'boostify_hf_mega_menu_vertical',
+			BOOSTIFY_HEADER_FOOTER_URL . 'assets/js/mega-menu-vertical' . boostify_header_footer_suffix() . '.js',
+			array( 'jquery' ),
+			BOOSTIFY_HEADER_FOOTER_VER,
+			true
+		);
+
+		// Cart Icon.
 		wp_register_script(
 			'boostify_hf_cart_icon',
 			BOOSTIFY_HEADER_FOOTER_URL . 'assets/js/cart-icon' . boostify_header_footer_suffix() . '.js',
