@@ -53,6 +53,14 @@ class Admin {
 			BOOSTIFY_HEADER_FOOTER_VER
 		);
 
+		wp_enqueue_style(
+			'fontawesome',
+			BOOSTIFY_HEADER_FOOTER_URL . '/assets/css/awesome.css',
+			array(),
+			BOOSTIFY_HEADER_FOOTER_VER
+		);
+
+
 		wp_enqueue_script(
 			'boostify-hf-admin',
 			BOOSTIFY_HEADER_FOOTER_URL . 'assets/js/admin' . boostify_header_footer_suffix() . '.js',

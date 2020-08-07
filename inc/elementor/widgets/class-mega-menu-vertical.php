@@ -370,24 +370,11 @@ class Mega_Menu_Vertical extends Nav_Menu {
 	 */
 	protected function custom_mobile_menu() {
 		$this->add_control(
-			'menu_change',
+			'button_toggle_icon',
 			array(
-				'label'        => __( 'Use Menu Site', 'boostify' ),
-				'type'         => Controls_Manager::SWITCHER,
-				'label_on'     => __( 'Yes', 'boostify' ),
-				'label_off'    => __( 'No', 'boostify' ),
-				'return_value' => 'yes',
-			)
-		);
-
-		$this->add_control(
-			'menu_mobile',
-			array(
-				'label'        => esc_html__( 'Menu Mobile', 'boostify' ),
-				'type'         => Controls_Manager::SELECT,
-				'options'      => $this->all_menu_site(),
-				'save_default' => true,
-				'default'      => 'no',
+				'label'   => __( 'Toggle Icons', 'boostify' ),
+				'type'    => Controls_Manager::ICON,
+				'default' => 'fa fa-caret-down',
 			)
 		);
 
@@ -464,6 +451,7 @@ class Mega_Menu_Vertical extends Nav_Menu {
 				'selectors' => array(
 					'{{WRAPPER}} .boostify-mega-menu-vertical--widget .boostify-mega-menu-vetical' => 'margin-top: {{SIZE}}{{UNIT}};',
 				),
+				'separator' => 'before',
 			)
 		);
 
@@ -656,7 +644,7 @@ class Mega_Menu_Vertical extends Nav_Menu {
 		<div class="boostify-mega-menu-vertical--widget">
 			<button class="boostify-menu-toggle-vertical">
 				<?php echo esc_html( $settings['text_button'] ); ?>
-				<i class="fa fa-caret-down"></i>
+				<i class="<?php echo esc_attr( $settings['button_toggle_icon'] ); ?>"></i>				
 			</button>
 			<nav class="<?php echo esc_attr( $classes ); ?> <?php echo esc_attr( $show_sub_vertical ); ?>">
 				<?php $this->get_menu_site( $settings['menu'] ); ?>

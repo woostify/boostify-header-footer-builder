@@ -111,6 +111,13 @@ if ( ! class_exists( 'Boostify_Header_Footer_Builder' ) ) {
 				array(),
 				BOOSTIFY_HEADER_FOOTER_VER
 			);
+
+			wp_enqueue_style(
+				'fontawesome',
+				BOOSTIFY_HEADER_FOOTER_URL . '/assets/css/awesome.css',
+				array(),
+				BOOSTIFY_HEADER_FOOTER_VER
+			);
 		}
 
 

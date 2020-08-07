@@ -450,6 +450,7 @@
   border: none;
   border-left: 1px solid #4a4b59;
   border-right: 1px solid #4a4b59;
+  font-size: 14px;
 }
 
 .boostify-mega-menu-vertical--widget .boostify-menu-toggle-vertical .fa {
