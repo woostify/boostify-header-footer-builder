@@ -10,6 +10,7 @@ namespace Boostify_Header_Footer\Widgets;
 use Boostify_Header_Footer\Nav_Menu;
 use Elementor\Controls_Manager;
 use Elementor\Group_Control_Typography;
+use \Elementor\Group_Control_Border;
 
 /**
  * Mega Menu Vertical
@@ -71,7 +72,7 @@ class Mega_Menu_Vertical extends Nav_Menu {
 		$this->start_controls_section(
 			'section_title',
 			array(
-				'label' => __( 'Mega Menu Vertical', 'boostify' ),
+				'label' => __( 'Menu Button', 'boostify' ),
 			)
 		);
 
@@ -372,9 +373,92 @@ class Mega_Menu_Vertical extends Nav_Menu {
 		$this->add_control(
 			'button_toggle_icon',
 			array(
-				'label'   => __( 'Toggle Icons', 'boostify' ),
-				'type'    => Controls_Manager::ICON,
-				'default' => 'fa fa-caret-down',
+				'label' => __( 'Toggle Icons', 'boostify' ),
+				'type'  => Controls_Manager::ICONS,
+			)
+		);
+
+		$this->add_control(
+			'icon_vertical_position',
+			array(
+				'label'   => __( 'Icon Position', 'boostify' ),
+				'type'    => Controls_Manager::SELECT,
+				'default' => 'right',
+				'options' => array(
+					'left'  => 'Left',
+					'right' => 'Right',
+				),
+			)
+		);
+
+		$this->add_control(
+			'icon_vertical_right_space',
+			array(
+				'label'      => __( 'Icon Space', 'boostify' ),
+				'type'       => Controls_Manager::SLIDER,
+				'size_units' => array( 'px' ),
+				'condition'  => array(
+					'icon_vertical_position' => 'right',
+				),
+				'range'      => array(
+					'px' => array(
+						'min'  => 0,
+						'max'  => 60,
+						'step' => 1,
+					),
+				),
+				'selectors'  => array(
+					'{{WRAPPER}} .boostify-menu-toggle-vertical .icon-vertical' => 'padding: 0 0 0 {{SIZE}}{{UNIT}};',
+				),
+			)
+		);
+
+		$this->add_control(
+			'icon_vertical_left_space',
+			array(
+				'label'      => __( 'Icon Space', 'boostify' ),
+				'type'       => Controls_Manager::SLIDER,
+				'size_units' => array( 'px' ),
+				'condition'  => array(
+					'icon_vertical_position' => 'left',
+				),
+				'range'      => array(
+					'px' => array(
+						'min'  => 0,
+						'max'  => 60,
+						'step' => 1,
+					),
+				),
+				'selectors'  => array(
+					'{{WRAPPER}} .boostify-menu-toggle-vertical .icon-vertical' => 'padding: 0 {{SIZE}}{{UNIT}} 0 0;',
+				),
+			)
+		);
+
+		$this->add_control(
+			'align_button_vertical',
+			array(
+				'label'   => __( 'Alignment', 'boostify' ),
+				'type'    => Controls_Manager::CHOOSE,
+				'options' => array(
+					'left'    => array(
+						'title' => __( 'Left', 'boostify' ),
+						'icon'  => 'eicon-text-align-left',
+					),
+					'center'  => array(
+						'title' => __( 'Center', 'boostify' ),
+						'icon'  => 'eicon-text-align-center',
+					),
+					'right'   => array(
+						'title' => __( 'Right', 'boostify' ),
+						'icon'  => 'eicon-text-align-right',
+					),
+					'justify' => array(
+						'title' => __( 'Justified', 'boostify' ),
+						'icon'  => 'eicon-text-align-justify',
+					),
+				),
+				'default' => '',
 			)
 		);
 
@@ -398,27 +482,24 @@ class Mega_Menu_Vertical extends Nav_Menu {
 			)
 		);
 
-		$this->add_control(
-			'border_color',
+		$this->add_responsive_control(
+			'button_padding',
 			array(
-				'label'     => esc_html__( 'Border Color', 'boostify' ),
-				'type'      => Controls_Manager::COLOR,
-				'default'   => '#4a4b59',
-				'selectors' => array(
-					'{{WRAPPER}} .boostify-mega-menu-vertical--widget .boostify-menu-toggle-vertical' => 'border-color: {{VALUE}}',
+				'label'      => esc_html__( 'Padding', 'boostify' ),
+				'type'       => Controls_Manager::DIMENSIONS,
+				'size_units' => array( 'px', '%', 'em' ),
+				'selectors'  => array(
+					'{{WRAPPER}} .boostify-mega-menu-vertical--widget .boostify-menu-toggle-vertical' => 'padding:{{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}}',
 				),
 			)
 		);
 
-		$this->add_responsive_control(
-			'bg_button_color',
+		$this->add_group_control(
+			Group_Control_Border::get_type(),
 			array(
-				'label'     => esc_html__( 'Background Button Color', 'boostify' ),
-				'type'      => Controls_Manager::COLOR,
-				'default'   => '#fc5a34',
-				'selectors' => array(
-					'{{WRAPPER}} .boostify-mega-menu-vertical--widget' => 'background-color: {{VALUE}}',
-				),
+				'name'     => 'border_vertical_button',
+				'label'    => esc_html__( 'Border Button Vertical', 'boostify' ),
+				'selector' => '{{WRAPPER}} .boostify-mega-menu-vertical--widget .boostify-menu-toggle-vertical',
 			)
 		);
 
@@ -636,16 +717,18 @@ class Mega_Menu_Vertical extends Nav_Menu {
 		$arg_class         = $this->nav_class();
 		$classes           = implode( ' ', $arg_class );
 		$show_sub_vertical = '';
+		$icon              = $settings['button_toggle_icon'];
 
 		if ( 'yes' === $settings['show_active'] ) {
 			$show_sub_vertical = 'show';
 		}
 		?>
-		<div class="boostify-mega-menu-vertical--widget">
+		<div class="boostify-mega-menu-vertical--widget elementor-align-<?php echo esc_html( $settings['align_button_vertical'] ); ?>">
 			<button class="boostify-menu-toggle-vertical">
 				<?php echo esc_html( $settings['text_button'] ); ?>
-				<i class="<?php echo esc_attr( $settings['button_toggle_icon'] ); ?>"></i>				
+				<i class="icon-vertical <?php echo esc_html( $icon['value'] ); ?>" style="float: <?php echo esc_html( $settings['icon_vertical_position'] ); ?>"></i>
 			</button>
+
 			<nav class="<?php echo esc_attr( $classes ); ?> <?php echo esc_attr( $show_sub_vertical ); ?>">
 				<?php $this->get_menu_site( $settings['menu'] ); ?>
 			</nav>

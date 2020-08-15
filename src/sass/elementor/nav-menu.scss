@@ -431,7 +431,6 @@
 
 // Mega Menu Vertical.
 .boostify-mega-menu-vertical--widget {
-	text-align: center;
 	height: 66px;
 	width: 270px;
 	.boostify-mega-menu-vetical {
@@ -507,9 +506,6 @@
 		margin-top: 20px;
 		margin-bottom: 18px;
 		background-color: #2a2c3c;
-		border: none;
-		border-left: 1px solid #4a4b59;
-		border-right: 1px solid #4a4b59;
 		font-size: 14px;
 		.fa {
 			margin-left: 25px;
@@ -518,5 +514,11 @@
 		@media( max-width: 768px ) {
 			display: none;
 		}
+	}
+}
+
+.elementor-align-justify {
+	.boostify-menu-toggle-vertical {
+		width: 100%;
 	}
 }
