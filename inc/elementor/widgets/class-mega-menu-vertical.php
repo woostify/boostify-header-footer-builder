@@ -378,6 +378,131 @@ class Mega_Menu_Vertical extends Nav_Menu {
 			)
 		);
 
+
+	}
+
+	/**
+	 * Get Sub Menu Mega
+	 *
+	 * @param int $post_id type.
+	 */
+	protected function get_sub_mega_menu( $post_id ) {
+		$args     = array(
+			'p'         => $post_id,
+			'post_type' => 'btf_builder',
+		);
+		$sub_menu = new \WP_Query( $args );
+
+		if ( $post_id && 'no' !== $post_id ) :
+			?>
+			<ul class="sub-menu sub-mega-menu">
+				<?php echo do_shortcode( '[bhf id="' . $post_id . '" type="sub_menu"]' ); ?>
+			</ul>
+			<?php
+		endif;
+	}
+
+	/**
+	 * Menu item class
+	 *
+	 * @param int $menu type.
+	 */
+	protected function menu_item_class( $menu ) {
+		$icon            = $menu['icon'];
+		$menu_location   = $menu['menu_register'];
+		$sub_type        = $menu['sub_type'];
+		$menu_item_class = array(
+			'menu-item',
+			'menu-item-type-custom',
+		);
+
+		if ( 'yes' === $menu['has_sub'] ) {
+
+			if ( 'no' !== $menu['sub_menu'] && 'mega' === $sub_type ) {
+				$item_class = ' menu-item-has-children current-menu-parent menu-item-has-mega';
+				array_push( $menu_item_class, 'menu-item-has-children', 'menu-item-has-mega' );
+			}
+			if ( $menu_location && 'default' === $sub_type ) {
+				array_push( $menu_item_class, 'menu-item-has-children' );
+			}
+			if ( ! empty( $icon['value'] ) ) {
+				array_push( $menu_item_class, 'menu-item-has-icon' );
+			}
+		}
+
+		$classes = implode( ' ', $menu_item_class );
+
+		return $classes;
+	}
+
+	/**
+	 * Display menu For Site
+	 *
+	 * @param  [type] $setting_menu type.
+	 * @param  string $classes type.
+	 */
+	protected function get_menu_site( $setting_menu, $classes = 'boostify-menu' ) {
+		$id_menu = wp_rand();
+		?>
+		<ul id="menu-<?php echo esc_attr( $id_menu ); ?>" class="menu boostify-mega-menu boostify-mega-menu-vetical <?php echo esc_attr( $classes ); ?>">
+
+		<?php
+		foreach ( $setting_menu as $menu ) {
+			$icon          = $menu['icon'];
+			$sub_id        = (int) $menu['sub_menu'];
+			$sub_type      = $menu['sub_type'];
+			$menu_location = $menu['menu_register'];
+			$child_of      = $menu['child_of'];
+			$item_class    = '';
+			$classes       = $this->menu_item_class( $menu );
+			?>
+			<li class="<?php echo esc_attr( $classes ); ?>">
+
+				<a href="<?php echo esc_url( $menu['link']['url'] ); ?>">
+					<span class="menu-item-main-info">
+						<?php
+						if ( ! empty( $icon['value'] ) ) :
+							if ( is_string( $icon['value'] ) ) :
+								?>
+								<span class="menu-item-icon <?php echo esc_attr( $icon['value'] ); ?>"></span>
+							<?php else : ?>
+								<span class="menu-item-icon menu-item-icon-svg">
+									<img src="<?php echo esc_url( $icon['value']['url'] ); ?>" alt="<?php echo esc_attr__( 'Icon ' . $menu['item_text'], 'boostify' ); //phpcs:ignore ?>"> 
+								</span>
+								<?php
+							endif;
+						endif;
+						?>
+
+						<span class="menu-item-text">
+							<?php echo esc_html( $menu['item_text'] ); ?>
+						</span>
+					</span>
+				</a>
+				<?php
+				if ( $menu['has_sub'] && 'mega' === $sub_type && 'no' !== $menu['sub_menu'] ) {
+					$this->get_sub_mega_menu( $sub_id );
+				} elseif ( $menu['has_sub'] && $menu_location ) {
+					$this->sub_menu_default( $menu_location, $child_of );
+				}
+				?>
+			</li>
+			<?php
+		}
+		?>
+		</ul>
+		<?php
+	}
+
+
+	protected function custon_style() {
+		$this->start_controls_section(
+			'style_mobile_menu',
+			array(
+				'label' => esc_html__( 'Button Vetical Menu', 'boostify' ),
+			)
+		);
+
 		$this->add_group_control(
 			Group_Control_Typography::get_type(),
 			array(
@@ -508,119 +633,8 @@ class Mega_Menu_Vertical extends Nav_Menu {
 				'selector' => '{{WRAPPER}} .boostify-mega-menu-vertical--widget .boostify-mega-menu-vetical',
 			)
 		);
-	}
 
-	/**
-	 * Get Sub Menu Mega
-	 *
-	 * @param int $post_id type.
-	 */
-	protected function get_sub_mega_menu( $post_id ) {
-		$args     = array(
-			'p'         => $post_id,
-			'post_type' => 'btf_builder',
-		);
-		$sub_menu = new \WP_Query( $args );
-
-		if ( $post_id && 'no' !== $post_id ) :
-			?>
-			<ul class="sub-menu sub-mega-menu">
-				<?php echo do_shortcode( '[bhf id="' . $post_id . '" type="sub_menu"]' ); ?>
-			</ul>
-			<?php
-		endif;
-	}
-
-	/**
-	 * Menu item class
-	 *
-	 * @param int $menu type.
-	 */
-	protected function menu_item_class( $menu ) {
-		$icon            = $menu['icon'];
-		$menu_location   = $menu['menu_register'];
-		$sub_type        = $menu['sub_type'];
-		$menu_item_class = array(
-			'menu-item',
-			'menu-item-type-custom',
-		);
-
-		if ( 'yes' === $menu['has_sub'] ) {
-
-			if ( 'no' !== $menu['sub_menu'] && 'mega' === $sub_type ) {
-				$item_class = ' menu-item-has-children current-menu-parent menu-item-has-mega';
-				array_push( $menu_item_class, 'menu-item-has-children', 'menu-item-has-mega' );
-			}
-			if ( $menu_location && 'default' === $sub_type ) {
-				array_push( $menu_item_class, 'menu-item-has-children' );
-			}
-			if ( ! empty( $icon['value'] ) ) {
-				array_push( $menu_item_class, 'menu-item-has-icon' );
-			}
-		}
-
-		$classes = implode( ' ', $menu_item_class );
-
-		return $classes;
-	}
-
-	/**
-	 * Display menu For Site
-	 *
-	 * @param  [type] $setting_menu type.
-	 * @param  string $classes type.
-	 */
-	protected function get_menu_site( $setting_menu, $classes = 'boostify-menu' ) {
-		$id_menu = wp_rand();
-		?>
-		<ul id="menu-<?php echo esc_attr( $id_menu ); ?>" class="menu boostify-mega-menu boostify-mega-menu-vetical <?php echo esc_attr( $classes ); ?>">
-
-		<?php
-		foreach ( $setting_menu as $menu ) {
-			$icon          = $menu['icon'];
-			$sub_id        = (int) $menu['sub_menu'];
-			$sub_type      = $menu['sub_type'];
-			$menu_location = $menu['menu_register'];
-			$child_of      = $menu['child_of'];
-			$item_class    = '';
-			$classes       = $this->menu_item_class( $menu );
-			?>
-			<li class="<?php echo esc_attr( $classes ); ?>">
-
-				<a href="<?php echo esc_url( $menu['link']['url'] ); ?>">
-					<span class="menu-item-main-info">
-						<?php
-						if ( ! empty( $icon['value'] ) ) :
-							if ( is_string( $icon['value'] ) ) :
-								?>
-								<span class="menu-item-icon <?php echo esc_attr( $icon['value'] ); ?>"></span>
-							<?php else : ?>
-								<span class="menu-item-icon menu-item-icon-svg">
-									<img src="<?php echo esc_url( $icon['value']['url'] ); ?>" alt="<?php echo esc_attr__( 'Icon ' . $menu['item_text'], 'boostify' ); //phpcs:ignore ?>"> 
-								</span>
-								<?php
-							endif;
-						endif;
-						?>
-
-						<span class="menu-item-text">
-							<?php echo esc_html( $menu['item_text'] ); ?>
-						</span>
-					</span>
-				</a>
-				<?php
-				if ( $menu['has_sub'] && 'mega' === $sub_type && 'no' !== $menu['sub_menu'] ) {
-					$this->get_sub_mega_menu( $sub_id );
-				} elseif ( $menu['has_sub'] && $menu_location ) {
-					$this->sub_menu_default( $menu_location, $child_of );
-				}
-				?>
-			</li>
-			<?php
-		}
-		?>
-		</ul>
-		<?php
+		$this->end_controls_section();
 	}
 
 	/**

@@ -13,43 +13,43 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: inc/admin/class-admin.php:80
+#: inc/admin/class-admin.php:88
 msgid "Type"
 msgstr ""
 
-#: inc/admin/class-admin.php:81
+#: inc/admin/class-admin.php:89
 msgid "Shortcode"
 msgstr ""
 
-#: inc/admin/class-admin.php:131
+#: inc/admin/class-admin.php:139
 msgid "New Template"
 msgstr ""
 
-#: inc/admin/class-admin.php:140
+#: inc/admin/class-admin.php:148
 msgid "Back"
 msgstr ""
 
-#: inc/admin/class-admin.php:156
+#: inc/admin/class-admin.php:164
 msgid "Choose Template Type"
 msgstr ""
 
-#: inc/admin/class-admin.php:160
+#: inc/admin/class-admin.php:168
 msgid "Name your template"
 msgstr ""
 
-#: inc/admin/class-admin.php:167
+#: inc/admin/class-admin.php:175
 msgid "Select the type of template you want to work on"
 msgstr ""
 
-#: inc/admin/class-admin.php:182, inc/admin/class-metabox.php:234, inc/admin/class-metabox.php:483, inc/admin/class-metabox.php:513
+#: inc/admin/class-admin.php:190, inc/admin/class-metabox.php:234, inc/admin/class-metabox.php:483, inc/admin/class-metabox.php:513
 msgid "Display On"
 msgstr ""
 
-#: inc/admin/class-admin.php:204, inc/admin/class-metabox.php:292, inc/admin/class-metabox.php:531
+#: inc/admin/class-admin.php:212, inc/admin/class-metabox.php:292, inc/admin/class-metabox.php:531
 msgid "Do Not Display On"
 msgstr ""
 
-#: inc/admin/class-admin.php:227
+#: inc/admin/class-admin.php:235
 msgid "Create Template"
 msgstr ""
 
@@ -89,7 +89,7 @@ msgstr ""
 msgid "Elementor Builder"
 msgstr ""
 
-#: inc/class-boostify-header-footer-builder.php:195
+#: inc/class-boostify-header-footer-builder.php:202
 msgid "Your current theme is not supported Boostify Header Footer Plugin"
 msgstr ""
 
@@ -233,7 +233,7 @@ msgstr ""
 msgid "Choose background color after scrolling"
 msgstr ""
 
-#: inc/elementor/module/class-sticky.php:148, inc/elementor/widgets/class-cart-icon.php:301, inc/elementor/widgets/class-cart-icon.php:341, inc/elementor/widgets/class-cart-icon.php:396, inc/elementor/widgets/class-cart-icon.php:490, inc/elementor/widgets/class-cart-icon.php:549, inc/elementor/widgets/class-cart-icon.php:751, inc/elementor/widgets/class-cart-icon.php:782, inc/elementor/widgets/class-cart-icon.php:942, inc/elementor/widgets/class-cart-icon.php:974, inc/elementor/widgets/class-cart-icon.php:1043, inc/elementor/widgets/class-cart-icon.php:1075, inc/elementor/widgets/class-mega-menu-vertical.php:393, inc/elementor/widgets/class-site-search.php:311, inc/elementor/widgets/class-site-search.php:350
+#: inc/elementor/module/class-sticky.php:148, inc/elementor/widgets/class-cart-icon.php:301, inc/elementor/widgets/class-cart-icon.php:341, inc/elementor/widgets/class-cart-icon.php:396, inc/elementor/widgets/class-cart-icon.php:490, inc/elementor/widgets/class-cart-icon.php:549, inc/elementor/widgets/class-cart-icon.php:751, inc/elementor/widgets/class-cart-icon.php:782, inc/elementor/widgets/class-cart-icon.php:942, inc/elementor/widgets/class-cart-icon.php:974, inc/elementor/widgets/class-cart-icon.php:1043, inc/elementor/widgets/class-cart-icon.php:1075, inc/elementor/widgets/class-mega-menu-vertical.php:392, inc/elementor/widgets/class-site-search.php:311, inc/elementor/widgets/class-site-search.php:350
 msgid "Color"
 msgstr ""
 
@@ -505,7 +505,7 @@ msgstr ""
 msgid "Border Width"
 msgstr ""
 
-#: inc/elementor/widgets/class-image-retina.php:293, inc/elementor/widgets/class-mega-menu-vertical.php:405
+#: inc/elementor/widgets/class-image-retina.php:293, inc/elementor/widgets/class-mega-menu-vertical.php:404
 msgid "Border Color"
 msgstr ""
 
@@ -605,15 +605,15 @@ msgstr ""
 msgid "Show Menu Vertical"
 msgstr ""
 
-#: inc/elementor/widgets/class-mega-menu-vertical.php:417
+#: inc/elementor/widgets/class-mega-menu-vertical.php:416
 msgid "Background Button Color"
 msgstr ""
 
-#: inc/elementor/widgets/class-mega-menu-vertical.php:429
+#: inc/elementor/widgets/class-mega-menu-vertical.php:428
 msgid "Background Title Color"
 msgstr ""
 
-#: inc/elementor/widgets/class-mega-menu-vertical.php:441
+#: inc/elementor/widgets/class-mega-menu-vertical.php:440
 msgid "Space Top"
 msgstr ""
 
