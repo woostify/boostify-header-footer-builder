@@ -4,7 +4,7 @@ Donate link: https://woostify.com/contact/
 Tags: elementor, header builder, footer builder, elementor header, sticky menu, elementor sticky, header footer builder
 Requires at least: 4.0
 Requires PHP: 5.3
-Tested up to: 5.4
+Tested up to: 5.5
 Stable tag: 1.1.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -85,7 +85,7 @@ Let's get you started
 
 = How to get support? =
 
-If you have any questions post in the [Plugin’s Forum](https://wordpress.org/support/plugin/boostify-header-footer-builder/ "Plugin’s Forum")
+If you have any questions post in the [Plugin’s Forum](https://wordpress.org/support/plugin/boostify-header-footer-builder/"Plugin’s Forum")
 
 == Privacy Policy ==
 Boostify Header Footer Builder for Elementor uses [Appsero](https://appsero.com) SDK to collect some telemetry data upon user's confirmation. This helps us to troubleshoot problems faster & make product improvements.

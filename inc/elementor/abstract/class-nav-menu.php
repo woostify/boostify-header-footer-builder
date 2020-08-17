@@ -58,6 +58,7 @@ abstract class Nav_Menu extends Widget_Base {
 		$this->menu_style();
 		$this->submenu_style();
 		$this->menu_sidebar_style();
+		$this->custon_style();
 	}
 
 	/**
@@ -592,5 +593,10 @@ abstract class Nav_Menu extends Widget_Base {
 		</a><!-- .menu-toggle -->
 		<?php
 	}
+
+	/**
+	 * Get Settings For Main Menu
+	 */
+	protected function custon_style(){}
 }
 
