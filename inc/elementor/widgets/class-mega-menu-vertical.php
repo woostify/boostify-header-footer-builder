@@ -72,7 +72,7 @@ class Mega_Menu_Vertical extends Nav_Menu {
 		$this->start_controls_section(
 			'section_title',
 			array(
-				'label' => __( 'Mega Menu Vertiacal', 'boostify' ),
+				'label' => __( 'Mega Menu Vertical', 'boostify' ),
 			)
 		);
 
@@ -528,9 +528,9 @@ class Mega_Menu_Vertical extends Nav_Menu {
 	 */
 	protected function custon_style() {
 		$this->start_controls_section(
-			'menu_vertical_style',
+			'button_vertical_style',
 			array(
-				'label' => __( 'Menu Vertical', 'boostify' ),
+				'label' => __( 'Style Button Vertical', 'boostify' ),
 				'tab'   => Controls_Manager::TAB_STYLE,
 			)
 		);
@@ -588,6 +588,21 @@ class Mega_Menu_Vertical extends Nav_Menu {
 			)
 		);
 
+		$this->end_controls_section();
+	}
+
+	/**
+	 * Custom Style Menu Vertical Vertical
+	 */
+	protected function custon_style2() {
+		$this->start_controls_section(
+			'menu_vertical_style',
+			array(
+				'label' => __( 'Style Mega Menu Vertical', 'boostify' ),
+				'tab'   => Controls_Manager::TAB_STYLE,
+			)
+		);
+
 		$this->add_responsive_control(
 			'width_megamenu',
 			array(
@@ -606,7 +621,6 @@ class Mega_Menu_Vertical extends Nav_Menu {
 					'{{WRAPPER}} .boostify-mega-menu-vertical--widget,{{WRAPPER}} .boostify-menu > li > a' => 'width: {{SIZE}}{{UNIT}};',
 					'{{WRAPPER}} .boostify-mega-menu-vertical--widget .boostify-mega-menu-vetical .sub-mega-menu' => 'left: {{SIZE}}{{UNIT}};',
 				),
-				'separator' => 'before',
 			)
 		);
 
