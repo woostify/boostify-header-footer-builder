@@ -55,6 +55,7 @@ abstract class Nav_Menu extends Widget_Base {
 	protected function _register_controls() { //phpcs:ignore
 		$this->main_menu();
 		$this->mobile_menu();
+		$this->custom_button_vertical();
 		$this->menu_style();
 		$this->submenu_style();
 		$this->menu_sidebar_style();
@@ -597,6 +598,11 @@ abstract class Nav_Menu extends Widget_Base {
 	/**
 	 * Get Settings For Main Menu
 	 */
-	protected function custon_style(){}
+	protected function custon_style() {}
+
+	/**
+	 * Get Setting Button Vertical Mega Menu
+	 */
+	protected function custom_button_vertical() {}
 }
 

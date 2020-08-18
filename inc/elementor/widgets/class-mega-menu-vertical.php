@@ -72,7 +72,7 @@ class Mega_Menu_Vertical extends Nav_Menu {
 		$this->start_controls_section(
 			'section_title',
 			array(
-				'label' => __( 'Menu Button', 'boostify' ),
+				'label' => __( 'Mega Menu Vertiacal', 'boostify' ),
 			)
 		);
 
@@ -223,16 +223,6 @@ class Mega_Menu_Vertical extends Nav_Menu {
 		);
 
 		$this->add_control(
-			'text_button',
-			array(
-				'label'       => esc_html__( 'Text Button', 'boostify' ),
-				'type'        => Controls_Manager::TEXT,
-				'placeholder' => esc_html__( 'Shop Departments', 'boostify' ),
-				'default'     => esc_html__( 'Shop Departments', 'boostify' ),
-			)
-		);
-
-		$this->add_control(
 			'icon_position',
 			array(
 				'label'   => __( 'Icon Position', 'boostify' ),
@@ -302,105 +292,6 @@ class Mega_Menu_Vertical extends Nav_Menu {
 		);
 
 		$this->end_controls_section();
-	}
-
-	/**
-	 * Add Custom mobile menu controll
-	 */
-	protected function custom_mobile_menu() {
-		$this->add_control(
-			'button_toggle_icon',
-			array(
-				'label' => __( 'Toggle Icons', 'boostify' ),
-				'type'  => Controls_Manager::ICONS,
-			)
-		);
-
-		$this->add_control(
-			'icon_vertical_position',
-			array(
-				'label'   => __( 'Icon Position', 'boostify' ),
-				'type'    => Controls_Manager::SELECT,
-				'default' => 'right',
-				'options' => array(
-					'left'  => 'Left',
-					'right' => 'Right',
-				),
-			)
-		);
-
-		$this->add_control(
-			'icon_vertical_right_space',
-			array(
-				'label'      => __( 'Icon Space', 'boostify' ),
-				'type'       => Controls_Manager::SLIDER,
-				'size_units' => array( 'px' ),
-				'condition'  => array(
-					'icon_vertical_position' => 'right',
-				),
-				'range'      => array(
-					'px' => array(
-						'min'  => 0,
-						'max'  => 60,
-						'step' => 1,
-					),
-				),
-				'selectors'  => array(
-					'{{WRAPPER}} .boostify-menu-toggle-vertical .icon-vertical' => 'padding: 0 0 0 {{SIZE}}{{UNIT}};',
-				),
-			)
-		);
-
-		$this->add_control(
-			'icon_vertical_left_space',
-			array(
-				'label'      => __( 'Icon Space', 'boostify' ),
-				'type'       => Controls_Manager::SLIDER,
-				'size_units' => array( 'px' ),
-				'condition'  => array(
-					'icon_vertical_position' => 'left',
-				),
-				'range'      => array(
-					'px' => array(
-						'min'  => 0,
-						'max'  => 60,
-						'step' => 1,
-					),
-				),
-				'selectors'  => array(
-					'{{WRAPPER}} .boostify-menu-toggle-vertical .icon-vertical' => 'padding: 0 {{SIZE}}{{UNIT}} 0 0;',
-				),
-			)
-		);
-
-		$this->add_control(
-			'align_button_vertical',
-			array(
-				'label'   => __( 'Alignment', 'boostify' ),
-				'type'    => Controls_Manager::CHOOSE,
-				'options' => array(
-					'left'    => array(
-						'title' => __( 'Left', 'boostify' ),
-						'icon'  => 'eicon-text-align-left',
-					),
-					'center'  => array(
-						'title' => __( 'Center', 'boostify' ),
-						'icon'  => 'eicon-text-align-center',
-					),
-					'right'   => array(
-						'title' => __( 'Right', 'boostify' ),
-						'icon'  => 'eicon-text-align-right',
-					),
-					'justify' => array(
-						'title' => __( 'Justified', 'boostify' ),
-						'icon'  => 'eicon-text-align-justify',
-					),
-				),
-				'default' => '',
-			)
-		);
-
-
 	}
 
 	/**
@@ -516,12 +407,131 @@ class Mega_Menu_Vertical extends Nav_Menu {
 		<?php
 	}
 
+	/**
+	 * Add Custom Menu Style Menu Button Vertical
+	 */
+	protected function custom_button_vertical() {
+		$this->start_controls_section(
+			'menu_button_vertical',
+			array(
+				'label' => esc_html__( 'Button Vertical', 'boostify' ),
+			)
+		);
 
+		$this->add_control(
+			'text_button',
+			array(
+				'label'       => esc_html__( 'Text Button', 'boostify' ),
+				'type'        => Controls_Manager::TEXT,
+				'placeholder' => esc_html__( 'Shop Departments', 'boostify' ),
+				'default'     => esc_html__( 'Shop Departments', 'boostify' ),
+			)
+		);
+
+		$this->add_control(
+			'button_toggle_icon',
+			array(
+				'label' => __( 'Toggle Icons', 'boostify' ),
+				'type'  => Controls_Manager::ICONS,
+			)
+		);
+
+		$this->add_control(
+			'icon_vertical_position',
+			array(
+				'label'   => __( 'Icon Position', 'boostify' ),
+				'type'    => Controls_Manager::SELECT,
+				'default' => 'right',
+				'options' => array(
+					'left'  => 'Left',
+					'right' => 'Right',
+				),
+			)
+		);
+
+		$this->add_control(
+			'icon_vertical_right_space',
+			array(
+				'label'      => __( 'Icon Space', 'boostify' ),
+				'type'       => Controls_Manager::SLIDER,
+				'size_units' => array( 'px' ),
+				'condition'  => array(
+					'icon_vertical_position' => 'right',
+				),
+				'range'      => array(
+					'px' => array(
+						'min'  => 0,
+						'max'  => 60,
+						'step' => 1,
+					),
+				),
+				'selectors'  => array(
+					'{{WRAPPER}} .boostify-menu-toggle-vertical .icon-vertical' => 'padding: 0 0 0 {{SIZE}}{{UNIT}};',
+				),
+			)
+		);
+
+		$this->add_control(
+			'icon_vertical_left_space',
+			array(
+				'label'      => __( 'Icon Space', 'boostify' ),
+				'type'       => Controls_Manager::SLIDER,
+				'size_units' => array( 'px' ),
+				'condition'  => array(
+					'icon_vertical_position' => 'left',
+				),
+				'range'      => array(
+					'px' => array(
+						'min'  => 0,
+						'max'  => 60,
+						'step' => 1,
+					),
+				),
+				'selectors'  => array(
+					'{{WRAPPER}} .boostify-menu-toggle-vertical .icon-vertical' => 'padding: 0 {{SIZE}}{{UNIT}} 0 0;',
+				),
+			)
+		);
+
+		$this->add_control(
+			'align_button_vertical',
+			array(
+				'label'   => __( 'Alignment', 'boostify' ),
+				'type'    => Controls_Manager::CHOOSE,
+				'options' => array(
+					'left'    => array(
+						'title' => __( 'Left', 'boostify' ),
+						'icon'  => 'eicon-text-align-left',
+					),
+					'center'  => array(
+						'title' => __( 'Center', 'boostify' ),
+						'icon'  => 'eicon-text-align-center',
+					),
+					'right'   => array(
+						'title' => __( 'Right', 'boostify' ),
+						'icon'  => 'eicon-text-align-right',
+					),
+					'justify' => array(
+						'title' => __( 'Justified', 'boostify' ),
+						'icon'  => 'eicon-text-align-justify',
+					),
+				),
+				'default' => '',
+			)
+		);
+
+		$this->end_controls_section();
+	}
+
+	/**
+	 * Custom Style Menu Vertical Vertical
+	 */
 	protected function custon_style() {
 		$this->start_controls_section(
-			'style_mobile_menu',
+			'menu_vertical_style',
 			array(
-				'label' => esc_html__( 'Button Vetical Menu', 'boostify' ),
+				'label' => __( 'Menu Vertical', 'boostify' ),
+				'tab'   => Controls_Manager::TAB_STYLE,
 			)
 		);
 
@@ -675,6 +685,12 @@ class Mega_Menu_Vertical extends Nav_Menu {
 		);
 
 		$this->end_controls_section();
+	}
+
+	/**
+	 * Add Custom mobile menu controll
+	 */
+	protected function custom_mobile_menu() {
 	}
 
 	/**
