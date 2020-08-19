@@ -466,7 +466,7 @@ class Mega_Menu_Vertical extends Nav_Menu {
 					),
 				),
 				'selectors'  => array(
-					'{{WRAPPER}} .boostify-menu-toggle-vertical .icon-vertical' => 'padding: 0 0 0 {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .boostify-menu-toggle-vertical .icon-vertical' => 'margin-left: {{SIZE}}{{UNIT}};',
 				),
 			)
 		);
@@ -488,7 +488,7 @@ class Mega_Menu_Vertical extends Nav_Menu {
 					),
 				),
 				'selectors'  => array(
-					'{{WRAPPER}} .boostify-menu-toggle-vertical .icon-vertical' => 'padding: 0 {{SIZE}}{{UNIT}} 0 0;',
+					'{{WRAPPER}} .boostify-menu-toggle-vertical .icon-vertical' => 'margin-right: {{SIZE}}{{UNIT}};',
 				),
 			)
 		);
@@ -551,6 +551,18 @@ class Mega_Menu_Vertical extends Nav_Menu {
 				'default'   => '#ffffff',
 				'selectors' => array(
 					'{{WRAPPER}} .boostify-mega-menu-vertical--widget .boostify-menu-toggle-vertical' => 'color: {{VALUE}}',
+				),
+			)
+		);
+
+		$this->add_responsive_control(
+			'margin_button',
+			array(
+				'label'      => esc_html__( 'Space', 'boostify' ),
+				'type'       => Controls_Manager::DIMENSIONS,
+				'size_units' => array( 'px', '%', 'em' ),
+				'selectors'  => array(
+					'{{WRAPPER}} .boostify-mega-menu-vertical--widget .boostify-menu-toggle-vertical' => 'margin:{{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}}',
 				),
 			)
 		);
@@ -728,8 +740,17 @@ class Mega_Menu_Vertical extends Nav_Menu {
 		?>
 		<div class="boostify-mega-menu-vertical--widget elementor-align-<?php echo esc_html( $settings['align_button_vertical'] ); ?>">
 			<button class="boostify-menu-toggle-vertical">
-				<?php echo esc_html( $settings['text_button'] ); ?>
-				<i class="icon-vertical <?php echo esc_html( $icon['value'] ); ?>" style="float: <?php echo esc_html( $settings['icon_vertical_position'] ); ?>"></i>
+				<?php
+				if ( 'left' === $settings['icon_vertical_position'] ) {
+					echo '<i class="icon-vertical ' . esc_html( $icon['value'] ) . '"></i>';
+				}
+
+				echo esc_html( $settings['text_button'] );
+
+				if ( 'right' === $settings['icon_vertical_position'] ) {
+					echo '<i class="icon-vertical ' . esc_html( $icon['value'] ) . '"></i>';
+				}
+				?>
 			</button>
 
 			<nav class="<?php echo esc_attr( $classes ); ?> <?php echo esc_attr( $show_sub_vertical ); ?>">
@@ -739,17 +760,16 @@ class Mega_Menu_Vertical extends Nav_Menu {
 
 			<div class="boostify-menu-sidebar boostify--hover-<?php echo esc_attr( $settings['pointer'] ); ?>">
 				<div class="boostify-menu-sidebar--wrapper">
-
 					<nav class="site-vertical-menu boostify-menu-dropdown" aria-label="<?php esc_attr_e( 'Dropdown navigation', 'boostify' ); ?>">
 						<?php
 						if ( 'yes' === $settings['menu_change'] && 'no' !== $settings['menu_mobile'] ) {
-								$args = array(
-									'menu'       => $settings['menu_mobile'],
-									'menu_id'    => '',
-									'menu_class' => 'boostify-dropdown-menu',
-									'container'  => '',
-								);
-								wp_nav_menu( $args );
+							$args = array(
+								'menu'       => $settings['menu_mobile'],
+								'menu_id'    => '',
+								'menu_class' => 'boostify-dropdown-menu',
+								'container'  => '',
+							);
+							wp_nav_menu( $args );
 						} else {
 							$this->get_menu_site( $settings['menu'], 'boostify-dropdown-menu' );
 						}
