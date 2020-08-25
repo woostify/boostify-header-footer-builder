@@ -308,9 +308,9 @@ class Mega_Menu_Vertical extends Nav_Menu {
 
 		if ( $post_id && 'no' !== $post_id ) :
 			?>
-			<ul class="sub-menu sub-mega-menu">
+			<div class="sub-menu sub-mega-menu">
 				<?php echo do_shortcode( '[bhf id="' . $post_id . '" type="sub_menu"]' ); ?>
-			</ul>
+			</div>
 			<?php
 		endif;
 	}
