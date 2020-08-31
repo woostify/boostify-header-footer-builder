@@ -630,7 +630,7 @@ class Mega_Menu_Vertical extends Nav_Menu {
 					'size' => 270,
 				),
 				'selectors' => array(
-					'{{WRAPPER}} .boostify-mega-menu-vertical--widget,{{WRAPPER}} .boostify-menu > li > a' => 'width: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .boostify-mega-menu-vertical--widget .boostify-mega-menu-vetical,{{WRAPPER}} .boostify-menu > li > a' => 'width: {{SIZE}}{{UNIT}};',
 					'{{WRAPPER}} .boostify-mega-menu-vertical--widget .boostify-mega-menu-vetical .sub-mega-menu' => 'left: {{SIZE}}{{UNIT}};',
 				),
 			)
@@ -696,7 +696,7 @@ class Mega_Menu_Vertical extends Nav_Menu {
 				'type'      => Controls_Manager::COLOR,
 				'default'   => '#ffffff',
 				'selectors' => array(
-					'{{WRAPPER}} .boostify-menu > li > a' => 'background-color: {{VALUE}}',
+					'{{WRAPPER}} .boostify-menu' => 'background-color: {{VALUE}}',
 				),
 			)
 		);
@@ -758,7 +758,7 @@ class Mega_Menu_Vertical extends Nav_Menu {
 			</nav>
 			<?php $this->get_toggle( $settings['toggle_icon'] ); ?>
 
-			<div class="boostify-menu-sidebar boostify--hover-<?php echo esc_attr( $settings['pointer'] ); ?>">
+			<div class="boostify-menu-sidebar">
 				<div class="boostify-menu-sidebar--wrapper">
 					<nav class="site-vertical-menu boostify-menu-dropdown" aria-label="<?php esc_attr_e( 'Dropdown navigation', 'boostify' ); ?>">
 						<?php
