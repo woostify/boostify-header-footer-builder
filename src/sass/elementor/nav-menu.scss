@@ -493,7 +493,7 @@
 			@media( min-width: 780px ) {
 				display: block;
 				z-index: 99999;
-				ul li a {
+				ul {
 					z-index: 99999;
 				}
 			}
@@ -501,7 +501,6 @@
 	}
 
 	.boostify-menu-toggle-vertical {
-		width: 270px;
 		color: #ffffff;
 		margin-top: 20px;
 		margin-bottom: 18px;
@@ -514,6 +513,28 @@
 		@media( max-width: 768px ) {
 			display: none;
 		}
+	}
+}
+
+.boostify-mega-menu-vertical--widget {
+	width: 100%;
+}
+
+.elementor-align-left {
+	.boostify-mega-menu-vetical {
+		align-items: flex-start;
+	}
+}
+
+.elementor-align-center {
+	.boostify-mega-menu-vetical {
+		align-items: center;
+	}
+}
+
+.elementor-align-right {
+	.boostify-mega-menu-vetical {
+		align-items: flex-end;
 	}
 }
 
