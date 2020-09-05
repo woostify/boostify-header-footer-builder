@@ -125,9 +125,11 @@ function stickyHeader() {
 								if ( menuColor && menuColor != '' ) {
 									sticky.find( '.boostify-menu > li > a' ).css( { 'color' : menuColor } );
 								}
-
+								console.log( logo.attr('srcset') );
 								if ( logoStick != '' ) {
 									logo.attr( 'src', logoStick );
+									logo.attr('srcset', '');
+
 								} else {
 									logo.attr( 'src', logoUrl );
 								}
