@@ -128,6 +128,7 @@ function stickyHeader() {
 
 								if ( logoStick != '' ) {
 									logo.attr( 'src', logoStick );
+									logo.attr('srcset', '');
 								} else {
 									logo.attr( 'src', logoUrl );
 								}
