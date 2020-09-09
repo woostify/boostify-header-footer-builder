@@ -222,62 +222,6 @@ class Mega_Menu_Vertical extends Nav_Menu {
 			)
 		);
 
-		$this->add_control(
-			'icon_position',
-			array(
-				'label'   => __( 'Icon Position', 'boostify' ),
-				'type'    => Controls_Manager::SELECT,
-				'default' => 'horizontal',
-				'options' => array(
-					'vertical'   => 'Vertical',
-					'horizontal' => 'Horizontal',
-				),
-			)
-		);
-
-		$this->add_control(
-			'icon_space_horizontal',
-			array(
-				'label'      => __( 'Icon Space', 'boostify' ),
-				'type'       => Controls_Manager::SLIDER,
-				'size_units' => array( 'px' ),
-				'condition'  => array(
-					'icon_position' => 'horizontal',
-				),
-				'range'      => array(
-					'px' => array(
-						'min'  => 0,
-						'max'  => 60,
-						'step' => 1,
-					),
-				),
-				'selectors'  => array(
-					'{{WRAPPER}} .boostify-icon-horizontal .boostify-menu > li .menu-item-icon' => 'padding: 0 {{SIZE}}{{UNIT}} 0 0;',
-				),
-			)
-		);
-
-		$this->add_control(
-			'icon_space_vertical',
-			array(
-				'label'      => __( 'Icon Space', 'boostify' ),
-				'type'       => Controls_Manager::SLIDER,
-				'size_units' => array( 'px' ),
-				'condition'  => array(
-					'icon_position_' => 'vertical',
-				),
-				'range'      => array(
-					'px' => array(
-						'min'  => 0,
-						'max'  => 60,
-						'step' => 1,
-					),
-				),
-				'selectors'  => array(
-					'{{WRAPPER}} .boostify-icon-vertical .boostify-menu > li .menu-item-icon' => 'padding: 0 0 {{SIZE}}{{UNIT}} 0;',
-				),
-			)
-		);
 
 		$this->add_control(
 			'show_active',

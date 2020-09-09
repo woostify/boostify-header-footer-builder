@@ -35,10 +35,6 @@
   align-items: center;
 }
 
-.boostify-menu > li.menu-item-has-mega {
-  position: inherit;
-}
-
 .boostify-menu a {
   line-height: 50px;
   display: inline-block;
