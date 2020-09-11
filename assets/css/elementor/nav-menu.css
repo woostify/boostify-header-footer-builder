@@ -35,10 +35,6 @@
   align-items: center;
 }
 
-.boostify-menu > li.menu-item-has-mega {
-  position: inherit;
-}
-
 .boostify-menu a {
   line-height: 50px;
   display: inline-block;
@@ -370,7 +366,6 @@
 }
 
 .boostify-mega-menu-vertical--widget {
-  text-align: center;
   height: 66px;
   width: 270px;
 }
@@ -436,20 +431,16 @@
     display: block;
     z-index: 99999;
   }
-  .boostify-mega-menu-vertical--widget .boostify-main-navigation.show ul li a {
+  .boostify-mega-menu-vertical--widget .boostify-main-navigation.show ul {
     z-index: 99999;
   }
 }
 
 .boostify-mega-menu-vertical--widget .boostify-menu-toggle-vertical {
-  width: 270px;
   color: #ffffff;
   margin-top: 20px;
   margin-bottom: 18px;
   background-color: #2a2c3c;
-  border: none;
-  border-left: 1px solid #4a4b59;
-  border-right: 1px solid #4a4b59;
   font-size: 14px;
 }
 
@@ -461,4 +452,24 @@
   .boostify-mega-menu-vertical--widget .boostify-menu-toggle-vertical {
     display: none;
   }
+}
+
+.boostify-mega-menu-vertical--widget {
+  width: 100%;
+}
+
+.elementor-align-left .boostify-mega-menu-vetical {
+  align-items: flex-start;
+}
+
+.elementor-align-center .boostify-mega-menu-vetical {
+  align-items: center;
+}
+
+.elementor-align-right .boostify-mega-menu-vetical {
+  align-items: flex-end;
+}
+
+.elementor-align-justify .boostify-menu-toggle-vertical {
+  width: 100%;
 }

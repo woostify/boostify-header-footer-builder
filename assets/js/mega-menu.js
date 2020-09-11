@@ -47,7 +47,9 @@
 					var mega  = item.find( '.boostify-mega-sub' );
 					var width = $( window ).width();
 					var left  = item.offset().left;
-					var padding, contentWith;
+					var padding, contentWith, position;
+					console.log( width );
+					console.log(left);
 					if ( item.hasClass( 'sub-width-default' ) ) {
 						contentWith = 500;
 						padding     = ( width - 500 ) / 2;
@@ -57,16 +59,19 @@
 						if ( width > 1170 ) {
 							padding     = ( width - 1170 ) / 2;
 							contentWith = 1170;
-							left        = padding - left;
+							position    = padding - left;
+							console.log(padding);
 
 						} else {
 							padding     = 15;
-							left        = padding - left;
+							position    = padding - left;
 							contentWith = ( width - 30 );
 
 						}
-						mega.css( { 'left' : left + 'px', 'width' : contentWith + 'px' } );
+						console.log( left );
+						mega.css( { 'left' : position + 'px', 'width' : contentWith + 'px' } );
 					} else {
+						console.log( left );
 						mega.css( { 'left' : '-' + left + 'px', 'width' : width } );
 					}
 
