@@ -42,7 +42,7 @@ class Mega_Menu_Vertical extends Nav_Menu {
 	 * @return string Widget title.
 	 */
 	public function get_title() {
-		return __( 'Mega Menu Vertical', 'boostify' );
+		return __( 'Vertical Menu Button', 'boostify' );
 	}
 
 	/**

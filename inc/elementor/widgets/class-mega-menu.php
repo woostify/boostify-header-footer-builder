@@ -27,6 +27,15 @@ class Mega_Menu extends Nav_Menu {
 	}
 
 	/**
+	 * Retrieve the widget icon.
+	 *
+	 * @return string Widget icon.
+	 */
+	public function get_icon() {
+		return 'eicon-menu-bar';
+	}
+
+	/**
 	 * Retrieve the widget title.
 	 *
 	 * @since 1.2.0
