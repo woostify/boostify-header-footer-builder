@@ -5,7 +5,7 @@ Tags: elementor, header builder, footer builder, elementor header, sticky menu, 
 Requires at least: 4.0
 Requires PHP: 5.3
 Tested up to: 5.5
-Stable tag: 1.1.6
+Stable tag: 1.1.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -18,7 +18,7 @@ Boostify Header Footer Builder for Elementor is a powerful plugin that allows yo
 - Header
 - Footer
 
-## Pick Display Locations 
+## Pick Display Locations
 
 A custom header & footer can be displayed on a specific page or all the pages from the custom field.
 
@@ -36,24 +36,32 @@ Not like other plugins, the plugin gives the built-in widgets for the header so 
 	<li><strong>Menu Cart</strong> - Support cart icon when using WooCommerce </li>
 </ul>
 
-## Sticky Header 
+## Sticky Header
 
 Build a sticky header is easily with the plugin. It offers enabling the sticky in mobile, tablet or desktop. 
 Uploading custom logo for sticky menu, change the background menu, all can be done via Elementor.
 [View Tutorial](https://www.loom.com/share/c069549ad20a41729cb43da1e3ab5e0a)
+[View Demo](https://filmic.boostifythemes.com/)
 
-## Mega Menu 
+## Mega Menu
 
 Build a mega menu is easyly with Elementor. Go to Boostify Header Footer builder -> Add new, in Type, select 'sub mega menu' option. 
 Then build this sub mega menu.
 To add it to the header layout, in the header builder, select Nav mega menu, in this widget, select sub mega menu that's in step one.
 [View Tutorial](https://www.loom.com/share/ff726f36bec64d67adcd78d63b8243c4)
+[View Demo](https://boostifythemes.com/demo/wp/apar/)
 
-## Work With All Themes 
+## Verticle Menu button (support mega menu)
+
+This widget helps create a button that click to show a vertical menu layout.
+To add it to the header layout, in Elementor, select Vertical menu button
+[View Demo](https://boostifythemes.com/demo/wp/apar/)
+
+## Work With All Themes
 
 Boostify Header Footer Builder for Elementor works with all themes. For some themes, that use action/filter in the header.php, you can intergrade it with a hook.
 
-## Support WooCommerce 
+## Support WooCommerce
 Create a cart icon is supported on the header. It offers 2 layout for the cart content such as mini cart and sidebar cart.
 It also supports Ajax add to cart feature
 
@@ -79,8 +87,8 @@ Let's get you started
 
 == Screenshots ==
 
-1. Create and choose location 
-2. Elementor widget 
+1. Create and choose location
+2. Elementor widget
 3. Sticky Settings
 
 = How to get support? =
@@ -99,10 +107,13 @@ Learn more about how [Appsero collects and uses this data](https://appsero.com/p
 == Changelog ==
 
 ## Changelog
-= 1.1.6 = 
+= 1.1.7 =
+- Add Vertical menu button widget
+
+= 1.1.6 =
 - Update Appsero client
 
-= 1.1.5 = 
+= 1.1.5 =
 - Fix no active menu in Nav widget
 
 = 1.1.4 =
@@ -119,7 +130,7 @@ Learn more about how [Appsero collects and uses this data](https://appsero.com/p
 
 = 1.1.2 =
 - Fix WooCommerce Fata error
-- Fix Retina Logo issue 
+- Fix Retina Logo issue
 
 = 1.1.1 =
 - Add cart icon for WooCommerce
@@ -144,7 +155,7 @@ Learn more about how [Appsero collects and uses this data](https://appsero.com/p
 
 == License ==
 
-GNU GPL v2.0. 
+GNU GPL v2.0.
 
 
 == Frequently Asked Questions ==
