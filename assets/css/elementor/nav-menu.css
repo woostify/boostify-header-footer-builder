@@ -407,10 +407,6 @@
   right: 30px;
 }
 
-.boostify-mega-menu-vertical--widget .boostify-mega-menu-vetical .menu-item-has-mega {
-  position: inherit;
-}
-
 .boostify-mega-menu-vertical--widget .boostify-mega-menu-vetical .menu-item-has-mega > a {
   position: relative;
 }
