@@ -468,7 +468,7 @@
 		}
 
 		.menu-item-has-mega {
-			position: inherit;
+
 			&>a {
 				position: relative;
 				
@@ -480,6 +480,13 @@
 				}
 			}
 		}
+
+		.boostify-menu-child {
+			position: absolute;
+			top: 0;
+			left: 0;
+			visibility: hidden;
+		}
 	}
 
 	.boostify-main-navigation {
@@ -489,8 +496,12 @@
 			@media( min-width: 780px ) {
 				display: block;
 				z-index: 99999;
+				position: relative;
 				ul {
 					z-index: 99999;
+					> li {
+						position: inherit;
+					}
 				}
 			}
 		}
