@@ -418,6 +418,13 @@
   right: 30px;
 }
 
+.boostify-mega-menu-vertical--widget .boostify-mega-menu-vetical .boostify-menu-child {
+  position: absolute;
+  top: 0;
+  left: 0;
+  visibility: hidden;
+}
+
 .boostify-mega-menu-vertical--widget .boostify-main-navigation {
   display: none;
 }
@@ -426,9 +433,13 @@
   .boostify-mega-menu-vertical--widget .boostify-main-navigation.show {
     display: block;
     z-index: 99999;
+    position: relative;
   }
   .boostify-mega-menu-vertical--widget .boostify-main-navigation.show ul {
     z-index: 99999;
+  }
+  .boostify-mega-menu-vertical--widget .boostify-main-navigation.show ul > li {
+    position: inherit;
   }
 }
 
