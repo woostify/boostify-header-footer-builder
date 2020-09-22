@@ -432,6 +432,10 @@
 	.boostify-mega-menu-vetical {
 		display: flex;
 		flex-direction: column;
+		&>li {
+			position: inherit;
+		}
+
 		.sub-menu {
 			top: -49px;
 			left: 100%;
@@ -455,8 +459,6 @@
 		}
 
 		.menu-item-has-children {
-			position: relative;
-
 			&>a {
 				&:after {
 					content: '\f10a';
@@ -468,7 +470,6 @@
 		}
 
 		.menu-item-has-mega {
-
 			&>a {
 				position: relative;
 				
@@ -498,9 +499,9 @@
 				z-index: 99999;
 				position: relative;
 				ul {
-					z-index: 99999;
-					> li {
-						position: inherit;
+					> li a {
+						z-index: 99999;
+						position: relative;
 					}
 				}
 			}
