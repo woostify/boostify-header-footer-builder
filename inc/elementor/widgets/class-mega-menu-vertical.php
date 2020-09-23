@@ -222,7 +222,6 @@ class Mega_Menu_Vertical extends Nav_Menu {
 			)
 		);
 
-
 		$this->add_control(
 			'show_active',
 			array(

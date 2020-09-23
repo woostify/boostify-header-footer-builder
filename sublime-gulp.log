@@ -60,6 +60,7 @@ TypeError [ERR_INVALID_CALLBACK]: Callback must be a function. Received undefine
 }
 
 
+<<<<<<< HEAD
 09-18-2020 21:18:
 fs.js:137
     throw new ERR_INVALID_CALLBACK();
@@ -94,3 +95,43 @@ TypeError [ERR_INVALID_CALLBACK]: Callback must be a function
     at tryModuleLoad (internal/modules/cjs/loader.js:537:12)
     at Function.Module._load (internal/modules/cjs/loader.js:529:3)
     at Function.Module.runMain (internal/modules/cjs/loader.js:741:12)
+=======
+09-21-2020 07:45:
+fs.js:153
+    throw new ERR_INVALID_CALLBACK(cb);
+    ^
+
+TypeError [ERR_INVALID_CALLBACK]: Callback must be a function. Received undefined
+    at makeCallback (fs.js:153:11)
+    at Object.unlink (fs.js:1125:14)
+    at requireGulp (D:\Tool\Sublime Text Build 3210 x64\Data\Packages\Gulp\write_tasks_to_cache.js:30:12)
+    at Object.<anonymous> (D:\Tool\Sublime Text Build 3210 x64\Data\Packages\Gulp\write_tasks_to_cache.js:83:12)
+    at Module._compile (internal/modules/cjs/loader.js:1137:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1157:10)
+    at Module.load (internal/modules/cjs/loader.js:985:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:878:14)
+    at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:71:12)
+    at internal/main/run_main_module.js:17:47 {
+  code: 'ERR_INVALID_CALLBACK'
+}
+
+
+09-21-2020 07:47:
+fs.js:153
+    throw new ERR_INVALID_CALLBACK(cb);
+    ^
+
+TypeError [ERR_INVALID_CALLBACK]: Callback must be a function. Received undefined
+    at makeCallback (fs.js:153:11)
+    at Object.unlink (fs.js:1125:14)
+    at requireGulp (D:\Tool\Sublime Text Build 3210 x64\Data\Packages\Gulp\write_tasks_to_cache.js:30:12)
+    at Object.<anonymous> (D:\Tool\Sublime Text Build 3210 x64\Data\Packages\Gulp\write_tasks_to_cache.js:83:12)
+    at Module._compile (internal/modules/cjs/loader.js:1137:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1157:10)
+    at Module.load (internal/modules/cjs/loader.js:985:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:878:14)
+    at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:71:12)
+    at internal/main/run_main_module.js:17:47 {
+  code: 'ERR_INVALID_CALLBACK'
+}
+>>>>>>> d937d5fd53b6d4b9a5891976d437071a352de9fc
