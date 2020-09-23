@@ -16,6 +16,7 @@ import info from './package.json';
 import project from './project.json';
 import wpPot from 'gulp-wp-pot';
 import minify from 'gulp-minify';
+import rename from 'gulp-rename';
 
 const PRODUCTION = yargs.argv.prod;
 const server = browserSync.create();
@@ -66,7 +67,7 @@ export const copy = () => {
 		.pipe(dest(paths.others.dest));
 };
 
-export const clean = () => del(['dist']);
+export const clean = () => del(['dist/*']);
 
 export const scripts = () => {
 	return src(paths.scripts.src)
@@ -108,6 +109,13 @@ export const compress = () => {
 		'!package-lock.json',
 		'!project.json'
 	])
+		.pipe(
+			rename(
+				function(path) {
+					path.dirname = `${info.name}/` + path.dirname;
+				}
+			)
+		)
 		.pipe(zip(`${info.name}.zip`))
 		.pipe(dest('dist'));
 };

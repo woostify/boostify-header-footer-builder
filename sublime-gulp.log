@@ -58,3 +58,39 @@ TypeError [ERR_INVALID_CALLBACK]: Callback must be a function. Received undefine
     at internal/main/run_main_module.js:17:47 {
   code: 'ERR_INVALID_CALLBACK'
 }
+
+
+09-18-2020 21:18:
+fs.js:137
+    throw new ERR_INVALID_CALLBACK();
+    ^
+
+TypeError [ERR_INVALID_CALLBACK]: Callback must be a function
+    at makeCallback (fs.js:137:11)
+    at Object.unlink (fs.js:936:14)
+    at requireGulp (C:\Users\DELL\AppData\Roaming\Sublime Text 3\Packages\Gulp\write_tasks_to_cache.js:30:12)
+    at Object.<anonymous> (C:\Users\DELL\AppData\Roaming\Sublime Text 3\Packages\Gulp\write_tasks_to_cache.js:83:12)
+    at Module._compile (internal/modules/cjs/loader.js:688:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:699:10)
+    at Module.load (internal/modules/cjs/loader.js:598:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:537:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:529:3)
+    at Function.Module.runMain (internal/modules/cjs/loader.js:741:12)
+
+
+09-18-2020 21:18:
+fs.js:137
+    throw new ERR_INVALID_CALLBACK();
+    ^
+
+TypeError [ERR_INVALID_CALLBACK]: Callback must be a function
+    at makeCallback (fs.js:137:11)
+    at Object.unlink (fs.js:936:14)
+    at requireGulp (C:\Users\DELL\AppData\Roaming\Sublime Text 3\Packages\Gulp\write_tasks_to_cache.js:30:12)
+    at Object.<anonymous> (C:\Users\DELL\AppData\Roaming\Sublime Text 3\Packages\Gulp\write_tasks_to_cache.js:83:12)
+    at Module._compile (internal/modules/cjs/loader.js:688:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:699:10)
+    at Module.load (internal/modules/cjs/loader.js:598:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:537:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:529:3)
+    at Function.Module.runMain (internal/modules/cjs/loader.js:741:12)
