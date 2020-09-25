@@ -45,7 +45,7 @@ Uploading custom logo for sticky menu, change the background menu, all can be do
 
 ## Mega Menu
 
-Build a mega menu is easyly with Elementor. Go to Boostify Header Footer builder -> Add new, in Type, select 'sub mega menu' option. 
+Build a mega menu is easily with Elementor. Go to Boostify Header Footer builder -> Add new, in Type, select 'sub mega menu' option. 
 Then build this sub mega menu.
 To add it to the header layout, in the header builder, select Nav mega menu, in this widget, select sub mega menu that's in step one.
 [View Tutorial](https://www.loom.com/share/ff726f36bec64d67adcd78d63b8243c4)
