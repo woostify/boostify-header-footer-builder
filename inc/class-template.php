@@ -477,15 +477,20 @@ class Template {
 	 */
 	public function template_header_id() {
 		global $post;
-		if ( empty( $post ) ) {
+		if ( ! empty( $post ) ) {
+			$this->post_id   = $post->ID;
+			$this->post_type = get_post_type( $post->ID );
+		}
+
+		$post_id              = $this->post_id;
+		$maintenance_mode     = get_option('elementor_maintenance_mode_mode');
+		$maintenance_template = get_option('elementor_maintenance_mode_template_id');
+		if ( 'coming_soon' == $maintenance_mode && $maintenance_template == $post_id ) {
 			return false;
 		}
-		$this->post_id    = $post->ID;
-		$this->post_title = get_post_type( $post->ID );
-		$page_type        = $this->page_type();
-		$post_id          = $this->post_id;
-		$post_type        = $this->post_type;
-		$id               = '';
+		$page_type            = $this->page_type();
+		$post_type            = $this->post_type;
+		$id                   = '';
 		if ( $this->display_all() || $this->display_template( $page_type ) || $this->all_single( $post_id, $post_type ) || $this->current_single( $post_id, $post_type ) ) {
 			if ( $this->display_all() ) {
 				$header = $this->display_all();
@@ -519,12 +524,18 @@ class Template {
 	 */
 	public function template_footer_id() {
 		global $post;
-		if ( empty( $post ) ) {
+		$post_id = '';
+		$post_type = '';
+		if ( ! empty( $post ) ) {
+			$post_id = $post->ID;
+			$post_type        = get_post_type( $post->ID );
+		}
+		$this->post_id    = $post_id;
+		$maintenance_mode     = get_option('elementor_maintenance_mode_mode');
+		$maintenance_template = get_option('elementor_maintenance_mode_template_id');
+		if ( 'coming_soon' == $maintenance_mode && $maintenance_template == $post_id ) {
 			return false;
 		}
-		$post_id          = $post->ID;
-		$post_type        = get_post_type( $post->ID );
-		$this->post_id    = $post_id;
 		$this->post_title = $post_type;
 		$page_type        = $this->page_type();
 		$id               = '';
