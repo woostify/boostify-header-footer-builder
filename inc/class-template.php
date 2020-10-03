@@ -491,10 +491,12 @@ class Template {
 		$page_type            = $this->page_type();
 		$post_type            = $this->post_type;
 		$id                   = '';
+
 		if ( $this->display_all() || $this->display_template( $page_type ) || $this->all_single( $post_id, $post_type ) || $this->current_single( $post_id, $post_type ) ) {
 			if ( $this->display_all() ) {
 				$header = $this->display_all();
 			}
+
 			if ( $this->display_template( $page_type ) ) {
 				$header = $this->display_template( $page_type );
 			}
@@ -512,6 +514,7 @@ class Template {
 			wp_reset_postdata();
 
 			return $id;
+
 		} else {
 			return false;
 		}
@@ -524,8 +527,6 @@ class Template {
 	 */
 	public function template_footer_id() {
 		global $post;
-		$post_id = '';
-		$post_type = '';
 		if ( ! empty( $post ) ) {
 			$post_id = $post->ID;
 			$post_type        = get_post_type( $post->ID );

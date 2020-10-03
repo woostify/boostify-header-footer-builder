@@ -138,6 +138,7 @@ class Template_Render {
 	 */
 	public static function get_header_template() {
 		$id = boostify_header_template_id();
+
 		return self::$elementor_instance->frontend->get_builder_content_for_display( $id );
 	}
 
