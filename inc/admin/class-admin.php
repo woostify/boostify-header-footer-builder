@@ -272,10 +272,21 @@ class Admin {
 		$args = array(
 			'post_title'  => $post_title,
 			'post_type'   => $post_type,
-			'post_status' => 'publish',
+			'post_status' => 'publish'
 		);
+		$permalink = get_option( 'permalink_structure' );
 
 		$post_id = wp_insert_post( $args );
+
+		if ( empty( $permalink ) ) {
+
+			$args = array(
+				'id' => $post_id,
+				'guid' => home_url( '/' ) . '?btf_builder=' . $post_id,
+			);
+
+			wp_update_post( $args );
+		}
 
 		add_post_meta( $post_id, 'bhf_type', $template_type );
 		add_post_meta( $post_id, 'bhf_display', $display );
@@ -286,6 +297,7 @@ class Admin {
 		add_post_meta( $post_id, 'bhf_ex_post', $bhf_ex_post );
 		$url .= 'post.php?post=' . $post_id . '&action=elementor';
 		wp_send_json( $url );
+		// wp_send_json( $permalink );
 
 		die();
 	}

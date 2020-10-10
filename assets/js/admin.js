@@ -306,6 +306,7 @@
 						btnAddNew.addClass( 'loading' );
 					},
 					success: function (response) {
+						console.log(response);
 						btnAddNew.removeClass( 'loading' );
 						window.location.href = response;
 					},
