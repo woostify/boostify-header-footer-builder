@@ -574,6 +574,19 @@ class Mega_Menu_Vertical extends Nav_Menu {
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .boostify-mega-menu-vertical--widget .boostify-mega-menu-vetical,{{WRAPPER}} .boostify-menu > li > a' => 'width: {{SIZE}}{{UNIT}};',
+				),
+			)
+		);
+
+		$this->add_responsive_control(
+			'position_megamenu',
+			array(
+				'label'     => esc_html__( 'Position Mega Menu', 'boostify' ),
+				'type'      => Controls_Manager::SLIDER,
+				'default'   => array(
+					'size' => 270,
+				),
+				'selectors' => array(
 					'{{WRAPPER}} .boostify-mega-menu-vertical--widget .boostify-mega-menu-vetical .sub-mega-menu' => 'left: {{SIZE}}{{UNIT}};',
 				),
 			)
