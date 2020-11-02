@@ -17,48 +17,60 @@ msgstr ""
 msgid "Type"
 msgstr ""
 
-#: inc/admin/class-admin.php:89
-msgid "Shortcode"
-msgstr ""
-
-#: inc/admin/class-admin.php:139
-msgid "New Template"
-msgstr ""
-
-#: inc/admin/class-admin.php:148
-msgid "Back"
-msgstr ""
-
-#: inc/admin/class-admin.php:164
-msgid "Choose Template Type"
-msgstr ""
-
-#: inc/admin/class-admin.php:168
-msgid "Name your template"
-msgstr ""
-
-#: inc/admin/class-admin.php:175
-msgid "Select the type of template you want to work on"
-msgstr ""
-
-#: inc/admin/class-admin.php:190, inc/admin/class-metabox.php:234, inc/admin/class-metabox.php:483, inc/admin/class-metabox.php:513
+#: inc/admin/class-admin.php:89, inc/admin/class-admin.php:225, inc/admin/class-metabox.php:234, inc/admin/class-metabox.php:483, inc/admin/class-metabox.php:513
 msgid "Display On"
 msgstr ""
 
-#: inc/admin/class-admin.php:212, inc/admin/class-metabox.php:292, inc/admin/class-metabox.php:531
+#: inc/admin/class-admin.php:114, inc/admin/class-admin.php:103, inc/admin/class-metabox.php:254, inc/admin/class-metabox.php:316, inc/admin/class-metabox.php:427, inc/admin/class-metabox.php:455
+msgid "All"
+msgstr ""
+
+#: inc/admin/class-admin.php:111
+msgid "404 Page"
+msgstr ""
+
+#: inc/admin/class-admin.php:109, inc/elementor/widgets/class-site-search.php:60, inc/helper.php:86
+msgid "Search"
+msgstr ""
+
+#: inc/admin/class-admin.php:107
+msgid "Archive"
+msgstr ""
+
+#: inc/admin/class-admin.php:105
+msgid "Blog Page"
+msgstr ""
+
+#: inc/admin/class-admin.php:174
+msgid "New Template"
+msgstr ""
+
+#: inc/admin/class-admin.php:183
+msgid "Back"
+msgstr ""
+
+#: inc/admin/class-admin.php:199
+msgid "Choose Template Type"
+msgstr ""
+
+#: inc/admin/class-admin.php:203
+msgid "Name your template"
+msgstr ""
+
+#: inc/admin/class-admin.php:210
+msgid "Select the type of template you want to work on"
+msgstr ""
+
+#: inc/admin/class-admin.php:247, inc/admin/class-metabox.php:292, inc/admin/class-metabox.php:531
 msgid "Do Not Display On"
 msgstr ""
 
-#: inc/admin/class-admin.php:235
+#: inc/admin/class-admin.php:270
 msgid "Create Template"
 msgstr ""
 
 #: inc/admin/class-metabox.php:60
 msgid "Type of Template"
-msgstr ""
-
-#: inc/admin/class-metabox.php:254, inc/admin/class-metabox.php:316, inc/admin/class-metabox.php:427, inc/admin/class-metabox.php:455
-msgid "All"
 msgstr ""
 
 #: inc/admin/class-metabox.php:297, inc/admin/class-metabox.php:536
@@ -735,10 +747,6 @@ msgstr ""
 
 #: inc/elementor/widgets/class-site-search.php:34
 msgid "Site Search"
-msgstr ""
-
-#: inc/elementor/widgets/class-site-search.php:60, inc/helper.php:86
-msgid "Search"
 msgstr ""
 
 #: inc/elementor/widgets/class-site-search.php:80

@@ -86,7 +86,7 @@ class Admin {
 		$date_column = $columns['date'];
 		unset( $columns['date'] );
 		$columns['type']      = __( 'Type', 'boostify' );
-		$columns['shortcode'] = __( 'Shortcode', 'boostify' );
+		$columns['display'] = __( 'Display On', 'boostify' );
 		$columns['date']      = $date_column;
 
 		return $columns;
@@ -94,7 +94,34 @@ class Admin {
 
 	// SHOW THE FEATURED IMAGE
 	public function columns_content( $column_name, $post_id ) {
-		$type = get_post_meta( $post_id, 'bhf_type', true );
+		$type       = get_post_meta( $post_id, 'bhf_type', true );
+		$display_on = get_post_meta( $post_id, 'bhf_display', true );
+		$post_id    = get_post_meta( $post_id, 'bhf_post', true );
+		$post_type  = get_post_meta( $post_id, 'bhf_post_type', true );
+		$display    = '';
+		if ( 'all' == $display_on ) {
+			$display = __( 'All', 'boostify' );
+		} elseif ( 'blog' == $display_on ) {
+			$display = __( 'Blog Page', 'boostify' );
+		} elseif ( 'archive' == $display_on ) {
+			$display = __( 'Archive', 'boostify' );
+		} elseif ( 'search' == $display_on ) {
+			$display = __( 'Search', 'boostify' );
+		} elseif ( 'not_found' == $display_on ) {
+			$display = __( '404 Page', 'boostify' );
+		} else {
+			if ( 'all' == $post_id ) {
+				$display = __( 'All', 'boostify' ) . $post_type;
+			} else {
+				$post_array = explode(',', $post_id);
+				$list_title = array();
+				foreach ($post_array as $id) {
+					$list_title[] = get_the_title( $id );
+				}
+
+				$display = implode(',', $list_title);
+			}
+		}
 		switch ( $column_name ) {
 			case 'shortcode':
 				ob_start();
@@ -112,6 +139,14 @@ class Admin {
 				ob_start();
 				?>
 				<span class="bhf-type"><?php echo esc_html( $type ); ?></span>
+				<?php
+				ob_get_contents();
+				break;
+
+			case 'display':
+				ob_start();
+				?>
+				<span class="bhf-type"><?php echo esc_html( $display ); ?></span>
 				<?php
 				ob_get_contents();
 				break;
@@ -269,6 +304,15 @@ class Admin {
 		if ( array_key_exists( 'bhf_ex_post', $_GET ) ) {
 			$bhf_ex_post = $_GET['bhf_ex_post'];
 		}
+		// update_option(
+		// 	'permalink_structure',
+		// 	'/%postname%/'
+		// );
+
+		if (get_option('permalink_structure') == '') {
+		    global $wp_rewrite;
+		    $wp_rewrite->set_permalink_structure('/%postname%/');
+		}
 		$args = array(
 			'post_title'  => $post_title,
 			'post_type'   => $post_type,
@@ -277,16 +321,6 @@ class Admin {
 		$permalink = get_option( 'permalink_structure' );
 
 		$post_id = wp_insert_post( $args );
-
-		if ( empty( $permalink ) ) {
-
-			$args = array(
-				'id' => $post_id,
-				'guid' => home_url( '/' ) . '?btf_builder=' . $post_id,
-			);
-
-			wp_update_post( $args );
-		}
 
 		add_post_meta( $post_id, 'bhf_type', $template_type );
 		add_post_meta( $post_id, 'bhf_display', $display );
@@ -297,7 +331,7 @@ class Admin {
 		add_post_meta( $post_id, 'bhf_ex_post', $bhf_ex_post );
 		$url .= 'post.php?post=' . $post_id . '&action=elementor';
 		wp_send_json( $url );
-		// wp_send_json( $permalink );
+
 
 		die();
 	}
