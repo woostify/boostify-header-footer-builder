@@ -1,4 +1,4 @@
-# Copyright (C) 2020 boostify-header-footer-builder
+# Copyright (C) 2021 boostify-header-footer-builder
 # This file is distributed under the same license as the boostify-header-footer-builder package.
 msgid ""
 msgstr ""
@@ -653,7 +653,7 @@ msgstr ""
 msgid "Border Submenu Vertical"
 msgstr ""
 
-#: inc/elementor/widgets/class-mega-menu-vertical.php:706, inc/elementor/widgets/class-mega-menu.php:468, inc/elementor/widgets/class-navigation.php:92
+#: inc/elementor/widgets/class-mega-menu-vertical.php:726, inc/elementor/widgets/class-mega-menu.php:468, inc/elementor/widgets/class-navigation.php:92
 msgid "Dropdown navigation"
 msgstr ""
 

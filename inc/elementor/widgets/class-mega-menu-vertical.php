@@ -685,13 +685,33 @@ class Mega_Menu_Vertical extends Nav_Menu {
 			<button class="boostify-menu-toggle-vertical">
 				<?php
 				if ( 'left' === $settings['icon_vertical_position'] ) {
-					echo '<i class="icon-vertical ' . esc_html( $icon['value'] ) . '"></i>';
+					if ( ! empty( $icon['value'] ) ) :
+						if ( is_string( $icon['value'] ) ) :
+							?>
+							<span class="icon-vertical menu-item-icon <?php echo esc_attr( $icon['value'] ); ?>"></span>
+						<?php else : ?>
+							<span class="icon-vertical menu-item-icon menu-item-icon-svg">
+								<img src="<?php echo esc_url( $icon['value']['url'] ); ?>" alt="<?php echo esc_attr__( 'Icon ' . $menu['item_text'], 'boostify' ); //phpcs:ignore ?>"> 
+							</span>
+							<?php
+						endif;
+					endif;
 				}
 
 				echo esc_html( $settings['text_button'] );
 
 				if ( 'right' === $settings['icon_vertical_position'] ) {
-					echo '<i class="icon-vertical ' . esc_html( $icon['value'] ) . '"></i>';
+					if ( ! empty( $icon['value'] ) ) :
+						if ( is_string( $icon['value'] ) ) :
+							?>
+							<span class="icon-vertical menu-item-icon <?php echo esc_attr( $icon['value'] ); ?>"></span>
+						<?php else : ?>
+							<span class="icon-vertical menu-item-icon menu-item-icon-svg">
+								<img src="<?php echo esc_url( $icon['value']['url'] ); ?>" alt="<?php echo esc_attr__( 'Icon ' . $menu['item_text'], 'boostify' ); //phpcs:ignore ?>"> 
+							</span>
+							<?php
+						endif;
+					endif;
 				}
 				?>
 			</button>
