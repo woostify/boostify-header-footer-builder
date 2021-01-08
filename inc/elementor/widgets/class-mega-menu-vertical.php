@@ -511,6 +511,26 @@ class Mega_Menu_Vertical extends Nav_Menu {
 		);
 
 		$this->add_responsive_control(
+			'svgwidth_button',
+			array(
+				'label'     => esc_html__( 'Width SVG', 'boostify' ),
+				'type'      => Controls_Manager::SLIDER,
+				'range'     => array(
+					'px' => array(
+						'min' => 0,
+						'max' => 100,
+					),
+				),
+				'default'   => array(
+					'size' => 0,
+				),
+				'selectors' => array(
+					'{{WRAPPER}} .boostify-mega-menu-vertical--widget .custon-svg-button-vertical' => 'width: {{SIZE}}{{UNIT}};',
+				),
+			)
+		);
+
+		$this->add_responsive_control(
 			'button_padding',
 			array(
 				'label'      => esc_html__( 'Padding', 'boostify' ),
@@ -547,7 +567,7 @@ class Mega_Menu_Vertical extends Nav_Menu {
 	}
 
 	/**
-	 * Custom Style Menu Vertical Vertical
+	 * Custom Style Menu Vertical
 	 */
 	protected function custon_style2() {
 		$this->start_controls_section(
@@ -691,7 +711,7 @@ class Mega_Menu_Vertical extends Nav_Menu {
 							<span class="icon-vertical menu-item-icon <?php echo esc_attr( $icon['value'] ); ?>"></span>
 						<?php else : ?>
 							<span class="icon-vertical menu-item-icon menu-item-icon-svg">
-								<img src="<?php echo esc_url( $icon['value']['url'] ); ?>" alt="<?php echo esc_attr__( 'Icon ' . $menu['item_text'], 'boostify' ); //phpcs:ignore ?>"> 
+								<img src="<?php echo esc_url( $icon['value']['url'] ); ?>" alt="icon-vertical-button" class="custon-svg-button-vertical">
 							</span>
 							<?php
 						endif;
@@ -707,7 +727,7 @@ class Mega_Menu_Vertical extends Nav_Menu {
 							<span class="icon-vertical menu-item-icon <?php echo esc_attr( $icon['value'] ); ?>"></span>
 						<?php else : ?>
 							<span class="icon-vertical menu-item-icon menu-item-icon-svg">
-								<img src="<?php echo esc_url( $icon['value']['url'] ); ?>" alt="<?php echo esc_attr__( 'Icon ' . $menu['item_text'], 'boostify' ); //phpcs:ignore ?>"> 
+								<img src="<?php echo esc_url( $icon['value']['url'] ); ?>" alt="icon-vertical-button" class="custon-svg-button-vertical">
 							</span>
 							<?php
 						endif;

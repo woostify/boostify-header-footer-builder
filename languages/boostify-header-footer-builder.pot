@@ -121,7 +121,7 @@ msgstr ""
 msgid "Menu Style"
 msgstr ""
 
-#: inc/elementor/abstract/class-nav-menu.php:143, inc/elementor/abstract/class-nav-menu.php:291, inc/elementor/widgets/class-cart-icon.php:445, inc/elementor/widgets/class-cart-icon.php:688, inc/elementor/widgets/class-cart-icon.php:881, inc/elementor/widgets/class-cart-icon.php:921, inc/elementor/widgets/class-cart-icon.php:1022, inc/elementor/widgets/class-image-retina.php:466, inc/elementor/widgets/class-mega-menu-vertical.php:516, inc/elementor/widgets/class-site-search.php:189, inc/elementor/widgets/class-site-search.php:204
+#: inc/elementor/abstract/class-nav-menu.php:143, inc/elementor/abstract/class-nav-menu.php:291, inc/elementor/widgets/class-cart-icon.php:445, inc/elementor/widgets/class-cart-icon.php:688, inc/elementor/widgets/class-cart-icon.php:881, inc/elementor/widgets/class-cart-icon.php:921, inc/elementor/widgets/class-cart-icon.php:1022, inc/elementor/widgets/class-image-retina.php:466, inc/elementor/widgets/class-mega-menu-vertical.php:536, inc/elementor/widgets/class-site-search.php:189, inc/elementor/widgets/class-site-search.php:204
 msgid "Padding"
 msgstr ""
 
@@ -365,7 +365,7 @@ msgstr ""
 msgid "Border"
 msgstr ""
 
-#: inc/elementor/widgets/class-cart-icon.php:466, inc/elementor/widgets/class-image-retina.php:308, inc/elementor/widgets/class-mega-menu-vertical.php:626, inc/elementor/widgets/class-site-search.php:286
+#: inc/elementor/widgets/class-cart-icon.php:466, inc/elementor/widgets/class-image-retina.php:308, inc/elementor/widgets/class-mega-menu-vertical.php:646, inc/elementor/widgets/class-site-search.php:286
 msgid "Border Radius"
 msgstr ""
 
@@ -537,7 +537,7 @@ msgstr ""
 msgid "Caption"
 msgstr ""
 
-#: inc/elementor/widgets/class-image-retina.php:446, inc/elementor/widgets/class-mega-menu-vertical.php:638
+#: inc/elementor/widgets/class-image-retina.php:446, inc/elementor/widgets/class-mega-menu-vertical.php:658
 msgid "Background Color"
 msgstr ""
 
@@ -625,35 +625,39 @@ msgstr ""
 msgid "Style Button Vertical"
 msgstr ""
 
-#: inc/elementor/widgets/class-mega-menu-vertical.php:529
+#: inc/elementor/widgets/class-mega-menu-vertical.php:516
+msgid "Width SVG"
+msgstr ""
+
+#: inc/elementor/widgets/class-mega-menu-vertical.php:549
 msgid "Border Button Vertical"
 msgstr ""
 
-#: inc/elementor/widgets/class-mega-menu-vertical.php:537
+#: inc/elementor/widgets/class-mega-menu-vertical.php:557
 msgid "Background Title Color"
 msgstr ""
 
-#: inc/elementor/widgets/class-mega-menu-vertical.php:556
+#: inc/elementor/widgets/class-mega-menu-vertical.php:576
 msgid "Style Mega Menu Vertical"
 msgstr ""
 
-#: inc/elementor/widgets/class-mega-menu-vertical.php:564
+#: inc/elementor/widgets/class-mega-menu-vertical.php:584
 msgid "Width Mega Menu"
 msgstr ""
 
-#: inc/elementor/widgets/class-mega-menu-vertical.php:585
+#: inc/elementor/widgets/class-mega-menu-vertical.php:605
 msgid "Space Top"
 msgstr ""
 
-#: inc/elementor/widgets/class-mega-menu-vertical.php:605
+#: inc/elementor/widgets/class-mega-menu-vertical.php:625
 msgid "Space Top & Bottom Submenu"
 msgstr ""
 
-#: inc/elementor/widgets/class-mega-menu-vertical.php:651
+#: inc/elementor/widgets/class-mega-menu-vertical.php:671
 msgid "Border Submenu Vertical"
 msgstr ""
 
-#: inc/elementor/widgets/class-mega-menu-vertical.php:726, inc/elementor/widgets/class-mega-menu.php:468, inc/elementor/widgets/class-navigation.php:92
+#: inc/elementor/widgets/class-mega-menu-vertical.php:746, inc/elementor/widgets/class-mega-menu.php:468, inc/elementor/widgets/class-navigation.php:92
 msgid "Dropdown navigation"
 msgstr ""
 
