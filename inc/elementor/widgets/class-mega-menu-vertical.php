@@ -547,7 +547,7 @@ class Mega_Menu_Vertical extends Nav_Menu {
 			array(
 				'name'     => 'border_vertical_button',
 				'label'    => esc_html__( 'Border Button Vertical', 'boostify' ),
-				'selector' => '{{WRAPPER}} .boostify-mega-menu-vertical--widget .boostify-menu-toggle-vertical',
+				'selector' => '{{WRAPPER}} .boostify-menu-toggle-vertical',
 			)
 		);
 
@@ -595,6 +595,7 @@ class Mega_Menu_Vertical extends Nav_Menu {
 				'selectors' => array(
 					'{{WRAPPER}} .boostify-mega-menu-vertical--widget .boostify-mega-menu-vetical,{{WRAPPER}} .boostify-menu > li > a' => 'width: {{SIZE}}{{UNIT}};',
 					'{{WRAPPER}} .boostify-mega-menu-vertical--widget .boostify-mega-menu-vetical .sub-mega-menu' => 'left: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .boostify-mega-menu-vertical--widget .boostify-mega-menu-vetical .sub-menu' => 'min-width: {{SIZE}}{{UNIT}};',
 				),
 			)
 		);
@@ -635,7 +636,9 @@ class Mega_Menu_Vertical extends Nav_Menu {
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .boostify-mega-menu-vetical > .menu-item-has-mega:first-child > a' => 'padding-top: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .boostify-mega-menu-vetical > .menu-item:first-child > a' => 'padding-top: {{SIZE}}{{UNIT}};',
 					'{{WRAPPER}} .boostify-mega-menu-vetical > .menu-item-has-mega:last-child > a' => 'padding-bottom: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .boostify-mega-menu-vetical > .menu-item:last-child > a' => 'padding-bottom: {{SIZE}}{{UNIT}};',
 				),
 			)
 		);
