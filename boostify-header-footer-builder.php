@@ -3,7 +3,7 @@
  * Plugin Name: Boostify Header Footer Builder
  * Plugin URI: https://boostifythemes.com
  * Description: Create Header and Footer for your site using Elementor Page Builder.
- * Version: 1.2.0-test
+ * Version: 1.2.0
  * Author: Woostify
  * Author URI: https://woostify.com
  * Text Domain: boostify
