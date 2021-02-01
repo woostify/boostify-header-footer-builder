@@ -5,7 +5,7 @@ Tags: elementor, header builder, footer builder, elementor header, sticky menu, 
 Requires at least: 4.0
 Requires PHP: 5.3
 Tested up to: 5.5
-Stable tag: 1.2.0
+Stable tag: 1.2.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -38,7 +38,7 @@ Not like other plugins, the plugin gives the built-in widgets for the header so 
 
 ## Sticky Header
 
-Build a sticky header is easily with the plugin. It offers enabling the sticky in mobile, tablet or desktop. 
+Build a sticky header is easily with the plugin. It offers enabling the sticky in mobile, tablet or desktop.
 Uploading custom logo for sticky menu, change the background menu, all can be done via Elementor.
 [View Tutorial](https://www.loom.com/share/c069549ad20a41729cb43da1e3ab5e0a)
 [View Demo](https://filmic.boostifythemes.com/)
@@ -107,6 +107,10 @@ Learn more about how [Appsero collects and uses this data](https://appsero.com/p
 == Changelog ==
 
 ## Changelog
+= 1.2.1 =
+- Add hover background option
+- Update Mega menu widget
+
 = 1.2.0 =
 - Fix 404 error when first loading
 - Update Appsero library
