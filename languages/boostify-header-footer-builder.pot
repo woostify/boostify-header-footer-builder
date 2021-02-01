@@ -1,4 +1,4 @@
-# Copyright (C) 2020 boostify-header-footer-builder
+# Copyright (C) 2021 boostify-header-footer-builder
 # This file is distributed under the same license as the boostify-header-footer-builder package.
 msgid ""
 msgstr ""
@@ -121,7 +121,7 @@ msgstr ""
 msgid "Menu Style"
 msgstr ""
 
-#: inc/elementor/abstract/class-nav-menu.php:143, inc/elementor/abstract/class-nav-menu.php:291, inc/elementor/widgets/class-cart-icon.php:445, inc/elementor/widgets/class-cart-icon.php:688, inc/elementor/widgets/class-cart-icon.php:881, inc/elementor/widgets/class-cart-icon.php:921, inc/elementor/widgets/class-cart-icon.php:1022, inc/elementor/widgets/class-image-retina.php:466, inc/elementor/widgets/class-mega-menu-vertical.php:516, inc/elementor/widgets/class-site-search.php:189, inc/elementor/widgets/class-site-search.php:204
+#: inc/elementor/abstract/class-nav-menu.php:143, inc/elementor/abstract/class-nav-menu.php:291, inc/elementor/widgets/class-cart-icon.php:445, inc/elementor/widgets/class-cart-icon.php:688, inc/elementor/widgets/class-cart-icon.php:881, inc/elementor/widgets/class-cart-icon.php:921, inc/elementor/widgets/class-cart-icon.php:1022, inc/elementor/widgets/class-image-retina.php:466, inc/elementor/widgets/class-mega-menu-vertical.php:536, inc/elementor/widgets/class-site-search.php:189, inc/elementor/widgets/class-site-search.php:204
 msgid "Padding"
 msgstr ""
 
@@ -625,19 +625,23 @@ msgstr ""
 msgid "Style Button Vertical"
 msgstr ""
 
-#: inc/elementor/widgets/class-mega-menu-vertical.php:529
+#: inc/elementor/widgets/class-mega-menu-vertical.php:516
+msgid "Width SVG"
+msgstr ""
+
+#: inc/elementor/widgets/class-mega-menu-vertical.php:549
 msgid "Border Button Vertical"
 msgstr ""
 
-#: inc/elementor/widgets/class-mega-menu-vertical.php:537
+#: inc/elementor/widgets/class-mega-menu-vertical.php:557
 msgid "Background Title Color"
 msgstr ""
 
-#: inc/elementor/widgets/class-mega-menu-vertical.php:556
+#: inc/elementor/widgets/class-mega-menu-vertical.php:576
 msgid "Style Mega Menu Vertical"
 msgstr ""
 
-#: inc/elementor/widgets/class-mega-menu-vertical.php:564
+#: inc/elementor/widgets/class-mega-menu-vertical.php:584
 msgid "Width Mega Menu"
 msgstr ""
 

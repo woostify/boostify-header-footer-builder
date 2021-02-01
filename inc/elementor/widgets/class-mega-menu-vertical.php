@@ -511,6 +511,26 @@ class Mega_Menu_Vertical extends Nav_Menu {
 		);
 
 		$this->add_responsive_control(
+			'svgwidth_button',
+			array(
+				'label'     => esc_html__( 'Width SVG', 'boostify' ),
+				'type'      => Controls_Manager::SLIDER,
+				'range'     => array(
+					'px' => array(
+						'min' => 0,
+						'max' => 100,
+					),
+				),
+				'default'   => array(
+					'size' => 0,
+				),
+				'selectors' => array(
+					'{{WRAPPER}} .boostify-mega-menu-vertical--widget .custon-svg-button-vertical' => 'width: {{SIZE}}{{UNIT}};',
+				),
+			)
+		);
+
+		$this->add_responsive_control(
 			'button_padding',
 			array(
 				'label'      => esc_html__( 'Padding', 'boostify' ),
@@ -527,7 +547,7 @@ class Mega_Menu_Vertical extends Nav_Menu {
 			array(
 				'name'     => 'border_vertical_button',
 				'label'    => esc_html__( 'Border Button Vertical', 'boostify' ),
-				'selector' => '{{WRAPPER}} .boostify-mega-menu-vertical--widget .boostify-menu-toggle-vertical',
+				'selector' => '{{WRAPPER}} .boostify-menu-toggle-vertical',
 			)
 		);
 
@@ -547,7 +567,7 @@ class Mega_Menu_Vertical extends Nav_Menu {
 	}
 
 	/**
-	 * Custom Style Menu Vertical Vertical
+	 * Custom Style Menu Vertical
 	 */
 	protected function custon_style2() {
 		$this->start_controls_section(
@@ -588,6 +608,7 @@ class Mega_Menu_Vertical extends Nav_Menu {
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .boostify-mega-menu-vertical--widget .boostify-mega-menu-vetical .sub-mega-menu' => 'left: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .boostify-mega-menu-vertical--widget .boostify-mega-menu-vetical .sub-menu' => 'min-width: {{SIZE}}{{UNIT}};',
 				),
 			)
 		);
@@ -628,7 +649,9 @@ class Mega_Menu_Vertical extends Nav_Menu {
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .boostify-mega-menu-vetical > .menu-item-has-mega:first-child > a' => 'padding-top: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .boostify-mega-menu-vetical > .menu-item:first-child > a' => 'padding-top: {{SIZE}}{{UNIT}};',
 					'{{WRAPPER}} .boostify-mega-menu-vetical > .menu-item-has-mega:last-child > a' => 'padding-bottom: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .boostify-mega-menu-vetical > .menu-item:last-child > a' => 'padding-bottom: {{SIZE}}{{UNIT}};',
 				),
 			)
 		);
@@ -698,13 +721,33 @@ class Mega_Menu_Vertical extends Nav_Menu {
 			<button class="boostify-menu-toggle-vertical">
 				<?php
 				if ( 'left' === $settings['icon_vertical_position'] ) {
-					echo '<i class="icon-vertical ' . esc_html( $icon['value'] ) . '"></i>';
+					if ( ! empty( $icon['value'] ) ) :
+						if ( is_string( $icon['value'] ) ) :
+							?>
+							<span class="icon-vertical menu-item-icon <?php echo esc_attr( $icon['value'] ); ?>"></span>
+						<?php else : ?>
+							<span class="icon-vertical menu-item-icon menu-item-icon-svg">
+								<img src="<?php echo esc_url( $icon['value']['url'] ); ?>" alt="icon-vertical-button" class="custon-svg-button-vertical">
+							</span>
+							<?php
+						endif;
+					endif;
 				}
 
 				echo esc_html( $settings['text_button'] );
 
 				if ( 'right' === $settings['icon_vertical_position'] ) {
-					echo '<i class="icon-vertical ' . esc_html( $icon['value'] ) . '"></i>';
+					if ( ! empty( $icon['value'] ) ) :
+						if ( is_string( $icon['value'] ) ) :
+							?>
+							<span class="icon-vertical menu-item-icon <?php echo esc_attr( $icon['value'] ); ?>"></span>
+						<?php else : ?>
+							<span class="icon-vertical menu-item-icon menu-item-icon-svg">
+								<img src="<?php echo esc_url( $icon['value']['url'] ); ?>" alt="icon-vertical-button" class="custon-svg-button-vertical">
+							</span>
+							<?php
+						endif;
+					endif;
 				}
 				?>
 			</button>

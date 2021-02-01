@@ -135,3 +135,43 @@ TypeError [ERR_INVALID_CALLBACK]: Callback must be a function. Received undefine
   code: 'ERR_INVALID_CALLBACK'
 }
 >>>>>>> d937d5fd53b6d4b9a5891976d437071a352de9fc
+
+
+01-08-2021 11:53:
+fs.js:168
+    throw new ERR_INVALID_CALLBACK(cb);
+    ^
+
+TypeError [ERR_INVALID_CALLBACK]: Callback must be a function. Received undefined
+    at makeCallback (fs.js:168:11)
+    at Object.unlink (fs.js:1199:14)
+    at requireGulp (D:\Tool\Sublime Text Build 3210 x64\Data\Packages\Gulp\write_tasks_to_cache.js:30:12)
+    at Object.<anonymous> (D:\Tool\Sublime Text Build 3210 x64\Data\Packages\Gulp\write_tasks_to_cache.js:83:12)
+    at Module._compile (internal/modules/cjs/loader.js:1063:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)
+    at Module.load (internal/modules/cjs/loader.js:928:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:769:14)
+    at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)
+    at internal/main/run_main_module.js:17:47 {
+  code: 'ERR_INVALID_CALLBACK'
+}
+
+
+01-08-2021 11:57:
+fs.js:168
+    throw new ERR_INVALID_CALLBACK(cb);
+    ^
+
+TypeError [ERR_INVALID_CALLBACK]: Callback must be a function. Received undefined
+    at makeCallback (fs.js:168:11)
+    at Object.unlink (fs.js:1199:14)
+    at requireGulp (D:\Tool\Sublime Text Build 3210 x64\Data\Packages\Gulp\write_tasks_to_cache.js:30:12)
+    at Object.<anonymous> (D:\Tool\Sublime Text Build 3210 x64\Data\Packages\Gulp\write_tasks_to_cache.js:83:12)
+    at Module._compile (internal/modules/cjs/loader.js:1063:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)
+    at Module.load (internal/modules/cjs/loader.js:928:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:769:14)
+    at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)
+    at internal/main/run_main_module.js:17:47 {
+  code: 'ERR_INVALID_CALLBACK'
+}

@@ -452,6 +452,7 @@
   margin-bottom: 18px;
   background-color: #2a2c3c;
   font-size: 14px;
+  border: 1px solid transparent;
 }
 
 .boostify-mega-menu-vertical--widget .boostify-menu-toggle-vertical .fa {
