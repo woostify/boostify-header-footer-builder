@@ -159,6 +159,7 @@ abstract class Nav_Menu extends Widget_Base {
 			)
 		);
 
+
 		$this->start_controls_tabs(
 			'menu_style_tabs'
 		);
@@ -264,6 +265,23 @@ abstract class Nav_Menu extends Widget_Base {
 			array(
 				'label' => __( 'Sub Menu Style', 'boostify' ),
 				'tab'   => Controls_Manager::TAB_STYLE,
+			)
+		);
+
+		$this->add_responsive_control(
+			'width_submenu',
+			array(
+				'label'     => __( 'Width', 'koacher' ),
+				'type'      => Controls_Manager::SLIDER,
+				'range'     => array(
+					'px' => array(
+						'min' => 0,
+						'max' => 2000,
+					),
+				),
+				'selectors' => array(
+					'{{WRAPPER}} .boostify-menu .sub-menu' => 'width: {{SIZE}}{{UNIT}};',
+				),
 			)
 		);
 
