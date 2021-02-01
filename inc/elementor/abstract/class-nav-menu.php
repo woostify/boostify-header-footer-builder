@@ -383,6 +383,18 @@ abstract class Nav_Menu extends Widget_Base {
 			)
 		);
 
+		$this->add_control(
+			'bgcolor_submenu',
+			array(
+				'label'     => __( 'Background color SubMenu', 'boostify' ),
+				'type'      => Controls_Manager::COLOR,
+				'default'   => '#f2f2f2',
+				'selectors' => array(
+					'{{WRAPPER}} .boostify-menu .menu-item-has-children .sub-menu li' => 'background-color: {{VALUE}}',
+				),
+			)
+		);
+
 		$this->add_group_control(
 			Group_Control_Typography::get_type(),
 			array(
@@ -406,6 +418,18 @@ abstract class Nav_Menu extends Widget_Base {
 					'{{WRAPPER}} .boostify-menu li .sub-menu > li:hover > a'                                  => 'color: {{VALUE}}',
 					'{{WRAPPER}} .boostify--hover-underline .boostify-menu li .sub-menu > li:hover > a:after' => 'background-color: {{VALUE}}',
 					'{{WRAPPER}} .boostify-menu .sub-menu li.current-menu-item a'                                       => 'color: {{VALUE}}',
+				),
+			)
+		);
+
+		$this->add_control(
+			'bgcolor_submenu_hover',
+			array(
+				'label'     => __( 'Background color SubMenu', 'boostify' ),
+				'type'      => Controls_Manager::COLOR,
+				'default'   => '#000',
+				'selectors' => array(
+					'{{WRAPPER}} .boostify-menu .menu-item-has-children .sub-menu li:hover' => 'background-color: {{VALUE}}',
 				),
 			)
 		);
