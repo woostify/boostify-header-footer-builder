@@ -633,13 +633,25 @@ class Mega_Menu_Vertical extends Nav_Menu {
 		);
 
 		$this->add_control(
-			'sub_bg_color',
+			'bg_color_menu_item',
 			array(
 				'label'     => esc_html__( 'Background Color', 'boostify' ),
 				'type'      => Controls_Manager::COLOR,
 				'default'   => '#ffffff',
 				'selectors' => array(
-					'{{WRAPPER}} .boostify-menu' => 'background-color: {{VALUE}}',
+					'{{WRAPPER}} .boostify-menu .menu-item-has-children' => 'background-color: {{VALUE}}',
+				),
+			)
+		);
+
+		$this->add_control(
+			'bg_color_menu_item_hover',
+			array(
+				'label'     => esc_html__( 'Background Color hover', 'boostify' ),
+				'type'      => Controls_Manager::COLOR,
+				'default'   => '#ccc',
+				'selectors' => array(
+					'{{WRAPPER}} .boostify-menu .menu-item-has-children:hover' => 'background-color: {{VALUE}}',
 				),
 			)
 		);
