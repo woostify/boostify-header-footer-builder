@@ -138,7 +138,6 @@ class Template_Render {
 	 */
 	public static function get_header_template( $with_css = false ) {
 		$id = boostify_header_template_id();
-
 		if ( is_404() || is_search() ) {
 			$editor = self::$elementor_instance->editor;
 			$is_edit_mode = $editor->is_edit_mode();
