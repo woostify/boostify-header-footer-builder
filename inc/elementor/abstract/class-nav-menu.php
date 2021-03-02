@@ -334,6 +334,19 @@ abstract class Nav_Menu extends Widget_Base {
 			)
 		);
 
+		$this->add_control(
+			'submenu-bdrs',
+			array(
+				'label'      => __( 'Border Radius', 'boostify' ),
+				'type'       => Controls_Manager::DIMENSIONS,
+				'size_units' => array( 'px' ),
+				'selectors'  => array(
+					'{{WRAPPER}} .boostify-menu .sub-menu' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				),
+			)
+		);
+
+
 		$this->start_controls_tabs(
 			'submenu_style_tabs'
 		);

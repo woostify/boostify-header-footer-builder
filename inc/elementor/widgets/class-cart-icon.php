@@ -473,6 +473,17 @@ class Cart_Icon extends Base_Widget {
 		);
 
 		$this->add_control(
+			'cart-background-color',
+			array(
+				'label'     => __( 'Background Color', 'boostify' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => array(
+					'{{WRAPPER}} .boostify-btn--cart' => 'background: {{VALUE}}',
+				),
+			)
+		);
+
+		$this->add_control(
 			'subtotal_heading',
 			array(
 				'label'     => __( 'Subtotal', 'boostify' ),
