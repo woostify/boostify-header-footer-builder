@@ -288,7 +288,8 @@ abstract class Nav_Menu extends Widget_Base {
 					),
 				),
 				'selectors' => array(
-					'{{WRAPPER}} .boostify-menu .sub-menu' => 'width: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .boostify-menu .sub-menu-default' => 'width: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .boostify-nav-default .boostify-menu .sub-menu' => 'width: {{SIZE}}{{UNIT}};',
 				),
 			)
 		);
@@ -639,7 +640,7 @@ abstract class Nav_Menu extends Widget_Base {
 		$args = array(
 			'menu'       => $menu_id,
 			'menu_id'    => '',
-			'menu_class' => 'sub-menu',
+			'menu_class' => 'sub-menu sub-menu-default',
 			'container'  => '',
 		);
 		if ( ! empty( $child_of ) ) {

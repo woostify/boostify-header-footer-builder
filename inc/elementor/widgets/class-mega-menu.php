@@ -146,13 +146,36 @@ class Mega_Menu extends Nav_Menu {
 				'options'   => array(
 					'default'   => __( 'Default', 'boostify' ),
 					'container' => __( 'Container', 'boostify' ),
-					'full'      => __( 'Full Width' ),
+					'full'      => __( 'Full Width', 'boostify' ),
+					'custom'    => __( 'Custom', 'boostify' ),
 				),
 				'condition' => array(
 					'has_sub'   => 'yes',
 					'sub_type'  => 'mega',
 					'sub_menu!' => 'no',
 				),
+			)
+		);
+
+		$repeater->add_control(
+			'width_custom',
+			array(
+				'label'      => __( 'Width Custom', 'boostify' ),
+				'type'       => Controls_Manager::SLIDER,
+				'size_units' => array( 'px' ),
+				'range'      => array(
+					'px' => array(
+						'min'  => 200,
+						'max'  => 1920,
+						'step' => 1,
+					),
+				),
+				'default' => array(
+					'size' => 500,
+				),
+				'condition' => array(
+					'sub_width' => 'custom',
+				)
 			)
 		);
 
@@ -410,9 +433,9 @@ class Mega_Menu extends Nav_Menu {
 	}
 
 	protected function menu_item_class( $menu ) {
-		$icon            = $menu['icon'];
-		$menu_location   = $menu['menu_register'];
-		$sub_type        = $menu['sub_type'];
+		$icon          = $menu['icon'];
+		$menu_location = $menu['menu_register'];
+		$sub_type      = $menu['sub_type'];
 		$menu_item_class = array(
 			'menu-item',
 			'menu-item-type-custom',
@@ -458,10 +481,11 @@ class Mega_Menu extends Nav_Menu {
 			$sub_type      = $menu['sub_type'];
 			$menu_location = $menu['menu_register'];
 			$child_of      = $menu['child_of'];
+			$custom_width = $menu['width_custom'];
 			$item_class    = '';
 			$classes       = $this->menu_item_class( $menu );
 			?>
-			<li class="<?php echo esc_attr( $classes ); ?>">
+			<li class="<?php echo esc_attr( $classes ); ?>" <?php echo ( ! empty( $custom_width ) && isset( $custom_width['size'] ) ) ? 'data-custom-width="' . $custom_width['size'] . '"' : ''; ?>>
 
 				<a href="<?php echo esc_url( $menu['link']['url'] ); ?>">
 					<span class="menu-item-main-info">
