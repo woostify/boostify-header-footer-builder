@@ -38,7 +38,7 @@
 		line-height: 50px;
 		display: inline-block;
 	}
-
+	.sub-mega-menu,
 	.sub-menu {
 		list-style: none;
 		visibility: hidden;
@@ -52,8 +52,6 @@
 		transition: all 0.3s ease-in-out 0s, opacity 0.3s;
 		box-shadow: 1px 5px 15px rgba(0, 0, 0, 0.1);
 		background-color: #fff;
-		border-top-width: 3px;
-		border-top-style: solid;
 		min-width: 180px;
 		padding: 0;
 		margin: 0;
@@ -75,6 +73,7 @@
 		left: 0;
 		visibility: hidden;
 
+		.sub-mega-menu,
 		.sub-menu {
 			position: relative;
 		}
@@ -95,6 +94,7 @@
 				visibility: visible;
 			}
 			&>.boostify-menu-child>.sub-menu,
+			&>.sub-mega-menu,
 			&>.sub-menu {
 				visibility: visible;
 				opacity: 1;

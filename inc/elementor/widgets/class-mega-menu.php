@@ -1,9 +1,10 @@
 <?php
 
 namespace Boostify_Header_Footer\Widgets;
-
 use Boostify_Header_Footer\Nav_Menu;
 use Elementor\Controls_Manager;
+use Elementor\Svg_Handler;
+use Elementor\Global_Colors;
 
 /**
  * Mega Menu
@@ -342,7 +343,7 @@ class Mega_Menu extends Nav_Menu {
 
 		if ( $post_id && 'no' !== $post_id ) :
 			?>
-			<ul class="sub-menu sub-mega-menu">
+			<ul class="sub-mega-menu">
 			<?php
 			echo do_shortcode( '[bhf id="' . $post_id . '" type="sub_menu"]' );
 
