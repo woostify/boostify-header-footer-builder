@@ -213,7 +213,11 @@ abstract class Nav_Menu extends Widget_Base {
 				'selector' => '{{WRAPPER}} .boostify-menu > li > a',
 			)
 		);
+
+		$this->icon_menu_style();
 	}
+
+	protected function icon_menu_style(){}
 
 	protected function menu_style_hover() {
 		$this->add_control(
@@ -254,7 +258,11 @@ abstract class Nav_Menu extends Widget_Base {
 				'selector' => '{{WRAPPER}} .boostify-menu > li:hover > a',
 			)
 		);
+
+		$this->icon_menu_hover_style();
 	}
+
+	protected function icon_menu_hover_style(){}
 
 	/**
 	 * Get Settings Sub Menu Style

@@ -4,6 +4,7 @@ namespace Boostify_Header_Footer\Widgets;
 
 use Boostify_Header_Footer\Nav_Menu;
 use Elementor\Controls_Manager;
+use Elementor\Icons_Manager;
 
 /**
  * Mega Menu
@@ -328,6 +329,62 @@ class Mega_Menu extends Nav_Menu {
 	}
 
 
+	protected function icon_menu_style() {
+		$this->add_control(
+			'icon_menu_color',
+			array(
+				'label'     => __( 'Icon Color', 'boostify' ),
+				'type'      => Controls_Manager::COLOR,
+				'default'   => '',
+				'selectors' => array(
+					'{{WRAPPER}} .boostify-menu .menu-item-icon'       => 'color: {{VALUE}};',
+					'{{WRAPPER}} .boostify-menu .menu-item-icon svg'   => 'fill: {{VALUE}};',
+					'{{WRAPPER}} .boostify-menu .menu-item-icon svg g' => 'fill: {{VALUE}};',
+				),
+			)
+		);
+
+		$this->add_control(
+			'icon_font_size',
+			array(
+				'label'      => __( 'Font Size', 'boostify' ),
+				'type'       => Controls_Manager::SLIDER,
+				'size_units' => array( 'px', '%' ),
+				'range'      => array(
+					'px' => array(
+						'min'  => 0,
+						'max'  => 100,
+						'step' => 1,
+					),
+				),
+				'default' => array(
+					'size' => 14,
+				),
+				'selectors' => array(
+					'{{WRAPPER}} .boostify-menu .menu-item-icon'     => 'font-size: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .boostify-menu .menu-item-icon svg' => 'width: {{SIZE}}{{UNIT}};',
+				),
+			)
+		);
+	}
+
+	protected function icon_menu_hover_style() {
+		$this->add_control(
+			'icon_menu_color_hover',
+			array(
+				'label'     => __( 'Icon Color', 'boostify' ),
+				'type'      => Controls_Manager::COLOR,
+				'default'   => '',
+				'selectors' => array(
+					'{{WRAPPER}} .boostify-menu > li:hover .menu-item-icon'       => 'color: {{VALUE}};',
+					'{{WRAPPER}} .boostify-menu > li:hover .menu-item-icon svg'   => 'fill: {{VALUE}};',
+					'{{WRAPPER}} .boostify-menu > li:hover .menu-item-icon svg g' => 'fill: {{VALUE}};',
+				),
+			)
+		);
+	}
+
+
 	/**
 	 * Get Sub Menu Mega
 	 * @param int $post_id
@@ -415,7 +472,7 @@ class Mega_Menu extends Nav_Menu {
 								<span class="menu-item-icon <?php echo esc_attr( $icon['value'] ); ?>"></span>
 							<?php else : ?>
 								<span class="menu-item-icon menu-item-icon-svg">
-									<img src="<?php echo esc_url( $icon['value']['url'] ); ?>" alt="<?php echo esc_attr__( 'Icon ' . $menu['item_text'], 'boostify' ); //phpcs:ignore ?>"> 
+									<?php Icons_Manager::render_icon( $icon, [ 'aria-hidden' => 'true' ] ); ?>
 								</span>
 								<?php
 							endif;
