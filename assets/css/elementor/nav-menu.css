@@ -33,7 +33,6 @@
   padding: 0 20px;
   display: flex;
   align-items: center;
-  transition: all 0.3s;
 }
 
 .boostify-menu a {
@@ -41,6 +40,7 @@
   display: inline-block;
 }
 
+.boostify-menu .sub-mega-menu,
 .boostify-menu .sub-menu {
   list-style: none;
   visibility: hidden;
@@ -54,17 +54,18 @@
   transition: all 0.3s ease-in-out 0s, opacity 0.3s;
   box-shadow: 1px 5px 15px rgba(0, 0, 0, 0.1);
   background-color: #fff;
-  border-top-width: 3px;
-  border-top-style: solid;
+  min-width: 180px;
   padding: 0;
   margin: 0;
 }
 
+.boostify-menu .sub-mega-menu a,
 .boostify-menu .sub-menu a {
   padding: 15px 20px;
   line-height: 1.6;
 }
 
+.boostify-menu .sub-mega-menu .boostify-menu-child,
 .boostify-menu .sub-menu .boostify-menu-child {
   left: 100%;
 }
@@ -76,6 +77,7 @@
   visibility: hidden;
 }
 
+.boostify-menu .boostify-menu-child .sub-mega-menu,
 .boostify-menu .boostify-menu-child .sub-menu {
   position: relative;
 }
@@ -91,6 +93,7 @@
 }
 
 .boostify-menu .menu-item-has-children:hover > .boostify-menu-child > .sub-menu,
+.boostify-menu .menu-item-has-children:hover > .sub-mega-menu,
 .boostify-menu .menu-item-has-children:hover > .sub-menu {
   visibility: visible;
   opacity: 1;
@@ -351,10 +354,6 @@
 .boostify--hover-overline .boostify-menu > li:hover > a:before {
   width: 80px;
   background-color: #000;
-}
-
-.boostify-menu .menu-item-has-children .sub-menu li{
-  transition: all 0.3s;
 }
 
 .boostify-icon-vertical .menu-item {
