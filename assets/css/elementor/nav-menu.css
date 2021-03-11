@@ -54,8 +54,6 @@
   transition: all 0.3s ease-in-out 0s, opacity 0.3s;
   box-shadow: 1px 5px 15px rgba(0, 0, 0, 0.1);
   background-color: #fff;
-  border-top-width: 3px;
-  border-top-style: solid;
   min-width: 180px;
   padding: 0;
   margin: 0;

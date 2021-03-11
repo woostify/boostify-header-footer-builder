@@ -24,7 +24,8 @@
 
 		sub.each(
 			function ( index ) {
-				if ( sub.hasClass( 'sub-mega-menu' ) ) {
+				console.log( $(this) );
+				if ( $(this).hasClass( 'sub-mega-menu' ) ) {
 					$( this ).wrap( '<div class="boostify-menu-child boostify-mega-sub">' );
 				} else {
 					$( this ).wrap( '<div class="boostify-menu-child">' );
@@ -71,6 +72,7 @@
 						if ( ! contentWith && contentWith < 200 ) {
 							contentWith = 500;
 						}
+						console.log( contentWith );
 
 						padding     = ( width - contentWith ) / 2;
 						left        = padding - left;

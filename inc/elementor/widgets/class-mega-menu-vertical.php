@@ -825,25 +825,7 @@ class Mega_Menu_Vertical extends Nav_Menu {
 			</nav>
 			<?php $this->get_toggle( $settings['toggle_icon'] ); ?>
 
-			<div class="boostify-menu-sidebar">
-				<div class="boostify-menu-sidebar--wrapper">
-					<nav class="site-vertical-menu boostify-menu-dropdown" aria-label="<?php esc_attr_e( 'Dropdown navigation', 'boostify' ); ?>">
-						<?php
-						if ( 'yes' === $settings['menu_change'] && 'no' !== $settings['menu_mobile'] ) {
-							$args = array(
-								'menu'       => $settings['menu_mobile'],
-								'menu_id'    => '',
-								'menu_class' => 'boostify-dropdown-menu',
-								'container'  => '',
-							);
-							wp_nav_menu( $args );
-						} else {
-							$this->get_menu_site( $settings['menu'], 'boostify-dropdown-menu' );
-						}
-						?>
-					</nav>
-				</div>
-			</div>
+
 		</div>
 		<div class="boostify-overlay">
 			<a href="#" class="boostify--close-menu-side-bar ion-android-close"></a>
