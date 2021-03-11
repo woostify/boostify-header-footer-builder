@@ -1,7 +1,7 @@
 <?php
 
 namespace Boostify_Header_Footer;
-
+use Elementor\Global_Colors;
 use Elementor\Controls_Manager;
 use Elementor\Group_Control_Background;
 use Elementor\Group_Control_Typography;
@@ -159,7 +159,6 @@ abstract class Nav_Menu extends Widget_Base {
 			)
 		);
 
-
 		$this->start_controls_tabs(
 			'menu_style_tabs'
 		);
@@ -279,7 +278,7 @@ abstract class Nav_Menu extends Widget_Base {
 		$this->add_responsive_control(
 			'width_submenu',
 			array(
-				'label'     => __( 'Width', 'koacher' ),
+				'label'     => __( 'Width', 'boostify' ),
 				'type'      => Controls_Manager::SLIDER,
 				'range'     => array(
 					'px' => array(
@@ -306,7 +305,8 @@ abstract class Nav_Menu extends Widget_Base {
 					),
 				),
 				'selectors' => array(
-					'{{WRAPPER}} .boostify-menu>.menu-item-has-children>.boostify-menu-child' => 'padding-top: {{SIZE}}{{UNIT}} !important',
+					'{{WRAPPER}} .boostify-menu>.menu-item-has-children>.boostify-menu-child' => 'margin-top: {{SIZE}}{{UNIT}} !important',
+					'{{WRAPPER}} .sub-mega-menu' => 'margin-top: {{SIZE}}{{UNIT}} !important',
 				),
 				'separator' => 'before',
 			)
@@ -338,7 +338,20 @@ abstract class Nav_Menu extends Widget_Base {
 					'right'  => 20,
 				),
 				'selectors'  => array(
-					'{{WRAPPER}} .boostify-menu .sub-menu a' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .boostify-menu .sub-menu li' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				),
+			)
+		);
+
+		$this->add_control(
+			'submenu-bdrs',
+			array(
+				'label'      => __( 'Border Radius', 'boostify' ),
+				'type'       => Controls_Manager::DIMENSIONS,
+				'size_units' => array( 'px' ),
+				'selectors'  => array(
+					'{{WRAPPER}} .boostify-menu .sub-menu' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .sub-mega-menu'           => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				),
 			)
 		);
@@ -392,7 +405,8 @@ abstract class Nav_Menu extends Widget_Base {
 				'default'   => '#d1346f',
 				'separator' => 'before',
 				'selectors' => array(
-					'{{WRAPPER}} .boostify-menu .sub-menu' => 'border-top-color: {{VALUE}}',
+					'{{WRAPPER}} .boostify-menu .sub-menu' => 'border-top: 3px solid {{VALUE}}',
+					'{{WRAPPER}} .sub-mega-menu'           => 'border-top: 3px solid {{VALUE}}',
 				),
 			)
 		);
@@ -428,7 +442,6 @@ abstract class Nav_Menu extends Widget_Base {
 			array(
 				'label'     => __( 'Background color SubMenu', 'boostify' ),
 				'type'      => Controls_Manager::COLOR,
-				'default'   => '#f2f2f2',
 				'selectors' => array(
 					'{{WRAPPER}} .boostify-menu .menu-item-has-children .sub-menu li' => 'background-color: {{VALUE}}',
 				),
@@ -467,7 +480,6 @@ abstract class Nav_Menu extends Widget_Base {
 			array(
 				'label'     => __( 'Background color SubMenu', 'boostify' ),
 				'type'      => Controls_Manager::COLOR,
-				'default'   => '#000',
 				'selectors' => array(
 					'{{WRAPPER}} .boostify-menu .menu-item-has-children .sub-menu li:hover' => 'background-color: {{VALUE}}',
 				),
