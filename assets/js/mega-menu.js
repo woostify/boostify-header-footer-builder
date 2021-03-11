@@ -24,7 +24,6 @@
 
 		sub.each(
 			function ( index ) {
-				console.log( $(this) );
 				if ( $(this).hasClass( 'sub-mega-menu' ) ) {
 					$( this ).wrap( '<div class="boostify-menu-child boostify-mega-sub">' );
 				} else {
