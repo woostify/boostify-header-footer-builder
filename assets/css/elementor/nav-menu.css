@@ -59,8 +59,8 @@
   margin: 0;
 }
 
-.boostify-menu .sub-mega-menu a,
-.boostify-menu .sub-menu a {
+.boostify-menu .sub-mega-menu > a,
+.boostify-menu .sub-menu > a {
   padding: 15px 20px;
   line-height: 1.6;
 }
