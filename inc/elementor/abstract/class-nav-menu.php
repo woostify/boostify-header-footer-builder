@@ -433,8 +433,8 @@ abstract class Nav_Menu extends Widget_Base {
 				'label'     => __( 'Background color SubMenu', 'boostify' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					'{{WRAPPER}} .boostify-nav-default .menu-item-has-children .sub-menu li' => 'background-color: {{VALUE}}',
-					'{{WRAPPER}} .boostify-menu .menu-item-has-children .sub-menu-default li' => 'background-color: {{VALUE}}',
+					'{{WRAPPER}} .boostify-nav-default .menu-item-has-children .sub-menu' => 'background-color: {{VALUE}}',
+					'{{WRAPPER}} .boostify-menu .menu-item-has-children .sub-menu-default' => 'background-color: {{VALUE}}',
 				),
 			)
 		);
