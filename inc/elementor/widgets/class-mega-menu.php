@@ -385,7 +385,7 @@ class Mega_Menu extends Nav_Menu {
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .boostify-menu .menu-item-icon'     => 'font-size: {{SIZE}}{{UNIT}};',
-					'{{WRAPPER}} .boostify-menu .menu-item-icon svg' => 'width: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .boostify-menu .menu-item-icon svg' => 'width: {{SIZE}}{{UNIT}}; height: auto;',
 				),
 			)
 		);
