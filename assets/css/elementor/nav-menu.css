@@ -52,14 +52,9 @@
   z-index: 9999;
   -webkit-transition: all 0.3s ease-in-out 0s, opacity 0.3s;
   transition: all 0.3s ease-in-out 0s, opacity 0.3s;
-  box-shadow: 1px 5px 15px rgba(0, 0, 0, 0.1);
   min-width: 180px;
   padding: 0;
   margin: 0;
-}
-
-.boostify-menu .sub-menu-default {
-  background-color: #fff;
 }
 
 .boostify-menu .sub-mega-menu > a,
@@ -71,6 +66,11 @@
 .boostify-menu .sub-mega-menu .boostify-menu-child,
 .boostify-menu .sub-menu .boostify-menu-child {
   left: 100%;
+}
+
+.boostify-menu .sub-menu-default {
+  background-color: #fff;
+  box-shadow: 1px 5px 15px rgba(0, 0, 0, 0.1);
 }
 
 .boostify-menu .boostify-menu-child {

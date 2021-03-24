@@ -552,19 +552,29 @@ class Template {
 	 */
 	public function template_footer_id() {
 		global $post;
+		$shopId = get_option( 'woocommerce_shop_page_id' );
+		if ( ! empty( $post ) ) {
+			$this->post_id   = $post->ID;
+			$this->post_type = get_post_type( $post->ID );
+		}
+
+		if ( class_exists( 'Woocommerce' ) && is_shop() ) {
+			$this->post_id   = $shopId;
+			$this->post_type = get_post_type( $shopId );
+		}
 		if ( ! empty( $post ) ) {
 			$post_id = $post->ID;
 			$post_type        = get_post_type( $post->ID );
 		}
-		$this->post_id    = $post_id;
+		$post_id              = $this->post_id;
 		$maintenance_mode     = get_option('elementor_maintenance_mode_mode');
 		$maintenance_template = get_option('elementor_maintenance_mode_template_id');
 		if ( 'coming_soon' == $maintenance_mode && $maintenance_template == $post_id ) {
 			return false;
 		}
-		$this->post_title = $post_type;
-		$page_type        = $this->page_type();
-		$id               = '';
+		$page_type            = $this->page_type();
+		$post_type            = $this->post_type;
+		$id                   = '';
 		if ( $this->display_all( 'footer' ) || $this->display_template( $page_type, 'footer' ) || $this->all_single( $post_id, $post_type, 'footer' ) || $this->current_single( $post_id, $post_type, 'footer' ) ) {
 			if ( $this->display_all( 'footer' ) ) {
 				$header = $this->display_all( 'footer' );
