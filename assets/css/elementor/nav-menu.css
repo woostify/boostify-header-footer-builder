@@ -53,10 +53,13 @@
   -webkit-transition: all 0.3s ease-in-out 0s, opacity 0.3s;
   transition: all 0.3s ease-in-out 0s, opacity 0.3s;
   box-shadow: 1px 5px 15px rgba(0, 0, 0, 0.1);
-  background-color: #fff;
   min-width: 180px;
   padding: 0;
   margin: 0;
+}
+
+.boostify-menu .sub-menu-default {
+  background-color: #fff;
 }
 
 .boostify-menu .sub-mega-menu > a,
