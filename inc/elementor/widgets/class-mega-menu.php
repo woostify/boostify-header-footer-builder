@@ -561,6 +561,8 @@ class Mega_Menu extends Nav_Menu {
 						}
 						?>
 					</nav>
+
+					<?php do_action( 'boostify_hf_sidebar_nav_bottom' ); ?>
 				</div>
 			</div>
 		</div>

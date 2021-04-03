@@ -825,7 +825,7 @@ class Mega_Menu_Vertical extends Nav_Menu {
 			</nav>
 			<?php $this->get_toggle( $settings['toggle_icon'] ); ?>
 
-
+			<?php do_action( 'boostify_hf_sidebar_nav_bottom' ); ?>
 		</div>
 		<div class="boostify-overlay">
 			<a href="#" class="boostify--close-menu-side-bar ion-android-close"></a>

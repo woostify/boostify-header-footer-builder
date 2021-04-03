@@ -104,6 +104,8 @@ class Navigation extends Nav_Menu {
 							<a class="add-menu" href="<?php echo esc_url( get_admin_url() . 'nav-menus.php' ); ?>"><?php esc_html_e( 'Add a Primary Menu', 'boostify' ); ?></a>
 						<?php } ?>
 					</nav>
+
+					<?php do_action( 'boostify_hf_sidebar_nav_bottom' ); ?>
 				</div>
 			</div>
 		</div>
