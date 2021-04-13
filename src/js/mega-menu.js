@@ -71,7 +71,6 @@
 						if ( ! contentWith && contentWith < 200 ) {
 							contentWith = 500;
 						}
-						console.log( contentWith );
 
 						padding     = ( width - contentWith ) / 2;
 						left        = padding - left;

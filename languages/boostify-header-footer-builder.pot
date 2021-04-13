@@ -113,7 +113,7 @@ msgstr ""
 msgid "Toggle Icons"
 msgstr ""
 
-#: inc/elementor/abstract/class-nav-menu.php:103, inc/elementor/widgets/class-navigation.php:218
+#: inc/elementor/abstract/class-nav-menu.php:103, inc/elementor/widgets/class-navigation.php:220
 msgid "Toggle Align"
 msgstr ""
 
@@ -193,7 +193,7 @@ msgstr ""
 msgid "Toggle Icon Color"
 msgstr ""
 
-#: inc/elementor/abstract/class-nav-menu.php:655, inc/elementor/widgets/class-mega-menu-vertical.php:184, inc/elementor/widgets/class-mega-menu-vertical.php:211, inc/elementor/widgets/class-mega-menu.php:185, inc/elementor/widgets/class-mega-menu.php:212, inc/elementor/widgets/class-navigation.php:130
+#: inc/elementor/abstract/class-nav-menu.php:655, inc/elementor/widgets/class-mega-menu-vertical.php:184, inc/elementor/widgets/class-mega-menu-vertical.php:211, inc/elementor/widgets/class-mega-menu.php:185, inc/elementor/widgets/class-mega-menu.php:212, inc/elementor/widgets/class-navigation.php:132
 msgid "Menu"
 msgstr ""
 
@@ -309,11 +309,11 @@ msgstr ""
 msgid "Subtotal"
 msgstr ""
 
-#: inc/elementor/widgets/class-cart-icon.php:171, inc/elementor/widgets/class-navigation.php:208, inc/elementor/widgets/class-navigation.php:249
+#: inc/elementor/widgets/class-cart-icon.php:171, inc/elementor/widgets/class-navigation.php:210, inc/elementor/widgets/class-navigation.php:251
 msgid "Show"
 msgstr ""
 
-#: inc/elementor/widgets/class-cart-icon.php:172, inc/elementor/widgets/class-navigation.php:209, inc/elementor/widgets/class-navigation.php:250
+#: inc/elementor/widgets/class-cart-icon.php:172, inc/elementor/widgets/class-navigation.php:211, inc/elementor/widgets/class-navigation.php:252
 msgid "Hide"
 msgstr ""
 
@@ -697,11 +697,11 @@ msgstr ""
 msgid "Width Custom"
 msgstr ""
 
-#: inc/elementor/widgets/class-mega-menu.php:287, inc/elementor/widgets/class-navigation.php:142, inc/elementor/widgets/class-site-logo.php:96, inc/elementor/widgets/class-site-search.php:133
+#: inc/elementor/widgets/class-mega-menu.php:287, inc/elementor/widgets/class-navigation.php:144, inc/elementor/widgets/class-site-logo.php:96, inc/elementor/widgets/class-site-search.php:133
 msgid "Align"
 msgstr ""
 
-#: inc/elementor/widgets/class-mega-menu.php:313, inc/elementor/widgets/class-navigation.php:168
+#: inc/elementor/widgets/class-mega-menu.php:313, inc/elementor/widgets/class-navigation.php:170
 msgid "Pointer"
 msgstr ""
 
@@ -733,27 +733,27 @@ msgstr ""
 msgid "Please go to customize choose logo for site"
 msgstr ""
 
-#: inc/elementor/widgets/class-navigation.php:123, inc/elementor/widgets/class-site-search.php:67
+#: inc/elementor/widgets/class-navigation.php:125, inc/elementor/widgets/class-site-search.php:67
 msgid "Layout"
 msgstr ""
 
-#: inc/elementor/widgets/class-navigation.php:135
+#: inc/elementor/widgets/class-navigation.php:137
 msgid "Go to the <a href=\"%s\" target=\"_blank\">Menus screen</a> to manage your menus."
 msgstr ""
 
-#: inc/elementor/widgets/class-navigation.php:184
+#: inc/elementor/widgets/class-navigation.php:186
 msgid "Sub Menu"
 msgstr ""
 
-#: inc/elementor/widgets/class-navigation.php:194
+#: inc/elementor/widgets/class-navigation.php:196
 msgid "Border Item"
 msgstr ""
 
-#: inc/elementor/widgets/class-navigation.php:206
+#: inc/elementor/widgets/class-navigation.php:208
 msgid "Show Logo"
 msgstr ""
 
-#: inc/elementor/widgets/class-navigation.php:247
+#: inc/elementor/widgets/class-navigation.php:249
 msgid "Show Search"
 msgstr ""
 
