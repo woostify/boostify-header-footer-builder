@@ -74,6 +74,7 @@ if ( ! class_exists( 'Boostify_Header_Footer_Builder' ) ) {
 					'rewrite'      => array( 'slug' => 'btf_builder' ),
 					'has_archive'  => false,
 					'public'       => true,
+					'show_in_rest' => true,
 					'labels'       => array(
 						'name'          => esc_html__( 'Boostify Header Footer Builder', 'boostify' ),
 						'add_new_item'  => esc_html__( 'Add New Header, Footer', 'boostify' ),
