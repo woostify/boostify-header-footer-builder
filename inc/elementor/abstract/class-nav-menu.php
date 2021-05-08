@@ -5,7 +5,6 @@ use Elementor\Global_Colors;
 use Elementor\Controls_Manager;
 use Elementor\Group_Control_Background;
 use Elementor\Group_Control_Typography;
-use Elementor\Scheme_Typography;
 use Elementor\Widget_Base;
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -208,7 +207,6 @@ abstract class Nav_Menu extends Widget_Base {
 			array(
 				'name'     => 'menu_typo',
 				'label'    => __( 'Typography', 'boostify' ),
-				'scheme'   => Scheme_Typography::TYPOGRAPHY_1,
 				'selector' => '{{WRAPPER}} .boostify-menu > li > a',
 			)
 		);
@@ -253,7 +251,6 @@ abstract class Nav_Menu extends Widget_Base {
 			array(
 				'name'     => 'menu_typo_hover',
 				'label'    => __( 'Typography', 'boostify' ),
-				'scheme'   => Scheme_Typography::TYPOGRAPHY_1,
 				'selector' => '{{WRAPPER}} .boostify-menu > li:hover > a',
 			)
 		);
@@ -444,7 +441,6 @@ abstract class Nav_Menu extends Widget_Base {
 			array(
 				'name'     => 'submenu_typo',
 				'label'    => __( 'Typography', 'boostify' ),
-				'scheme'   => Scheme_Typography::TYPOGRAPHY_1,
 				'selector' => '{{WRAPPER}} .boostify-menu .menu-item-has-children .sub-menu-default a, {{WRAPPER}} .boostify-nav-default .menu-item-has-children .sub-menu-default a',
 			)
 		);
@@ -562,7 +558,6 @@ abstract class Nav_Menu extends Widget_Base {
 			array(
 				'name'     => 'menu_sidebar_typo',
 				'label'    => __( 'Typography', 'boostify' ),
-				'scheme'   => Scheme_Typography::TYPOGRAPHY_1,
 				'selector' => '{{WRAPPER}} .boostify-menu-sidebar .boostify-dropdown-menu a',
 			)
 		);
