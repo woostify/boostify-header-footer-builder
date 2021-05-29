@@ -304,15 +304,6 @@ class Admin {
 		if ( array_key_exists( 'bhf_ex_post', $_GET ) ) {
 			$bhf_ex_post = $_GET['bhf_ex_post'];
 		}
-		// update_option(
-		// 	'permalink_structure',
-		// 	'/%postname%/'
-		// );
-
-		if (get_option('permalink_structure') == '') {
-		    global $wp_rewrite;
-		    $wp_rewrite->set_permalink_structure('/%postname%/');
-		}
 		$args = array(
 			'post_title'  => $post_title,
 			'post_type'   => $post_type,
@@ -331,8 +322,6 @@ class Admin {
 		add_post_meta( $post_id, 'bhf_ex_post', $bhf_ex_post );
 		$url .= 'post.php?post=' . $post_id . '&action=elementor';
 		wp_send_json( $url );
-
-
 		die();
 	}
 }
