@@ -731,7 +731,7 @@ class Mega_Menu_Vertical extends Nav_Menu {
 				'type'      => Controls_Manager::COLOR,
 				'default'   => '#ffffff',
 				'selectors' => array(
-					'{{WRAPPER}} .boostify-menu .menu-item-has-children' => 'background-color: {{VALUE}}',
+					'{{WRAPPER}} .boostify-mega-menu-vertical--widget .boostify-mega-menu-vetical > li' => 'background-color: {{VALUE}}',
 				),
 			)
 		);
@@ -743,17 +743,38 @@ class Mega_Menu_Vertical extends Nav_Menu {
 				'type'      => Controls_Manager::COLOR,
 				'default'   => '#ccc',
 				'selectors' => array(
-					'{{WRAPPER}} .boostify-menu .menu-item-has-children:hover' => 'background-color: {{VALUE}}',
+					'{{WRAPPER}} .boostify-mega-menu-vertical--widget .boostify-mega-menu-vetical > li:hover' => 'background-color: {{VALUE}}',
 				),
 			)
 		);
 
-		$this->add_group_control(
-			\Elementor\Group_Control_Border::get_type(),
+		$this->add_control(
+			'border_subitem',
 			array(
-				'name'     => 'sub_border_vertical',
-				'label'    => __( 'Border Submenu Vertical', 'boostify' ),
-				'selector' => '{{WRAPPER}} .boostify-mega-menu-vertical--widget .boostify-mega-menu-vetical',
+				'label'      => __( 'Width', 'boostify' ),
+				'type'       => Controls_Manager::SLIDER,
+				'size_units' => array( 'px' ),
+				'range'      => array(
+					'px' => array(
+						'min'  => 0,
+						'max'  => 20,
+						'step' => 1,
+					),
+				),
+				'selectors'  => array(
+					'{{WRAPPER}} .boostify-mega-menu-vertical--widget .boostify-mega-menu-vetical > li:not(:last-child)' => 'border-bottom-width: {{SIZE}}{{UNIT}}; border-bottom-style: solid;',
+				),
+			)
+		);
+
+		$this->add_control(
+			'border_item_color',
+			array(
+				'label'     => __( 'Border Item Color', 'boostify' ),
+				'type'      => \Elementor\Controls_Manager::COLOR,
+				'selectors' => array(
+					'{{WRAPPER}} .boostify-mega-menu-vertical--widget .boostify-mega-menu-vetical > li:not(:last-child)' => 'border-color: {{VALUE}}',
+				),
 			)
 		);
 

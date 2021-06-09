@@ -1,7 +1,4 @@
 <?php
-
-namespace Boostify_Header_Footer;
-
 /**
  * Comments
  *
@@ -12,13 +9,20 @@ namespace Boostify_Header_Footer;
  * Written by ptp
  */
 
+namespace Boostify_Header_Footer;
+
 defined( 'ABSPATH' ) || exit;
+
 /**
  * Boostify Header Footer Template Class.
  */
-
 class Template {
 
+	/**
+	 * Instance Class
+	 *
+	 * @var instance
+	 */
 	private static $instance;
 
 	/**
@@ -46,19 +50,21 @@ class Template {
 	}
 
 	/**
-	 * Hook in methods.
+	 * Function Construct.
 	 */
 	public function __construct() {
 		add_action( 'wp', array( $this, 'hooks' ) );
 		add_action( 'wp_head', array( $this, 'wp_head' ) );
 		add_filter( 'single_template', array( $this, 'single_template' ) );
-		// Get header Template
+		// Get header Template.
 		add_action( 'boostify_hf_get_header', array( $this, 'header_template' ), 10 );
-		// Get Footer Template
+		// Get Footer Template.
 		add_action( 'boostify_hf_get_footer', array( $this, 'footer_template' ), 10 );
-
 	}
 
+	/**
+	 * Hook in methods.
+	 */
 	public function hooks() {
 		if ( ! current_theme_supports( 'boostify-header-footer' ) ) {
 			add_action( 'get_header', array( $this, 'render_header' ) );
@@ -66,6 +72,9 @@ class Template {
 		}
 	}
 
+	/**
+	 * Reset Post Data header.
+	 */
 	public function wp_head() {
 		wp_reset_postdata();
 	}
@@ -73,6 +82,7 @@ class Template {
 	/**
 	 * Get Header Site.
 	 *
+	 * @param (string) $single_template | Single template path.
 	 * @return Header Site.
 	 */
 	public function single_template( $single_template ) {
@@ -85,8 +95,6 @@ class Template {
 
 	/**
 	 * Get Header Site.
-	 *
-	 * @return Header Site.
 	 */
 	public function render_header() {
 		$header_id = $this->template_header_id();
@@ -105,11 +113,8 @@ class Template {
 
 	/**
 	 * Get Footer Site.
-	 *
-	 * @return Footer Site.
 	 */
 	public function render_footer() {
-
 		$footer_id = $this->template_footer_id();
 		if ( $footer_id ) {
 			require BOOSTIFY_HEADER_FOOTER_PATH . 'templates/default/footer.php';
@@ -125,36 +130,32 @@ class Template {
 
 	/**
 	 * Get Header Buider width condition.
-	 *
-	 * @return Header template.
 	 */
 	public function header_template() {
 		global $post;
-		$shopId = get_option( 'woocommerce_shop_page_id' );
+		$shop_id = get_option( 'woocommerce_shop_page_id' );
 		if ( ! empty( $post ) ) {
-			$id   = $post->ID;
+			$id        = $post->ID;
 			$post_type = get_post_type( $post->ID );
 		}
 
 		if ( class_exists( 'Woocommerce' ) && is_shop() ) {
-			$id   = $shopId;
-			$post_type = get_post_type( $shopId );
+			$id        = $shop_id;
+			$post_type = get_post_type( $shop_id );
 		}
 
 		$path      = BOOSTIFY_HEADER_FOOTER_PATH . 'templates/content/content-header.php';
 		$page_type = $this->page_type();
 
 		if ( ! empty( $page_type ) ) {
-			if ( class_exists( 'Woocommerce' ) && ! is_shop() ) {
+			if ( ! class_exists( 'Woocommerce' ) && ( class_exists( 'Woocommerce' ) && ! is_shop() ) ) {
 				$header = $this->display_template( $page_type );
 				if ( ! $header ) {
 					$header = $this->display_all();
 				}
 				$this->render( $header, $path );
 			}
-
 		}
-
 
 		if ( is_singular() || ( class_exists( 'Woocommerce' ) && is_shop() ) ) {
 
@@ -172,16 +173,24 @@ class Template {
 
 	/**
 	 * Get Footer Buider width condition.
-	 *
-	 * @return Footer template.
 	 */
 	public function footer_template() {
-		$id        = $this->post_id;
-		$post_type = $this->post_type;
-		$path      = BOOSTIFY_HEADER_FOOTER_PATH . 'templates/content/content-footer.php';
+		global $post;
+		$shop_id = get_option( 'woocommerce_shop_page_id' );
+		if ( ! empty( $post ) ) {
+			$id        = $post->ID;
+			$post_type = get_post_type( $post->ID );
+		}
+
+		if ( class_exists( 'Woocommerce' ) && is_shop() ) {
+			$id        = $shop_id;
+			$post_type = get_post_type( $shop_id );
+		}
+
+		$path      = BOOSTIFY_HEADER_FOOTER_PATH . 'templates/content/content-header.php';
 		$page_type = $this->page_type();
 		if ( ! empty( $page_type ) ) {
-			if ( class_exists( 'Woocommerce' ) && ! is_shop() ) {
+			if ( ! class_exists( 'Woocommerce' ) && ( class_exists( 'Woocommerce' ) && ! is_shop() ) ) {
 				$footer = $this->display_template( $page_type, 'footer' );
 				if ( ! $footer ) {
 					$footer = $this->display_all( 'footer' );
@@ -207,7 +216,8 @@ class Template {
 
 	/**
 	 * Template( header or Footer ) width conditon For All.
-	 * @param (string) $type | Type of btf_builder custom post type
+	 *
+	 * @param (string) $type | Type of btf_builder custom post type.
 	 * @return Mixed (object) $template or (Boolean) false.
 	 */
 	public function display_all( $type = 'header' ) {
@@ -217,7 +227,7 @@ class Template {
 			'order'               => 'DESC',
 			'posts_per_page'      => 1,
 			'ignore_sticky_posts' => 1,
-			'meta_query'          => array(
+			'meta_query'          => array( //phpcs:ignore
 				array(
 					'key'     => 'bhf_type',
 					'compare' => 'LIKE',
@@ -245,8 +255,9 @@ class Template {
 
 	/**
 	 * Template( header or Footer ) Width Conditon For Archive, Blog Page, Search Page.
-	 * @param (string) $page_type | Type of page
-	 * @param (string) $type | Type of btf_builder custom post type
+	 *
+	 * @param (string) $page_type | Type of page.
+	 * @param (string) $type | Type of btf_builder custom post type.
 	 * @return Mixed (object) $template or (Boolean) false.
 	 */
 	public function display_template( $page_type, $type = 'header' ) {
@@ -259,7 +270,7 @@ class Template {
 			'order'               => 'DESC',
 			'posts_per_page'      => 1,
 			'ignore_sticky_posts' => 1,
-			'meta_query'          => array(
+			'meta_query'          => array( //phpcs:ignore
 				array(
 					'key'     => 'bhf_type',
 					'compare' => 'LIKE',
@@ -275,7 +286,6 @@ class Template {
 		$header = new \WP_Query( $args );
 
 		if ( $header->have_posts() ) {
-
 			return $header;
 		} else {
 			return false;
@@ -284,22 +294,20 @@ class Template {
 
 	/**
 	 * Template( header or Footer ) Width Conditon For Archive, Blog Page, Search Page.
-	 * @param (int) $id | ID Single Post
-	 * @param (string) $post_type | Post Type Single Post
-	 * @param (string) $type | Type of btf_builder custom post type
+	 *
+	 * @param (int)    $id | ID Single Post.
+	 * @param (string) $post_type | Post Type Single Post.
+	 * @param (string) $type | Type of btf_builder custom post type.
 	 * @return Mixed (object) $template or (Boolean) false.
 	 */
 	public function current_single( $id, $post_type, $type = 'header' ) {
-		// if ( ! is_singular()  ) {
-		// 	return false;
-		// }
 		$args = array(
 			'post_type'           => 'btf_builder',
 			'orderby'             => 'id',
 			'order'               => 'DESC',
 			'posts_per_page'      => -1,
 			'ignore_sticky_posts' => 1,
-			'meta_query'          => array(
+			'meta_query'          => array( //phpcs:ignore
 				array(
 					'key'     => 'bhf_type',
 					'compare' => 'LIKE',
@@ -316,7 +324,6 @@ class Template {
 		$header = new \WP_Query( $args );
 
 		if ( $header->have_posts() ) {
-
 			$list_header = $header->posts;
 			$current     = array();
 
@@ -348,9 +355,10 @@ class Template {
 
 	/**
 	 * Template( header or Footer ) Width Conditon For Archive, Blog Page, Search Page.
-	 * @param (int) $post_id | ID Single Post
-	 * @param (string) $post_type | Post Type Single Post
-	 * @param (string) $type | Type of btf_builder custom post type
+	 *
+	 * @param (int)    $post_id | ID Single Post.
+	 * @param (string) $post_type | Post Type Single Post.
+	 * @param (string) $type | Type of btf_builder custom post type.
 	 * @return Mixed (object) $template or (Boolean) false.
 	 */
 	public function all_single( $post_id, $post_type, $type = 'header' ) {
@@ -413,7 +421,9 @@ class Template {
 		}
 	}
 
-	// Return Page Type.
+	/**
+	 * Get page type.
+	 */
 	public function page_type() {
 		$page_type = '';
 		if ( is_home() ) {
@@ -429,7 +439,11 @@ class Template {
 		return $page_type;
 	}
 
-
+	/**
+	 * Render template.
+	 * @param (object)    $header | ID Single Post.
+	 * @param (string) $path | Post Type Single Post.
+	 */
 	public function render( $header, $path ) {
 		if ( $header->have_posts() ) {
 			while ( $header->have_posts() ) {
@@ -443,6 +457,7 @@ class Template {
 	/**
 	 * Check condition exclude.
 	 *
+	 * @param (string)   $header | Post Type Single Post.
 	 * @return (boolean) false | return false if exclude
 	 */
 	public function check_ex_post( $header ) {
@@ -495,15 +510,15 @@ class Template {
 	 */
 	public function template_header_id() {
 		global $post;
-		$shopId = get_option( 'woocommerce_shop_page_id' );
+		$shop_id = get_option( 'woocommerce_shop_page_id' );
 		if ( ! empty( $post ) ) {
 			$this->post_id   = $post->ID;
 			$this->post_type = get_post_type( $post->ID );
 		}
 
 		if ( class_exists( 'Woocommerce' ) && is_shop() ) {
-			$this->post_id   = $shopId;
-			$this->post_type = get_post_type( $shopId );
+			$this->post_id   = $shop_id;
+			$this->post_type = get_post_type( $shop_id );
 		}
 
 		$post_id              = $this->post_id;
@@ -552,15 +567,15 @@ class Template {
 	 */
 	public function template_footer_id() {
 		global $post;
-		$shopId = get_option( 'woocommerce_shop_page_id' );
+		$shop_id = get_option( 'woocommerce_shop_page_id' );
 		if ( ! empty( $post ) ) {
 			$this->post_id   = $post->ID;
 			$this->post_type = get_post_type( $post->ID );
 		}
 
 		if ( class_exists( 'Woocommerce' ) && is_shop() ) {
-			$this->post_id   = $shopId;
-			$this->post_type = get_post_type( $shopId );
+			$this->post_id   = $shop_id;
+			$this->post_type = get_post_type( $shop_id );
 		}
 		if ( ! empty( $post ) ) {
 			$post_id = $post->ID;

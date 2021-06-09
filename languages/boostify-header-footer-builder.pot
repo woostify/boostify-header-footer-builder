@@ -29,7 +29,7 @@ msgstr ""
 msgid "404 Page"
 msgstr ""
 
-#: inc/admin/class-admin.php:109, inc/elementor/widgets/class-site-search.php:59, inc/helper.php:94
+#: inc/admin/class-admin.php:109, inc/elementor/widgets/class-site-search.php:59, inc/helper.php:86
 msgid "Search"
 msgstr ""
 
@@ -81,27 +81,27 @@ msgstr ""
 msgid "Nothing Found"
 msgstr ""
 
-#: inc/class-boostify-header-footer-builder.php:95
+#: inc/class-boostify-header-footer-builder.php:94
 msgid "Boostify Header Footer Builder"
 msgstr ""
 
-#: inc/class-boostify-header-footer-builder.php:96
+#: inc/class-boostify-header-footer-builder.php:95
 msgid "Add New Header, Footer"
 msgstr ""
 
-#: inc/class-boostify-header-footer-builder.php:97
+#: inc/class-boostify-header-footer-builder.php:96
 msgid "Edit Header, Footer"
 msgstr ""
 
-#: inc/class-boostify-header-footer-builder.php:98
+#: inc/class-boostify-header-footer-builder.php:97
 msgid "All Header, Footer"
 msgstr ""
 
-#: inc/class-boostify-header-footer-builder.php:99
+#: inc/class-boostify-header-footer-builder.php:98
 msgid "Elementor Builder"
 msgstr ""
 
-#: inc/class-boostify-header-footer-builder.php:219
+#: inc/class-boostify-header-footer-builder.php:218
 msgid "Your current theme is not supported Boostify Header Footer Plugin"
 msgstr ""
 
@@ -573,7 +573,7 @@ msgstr ""
 msgid "Sub Menu Type"
 msgstr ""
 
-#: inc/elementor/widgets/class-mega-menu-vertical.php:145, inc/elementor/widgets/class-mega-menu.php:129, inc/helper.php:27
+#: inc/elementor/widgets/class-mega-menu-vertical.php:145, inc/elementor/widgets/class-mega-menu.php:129, inc/helper.php:19
 msgid "Sub Mega Menu"
 msgstr ""
 
@@ -825,19 +825,19 @@ msgstr ""
 msgid "Close"
 msgstr ""
 
-#: inc/helper.php:25
+#: inc/helper.php:17
 msgid "Header"
 msgstr ""
 
-#: inc/helper.php:26
+#: inc/helper.php:18
 msgid "Footer"
 msgstr ""
 
-#: inc/helper.php:84
+#: inc/helper.php:76
 msgctxt "label"
 msgid "Search for:"
 msgstr ""
 
-#: inc/helper.php:147
+#: inc/helper.php:139
 msgid "Select Sub Menu"
 msgstr ""
