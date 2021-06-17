@@ -149,7 +149,7 @@ msgstr ""
 msgid "Sub Menu Style"
 msgstr ""
 
-#: inc/elementor/abstract/class-nav-menu.php:278, inc/elementor/widgets/class-image-retina.php:179, inc/elementor/widgets/class-mega-menu-vertical.php:159, inc/elementor/widgets/class-mega-menu.php:143
+#: inc/elementor/abstract/class-nav-menu.php:278, inc/elementor/widgets/class-image-retina.php:179, inc/elementor/widgets/class-mega-menu-vertical.php:159, inc/elementor/widgets/class-mega-menu-vertical.php:754, inc/elementor/widgets/class-mega-menu.php:143
 msgid "Width"
 msgstr ""
 
@@ -369,7 +369,7 @@ msgstr ""
 msgid "Close Sibar Icon"
 msgstr ""
 
-#: inc/elementor/widgets/class-cart-icon.php:408, inc/elementor/widgets/class-cart-icon.php:580, inc/elementor/widgets/class-mega-menu-vertical.php:259, inc/elementor/widgets/class-mega-menu.php:373
+#: inc/elementor/widgets/class-cart-icon.php:408, inc/elementor/widgets/class-cart-icon.php:580, inc/elementor/widgets/class-mega-menu-vertical.php:259, inc/elementor/widgets/class-mega-menu.php:376
 msgid "Font Size"
 msgstr ""
 
@@ -601,7 +601,7 @@ msgstr ""
 msgid "Show Menu Vertical"
 msgstr ""
 
-#: inc/elementor/widgets/class-mega-menu-vertical.php:245, inc/elementor/widgets/class-mega-menu-vertical.php:284, inc/elementor/widgets/class-mega-menu.php:359, inc/elementor/widgets/class-mega-menu.php:398, inc/elementor/widgets/class-site-search.php:244
+#: inc/elementor/widgets/class-mega-menu-vertical.php:245, inc/elementor/widgets/class-mega-menu-vertical.php:284, inc/elementor/widgets/class-mega-menu.php:362, inc/elementor/widgets/class-mega-menu.php:401, inc/elementor/widgets/class-site-search.php:244
 msgid "Icon Color"
 msgstr ""
 
@@ -669,8 +669,8 @@ msgstr ""
 msgid "Background Color hover"
 msgstr ""
 
-#: inc/elementor/widgets/class-mega-menu-vertical.php:755
-msgid "Border Submenu Vertical"
+#: inc/elementor/widgets/class-mega-menu-vertical.php:773
+msgid "Border Item Color"
 msgstr ""
 
 #: inc/elementor/widgets/class-mega-menu.php:49, inc/elementor/widgets/class-mega-menu.php:60
@@ -713,7 +713,7 @@ msgstr ""
 msgid "Menu Mobile"
 msgstr ""
 
-#: inc/elementor/widgets/class-mega-menu.php:549, inc/elementor/widgets/class-navigation.php:92
+#: inc/elementor/widgets/class-mega-menu.php:552, inc/elementor/widgets/class-navigation.php:92
 msgid "Dropdown navigation"
 msgstr ""
 

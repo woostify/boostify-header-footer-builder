@@ -147,16 +147,6 @@ class Template {
 		$path      = BOOSTIFY_HEADER_FOOTER_PATH . 'templates/content/content-header.php';
 		$page_type = $this->page_type();
 
-		if ( ! empty( $page_type ) ) {
-			if ( ! class_exists( 'Woocommerce' ) && ( class_exists( 'Woocommerce' ) && ! is_shop() ) ) {
-				$header = $this->display_template( $page_type );
-				if ( ! $header ) {
-					$header = $this->display_all();
-				}
-				$this->render( $header, $path );
-			}
-		}
-
 		if ( is_singular() || ( class_exists( 'Woocommerce' ) && is_shop() ) ) {
 
 			$header = $this->current_single( $id, $post_type );
@@ -169,6 +159,15 @@ class Template {
 			}
 			$this->render( $header, $path );
 		}
+
+		if ( ! empty( $page_type ) ) {
+			$header = $this->display_template( $page_type );
+			if ( ! $header ) {
+				$header = $this->display_all();
+			}
+			$this->render( $header, $path );
+		}
+
 	}
 
 	/**
@@ -189,15 +188,6 @@ class Template {
 
 		$path      = BOOSTIFY_HEADER_FOOTER_PATH . 'templates/content/content-header.php';
 		$page_type = $this->page_type();
-		if ( ! empty( $page_type ) ) {
-			if ( ! class_exists( 'Woocommerce' ) && ( class_exists( 'Woocommerce' ) && ! is_shop() ) ) {
-				$footer = $this->display_template( $page_type, 'footer' );
-				if ( ! $footer ) {
-					$footer = $this->display_all( 'footer' );
-				}
-				$this->render( $footer, $path );
-			}
-		}
 
 		if ( is_singular() || ( class_exists( 'Woocommerce' ) && is_shop() ) ) {
 			$footer = $this->current_single( $id, $post_type, 'footer' );
@@ -209,6 +199,14 @@ class Template {
 				}
 			}
 
+			$this->render( $footer, $path );
+		}
+
+		if ( ! empty( $page_type ) ) {
+			$footer = $this->display_template( $page_type, 'footer' );
+			if ( ! $footer ) {
+				$footer = $this->display_all( 'footer' );
+			}
 			$this->render( $footer, $path );
 		}
 
@@ -425,10 +423,16 @@ class Template {
 	 * Get page type.
 	 */
 	public function page_type() {
+		global $post;
+		$shop_id = get_option( 'woocommerce_shop_page_id' );
 		$page_type = '';
+		$checkshop_page = true;
+		if ( class_exists( 'Woocommerce' ) && is_shop() ) {
+			$checkshop_page = false;
+		}
 		if ( is_home() ) {
 			$page_type = 'blog';
-		} elseif ( is_archive() ) {
+		} elseif ( is_archive() && $checkshop_page ) {
 			$page_type = 'archive';
 		} elseif ( is_search() ) {
 			$page_type = 'search';
@@ -457,7 +461,7 @@ class Template {
 	/**
 	 * Check condition exclude.
 	 *
-	 * @param (string)   $header | Post Type Single Post.
+	 * @param (string) $header | Post Type Single Post.
 	 * @return (boolean) false | return false if exclude
 	 */
 	public function check_ex_post( $header ) {
@@ -512,25 +516,22 @@ class Template {
 		global $post;
 		$shop_id = get_option( 'woocommerce_shop_page_id' );
 		if ( ! empty( $post ) ) {
-			$this->post_id   = $post->ID;
-			$this->post_type = get_post_type( $post->ID );
+			$post_id   = $post->ID;
+			$post_type = get_post_type( $post->ID );
 		}
 
 		if ( class_exists( 'Woocommerce' ) && is_shop() ) {
-			$this->post_id   = $shop_id;
-			$this->post_type = get_post_type( $shop_id );
+			$post_id   = $shop_id;
+			$post_type = get_post_type( $shop_id );
 		}
 
-		$post_id              = $this->post_id;
 		$maintenance_mode     = get_option('elementor_maintenance_mode_mode');
 		$maintenance_template = get_option('elementor_maintenance_mode_template_id');
-		if ( 'coming_soon' == $maintenance_mode && $maintenance_template == $post_id ) {
+		if ( 'coming_soon' == $maintenance_mode && $maintenance_template == $post_id ) { //phpcs:ignore
 			return false;
 		}
 		$page_type            = $this->page_type();
-		$post_type            = $this->post_type;
 		$id                   = '';
-
 
 		if ( $this->display_all() || $this->display_template( $page_type ) || $this->all_single( $post_id, $post_type ) || $this->current_single( $post_id, $post_type ) ) {
 			if ( $this->display_all() ) {

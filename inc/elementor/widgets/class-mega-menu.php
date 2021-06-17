@@ -347,6 +347,9 @@ class Mega_Menu extends Nav_Menu {
 				'options'      => $this->all_menu_site(),
 				'save_default' => true,
 				'default'      => 'no',
+				'condition'    => array(
+					'menu_change' => 'yes',
+				),
 			)
 		);
 	}

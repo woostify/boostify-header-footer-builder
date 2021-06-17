@@ -135,7 +135,7 @@
 			'click',
 			function (e) {
 				e.preventDefault();
-				var item   = $( this ).siblings( 'ul.sub-menu' );
+				var item   = $( this ).siblings( '.sub-menu' );
 				var active = item.hasClass( 'active' );
 				if ( active ) {
 					item.removeClass( 'active' );
