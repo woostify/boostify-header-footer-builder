@@ -7,7 +7,6 @@ use Elementor\Controls_Manager;
 use Elementor\Group_Control_Typography;
 use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Background;
-use Elementor\Scheme_Typography;
 
 /**
  * Site Search Widget
@@ -256,7 +255,6 @@ class Site_Search extends Base_Widget {
 			array(
 				'name'     => 'content_typography',
 				'label'    => __( 'Typography', 'boostify' ),
-				'scheme'   => Scheme_Typography::TYPOGRAPHY_1,
 				'selector' => '{{WRAPPER}} .boostify-search-icon--toggle, {{WRAPPER}} .btn-boostify-search-form',
 			)
 		);
@@ -322,10 +320,9 @@ class Site_Search extends Base_Widget {
 		$this->add_group_control(
 			Group_Control_Typography::get_type(),
 			array(
-				'name'     => 'placeholder_typography',
-				'label'    => __( 'Typography', 'boostify' ),
-				'scheme'   => Scheme_Typography::TYPOGRAPHY_1,
-				'selector' => '{{WRAPPER}} .site-search-form ::placeholder',
+				'name'      => 'placeholder_typography',
+				'label'     => __( 'Typography', 'boostify' ),
+				'selector'  => '{{WRAPPER}} .site-search-form ::placeholder',
 				'condition' => array(
 					'layout' => 'form',
 				),
@@ -363,7 +360,6 @@ class Site_Search extends Base_Widget {
 			array(
 				'name'     => 'input_typography',
 				'label'    => __( 'Typography', 'boostify' ),
-				'scheme'   => Scheme_Typography::TYPOGRAPHY_1,
 				'selector' => '{{WRAPPER}} .site-search-field',
 				'condition' => array(
 					'layout' => 'form',

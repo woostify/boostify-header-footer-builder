@@ -32,7 +32,7 @@ class Woocommerce {
 	public static function render_cart_empty() {
 		?>
 		<div class="boostify-mini-cart-empty-message">
-			<span><?php esc_attr_e( 'No products in the cart.', 'boostify' ); ?></span>
+			<span><?php echo esc_html__( 'No products in the cart.', 'boostify' ); ?></span>
 		</div>
 		<?php
 	}

@@ -5,7 +5,6 @@ namespace Boostify_Header_Footer\Widgets;
 use Boostify_Header_Footer\Base_Widget;
 use Boostify_Header_Footer\Module\Woocommerce as BoostifyWoocommerce;
 use Elementor\Controls_Manager;
-use Elementor\Scheme_Typography;
 use Elementor\Group_Control_Typography;
 use Elementor\Group_Control_Background;
 use Elementor\Group_Control_Border;
@@ -315,7 +314,6 @@ class Cart_Icon extends Base_Widget {
 			array(
 				'name'      => 'heading_typography',
 				'label'     => __( 'Typography', 'boostify' ),
-				'scheme'    => Scheme_Typography::TYPOGRAPHY_1,
 				'selector'  => '{{WRAPPER}} .cart-sidebar-title',
 				'condition' => array(
 					'action' => 'click',
@@ -355,7 +353,6 @@ class Cart_Icon extends Base_Widget {
 			array(
 				'name'      => 'couner_typography',
 				'label'     => __( 'Typography', 'boostify' ),
-				'scheme'    => Scheme_Typography::TYPOGRAPHY_1,
 				'selector'  => '{{WRAPPER}} .cart-sidebar-head .count',
 				'condition' => array(
 					'action' => 'click',
@@ -473,6 +470,17 @@ class Cart_Icon extends Base_Widget {
 		);
 
 		$this->add_control(
+			'cart-background-color',
+			array(
+				'label'     => __( 'Background Color', 'boostify' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => array(
+					'{{WRAPPER}} .boostify-btn--cart' => 'background: {{VALUE}}',
+				),
+			)
+		);
+
+		$this->add_control(
 			'subtotal_heading',
 			array(
 				'label'     => __( 'Subtotal', 'boostify' ),
@@ -504,7 +512,6 @@ class Cart_Icon extends Base_Widget {
 			array(
 				'name'      => 'subtotal_typography',
 				'label'     => __( 'Typography', 'boostify' ),
-				'scheme'    => Scheme_Typography::TYPOGRAPHY_1,
 				'selector'  => '{{WRAPPER}} .boostify-subtotal .woocommerce-Price-amount',
 				'condition' => array(
 					'show_subtotal' => 'yes',
@@ -612,7 +619,6 @@ class Cart_Icon extends Base_Widget {
 			array(
 				'name'      => 'icon_counter_typography',
 				'label'     => __( 'Typography', 'boostify' ),
-				'scheme'    => Scheme_Typography::TYPOGRAPHY_1,
 				'selector'  => '{{WRAPPER}} .boostify-count-product',
 				'condition' => array(
 					'action' => 'click',
@@ -762,7 +768,6 @@ class Cart_Icon extends Base_Widget {
 			array(
 				'name'     => 'product_name_typography',
 				'label'    => __( 'Typography', 'boostify' ),
-				'scheme'   => Scheme_Typography::TYPOGRAPHY_1,
 				'selector' => '{{WRAPPER}} .mini-cart-item-name',
 			)
 		);
@@ -794,7 +799,6 @@ class Cart_Icon extends Base_Widget {
 			array(
 				'name'     => 'quantity_typography',
 				'label'    => __( 'Typography', 'boostify' ),
-				'scheme'   => Scheme_Typography::TYPOGRAPHY_1,
 				'selector' => '{{WRAPPER}} .mini-cart-item-detail .quantity',
 			)
 		);
@@ -825,7 +829,6 @@ class Cart_Icon extends Base_Widget {
 			array(
 				'name'     => 'sub_total_typography',
 				'label'    => __( 'Subtotal Typography', 'boostify' ),
-				'scheme'   => Scheme_Typography::TYPOGRAPHY_1,
 				'selector' => '{{WRAPPER}} .boostify-mini-cart__total strong',
 			)
 		);
@@ -847,7 +850,6 @@ class Cart_Icon extends Base_Widget {
 			array(
 				'name'     => 'price_typography',
 				'label'    => __( 'Price Typography', 'boostify' ),
-				'scheme'   => Scheme_Typography::TYPOGRAPHY_1,
 				'selector' => '{{WRAPPER}} .boostify-mini-cart__total .woocommerce-Price-amount',
 			)
 		);
@@ -1000,7 +1002,6 @@ class Cart_Icon extends Base_Widget {
 			array(
 				'name'     => 'view_cart_typography',
 				'label'    => __( 'Typography', 'boostify' ),
-				'scheme'   => Scheme_Typography::TYPOGRAPHY_1,
 				'selector' => '{{WRAPPER}} .boostify-mini-cart__buttons .button:first-child',
 			)
 		);
@@ -1102,7 +1103,6 @@ class Cart_Icon extends Base_Widget {
 			array(
 				'name'      => 'checkout_typography',
 				'label'     => __( 'Typography', 'boostify' ),
-				'scheme'    => Scheme_Typography::TYPOGRAPHY_1,
 				'selector'  => '{{WRAPPER}} .boostify-mini-cart__buttons .button:last-child',
 			)
 		);

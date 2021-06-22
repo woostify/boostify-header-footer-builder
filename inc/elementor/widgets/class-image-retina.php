@@ -10,7 +10,6 @@ use Elementor\Group_Control_Image_Size;
 use Elementor\Group_Control_Typography;
 use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Background;
-use Elementor\Scheme_Typography;
 
 /**
  * Image Retina
@@ -456,7 +455,6 @@ class Image_Retina extends Base_Widget {
 			array(
 				'name'     => 'caption_typography',
 				'selector' => '{{WRAPPER}} .widget-image-caption',
-				'scheme'   => Scheme_Typography::TYPOGRAPHY_1,
 			)
 		);
 
