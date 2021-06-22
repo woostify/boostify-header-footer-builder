@@ -725,9 +725,33 @@ class Mega_Menu_Vertical extends Nav_Menu {
 		);
 
 		$this->add_control(
+			'bg_color_menu',
+			array(
+				'label'     => esc_html__( 'Background Menu Color', 'boostify' ),
+				'type'      => Controls_Manager::COLOR,
+				'default'   => '#ffffff',
+				'selectors' => array(
+					'{{WRAPPER}} .boostify-mega-menu-vertical--widget .boostify-mega-menu-vetical' => 'background-color: {{VALUE}}',
+				),
+			)
+		);
+
+		$this->add_responsive_control(
+			'padding-box-menu',
+			array(
+				'label'      => esc_html__( 'Padding Box menu', 'boostify' ),
+				'type'       => Controls_Manager::DIMENSIONS,
+				'size_units' => array( 'px', '%' ),
+				'selectors'  => array(
+					'{{WRAPPER}} .boostify-mega-menu-vertical--widget .boostify-mega-menu-vetical' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				),
+			)
+		);
+
+		$this->add_control(
 			'bg_color_menu_item',
 			array(
-				'label'     => esc_html__( 'Background Color', 'boostify' ),
+				'label'     => esc_html__( 'Background Item Color', 'boostify' ),
 				'type'      => Controls_Manager::COLOR,
 				'default'   => '#ffffff',
 				'selectors' => array(
@@ -767,13 +791,21 @@ class Mega_Menu_Vertical extends Nav_Menu {
 			)
 		);
 
+		$this->add_group_control(
+			Group_Control_Border::get_type(),
+			array(
+				'name'     => 'border_menu',
+				'selector' => '.boostify-mega-menu-vetical',
+			)
+		);
+
 		$this->add_control(
 			'border_item_color',
 			array(
 				'label'     => __( 'Border Item Color', 'boostify' ),
 				'type'      => \Elementor\Controls_Manager::COLOR,
 				'selectors' => array(
-					'{{WRAPPER}} .boostify-mega-menu-vertical--widget .boostify-mega-menu-vetical > li:not(:last-child)' => 'border-color: {{VALUE}}',
+					'{{WRAPPER}} .boostify-mega-menu-vertical--widget .boostify-mega-menu-vetical > li:not(:last-child)' => 'border-bottom: 1px solid {{VALUE}}',
 				),
 			)
 		);
