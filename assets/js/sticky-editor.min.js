@@ -1,0 +1,1 @@
+!function(e){"use strict";console.log(1111111),console.log(elementor),"undefined"!=typeof elementor&&(window.elmentor=elementor)}(jQuery);
