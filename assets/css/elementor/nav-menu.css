@@ -398,10 +398,6 @@
   min-width: 270px;
 }
 
-.boostify-mega-menu-vertical--widget .boostify-mega-menu-vetical .sub-mega-menu .elementor-icon-list-items .elementor-icon-list-item a {
-  padding: 8px 0;
-}
-
 .boostify-mega-menu-vertical--widget .boostify-mega-menu-vetical .menu-item-has-children > a:after {
   content: '\f10a';
   font-family: "Ionicons";
