@@ -6,6 +6,7 @@ use Elementor\Controls_Manager;
 use Elementor\Group_Control_Background;
 use Elementor\Group_Control_Typography;
 use Elementor\Widget_Base;
+use Elementor\Group_Control_Box_Shadow;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
@@ -272,6 +273,15 @@ abstract class Nav_Menu extends Widget_Base {
 			)
 		);
 
+		$this->add_group_control(
+			Group_Control_Box_Shadow::get_type(),
+			array(
+				'label'    => esc_html__( 'Box Shadow', 'boostify' ),
+				'name'     => 'box_shadow_menu',
+				'selector' => '{{WRAPPER}} .boostify-menu-child .sub-menu',
+			)
+		);
+
 		$this->add_responsive_control(
 			'width_submenu',
 			array(
@@ -439,9 +449,9 @@ abstract class Nav_Menu extends Widget_Base {
 		$this->add_group_control(
 			Group_Control_Typography::get_type(),
 			array(
-				'name'     => 'submenu_typo',
-				'label'    => __( 'Typography', 'boostify' ),
-				'selector' => '{{WRAPPER}} .boostify-menu .menu-item-has-children .sub-menu-default a, {{WRAPPER}} .boostify-nav-default .menu-item-has-children .sub-menu-default a',
+				'name'      => 'submenu_typo',
+				'label'     => __( 'Typography', 'boostify' ),
+				'selectors' => '{{WRAPPER}} .boostify-menu .menu-item-has-children .sub-menu-default a, {{WRAPPER}} .boostify-nav-default .menu-item-has-children .sub-menu-default a',
 			)
 		);
 	}
