@@ -159,7 +159,7 @@ class Admin {
 		$action     = $object->action;
 		$type       = boostify_type_builder();
 		$post_types = boostify_pt_support();
-		if ( 'btf_builder' === $post_type && 'add' === $action ) {
+		if ( 'btf_builder' === $post_type ) {
 			?>
 			<div class="dialog-widget dialog-lightbox-widget boostify-lightbox boostify-templates-modal" id="boostify-new-template-modal">
 				<div class="boostify-dialog-widget-content dialog-lightbox-widget-content">
@@ -281,7 +281,9 @@ class Admin {
 	}
 
 	public function create_bhf_post() {
-		check_ajax_referer( 'ht_hf_nonce' );
+		if ( empty($_GET['ajax_nonce']) ) {
+			return;
+		}
 		$post_type        = $_GET['post_type'];
 		$post_title       = $_GET['post_title'];
 		$template_type    = $_GET['template_type'];
@@ -322,6 +324,7 @@ class Admin {
 		add_post_meta( $post_id, 'bhf_ex_post', $bhf_ex_post );
 		$url .= 'post.php?post=' . $post_id . '&action=elementor';
 		wp_send_json( $url );
+
 		die();
 	}
 }

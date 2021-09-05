@@ -307,10 +307,19 @@
 					},
 					success: function (response) {
 						btnAddNew.removeClass( 'loading' );
-						// window.location.href = response;
+						window.location.href = response;
 					},
 				}
 			);
+		}
+	);
+
+	$('.post-type-btf_builder').on(
+		'click',
+		'.page-title-action',
+		function( e ) {
+			e.preventDefault();
+			$('#boostify-new-template-modal').addClass('show');
 		}
 	);
 
@@ -318,8 +327,7 @@
 		'click',
 		function( e ) {
 			e.preventDefault();
-			var url              = admin.edit;
-			window.location.href = url;
+			$('#boostify-new-template-modal').removeClass('show');
 		}
 	);
 

@@ -273,15 +273,6 @@ abstract class Nav_Menu extends Widget_Base {
 			)
 		);
 
-		$this->add_group_control(
-			Group_Control_Box_Shadow::get_type(),
-			array(
-				'label'    => esc_html__( 'Box Shadow', 'boostify' ),
-				'name'     => 'box_shadow_menu',
-				'selector' => '{{WRAPPER}} .boostify-menu-child .sub-menu',
-			)
-		);
-
 		$this->add_responsive_control(
 			'width_submenu',
 			array(
@@ -369,7 +360,7 @@ abstract class Nav_Menu extends Widget_Base {
 			array(
 				'name'     => 'box_shadow_menu',
 				'label'    => esc_html__( 'Box Shadow', 'boostify' ),
-				'selector' => '{{WRAPPER}} .boostify-nav-default .sub-menu, {{WRAPPER}} .boostify-menu .sub-menu-default',
+				'selector' => '{{WRAPPER}} .boostify-nav-default .sub-menu, {{WRAPPER}} .boostify-menu .sub-menu-default, {{WRAPPER}} .boostify-menu-child .sub-menu',
 			)
 		);
 
@@ -421,7 +412,7 @@ abstract class Nav_Menu extends Widget_Base {
 				'name'     => 'background_submenu',
 				'label'    => __( 'Background', 'boostify' ),
 				'types'    => array( 'classic', 'gradient', 'video' ),
-				'selector' => '.boostify-nav-default .sub-menu, .boostify-menu .sub-menu-default',
+				'selector' => '{{WRAPPER}} .boostify-nav-default .sub-menu, {{WRAPPER}} .boostify-menu .sub-menu-default',
 			)
 		);
 
@@ -438,18 +429,6 @@ abstract class Nav_Menu extends Widget_Base {
 				'selectors' => array(
 					'{{WRAPPER}} .boostify-nav-default .menu-item-has-children .sub-menu a' => 'color: {{VALUE}}',
 					'{{WRAPPER}} .boostify-menu .menu-item-has-children .sub-menu-default a' => 'color: {{VALUE}}',
-				),
-			)
-		);
-
-		$this->add_control(
-			'bgcolor_submenu',
-			array(
-				'label'     => __( 'Background color SubMenu', 'boostify' ),
-				'type'      => Controls_Manager::COLOR,
-				'selectors' => array(
-					'{{WRAPPER}} .boostify-nav-default .menu-item-has-children .sub-menu' => 'background-color: {{VALUE}}',
-					'{{WRAPPER}} .boostify-menu .menu-item-has-children .sub-menu-default' => 'background-color: {{VALUE}}',
 				),
 			)
 		);
@@ -482,7 +461,6 @@ abstract class Nav_Menu extends Widget_Base {
 				),
 			)
 		);
-
 
 		$this->add_control(
 			'submenu_item_background_color_hover',

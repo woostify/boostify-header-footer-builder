@@ -515,10 +515,11 @@ class Template {
 	public function template_header_id() {
 		global $post;
 		$shop_id = get_option( 'woocommerce_shop_page_id' );
-		if ( ! empty( $post ) ) {
+		if ( empty( $post ) ) {
+			return false;
+		}
 			$post_id   = $post->ID;
 			$post_type = get_post_type( $post->ID );
-		}
 
 		if ( class_exists( 'Woocommerce' ) && is_shop() ) {
 			$post_id   = $shop_id;

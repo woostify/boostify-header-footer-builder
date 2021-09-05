@@ -276,12 +276,21 @@
   width: 100%;
   bottom: 0;
   left: 0;
+  display: none;
   background-color: rgba(0, 0, 0, 0.8);
   z-index: 9999;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+}
+
+.boostify-lightbox.show {
+  display: block;
+}
+
+.boostify-lightbox.hidden {
+  display: none;
 }
 
 .boostify-lightbox .boostify-dialog-widget-content {

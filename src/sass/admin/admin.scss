@@ -293,12 +293,21 @@
 	width: 100%;
 	bottom: 0;
 	left: 0;
+	display: none;
 	background-color: rgba(0, 0, 0, 0.8);
 	z-index: 9999;
 	-webkit-user-select: none;
 	-moz-user-select: none;
 	-ms-user-select: none;
 	user-select: none;
+
+	&.show {
+		display: block;
+	}
+
+	&.hidden {
+		display: none;
+	}
 }
 .boostify-lightbox .boostify-dialog-widget-content {
 	margin: auto;
