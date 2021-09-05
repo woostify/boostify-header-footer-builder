@@ -136,8 +136,19 @@ class Template_Render {
 	 *
 	 * @return Header Template.
 	 */
-	public static function get_header_template() {
+	public static function get_header_template( $with_css = false ) {
 		$id = boostify_header_template_id();
+		if ( is_404() || is_search() ) {
+			$editor = self::$elementor_instance->editor;
+			$is_edit_mode = $editor->is_edit_mode();
+			$editor->set_edit_mode( false );
+
+			$with_css = $with_css ? true : $is_edit_mode;
+
+			$content = self::$elementor_instance->frontend->get_builder_content( $id, $with_css );
+			\Elementor\Plugin::$instance->editor->set_edit_mode( $is_edit_mode );
+			return $content;
+		}
 
 		return self::$elementor_instance->frontend->get_builder_content_for_display( $id );
 	}
@@ -147,8 +158,19 @@ class Template_Render {
 	 *
 	 * @return Footer Template.
 	 */
-	public static function get_footer_template() {
+	public static function get_footer_template( $with_css = false ) {
 		$id = boostify_footer_template_id();
+		if ( is_404() || is_search() ) {
+			$editor = self::$elementor_instance->editor;
+			$is_edit_mode = $editor->is_edit_mode();
+			$editor->set_edit_mode( false );
+
+			$with_css = $with_css ? true : $is_edit_mode;
+
+			$content = self::$elementor_instance->frontend->get_builder_content( $id, $with_css );
+			\Elementor\Plugin::$instance->editor->set_edit_mode( $is_edit_mode );
+			return $content;
+		}
 		return self::$elementor_instance->frontend->get_builder_content_for_display( $id );
 	}
 }

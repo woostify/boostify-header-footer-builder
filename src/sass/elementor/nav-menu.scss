@@ -38,7 +38,7 @@
 		line-height: 50px;
 		display: inline-block;
 	}
-
+	.sub-mega-menu,
 	.sub-menu {
 		list-style: none;
 		visibility: hidden;
@@ -50,15 +50,11 @@
 		z-index: 9999;
 		-webkit-transition: all 0.3s ease-in-out 0s, opacity 0.3s;
 		transition: all 0.3s ease-in-out 0s, opacity 0.3s;
-		box-shadow: 1px 5px 15px rgba(0, 0, 0, 0.1);
-		background-color: #fff;
-		border-top-width: 3px;
-		border-top-style: solid;
 		min-width: 180px;
 		padding: 0;
 		margin: 0;
 
-		a {
+		&> a {
 			padding: 15px 20px;
 			line-height: 1.6;
 		}
@@ -66,7 +62,11 @@
 		.boostify-menu-child {
 			left: 100%;
 		}
+	}
 
+	.sub-menu-default {
+		background-color: #fff;
+		box-shadow: 1px 5px 15px rgba(0, 0, 0, 0.1);
 	}
 
 	.boostify-menu-child {
@@ -75,6 +75,7 @@
 		left: 0;
 		visibility: hidden;
 
+		.sub-mega-menu,
 		.sub-menu {
 			position: relative;
 		}
@@ -95,6 +96,7 @@
 				visibility: visible;
 			}
 			&>.boostify-menu-child>.sub-menu,
+			&>.sub-mega-menu,
 			&>.sub-menu {
 				visibility: visible;
 				opacity: 1;
@@ -427,12 +429,14 @@
 
 // Mega Menu Vertical.
 .boostify-mega-menu-vertical--widget {
-	height: 66px;
-	width: 270px;
+
+
 	.boostify-mega-menu-vetical {
 		display: flex;
 		flex-direction: column;
-		&>li {
+		box-sizing: content-box;
+
+		& > li {
 			position: inherit;
 		}
 
@@ -449,13 +453,6 @@
 			left: 270px;
 			min-height: 300px;
 			min-width: 270px;
-			.elementor-icon-list-items {
-				.elementor-icon-list-item {
-					a {
-						padding: 8px 0;
-					}
-				}
-			}
 		}
 
 		.menu-item-has-children {
@@ -497,7 +494,7 @@
 			@media( min-width: 780px ) {
 				display: block;
 				z-index: 99999;
-				position: relative;
+				position: absolute;
 				ul {
 					> li a {
 						z-index: 99999;
@@ -509,11 +506,10 @@
 	}
 
 	.boostify-menu-toggle-vertical {
-		color: #ffffff;
-		margin-top: 20px;
-		margin-bottom: 18px;
-		background-color: #2a2c3c;
 		font-size: 14px;
+		border: 1px solid transparent;
+		background-color: unset;
+
 		.fa {
 			margin-left: 25px;
 		}
@@ -526,6 +522,7 @@
 
 .boostify-mega-menu-vertical--widget {
 	width: 100%;
+	position: relative;
 }
 
 .elementor-align-left {

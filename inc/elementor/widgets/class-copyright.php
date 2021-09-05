@@ -5,7 +5,6 @@ namespace Boostify_Header_Footer\Widgets;
 use Boostify_Header_Footer\Base_Widget;
 use Elementor\Controls_Manager;
 use Elementor\Group_Control_Typography;
-use Elementor\Scheme_Typography;
 
 /**
  * Copyright
@@ -116,7 +115,6 @@ class Copyright extends Base_Widget {
 			array(
 				'name'     => 'caption_typography',
 				'selector' => '{{WRAPPER}} .boostify-copyright-wrapper, {{WRAPPER}} .boostify-copyright-wrapper a',
-				'scheme'   => Scheme_Typography::TYPOGRAPHY_3,
 			)
 		);
 

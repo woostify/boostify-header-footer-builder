@@ -1,12 +1,12 @@
 <?php
 
 namespace Boostify_Header_Footer;
-
+use Elementor\Global_Colors;
 use Elementor\Controls_Manager;
 use Elementor\Group_Control_Background;
 use Elementor\Group_Control_Typography;
-use Elementor\Scheme_Typography;
 use Elementor\Widget_Base;
+use Elementor\Group_Control_Box_Shadow;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
@@ -208,11 +208,14 @@ abstract class Nav_Menu extends Widget_Base {
 			array(
 				'name'     => 'menu_typo',
 				'label'    => __( 'Typography', 'boostify' ),
-				'scheme'   => Scheme_Typography::TYPOGRAPHY_1,
 				'selector' => '{{WRAPPER}} .boostify-menu > li > a',
 			)
 		);
+
+		$this->icon_menu_style();
 	}
+
+	protected function icon_menu_style(){}
 
 	protected function menu_style_hover() {
 		$this->add_control(
@@ -249,11 +252,14 @@ abstract class Nav_Menu extends Widget_Base {
 			array(
 				'name'     => 'menu_typo_hover',
 				'label'    => __( 'Typography', 'boostify' ),
-				'scheme'   => Scheme_Typography::TYPOGRAPHY_1,
 				'selector' => '{{WRAPPER}} .boostify-menu > li:hover > a',
 			)
 		);
+
+		$this->icon_menu_hover_style();
 	}
+
+	protected function icon_menu_hover_style(){}
 
 	/**
 	 * Get Settings Sub Menu Style
@@ -264,6 +270,33 @@ abstract class Nav_Menu extends Widget_Base {
 			array(
 				'label' => __( 'Sub Menu Style', 'boostify' ),
 				'tab'   => Controls_Manager::TAB_STYLE,
+			)
+		);
+
+		$this->add_group_control(
+			Group_Control_Box_Shadow::get_type(),
+			array(
+				'label'    => esc_html__( 'Box Shadow', 'boostify' ),
+				'name'     => 'box_shadow_menu',
+				'selector' => '{{WRAPPER}} .boostify-menu-child .sub-menu',
+			)
+		);
+
+		$this->add_responsive_control(
+			'width_submenu',
+			array(
+				'label'     => __( 'Width', 'boostify' ),
+				'type'      => Controls_Manager::SLIDER,
+				'range'     => array(
+					'px' => array(
+						'min' => 0,
+						'max' => 2000,
+					),
+				),
+				'selectors' => array(
+					'{{WRAPPER}} .boostify-menu .sub-menu-default' => 'width: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .boostify-nav-default .boostify-menu .sub-menu' => 'width: {{SIZE}}{{UNIT}};',
+				),
 			)
 		);
 
@@ -279,7 +312,7 @@ abstract class Nav_Menu extends Widget_Base {
 					),
 				),
 				'selectors' => array(
-					'{{WRAPPER}} .boostify-menu>.menu-item-has-children>.boostify-menu-child' => 'padding-top: {{SIZE}}{{UNIT}} !important',
+					'{{WRAPPER}} .boostify-menu>.menu-item-has-children>.boostify-menu-child' => 'margin-top: {{SIZE}}{{UNIT}} !important',
 				),
 				'separator' => 'before',
 			)
@@ -292,7 +325,8 @@ abstract class Nav_Menu extends Widget_Base {
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px' ),
 				'selectors'  => array(
-					'{{WRAPPER}} .boostify-menu .menu-item .boostify-menu-child .sub-menu' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}}!important;',
+					'{{WRAPPER}} .boostify-nav-default .menu-item .boostify-menu-child .sub-menu' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}}!important;',
+					'{{WRAPPER}} .boostify-menu .menu-item .boostify-menu-child .sub-menu-default' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}}!important;',
 				),
 			)
 		);
@@ -311,8 +345,31 @@ abstract class Nav_Menu extends Widget_Base {
 					'right'  => 20,
 				),
 				'selectors'  => array(
-					'{{WRAPPER}} .boostify-menu .sub-menu a' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .boostify-menu .sub-menu-default li' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .boostify-nav-default .sub-menu li' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				),
+			)
+		);
+
+		$this->add_control(
+			'submenu-bdrs',
+			array(
+				'label'      => __( 'Border Radius', 'boostify' ),
+				'type'       => Controls_Manager::DIMENSIONS,
+				'size_units' => array( 'px' ),
+				'selectors'  => array(
+					'{{WRAPPER}} .boostify-menu .sub-menu-default' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .boostify-nav-default .sub-menu' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				),
+			)
+		);
+
+		$this->add_group_control(
+			Group_Control_Box_Shadow::get_type(),
+			array(
+				'name'     => 'box_shadow_menu',
+				'label'    => esc_html__( 'Box Shadow', 'boostify' ),
+				'selector' => '{{WRAPPER}} .boostify-nav-default .sub-menu, {{WRAPPER}} .boostify-menu .sub-menu-default',
 			)
 		);
 
@@ -352,7 +409,8 @@ abstract class Nav_Menu extends Widget_Base {
 				'default'   => '#d1346f',
 				'separator' => 'before',
 				'selectors' => array(
-					'{{WRAPPER}} .boostify-menu .sub-menu' => 'border-top-color: {{VALUE}}',
+					'{{WRAPPER}} .boostify-nav-default .sub-menu' => 'border-top: 3px solid {{VALUE}}',
+					'{{WRAPPER}} .boostify-menu .sub-menu-default'           => 'border-top: 3px solid {{VALUE}}',
 				),
 			)
 		);
@@ -363,7 +421,7 @@ abstract class Nav_Menu extends Widget_Base {
 				'name'     => 'background_submenu',
 				'label'    => __( 'Background', 'boostify' ),
 				'types'    => array( 'classic', 'gradient', 'video' ),
-				'selector' => '.boostify-menu .sub-menu',
+				'selector' => '.boostify-nav-default .sub-menu, .boostify-menu .sub-menu-default',
 			)
 		);
 
@@ -378,7 +436,20 @@ abstract class Nav_Menu extends Widget_Base {
 				'type'      => Controls_Manager::COLOR,
 				'default'   => '#000',
 				'selectors' => array(
-					'{{WRAPPER}} .boostify-menu .menu-item-has-children .sub-menu a' => 'color: {{VALUE}}',
+					'{{WRAPPER}} .boostify-nav-default .menu-item-has-children .sub-menu a' => 'color: {{VALUE}}',
+					'{{WRAPPER}} .boostify-menu .menu-item-has-children .sub-menu-default a' => 'color: {{VALUE}}',
+				),
+			)
+		);
+
+		$this->add_control(
+			'bgcolor_submenu',
+			array(
+				'label'     => __( 'Background color SubMenu', 'boostify' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => array(
+					'{{WRAPPER}} .boostify-nav-default .menu-item-has-children .sub-menu' => 'background-color: {{VALUE}}',
+					'{{WRAPPER}} .boostify-menu .menu-item-has-children .sub-menu-default' => 'background-color: {{VALUE}}',
 				),
 			)
 		);
@@ -388,8 +459,7 @@ abstract class Nav_Menu extends Widget_Base {
 			array(
 				'name'     => 'submenu_typo',
 				'label'    => __( 'Typography', 'boostify' ),
-				'scheme'   => Scheme_Typography::TYPOGRAPHY_1,
-				'selector' => '{{WRAPPER}} .boostify-menu .menu-item-has-children .sub-menu a',
+				'selector' => '{{WRAPPER}} .boostify-menu .menu-item-has-children .sub-menu-default a, {{WRAPPER}} .boostify-nav-default .menu-item-has-children .sub-menu-default a, {{WRAPPER}} .boostify-nav-default .menu-item-has-children .sub-menu a',
 			)
 		);
 	}
@@ -403,12 +473,16 @@ abstract class Nav_Menu extends Widget_Base {
 				'default'   => '#aa3166',
 				'separator' => 'before',
 				'selectors' => array(
-					'{{WRAPPER}} .boostify-menu li .sub-menu > li:hover > a'                                  => 'color: {{VALUE}}',
-					'{{WRAPPER}} .boostify--hover-underline .boostify-menu li .sub-menu > li:hover > a:after' => 'background-color: {{VALUE}}',
-					'{{WRAPPER}} .boostify-menu .sub-menu li.current-menu-item a'                                       => 'color: {{VALUE}}',
+					'{{WRAPPER}} .boostify-nav-default li .sub-menu > li:hover > a'                                  => 'color: {{VALUE}}',
+					'{{WRAPPER}} .boostify--hover-underline.boostify-nav-default li .sub-menu > li:hover > a:after' => 'background-color: {{VALUE}}',
+					'{{WRAPPER}} .boostify-nav-default .sub-menu li.current-menu-item a'                                       => 'color: {{VALUE}}',
+					'{{WRAPPER}} .boostify-menu li .sub-menu-default > li:hover > a'                                  => 'color: {{VALUE}}',
+					'{{WRAPPER}} .boostify--hover-underline .boostify-menu li .sub-menu-default > li:hover > a:after' => 'background-color: {{VALUE}}',
+					'{{WRAPPER}} .boostify-menu .sub-menu-default li.current-menu-item a'                                       => 'color: {{VALUE}}',
 				),
 			)
 		);
+
 
 		$this->add_control(
 			'submenu_item_background_color_hover',
@@ -417,7 +491,8 @@ abstract class Nav_Menu extends Widget_Base {
 				'type'      => Controls_Manager::COLOR,
 				'default'   => '#eee',
 				'selectors' => array(
-					'{{WRAPPER}} .boostify--hover-background .boostify-menu .sub-menu > li:hover' => 'background-color: {{VALUE}}',
+					'{{WRAPPER}} .boostify--hover-background .boostify-menu .sub-menu-default > li:hover' => 'background-color: {{VALUE}}',
+					'{{WRAPPER}} .boostify--hover-background.boostify-nav-default .sub-menu > li:hover' => 'background-color: {{VALUE}}',
 				),
 				'condition' => array(
 					'pointer' => 'background',
@@ -501,7 +576,6 @@ abstract class Nav_Menu extends Widget_Base {
 			array(
 				'name'     => 'menu_sidebar_typo',
 				'label'    => __( 'Typography', 'boostify' ),
-				'scheme'   => Scheme_Typography::TYPOGRAPHY_1,
 				'selector' => '{{WRAPPER}} .boostify-menu-sidebar .boostify-dropdown-menu a',
 			)
 		);
@@ -576,7 +650,7 @@ abstract class Nav_Menu extends Widget_Base {
 		$args = array(
 			'menu'       => $menu_id,
 			'menu_id'    => '',
-			'menu_class' => 'sub-menu',
+			'menu_class' => 'sub-menu sub-menu-default',
 			'container'  => '',
 		);
 		if ( ! empty( $child_of ) ) {

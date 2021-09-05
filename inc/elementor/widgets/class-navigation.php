@@ -44,7 +44,7 @@ class Navigation extends Nav_Menu {
 		$settings = $this->get_settings_for_display();
 		?>
 		<div class="boostify-navigation--widget">
-			<nav class="boostify-main-navigation boostify-nav boostify-header-navigation <?php echo esc_attr( $settings['menu'] . ' boostify--hover-' . esc_attr( $settings['pointer'] ) ); ?>" aria-label="<?php esc_attr_e( 'Primary navigation', 'boostify' ); ?>">
+			<nav class="boostify-main-navigation boostify-nav-default boostify-nav boostify-header-navigation <?php echo esc_attr( $settings['menu'] . ' boostify--hover-' . esc_attr( $settings['pointer'] ) ); ?>" aria-label="<?php esc_attr_e( 'Primary navigation', 'boostify' ); ?>">
 				<?php
 				if ( 'none' !== $settings['menu'] ) {
 					$args = array(
@@ -104,6 +104,8 @@ class Navigation extends Nav_Menu {
 							<a class="add-menu" href="<?php echo esc_url( get_admin_url() . 'nav-menus.php' ); ?>"><?php esc_html_e( 'Add a Primary Menu', 'boostify' ); ?></a>
 						<?php } ?>
 					</nav>
+
+					<?php do_action( 'boostify_hf_sidebar_nav_bottom' ); ?>
 				</div>
 			</div>
 		</div>

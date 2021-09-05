@@ -66,14 +66,30 @@ if ( ! class_exists( 'Boostify_Header_Footer_Builder' ) ) {
 		}
 
 		public function post_types() {
+			global $wp;
+
+			$wp->add_query_var( 'newfeed' );
+			add_rewrite_rule( '^newfeed/([^/]*)/?', 'index.php?newfeed=$matches[1]', 'top' );
+
+			if( ! get_option( 'plugin_permalinks_flushed' ) ) {
+
+				flush_rewrite_rules( false );
+				update_option( 'plugin_permalinks_flushed', 1 );
+
+			}
 			register_post_type(
 				'btf_builder',
 				array(
-					'supports'     => array( 'title', 'page-attributes' ),
-					'hierarchical' => true,
-					'rewrite'      => array( 'slug' => 'btf_builder' ),
+					'supports'     => array( 'title', 'editor', 'thumbnail', 'elementor', 'page-attributes' ),
+					'hierarchical' => false,
+					'rewrite'      => array(
+						'slug'       => 'btf_builder',
+						'with_front' => false,
+						'feeds'      => true,
+					),
 					'has_archive'  => false,
 					'public'       => true,
+					'show_in_rest' => true,
 					'labels'       => array(
 						'name'          => esc_html__( 'Boostify Header Footer Builder', 'boostify' ),
 						'add_new_item'  => esc_html__( 'Add New Header, Footer', 'boostify' ),

@@ -24,7 +24,7 @@
 
 		sub.each(
 			function ( index ) {
-				if ( sub.hasClass( 'sub-mega-menu' ) ) {
+				if ( $(this).hasClass( 'sub-mega-menu' ) ) {
 					$( this ).wrap( '<div class="boostify-menu-child boostify-mega-sub">' );
 				} else {
 					$( this ).wrap( '<div class="boostify-menu-child">' );
@@ -48,8 +48,6 @@
 					var width = $( window ).width();
 					var left  = item.offset().left;
 					var padding, contentWith, position;
-					console.log( width );
-					console.log(left);
 					if ( item.hasClass( 'sub-width-default' ) ) {
 						contentWith = 500;
 						padding     = ( width - 500 ) / 2;
@@ -60,18 +58,25 @@
 							padding     = ( width - 1170 ) / 2;
 							contentWith = 1170;
 							position    = padding - left;
-							console.log(padding);
-
 						} else {
 							padding     = 15;
 							position    = padding - left;
 							contentWith = ( width - 30 );
-
 						}
-						console.log( left );
+
 						mega.css( { 'left' : position + 'px', 'width' : contentWith + 'px' } );
-					} else {
-						console.log( left );
+					} else if ( item.hasClass( 'sub-width-custom' ) ) {
+						contentWith = parseInt( item.attr('data-custom-width') );
+
+						if ( ! contentWith && contentWith < 200 ) {
+							contentWith = 500;
+						}
+
+						padding     = ( width - contentWith ) / 2;
+						left        = padding - left;
+						mega.css( { 'left' : 'calc( ( 100% - ' + contentWith + 'px' + ' ) /2 )', 'width' : contentWith + 'px' } );
+					}
+					 else {
 						mega.css( { 'left' : '-' + left + 'px', 'width' : width } );
 					}
 
@@ -130,7 +135,7 @@
 			'click',
 			function (e) {
 				e.preventDefault();
-				var item   = $( this ).siblings( 'ul.sub-menu' );
+				var item   = $( this ).siblings( '.sub-menu' );
 				var active = item.hasClass( 'active' );
 				if ( active ) {
 					item.removeClass( 'active' );

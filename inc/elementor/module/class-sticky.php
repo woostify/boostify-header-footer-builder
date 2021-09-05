@@ -233,5 +233,7 @@ class Sticky {
 			BOOSTIFY_HEADER_FOOTER_VER,
 			false
 		);
+
 	}
+
 }
