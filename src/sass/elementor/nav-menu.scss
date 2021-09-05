@@ -453,13 +453,6 @@
 			left: 270px;
 			min-height: 300px;
 			min-width: 270px;
-			.elementor-icon-list-items {
-				.elementor-icon-list-item {
-					a {
-						padding: 8px 0;
-					}
-				}
-			}
 		}
 
 		.menu-item-has-children {
@@ -501,7 +494,7 @@
 			@media( min-width: 780px ) {
 				display: block;
 				z-index: 99999;
-				position: relative;
+				position: absolute;
 				ul {
 					> li a {
 						z-index: 99999;
@@ -513,10 +506,9 @@
 	}
 
 	.boostify-menu-toggle-vertical {
-		margin-top: 20px;
-		margin-bottom: 18px;
 		font-size: 14px;
 		border: 1px solid transparent;
+		background-color: unset;
 
 		.fa {
 			margin-left: 25px;
@@ -530,6 +522,7 @@
 
 .boostify-mega-menu-vertical--widget {
 	width: 100%;
+	position: relative;
 }
 
 .elementor-align-left {
