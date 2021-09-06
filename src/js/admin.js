@@ -70,8 +70,6 @@
 			var parentItem = btn.parents( '.input-item-wrapper' );
 			var postType   = parentItem.find( '.bhf-post-type' ).val();
 			var keyword    = btn.val();
-
-			console.log( postType );
 			var data = {
 				action: 'boostify_hf_post_admin',//boostify_hf_post_admin
 				_ajax_nonce: admin.nonce,

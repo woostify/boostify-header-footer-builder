@@ -531,8 +531,8 @@ class Template {
 		if ( 'coming_soon' == $maintenance_mode && $maintenance_template == $post_id ) { //phpcs:ignore
 			return false;
 		}
-		$page_type            = $this->page_type();
-		$id                   = '';
+		$page_type = $this->page_type();
+		$id        = '';
 
 		if ( $this->display_all() || $this->display_template( $page_type ) || $this->all_single( $post_id, $post_type ) || $this->current_single( $post_id, $post_type ) ) {
 			if ( $this->display_all() ) {

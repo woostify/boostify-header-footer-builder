@@ -281,7 +281,7 @@ class Admin {
 	}
 
 	public function create_bhf_post() {
-		if ( empty($_GET['ajax_nonce']) ) {
+		if ( empty($_GET['_ajax_nonce']) ) {
 			return;
 		}
 		$post_type        = $_GET['post_type'];
