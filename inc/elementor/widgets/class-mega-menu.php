@@ -1,4 +1,12 @@
 <?php
+/**
+ * Mega Menu
+ *
+ * Elementor widget for Mega Menu.
+ *
+ * @package Boostify_Header_Footer
+ * Author: ptp
+ */
 
 namespace Boostify_Header_Footer\Widgets;
 
@@ -49,10 +57,22 @@ class Mega_Menu extends Nav_Menu {
 		return __( 'Mega Menu', 'boostify' );
 	}
 
+	/**
+	 * Retrieve the widget script.
+	 *
+	 * @access public
+	 *
+	 * @return array Widget script.
+	 */
 	public function get_script_depends() {
 		return array( 'boostify_hf_nav_mega' );
 	}
 
+	/**
+	 * Register Menu main Controls.
+	 *
+	 * @access protected
+	 */
 	protected function main_menu() {
 		$this->start_controls_section(
 			'section_title',
@@ -170,12 +190,12 @@ class Mega_Menu extends Nav_Menu {
 						'step' => 1,
 					),
 				),
-				'default' => array(
+				'default'    => array(
 					'size' => 500,
 				),
-				'condition' => array(
+				'condition'  => array(
 					'sub_width' => 'custom',
-				)
+				),
 			)
 		);
 
@@ -327,6 +347,8 @@ class Mega_Menu extends Nav_Menu {
 
 	/**
 	 * Add Custom mobile menu controll
+	 *
+	 * @access protected
 	 */
 	protected function custom_mobile_menu() {
 		$this->add_control(
@@ -354,7 +376,9 @@ class Mega_Menu extends Nav_Menu {
 		);
 	}
 
-
+	/**
+	 * Add icon menu controll
+	 */
 	protected function icon_menu_style() {
 		$this->add_control(
 			'icon_menu_color',
@@ -383,10 +407,10 @@ class Mega_Menu extends Nav_Menu {
 						'step' => 1,
 					),
 				),
-				'default' => array(
+				'default'    => array(
 					'size' => 14,
 				),
-				'selectors' => array(
+				'selectors'  => array(
 					'{{WRAPPER}} .boostify-menu .menu-item-icon'     => 'font-size: {{SIZE}}{{UNIT}};',
 					'{{WRAPPER}} .boostify-menu .menu-item-icon svg' => 'width: {{SIZE}}{{UNIT}}; height: auto;',
 				),
@@ -394,6 +418,11 @@ class Mega_Menu extends Nav_Menu {
 		);
 	}
 
+	/**
+	 * Add icon menu hover controls
+	 *
+	 * @access protected
+	 */
 	protected function icon_menu_hover_style() {
 		$this->add_control(
 			'icon_menu_color_hover',
@@ -413,8 +442,9 @@ class Mega_Menu extends Nav_Menu {
 
 	/**
 	 * Get Sub Menu Mega
-	 * @param int $post_id
-	 * @return object $sub_menu
+	 *
+	 * @access protected
+	 * @param int $post_id | Sub menu builder ID.
 	 */
 	protected function get_sub_mega_menu( $post_id ) {
 		$args     = array(
@@ -435,10 +465,16 @@ class Mega_Menu extends Nav_Menu {
 		endif;
 	}
 
+	/**
+	 * Menu icon class
+	 *
+	 * @access protected
+	 * @param array $menu | menu setting.
+	 */
 	protected function menu_item_class( $menu ) {
-		$icon          = $menu['icon'];
-		$menu_location = $menu['menu_register'];
-		$sub_type      = $menu['sub_type'];
+		$icon            = $menu['icon'];
+		$menu_location   = $menu['menu_register'];
+		$sub_type        = $menu['sub_type'];
 		$menu_item_class = array(
 			'menu-item',
 			'menu-item-type-custom',
@@ -470,7 +506,9 @@ class Mega_Menu extends Nav_Menu {
 	/**
 	 * Dissplay menu For Site
 	 *
-	 * @return template menu site
+	 * @access protected
+	 * @param array  $setting_menu | menu setting.
+	 * @param string $classes | Custom class.
 	 */
 	protected function get_menu_site( $setting_menu, $classes = 'boostify-menu' ) {
 		$id_menu = wp_rand();
@@ -484,11 +522,12 @@ class Mega_Menu extends Nav_Menu {
 			$sub_type      = $menu['sub_type'];
 			$menu_location = $menu['menu_register'];
 			$child_of      = $menu['child_of'];
-			$custom_width = $menu['width_custom'];
+			$custom_width  = $menu['width_custom'];
 			$item_class    = '';
 			$classes       = $this->menu_item_class( $menu );
+			$attributes    = ( ! empty( $custom_width ) && isset( $custom_width['size'] ) ) ? 'data-custom-width="' . $custom_width['size'] . '"' : '';
 			?>
-			<li class="<?php echo esc_attr( $classes ); ?>" <?php echo ( ! empty( $custom_width ) && isset( $custom_width['size'] ) ) ? 'data-custom-width="' . $custom_width['size'] . '"' : ''; ?>>
+			<li class="<?php echo esc_attr( $classes ); ?>" <?php echo esc_attr( $attributes ); ?>>
 
 				<a href="<?php echo esc_url( $menu['link']['url'] ); ?>">
 					<span class="menu-item-main-info">
@@ -499,7 +538,7 @@ class Mega_Menu extends Nav_Menu {
 								<span class="menu-item-icon <?php echo esc_attr( $icon['value'] ); ?>"></span>
 							<?php else : ?>
 								<span class="menu-item-icon menu-item-icon-svg">
-									<?php Icons_Manager::render_icon( $icon, [ 'aria-hidden' => 'true' ] ); ?>
+									<?php Icons_Manager::render_icon( $icon, array( 'aria-hidden' => 'true' ) ); ?>
 								</span>
 								<?php
 							endif;

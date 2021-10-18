@@ -1,6 +1,14 @@
 <?php
+/**
+ * Main Nav Menu Class
+ *
+ * @package Boostify_Header_Footer\Nav_Menu;
+ *
+ * Written by ptp
+ */
 
 namespace Boostify_Header_Footer;
+
 use Elementor\Global_Colors;
 use Elementor\Controls_Manager;
 use Elementor\Group_Control_Background;
@@ -12,6 +20,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
+/**
+ * Boostify Header Nav_Menu Template Class.
+ */
 abstract class Nav_Menu extends Widget_Base {
 
 	/**
@@ -190,6 +201,9 @@ abstract class Nav_Menu extends Widget_Base {
 		$this->end_controls_section();
 	}
 
+	/**
+	 * Menu style
+	 */
 	protected function menu_style_nornal() {
 		$this->add_control(
 			'menucolor',
@@ -215,8 +229,14 @@ abstract class Nav_Menu extends Widget_Base {
 		$this->icon_menu_style();
 	}
 
+	/**
+	 * Get Settings icon Menu Style
+	 */
 	protected function icon_menu_style(){}
 
+	/**
+	 * Get Settings Menu Style hover
+	 */
 	protected function menu_style_hover() {
 		$this->add_control(
 			'menu_color_hover',
@@ -259,6 +279,9 @@ abstract class Nav_Menu extends Widget_Base {
 		$this->icon_menu_hover_style();
 	}
 
+	/**
+	 * Get Settings Menu icon Style hover
+	 */
 	protected function icon_menu_hover_style(){}
 
 	/**
@@ -419,6 +442,9 @@ abstract class Nav_Menu extends Widget_Base {
 		$this->end_controls_section();
 	}
 
+	/**
+	 * Get Settings Sub Menu Style
+	 */
 	protected function submenu_style_nornal() {
 		$this->add_control(
 			'color_submenu',
@@ -443,6 +469,9 @@ abstract class Nav_Menu extends Widget_Base {
 		);
 	}
 
+	/**
+	 * Get Settings Sub Menu Style hover
+	 */
 	public function submenu_style_hover() {
 		$this->add_control(
 			'color_submenu_hover',
@@ -522,6 +551,9 @@ abstract class Nav_Menu extends Widget_Base {
 		$this->end_controls_section();
 	}
 
+	/**
+	 * Get Settings sidebar Menu Style
+	 */
 	public function menu_sidebar_style_nornal() {
 		$this->add_control(
 			'color_toggle',
@@ -559,6 +591,9 @@ abstract class Nav_Menu extends Widget_Base {
 		);
 	}
 
+	/**
+	 * Get Settings sidebar Menu Style hover
+	 */
 	public function menu_sidebar_style_hover() {
 		$this->add_control(
 			'color_toggle_hover',
@@ -594,8 +629,6 @@ abstract class Nav_Menu extends Widget_Base {
 
 	/**
 	 * Menu Class
-	 * @param array $settings in elementor.
-	 * @return array $classes navigation
 	 */
 	protected function nav_class() {
 		$settings = $this->get_settings_for_display();
@@ -621,8 +654,9 @@ abstract class Nav_Menu extends Widget_Base {
 
 	/**
 	 * Get Sub Mega Menu Class
-	 * @param int $post_id
-	 * @return object $sub menu default layout
+	 *
+	 * @param string $menu_id | Menu id.
+	 * @param string $child_of | Name of parent menu.
 	 */
 	protected function sub_menu_default( $menu_id, $child_of ) {
 		$args = array(
@@ -639,6 +673,11 @@ abstract class Nav_Menu extends Widget_Base {
 		wp_nav_menu( $args );
 	}
 
+	/**
+	 * Get menu toglle icon template.
+	 *
+	 * @param string $icon | Icon Class.
+	 */
 	protected function get_toggle( $icon ) {
 		?>
 		<a href="#" class="boostify-menu-toggle" aria-expanded="false">

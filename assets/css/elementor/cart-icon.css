@@ -13,7 +13,9 @@
 .boostify-cart-icon .cart-link,
 .boostify-cart-icon .icon--wrapper {
   position: relative;
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .boostify-cart-icon .boostify-count-product {
@@ -532,6 +534,10 @@
 
 .boostify-icon-ion-ios-cart-outline .boostify-icon--cart:after {
   content: '\f3f7';
+}
+
+.elementor-widget-ht-hf-cart-icon {
+  align-self: center;
 }
 
 /* Safari */

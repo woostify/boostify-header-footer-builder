@@ -34,11 +34,9 @@ class Admin {
 		add_action( 'manage_btf_builder_posts_custom_column', array( $this, 'columns_content' ), 10, 2 );
 		add_action( 'admin_footer', array( $this, 'lightbox' ) );
 		add_action( 'wp_ajax_boostify_create_post', array( $this, 'create_bhf_post' ) );
-		add_action( 'wp_ajax_nopriv_boostify_create_post', array( $this, 'create_bhf_post' ) );
 	}
 
 	public function load_admin_style() {
-
 		wp_enqueue_style(
 			'boostify-hf-admin',
 			BOOSTIFY_HEADER_FOOTER_URL . 'assets/css/admin/admin.css',
@@ -59,7 +57,6 @@ class Admin {
 			array(),
 			BOOSTIFY_HEADER_FOOTER_VER
 		);
-
 
 		wp_enqueue_script(
 			'boostify-hf-admin',
@@ -281,9 +278,7 @@ class Admin {
 	}
 
 	public function create_bhf_post() {
-		if ( empty($_GET['_ajax_nonce']) ) {
-			return;
-		}
+		check_ajax_referer( 'ht_hf_nonce' );
 		$post_type        = $_GET['post_type'];
 		$post_title       = $_GET['post_title'];
 		$template_type    = $_GET['template_type'];

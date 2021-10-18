@@ -1,4 +1,12 @@
 <?php
+/**
+ * Copyright
+ *
+ * Elementor widget for Copyright.
+ *
+ * @package Boostify_Header_Footer
+ * Author: ptp
+ */
 
 namespace Boostify_Header_Footer\Widgets;
 
@@ -16,8 +24,6 @@ class Copyright extends Base_Widget {
 
 	/**
 	 * Retrieve the widget name.
-	 *
-	 * @since 1.2.0
 	 *
 	 * @access public
 	 *

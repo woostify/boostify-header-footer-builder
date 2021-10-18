@@ -7,6 +7,8 @@
  * Author: Woostify
  * Author URI: https://woostify.com
  * Text Domain: boostify
+ *
+ * @package Boostify_Header_Footer_Template
  */
 
 define( 'BOOSTIFY_HEADER_FOOTER_PATH', plugin_dir_path( __FILE__ ) );
@@ -27,7 +29,7 @@ function appsero_init_tracker_boostify_header_footer_builder() {
 
 	$client = new Appsero\Client( '745cf48e-22cd-49a0-abb5-3f225d08b708', 'Boostify Header Footer Builder for Elementor', __FILE__ );
 
-	// Active insights
+	// Active insights.
 	$client->insights()->init();
 
 }

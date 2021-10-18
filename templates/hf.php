@@ -1,3 +1,15 @@
+<?php
+/**
+ * Header Footer Single template
+ *
+ * Handle Footer Site.
+ *
+ * @package Boostify_Header_Footer_Template
+ *
+ * Written by ptp
+ */
+
+?>
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 <head>

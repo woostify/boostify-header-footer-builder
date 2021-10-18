@@ -1,4 +1,12 @@
 <?php
+/**
+ * Image Retina
+ *
+ * Elementor widget for Image Retina.
+ *
+ * @package Boostify_Header_Footer
+ * Author: ptp
+ */
 
 namespace Boostify_Header_Footer\Widgets;
 
@@ -21,8 +29,6 @@ class Image_Retina extends Base_Widget {
 
 	/**
 	 * Retrieve the widget name.
-	 *
-	 * @since 1.2.0
 	 *
 	 * @access public
 	 *

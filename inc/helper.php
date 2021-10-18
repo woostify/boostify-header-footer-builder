@@ -1,4 +1,13 @@
 <?php
+/**
+ * Boostify Header Footer function
+ *
+ * Handle comments (reviews and order notes).
+ *
+ * @package Boostify_Header_Footer_Template
+ *
+ * Written by ptp
+ */
 
 /**
  * Define Script debug.
@@ -11,7 +20,11 @@ function boostify_header_footer_suffix() {
 	return $suffix;
 }
 
-
+/**
+ * List type builder.
+ *
+ * @return     array $type
+ */
 function boostify_type_builder() {
 	$type = array(
 		'header'   => __( 'Header', 'boostify' ),
@@ -22,6 +35,11 @@ function boostify_type_builder() {
 	return $type;
 }
 
+/**
+ * List post type support builder.
+ *
+ * @return     array $options
+ */
 function boostify_pt_support() {
 	$post_types       = get_post_types();
 	$post_types_unset = array(
@@ -65,7 +83,9 @@ function boostify_pt_support() {
 /**
  * Get search form .
  *
- * @return     form search
+ * @param (string) $icon | icon class.
+ * @param (string) $placeholder | input placeholder class.
+ * @param (string) $text | button label.
  */
 function boostify_header_footer_search_form( $icon = 'ion-ios-search', $placeholder = 'Enter Keyword', $text = null ) {
 	$url = esc_url( home_url( '/' ) );
@@ -93,10 +113,7 @@ function boostify_header_footer_search_form( $icon = 'ion-ios-search', $placehol
 
 /**
  * Get content single builder .
- *
- * @return     get content
  */
-
 function boostify_header_footer_content() {
 	$id   = get_the_ID();
 	$type = get_post_meta( $id, 'bhf_type' );
@@ -126,7 +143,7 @@ function boostify_header_footer_sub_menu() {
 		'order'               => 'ASC',
 		'posts_per_page'      => -1,
 		'ignore_sticky_posts' => 1,
-		'meta_query'          => array(
+		'meta_query'          => array( //phpcs:ignore
 			array(
 				'key'     => 'bhf_type',
 				'compare' => 'LIKE',
@@ -152,6 +169,7 @@ function boostify_header_footer_sub_menu() {
 
 /**
  * Return Header Template ID
+ *
  * @return (int) $id | ID header template
  */
 function boostify_header_template_id() {
@@ -162,9 +180,7 @@ function boostify_header_template_id() {
 
 /**
  * Return Header Template
- * @return html | Header template
  */
-
 function boostify_get_header_template() {
 	echo Boostify_Header_Footer\Template_Render::get_header_template(); //phpcs:ignore
 }
@@ -172,6 +188,7 @@ function boostify_get_header_template() {
 
 /**
  * Return Footer Template ID
+ *
  * @return (int) $id | ID Footer Template
  */
 function boostify_footer_template_id() {
@@ -182,13 +199,14 @@ function boostify_footer_template_id() {
 
 /**
  * Return Footer Template
- * @return html | Footer template
  */
 function boostify_get_footer_template() {
 	echo Boostify_Header_Footer\Template_Render::get_footer_template(); //phpcs:ignore
 }
 
-
+/**
+ * Check header active
+ */
 function boostify_header_active() {
 	$header_id = boostify_header_template_id();
 	$status    = false;
@@ -200,6 +218,9 @@ function boostify_header_active() {
 	return apply_filters( 'boostify_header_active', $status );
 }
 
+/**
+ * Check footer active
+ */
 function boostify_footer_active() {
 	$header_id = boostify_footer_template_id();
 	$status    = false;

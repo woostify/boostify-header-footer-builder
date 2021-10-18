@@ -1,11 +1,13 @@
 <?php
 /**
- * Header file in case of the elementor way
+ * Header Site
  *
- * @package boostify-header-footer-builder
- * @since 1.0
+ * Handle header Site.
+ *
+ * @package Boostify_Header_Footer_Template
+ *
+ * Written by ptp
  */
-
 
 ?>
 

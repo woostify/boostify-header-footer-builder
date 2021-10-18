@@ -40,7 +40,7 @@
 
 		function closeSidebar( $this ) {
 			$( 'body' ).removeClass( 'remove-item-mini-cart' );
-			var sidebar = $this.parents( '.boostify-cart-icon' ).find( '.boostify-cart-detail' );
+			var sidebar = $( 'body' ).find( '.boostify-cart-icon' ).find( '.boostify-cart-detail' );
 			sidebar.removeClass( 'active' );
 			overlay.removeClass( 'active' );
 		}

@@ -10,8 +10,8 @@
 			var btn      = $( this );
 			var postType = $( this ).val();
 			var data     = {
-				action: 'boostify_hf_load_autocomplate',//boostify_hf_post_admin
-				_ajax_nonce: admin.nonce,
+				action: 'boostify_hf_load_autocomplate',
+				token: admin.nonce,
 				post_type: postType,
 			};
 

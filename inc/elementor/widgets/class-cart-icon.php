@@ -1,4 +1,12 @@
 <?php
+/**
+ * Cart Icon
+ *
+ * Elementor widget for Cart Icon.
+ *
+ * @package Boostify_Header_Footer
+ * Author: ptp
+ */
 
 namespace Boostify_Header_Footer\Widgets;
 
@@ -12,15 +20,12 @@ use Elementor\Group_Control_Border;
 /**
  * Cart Icon
  *
- * Elementor widget for Copyright.
- * Author: ptp
+ * Elementor widget for Cart Icon.
  */
 class Cart_Icon extends Base_Widget {
 
 	/**
 	 * Retrieve the widget name.
-	 *
-	 * @since 1.2.0
 	 *
 	 * @access public
 	 *
@@ -46,20 +51,30 @@ class Cart_Icon extends Base_Widget {
 	/**
 	 * Retrieve the widget icon.
 	 *
-	 * @since 1.2.0
-	 *
 	 * @access public
 	 *
 	 * @return string Widget icon.
 	 */
 	public function get_icon() {
-		return 'eicon-cart';//eicon-cart
+		return 'eicon-cart';
 	}
 
+	/**
+	 * Retrieve the widget script.
+	 *
+	 * @access public
+	 *
+	 * @return array Widget script.
+	 */
 	public function get_script_depends() {
 		return array( 'boostify_hf_cart_icon' );
 	}
 
+	/**
+	 * Register Widget Controls.
+	 *
+	 * @access public
+	 */
 	public function _register_controls() { //phpcs:ignore
 
 		$this->content();
@@ -78,13 +93,12 @@ class Cart_Icon extends Base_Widget {
 	 *
 	 * Written in PHP and used to generate the final HTML.
 	 *
-	 * @since 1.2.0
 	 * @access protected
 	 */
 	protected function render() {
-		$settings      = $this->get_settings_for_display();
-		$icon          = $settings['icon'];
-		$show_subtotal = $settings['show_subtotal'];
+		$settings        = $this->get_settings_for_display();
+		$icon            = $settings['icon'];
+		$show_subtotal   = $settings['show_subtotal'];
 		$disable_sidebar = $settings['disable_cart_sidebar'];
 
 		if ( class_exists( 'Woocommerce' ) ) {
@@ -128,6 +142,11 @@ class Cart_Icon extends Base_Widget {
 		}
 	}
 
+	/**
+	 * Register Content Controls.
+	 *
+	 * @access protected
+	 */
 	protected function content() {
 		$this->start_controls_section(
 			'cart_icon',
@@ -259,6 +278,11 @@ class Cart_Icon extends Base_Widget {
 		$this->end_controls_section();
 	}
 
+	/**
+	 * Register Heading Controls.
+	 *
+	 * @access protected
+	 */
 	protected function cart_heading_style() {
 		$this->start_controls_section(
 			'cart_content_heading',
@@ -427,6 +451,11 @@ class Cart_Icon extends Base_Widget {
 		$this->end_controls_section();
 	}
 
+	/**
+	 * Register Icon Controls.
+	 *
+	 * @access protected
+	 */
 	protected function cart_icon_style() {
 		$this->start_controls_section(
 			'style_icon',
@@ -679,6 +708,11 @@ class Cart_Icon extends Base_Widget {
 		$this->end_controls_section();
 	}
 
+	/**
+	 * Register Content Style Controls.
+	 *
+	 * @access protected
+	 */
 	protected function cart_content_style() {
 		$this->start_controls_section(
 			'cart_content',
@@ -868,6 +902,11 @@ class Cart_Icon extends Base_Widget {
 		$this->end_controls_section();
 	}
 
+	/**
+	 * Register Button Style Controls.
+	 *
+	 * @access protected
+	 */
 	protected function buttons_style() {
 		$this->start_controls_section(
 			'cart_button',
@@ -907,6 +946,11 @@ class Cart_Icon extends Base_Widget {
 		$this->end_controls_section();
 	}
 
+	/**
+	 * Register Button View Cart Controls.
+	 *
+	 * @access protected
+	 */
 	public function button_view_cart() {
 		$this->add_control(
 			'view_cart_heading',
@@ -1007,6 +1051,11 @@ class Cart_Icon extends Base_Widget {
 		);
 	}
 
+	/**
+	 * Register Button Checkout Controls.
+	 *
+	 * @access protected
+	 */
 	public function button_checkout() {
 		$this->add_control(
 			'checkout_heading',
@@ -1101,9 +1150,9 @@ class Cart_Icon extends Base_Widget {
 		$this->add_group_control(
 			Group_Control_Typography::get_type(),
 			array(
-				'name'      => 'checkout_typography',
-				'label'     => __( 'Typography', 'boostify' ),
-				'selector'  => '{{WRAPPER}} .boostify-mini-cart__buttons .button:last-child',
+				'name'     => 'checkout_typography',
+				'label'    => __( 'Typography', 'boostify' ),
+				'selector' => '{{WRAPPER}} .boostify-mini-cart__buttons .button:last-child',
 			)
 		);
 	}

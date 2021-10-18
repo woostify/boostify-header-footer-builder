@@ -1,4 +1,11 @@
 <?php
+/**
+ * Module Sticky
+ *
+ * @package Boostify_Header_Footer\Module\Sticky;
+ *
+ * Written by ptp
+ */
 
 namespace Boostify_Header_Footer\Module;
 
@@ -19,11 +26,15 @@ use Elementor\Core\Base\Module;
 class Sticky {
 
 	/**
-	 * Instance
+	 * Instance Class
 	 *
+	 * @var instance
 	 */
 	private static $instance = null;
 
+	/**
+	 * Class Module Sticky Instance
+	 */
 	public static function instance() {
 		if ( is_null( self::$instance ) ) {
 			self::$instance = new self();
@@ -31,15 +42,26 @@ class Sticky {
 		return self::$instance;
 	}
 
+	/**
+	 * Boostify Header Footer Builder Module Sticky Constructor.
+	 */
 	public function __construct() {
 
 		$this->add_actions();
 	}
 
+	/**
+	 * Module name.
+	 */
 	public function get_name() {
 		return 'hf-sticky';
 	}
 
+	/**
+	 * Register Module Controls.
+	 *
+	 * @param object Element_Base $element | Element_Base class.
+	 */
 	public function register_controls( Element_Base $element ) {
 		$element->start_controls_section(
 			'section_bhf_sticky_header',
@@ -205,6 +227,9 @@ class Sticky {
 		$element->end_controls_section();
 	}
 
+	/**
+	 * Register Hooks.
+	 */
 	private function add_actions() {
 		add_action( 'elementor/element/section/section_advanced/after_section_end', array( $this, 'register_controls' ) );
 		add_action( 'elementor/element/common/section_advanced/after_section_start', array( $this, 'register_controls' ) );
@@ -212,6 +237,9 @@ class Sticky {
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
 	}
 
+	/**
+	 * Register Style.
+	 */
 	public function enqueue_styles() {
 		$suffix = boostify_header_footer_suffix();
 
@@ -223,6 +251,9 @@ class Sticky {
 		);
 	}
 
+	/**
+	 * Register script.
+	 */
 	public function enqueue_scripts() {
 		$suffix = boostify_header_footer_suffix();
 

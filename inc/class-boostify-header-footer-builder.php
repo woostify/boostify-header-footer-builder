@@ -1,20 +1,33 @@
 <?php
-
-defined( 'ABSPATH' ) || exit;
-
 /**
  * Main Boostify Header Footer Builder
  *
  * @class Boostify_Header_Footer_Builder
  *
- * Written by ptp
+ * @package Boostify_Header_Footer_Template
  *
+ * Written by ptp
  */
+
+defined( 'ABSPATH' ) || exit;
+
 if ( ! class_exists( 'Boostify_Header_Footer_Builder' ) ) {
+
+	/**
+	 * Boostify Header Footer Builder Class.
+	 */
 	class Boostify_Header_Footer_Builder {
 
+		/**
+		 * Instance Class
+		 *
+		 * @var instance
+		 */
 		private static $instance;
 
+		/**
+		 * Class Boostify_Header_Footer_Builder Instance
+		 */
 		public static function instance() {
 			if ( ! isset( self::$instance ) ) {
 				self::$instance = new self();
@@ -31,6 +44,9 @@ if ( ! class_exists( 'Boostify_Header_Footer_Builder' ) ) {
 			$this->cpt();
 		}
 
+		/**
+		 * Include file.
+		 */
 		public function includes() {
 			include_once BOOSTIFY_HEADER_FOOTER_PATH . 'inc/elementor/class-elementor.php';
 			include_once BOOSTIFY_HEADER_FOOTER_PATH . 'inc/admin/class-admin.php';
@@ -41,6 +57,9 @@ if ( ! class_exists( 'Boostify_Header_Footer_Builder' ) ) {
 			include_once BOOSTIFY_HEADER_FOOTER_PATH . 'inc/helper.php';
 		}
 
+		/**
+		 * Hook.
+		 */
 		public function hooks() {
 			add_action( 'init', array( $this, 'post_types' ) );
 			add_action( 'init', array( $this, 'translate' ) );
@@ -55,23 +74,34 @@ if ( ! class_exists( 'Boostify_Header_Footer_Builder' ) ) {
 			add_shortcode( 'btf_site_tile', array( $this, 'get_site_name' ) );
 		}
 
+		/**
+		 * Add post type support.
+		 */
 		public function cpt() {
 			add_post_type_support( 'btf_builder', 'elementor' );
 		}
 
+		/**
+		 * Add post type support.
+		 *
+		 * @param (string) $classes | add class version in body.
+		 */
 		public function body_ver( $classes ) {
 			$classes[] = 'boostify-header-footer-' . BOOSTIFY_HEADER_FOOTER_VER;
 
 			return $classes;
 		}
 
+		/**
+		 * Register post type.
+		 */
 		public function post_types() {
 			global $wp;
 
 			$wp->add_query_var( 'newfeed' );
 			add_rewrite_rule( '^newfeed/([^/]*)/?', 'index.php?newfeed=$matches[1]', 'top' );
 
-			if( ! get_option( 'plugin_permalinks_flushed' ) ) {
+			if ( ! get_option( 'plugin_permalinks_flushed' ) ) {
 
 				flush_rewrite_rules( false );
 				update_option( 'plugin_permalinks_flushed', 1 );
@@ -102,6 +132,9 @@ if ( ! class_exists( 'Boostify_Header_Footer_Builder' ) ) {
 			);
 		}
 
+		/**
+		 * Add translate Plugin.
+		 */
 		public function translate() {
 			load_plugin_textdomain(
 				'boostify',
@@ -110,6 +143,9 @@ if ( ! class_exists( 'Boostify_Header_Footer_Builder' ) ) {
 			);
 		}
 
+		/**
+		 * Instant class requied.
+		 */
 		public function init() {
 			new Boostify_Header_Footer\Metabox();
 			new Boostify_Header_Footer\Template_Render();
@@ -118,7 +154,6 @@ if ( ! class_exists( 'Boostify_Header_Footer_Builder' ) ) {
 
 		/**
 		 * Add ionicons.
-		 *
 		 */
 		public function enqueue_icon() {
 			wp_enqueue_style(
@@ -136,17 +171,19 @@ if ( ! class_exists( 'Boostify_Header_Footer_Builder' ) ) {
 			);
 		}
 
-
+		/**
+		 * Register style.
+		 */
 		public function style() {
 
-			// FontAweSome 5 Free
+			// FontAweSome 5 Free.
 			wp_enqueue_style(
 				'fontawesome-5-free',
 				BOOSTIFY_HEADER_FOOTER_URL . 'assets/css/fontawesome/fontawesome.css',
 				array(),
 				BOOSTIFY_HEADER_FOOTER_VER
 			);
-			// Menu
+			// Menu.
 			wp_enqueue_style(
 				'boostify-hf-nav-menu-css',
 				BOOSTIFY_HEADER_FOOTER_URL . 'assets/css/elementor/nav-menu.css',
@@ -154,7 +191,7 @@ if ( ! class_exists( 'Boostify_Header_Footer_Builder' ) ) {
 				BOOSTIFY_HEADER_FOOTER_VER
 			);
 
-			// Search
+			// Search.
 			wp_enqueue_style(
 				'boostify-hf-search',
 				BOOSTIFY_HEADER_FOOTER_URL . 'assets/css/elementor/search.css',
@@ -162,7 +199,7 @@ if ( ! class_exists( 'Boostify_Header_Footer_Builder' ) ) {
 				BOOSTIFY_HEADER_FOOTER_VER
 			);
 
-			// Style
+			// Style.
 			wp_enqueue_style(
 				'boostify-hf-style',
 				BOOSTIFY_HEADER_FOOTER_URL . 'assets/css/style.css',
@@ -170,7 +207,7 @@ if ( ! class_exists( 'Boostify_Header_Footer_Builder' ) ) {
 				BOOSTIFY_HEADER_FOOTER_VER
 			);
 
-			// Cart
+			// Cart.
 			wp_enqueue_style(
 				'boostify-hf-cart-icon',
 				BOOSTIFY_HEADER_FOOTER_URL . 'assets/css/elementor/cart-icon.css',
@@ -181,7 +218,6 @@ if ( ! class_exists( 'Boostify_Header_Footer_Builder' ) ) {
 
 		/**
 		 * Notice when do not install or active Elementor.
-		 *
 		 */
 		public function notice_plugin() {
 			if ( ! defined( 'ELEMENTOR_VERSION' ) || ! is_callable( 'Elementor\Plugin::instance' ) ) {
@@ -199,23 +235,28 @@ if ( ! class_exists( 'Boostify_Header_Footer_Builder' ) ) {
 			}
 		}
 
+		/**
+		 * Get current year.
+		 */
 		public function get_year() {
 			return esc_html( date( 'Y' ) );// phpcs:ignore
 		}
 
+		/**
+		 * Get Copyright.
+		 */
 		public function get_site_name() {
 			return '<a class="boostify-copyright-info" href="' . esc_url( home_url( '/' ) ) . '">' . esc_html( get_bloginfo( 'name' ) ) . '</a>';
 		}
 
 		/**
 		 * Notice when do not theme Support.
-		 *
 		 */
 		public function notice_theme_support() {
 			if ( ! current_theme_supports( 'boostify-header-footer' ) ) {
 				?>
 				<div class="notice notice-error">
-					<p><?php echo esc_html__( 'Your current theme is not supported Boostify Header Footer Plugin', 'boostify' ) ?></p>
+					<p><?php echo esc_html__( 'Your current theme is not supported Boostify Header Footer Plugin', 'boostify' ); ?></p>
 				</div>
 				<?php
 			}

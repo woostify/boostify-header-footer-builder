@@ -1,4 +1,12 @@
 <?php
+/**
+ * Navigation
+ *
+ * Elementor widget for Navigation.
+ *
+ * @package Boostify_Header_Footer
+ * Author: ptp
+ */
 
 namespace Boostify_Header_Footer\Widgets;
 
@@ -9,7 +17,7 @@ use Elementor\Group_Control_Border;
 /**
  * Boostify Nav Menu
  *
- * Elementor widget for hello world.
+ * Elementor widget for Navigation.
  */
 class Navigation extends Nav_Menu {
 
@@ -31,6 +39,13 @@ class Navigation extends Nav_Menu {
 		return esc_html__( 'Nav Menu', 'boostify' );
 	}
 
+	/**
+	 * Retrieve the widget script.
+	 *
+	 * @access public
+	 *
+	 * @return array Widget script.
+	 */
 	public function get_script_depends() {
 		return array( 'boostify_hf_nav_menu' );
 	}
@@ -201,6 +216,9 @@ class Navigation extends Nav_Menu {
 		$this->end_controls_section();
 	}
 
+	/**
+	 * Register Control mobule menu.
+	 */
 	protected function custom_mobile_menu() {
 		$this->add_control(
 			'logo',

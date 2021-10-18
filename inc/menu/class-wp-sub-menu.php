@@ -2,11 +2,11 @@
 /**
  * Get Sub Menu
  *
- *
  * @package Boostify_Header_Footer_Sub_Menu
  *
  * Written by ptp
  */
+
 namespace Boostify_Header_Footer;
 
 defined( 'ABSPATH' ) || exit;
@@ -14,17 +14,20 @@ defined( 'ABSPATH' ) || exit;
 /**
  * Boostify Header WP Sub Menu Template Class.
  */
-
 class WP_Sub_Menu {
 
-	// Variables
+	/**
+	 * Menu Item
+	 *
+	 * @var menu_items
+	 */
 	private $menu_items = array();
 
 	/**
 	 * Constructor
 	 */
 	public function __construct() {
-		// Initialize plugin
+		// Initialize plugin.
 		add_action( 'init', array( $this, 'init' ), 1 );
 	}
 
@@ -32,19 +35,20 @@ class WP_Sub_Menu {
 	 * Initializes the plugin
 	 */
 	public function init() {
-		// Add filters
+		// Add filters.
 		add_filter( 'wp_nav_menu_objects', array( $this, 'wp_nav_menu_objects' ), 10, 2 );
 	}
 
 	/**
 	 * Extends the default function
 	 *
-	 * @param array   $sortedmenu_items
-	 * @param object  $args
+	 * @param array  $sortedmenu_items | sortedmenu_items.
+	 * @param object $args | munu object.
+	 *
 	 * @return array
 	 */
 	public function wp_nav_menu_objects( $sortedmenu_items, $args ) {
-		// Add additional args
+		// Add additional args.
 		if ( ! isset( $args->level ) ) {
 			$args->level = 0;
 		}
@@ -52,12 +56,12 @@ class WP_Sub_Menu {
 			$args->child_of = '';
 		}
 
-		// Check if we need to do anything
+		// Check if we need to do anything.
 		if ( ! $sortedmenu_items || ( 0 == $args->level && '' == $args->child_of ) ) { //phpcs:ignore
 			return $sortedmenu_items;
 		}
 
-		// Build a tree
+		// Build a tree.
 		$this->menu_items = $sortedmenu_items;
 		$temp_array       = array();
 		foreach ( $this->menu_items as $item ) {
@@ -65,21 +69,22 @@ class WP_Sub_Menu {
 		}
 		$tree = $this->build_items_tree( $temp_array, $temp_array[0] );
 
-		// Prepare updated items
+		// Prepare updated items.
 		$updated_items = $this->get_level_items( $tree, $args->level, $args->child_of );
 
-		// Start array keys from 1
+		// Start array keys from 1.
 		$updated_items = array_filter( array_merge( array( 0 ), $updated_items ) );
 
-		// Return updated items
+		// Return updated items.
 		return $updated_items;
 	}
 
 	/**
 	 * Builds a tree of menu items recursively
 	 *
-	 * @param  array  $list
-	 * @param  object $parent
+	 * @param  array  $list | list menu item.
+	 * @param  object $parent | parent.
+	 * @param  int    $level | item level.
 	 * @return array
 	 */
 	private function build_items_tree( &$list, $parent, $level = 1 ) {
@@ -99,9 +104,9 @@ class WP_Sub_Menu {
 	/**
 	 * Gets items from a particular level
 	 *
-	 * @param  array   $tree
-	 * @param  integer $level
-	 * @param  string  $child_of
+	 * @param  array   $tree | Menu Tree.
+	 * @param  integer $level | Level.
+	 * @param  string  $child_of | Child of.
 	 * @return array
 	 */
 	private function get_level_items( $tree, $level = 1, $child_of = '' ) {
@@ -133,7 +138,7 @@ class WP_Sub_Menu {
 	/**
 	 * Gets a menu ID based on the title of the item
 	 *
-	 * @param  string $name
+	 * @param  string $name | name of menu.
 	 * @return string
 	 */
 	private function get_menu_id_from_title( $name = '' ) {

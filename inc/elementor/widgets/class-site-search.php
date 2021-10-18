@@ -1,4 +1,12 @@
 <?php
+/**
+ * Site Search
+ *
+ * Elementor widget for Site Search.
+ *
+ * @package Boostify_Header_Footer
+ * Author: ptp
+ */
 
 namespace Boostify_Header_Footer\Widgets;
 
@@ -42,7 +50,13 @@ class Site_Search extends Base_Widget {
 		return 'eicon-search';
 	}
 
-
+	/**
+	 * Retrieve the widget script.
+	 *
+	 * @access public
+	 *
+	 * @return array Widget script.
+	 */
 	public function get_script_depends() {
 		return array( 'boostify_hf_search' );
 	}
@@ -358,9 +372,9 @@ class Site_Search extends Base_Widget {
 		$this->add_group_control(
 			Group_Control_Typography::get_type(),
 			array(
-				'name'     => 'input_typography',
-				'label'    => __( 'Typography', 'boostify' ),
-				'selector' => '{{WRAPPER}} .site-search-field',
+				'name'      => 'input_typography',
+				'label'     => __( 'Typography', 'boostify' ),
+				'selector'  => '{{WRAPPER}} .site-search-field',
 				'condition' => array(
 					'layout' => 'form',
 				),

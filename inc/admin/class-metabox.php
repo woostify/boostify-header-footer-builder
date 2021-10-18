@@ -1,4 +1,11 @@
 <?php
+/**
+ * Main Boostify Header Footer Metabox Class
+ *
+ * @class Boostify_Header_Footer_Metabox
+ *
+ * @package Boostify_Header_Footer_Template
+ */
 
 namespace Boostify_Header_Footer;
 
@@ -9,7 +16,6 @@ defined( 'ABSPATH' ) || exit;
  *
  * @class Boostify_Header_Footer_Metabox
  */
-
 class Metabox {
 
 	/**
@@ -19,28 +25,29 @@ class Metabox {
 		$this->hooks();
 	}
 
+	/**
+	 * Register Hooks.
+	 */
 	public function hooks() {
 		add_action( 'add_meta_boxes', array( $this, 'pagesetting_meta_box' ) );
 		add_action( 'save_post', array( $this, 'pagesetting_save' ) );
 		add_action( 'wp_ajax_boostify_hf_load_autocomplate', array( $this, 'boostify_hf_input' ) );
-		add_action( 'wp_ajax_nopriv_boostify_hf_load_autocomplate', array( $this, 'boostify_hf_input' ) );
 		add_action( 'wp_ajax_boostify_hf_post_admin', array( $this, 'boostify_hf_post_admin' ) );
-		add_action( 'wp_ajax_nopriv_boostify_hf_post_admin', array( $this, 'boostify_hf_post_admin' ) );
 		add_action( 'wp_ajax_bhf_more_rule', array( $this, 'parent_rule' ) );
-		add_action( 'wp_ajax_nopriv_bhf_more_rule', array( $this, 'parent_rule' ) );
 		add_action( 'wp_ajax_boostify_hf_ex_auto', array( $this, 'boostify_hf_post_exclude' ) );
-		add_action( 'wp_ajax_nopriv_boostify_hf_ex_auto', array( $this, 'boostify_hf_post_exclude' ) );
 		add_action( 'wp_ajax_boostify_hf_type', array( $this, 'display_setting' ) );
-		add_action( 'wp_ajax_nopriv_boostify_hf_type', array( $this, 'display_setting' ) );
 	}
 
-	// Meta Box In btf_builder post type
+	/**
+	 * Meta Box In btf_builder post type.
+	 */
 	public function pagesetting_meta_box() {
 		add_meta_box( 'ht_hf_setting', 'Template Settings', array( $this, 'ht_hfsetting_output' ), 'btf_builder', 'side', 'high' );
 	}
 
-
-	// Screen meta box in btf_builder post type
+	/**
+	 * Screen meta box in btf_builder post type.
+	 */
 	public function ht_hfsetting_output( $post ) {
 		$types         = boostify_type_builder();
 		$type          = get_post_meta( $post->ID, 'bhf_type', true );
@@ -77,7 +84,9 @@ class Metabox {
 		<?php
 	}
 
-	// Save meta box setting in btf_buider postType
+	/**
+	 * Save meta box setting in btf_buider postType.
+	 */
 	public function pagesetting_save( $post_id ) {
 		$nonce_name   = ( array_key_exists( 'boostify_hf', $_POST ) ) ? sanitize_text_field( $_POST['boostify_hf'] ) : '';
 		$nonce_action = 'boostify_hf_action';
@@ -105,7 +114,7 @@ class Metabox {
 			return;
 		}
 
-		// Type of Template Builder
+		// Type of Template Builder.
 		$type = sanitize_text_field( $_POST['bhf_type'] );
 		if ( empty( $type ) ) {
 			$type = 'header';
@@ -119,7 +128,7 @@ class Metabox {
 
 		if ( 'sub_menu' !== $type ) {
 
-			// Display On
+			// Display On.
 			$display = sanitize_text_field( $_POST['bhf_display'] );
 
 			update_post_meta(
@@ -128,7 +137,7 @@ class Metabox {
 				$display
 			);
 
-			// Do Not Display On
+			// Do Not Display On.
 			$no_display = sanitize_text_field( $_POST['bhf_no_display'] );
 
 			update_post_meta(
@@ -137,7 +146,7 @@ class Metabox {
 				$no_display
 			);
 
-			// Post
+			// Post.
 			if ( array_key_exists( 'bhf_post', $_POST ) ) {
 				$post = sanitize_text_field( $_POST['bhf_post'] );
 
@@ -154,7 +163,7 @@ class Metabox {
 				);
 			}
 
-			// Ex Post
+			// Ex Post.
 			if ( array_key_exists( 'bhf_ex_post', $_POST ) ) {
 				$ex_post = sanitize_text_field( $_POST['bhf_ex_post'] );
 
@@ -171,7 +180,7 @@ class Metabox {
 				);
 			}
 
-			// Ex Post Type
+			// Ex Post Type.
 			if ( array_key_exists( 'bhf_ex_post_type', $_POST ) ) {
 				$ex_post_type = sanitize_text_field( $_POST['bhf_ex_post_type'] );
 
@@ -188,7 +197,7 @@ class Metabox {
 				);
 			}
 
-			// Post Type
+			// Post Type.
 			if ( array_key_exists( 'bhf_post_type', $_POST ) ) {
 				$post_type = sanitize_text_field( $_POST['bhf_post_type'] );
 
@@ -353,7 +362,7 @@ class Metabox {
 	}
 
 	public function boostify_hf_post_admin() {
-		check_ajax_referer( 'ht_hf_nonce' );
+		check_ajax_referer( 'ht_hf_nonce', '_ajax_nonce' );
 		$post_type = sanitize_text_field( $_GET['post_type'] );
 		$keyword   = sanitize_text_field( $_GET['key'] );
 
@@ -416,7 +425,8 @@ class Metabox {
 
 	// For Ajax For Select single post display
 	public function boostify_hf_input() {
-		check_ajax_referer( 'ht_hf_nonce' );
+		check_ajax_referer( 'ht_hf_nonce', 'token' );
+
 		$post_type = sanitize_text_field( $_POST['post_type'] );
 
 		if ( 'all' !== $post_type && 'archive' !== $post_type && 'search' !== $post_type && 'blog' !== $post_type && 'not_found' !== $post_type ) :

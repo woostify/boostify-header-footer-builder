@@ -1,4 +1,12 @@
 <?php
+/**
+ * Site Logo
+ *
+ * Elementor widget for Site Logo.
+ *
+ * @package Boostify_Header_Footer
+ * Author: ptp
+ */
 
 namespace Boostify_Header_Footer\Widgets;
 

@@ -134,12 +134,13 @@ class Template_Render {
 	/**
 	 * Header Template.
 	 *
+	 * @param boolean $with_css | with css.
 	 * @return Header Template.
 	 */
 	public static function get_header_template( $with_css = false ) {
 		$id = boostify_header_template_id();
 		if ( is_404() || is_search() ) {
-			$editor = self::$elementor_instance->editor;
+			$editor       = self::$elementor_instance->editor;
 			$is_edit_mode = $editor->is_edit_mode();
 			$editor->set_edit_mode( false );
 
@@ -156,12 +157,13 @@ class Template_Render {
 	/**
 	 * Footer Template.
 	 *
+	 * @param boolean $with_css | with css.
 	 * @return Footer Template.
 	 */
 	public static function get_footer_template( $with_css = false ) {
 		$id = boostify_footer_template_id();
 		if ( is_404() || is_search() ) {
-			$editor = self::$elementor_instance->editor;
+			$editor       = self::$elementor_instance->editor;
 			$is_edit_mode = $editor->is_edit_mode();
 			$editor->set_edit_mode( false );
 

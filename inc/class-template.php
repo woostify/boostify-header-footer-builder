@@ -370,7 +370,7 @@ class Template {
 			'order'               => 'DESC',
 			'posts_per_page'      => 1,
 			'ignore_sticky_posts' => 1,
-			'meta_query'          => array(
+			'meta_query'          => array( //phpcs:ignore
 				array(
 					'key'     => 'bhf_type',
 					'compare' => 'LIKE',
@@ -424,8 +424,8 @@ class Template {
 	 */
 	public function page_type() {
 		global $post;
-		$shop_id = get_option( 'woocommerce_shop_page_id' );
-		$page_type = '';
+		$shop_id        = get_option( 'woocommerce_shop_page_id' );
+		$page_type      = '';
 		$checkshop_page = true;
 		if ( class_exists( 'Woocommerce' ) && is_shop() ) {
 			$checkshop_page = false;
@@ -445,7 +445,8 @@ class Template {
 
 	/**
 	 * Render template.
-	 * @param (object)    $header | ID Single Post.
+	 *
+	 * @param (object) $header | ID Single Post.
 	 * @param (string) $path | Post Type Single Post.
 	 */
 	public function render( $header, $path ) {
@@ -526,8 +527,8 @@ class Template {
 			$post_type = get_post_type( $shop_id );
 		}
 
-		$maintenance_mode     = get_option('elementor_maintenance_mode_mode');
-		$maintenance_template = get_option('elementor_maintenance_mode_template_id');
+		$maintenance_mode     = get_option( 'elementor_maintenance_mode_mode' );
+		$maintenance_template = get_option( 'elementor_maintenance_mode_template_id' );
 		if ( 'coming_soon' == $maintenance_mode && $maintenance_template == $post_id ) { //phpcs:ignore
 			return false;
 		}
@@ -580,18 +581,18 @@ class Template {
 			$this->post_type = get_post_type( $shop_id );
 		}
 		if ( ! empty( $post ) ) {
-			$post_id = $post->ID;
-			$post_type        = get_post_type( $post->ID );
+			$post_id   = $post->ID;
+			$post_type = get_post_type( $post->ID );
 		}
 		$post_id              = $this->post_id;
-		$maintenance_mode     = get_option('elementor_maintenance_mode_mode');
-		$maintenance_template = get_option('elementor_maintenance_mode_template_id');
-		if ( 'coming_soon' == $maintenance_mode && $maintenance_template == $post_id ) {
+		$maintenance_mode     = get_option( 'elementor_maintenance_mode_mode' );
+		$maintenance_template = get_option( 'elementor_maintenance_mode_template_id' );
+		if ( 'coming_soon' == $maintenance_mode && $maintenance_template == $post_id ) { //phpcs:ignore
 			return false;
 		}
-		$page_type            = $this->page_type();
-		$post_type            = $this->post_type;
-		$id                   = '';
+		$page_type = $this->page_type();
+		$post_type = $this->post_type;
+		$id        = '';
 		if ( $this->display_all( 'footer' ) || $this->display_template( $page_type, 'footer' ) || $this->all_single( $post_id, $post_type, 'footer' ) || $this->current_single( $post_id, $post_type, 'footer' ) ) {
 			if ( $this->display_all( 'footer' ) ) {
 				$header = $this->display_all( 'footer' );

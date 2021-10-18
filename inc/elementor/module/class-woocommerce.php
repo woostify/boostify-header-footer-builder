@@ -3,7 +3,10 @@
  * Class Woocommerce Cart
  *
  * Main Plugin class
- * @since 1.2.0
+ *
+ * @package Boostify_Header_Footer\Module\Woocommerce;
+ *
+ * Written by ptp
  */
 
 namespace Boostify_Header_Footer\Module;
@@ -12,23 +15,36 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
+/**
+ * Module Woocommerce.
+ */
 class Woocommerce {
 
+	/**
+	 * $icon
+	 *
+	 * @var icon
+	 */
 	public static $icon;
 
-
+	/**
+	 * Boostify Header Footer Builder Woocommerce Constructor.
+	 */
 	public function __construct() {
 		add_filter( 'add_to_cart_fragments', array( $this, 'add_to_cart_fragment' ) );
 		add_action( 'elementor/editor/before_enqueue_scripts', array( $this, 'maybe_init_cart' ) );
 		if ( ! empty( $_REQUEST['action'] ) && 'elementor' === $_REQUEST['action'] && is_admin() ) { // phpcs:ignore
 			add_action( 'init', array( $this, 'register_wc_hooks' ), 5 );
 		}
-		add_action( 'wp_ajax_boostify_product_remove', array( $this, 'product_remove') );
-		add_action( 'wp_ajax_nopriv_boostify_product_remove', array( $this,'product_remove' ) );
-		add_action( 'wp_ajax_boostify_ajax_add_to_cart', array( $this,'boostify_ajax_add_to_cart' ) );
-		add_action( 'wp_ajax_nopriv_boostify_ajax_add_to_cart', array( $this,'boostify_ajax_add_to_cart' ) );
+		add_action( 'wp_ajax_boostify_product_remove', array( $this, 'product_remove' ) );
+		add_action( 'wp_ajax_nopriv_boostify_product_remove', array( $this, 'product_remove' ) );
+		add_action( 'wp_ajax_boostify_ajax_add_to_cart', array( $this, 'boostify_ajax_add_to_cart' ) );
+		add_action( 'wp_ajax_nopriv_boostify_ajax_add_to_cart', array( $this, 'boostify_ajax_add_to_cart' ) );
 	}
 
+	/**
+	 * Cart empty template.
+	 */
 	public static function render_cart_empty() {
 		?>
 		<div class="boostify-mini-cart-empty-message">
@@ -37,6 +53,9 @@ class Woocommerce {
 		<?php
 	}
 
+	/**
+	 * Cart Session.
+	 */
 	public function maybe_init_cart() {
 		global $woocommerce;
 		$has_cart = is_a( WC()->cart, 'WC_Cart' );
@@ -50,8 +69,11 @@ class Woocommerce {
 		}
 	}
 
+	/**
+	 * Remove cart item.
+	 */
 	public function product_remove() {
-		// Get mini cart
+		// Get mini cart.
 		ob_start();
 		$carts = WC()->cart->get_cart();
 
@@ -68,7 +90,7 @@ class Woocommerce {
 
 		$mini_cart = ob_get_clean();
 
-		// Fragments and mini cart are returned
+		// Fragments and mini cart are returned.
 		$data = array(
 			'fragments' => apply_filters(
 				'woocommerce_add_to_cart_fragments',
@@ -85,26 +107,38 @@ class Woocommerce {
 
 		\WC_AJAX::get_refreshed_fragments();
 
-		// wp_send_json( $data );
-
 		die();
 	}
 
+	/**
+	 * Remove cart item.
+	 *
+	 * @param (array) $fragments | Cart fragments.
+	 */
 	public function add_to_cart_fragment( $fragments ) {
 		global $woocommerce;
 		ob_start();
 		self::render_cart();
 		$menu_cart_html = ob_get_clean(); // phpcs:ignore
-		$fragments['div.widget-cart-icon--wrapper'] = $menu_cart_html;//a.cartplus-contents,a.cart-button
+		$fragments['div.widget-cart-icon--wrapper'] = $menu_cart_html;
 		ob_end_clean();
 
 		return $fragments;
 	}
 
+	/**
+	 * Register woocommrce hooks.
+	 */
 	public function register_wc_hooks() {
 		WC()->frontend_includes();
 	}
 
+	/**
+	 * Render cart item detail.
+	 *
+	 * @param (string) $cart_item_key | cart item key.
+	 * @param (mixed)  $cart_item | cart item.
+	 */
 	public static function cart_item_detail( $cart_item_key, $cart_item ) {
 		$_product   = apply_filters( 'woocommerce_cart_item_product', $cart_item['data'], $cart_item, $cart_item_key );
 		$product_id = apply_filters( 'woocommerce_cart_item_product_id', $cart_item['product_id'], $cart_item, $cart_item_key );
@@ -188,11 +222,6 @@ class Woocommerce {
 
 	/**
 	 * Render Mini Cart.
-	 *
-	 * @param $.
-	 *
-	 * @since 1.2.0
-	 * @access protected
 	 */
 	public static function render_cart() {
 		if ( null === WC()->cart ) {
@@ -281,11 +310,14 @@ class Woocommerce {
 		<?php
 	}
 
+	/**
+	 * Ajax add to cart.
+	 */
 	public function boostify_ajax_add_to_cart() {
 		global $woocommerce;
 		check_ajax_referer( 'boostify_nonce' );
-		$product_id        = apply_filters( 'woocommerce_add_to_cart_product_id', absint( $_POST['product_id'] ) );
-		$quantity          = empty( $_POST['quantity'] ) ? 1 : wc_stock_amount( $_POST['quantity'] );
+		$product_id        = apply_filters( 'woocommerce_add_to_cart_product_id', absint( isset( $_POST['product_id'] ) ) );
+		$quantity          = empty( $_POST['quantity'] ) ? 1 : wc_stock_amount( $_POST['quantity'] ); //phpcs:ignore
 		$variation_id      = absint( isset( $_POST['variation_id'] ) ? $_POST['variation_id'] : 0 );
 		$passed_validation = apply_filters( 'woocommerce_add_to_cart_validation', true, $product_id, $quantity );
 		$product_status    = get_post_status( $product_id );
@@ -306,7 +338,7 @@ class Woocommerce {
 				'product_url' => apply_filters( 'woocommerce_cart_redirect_after_error', get_permalink( $product_id ), $product_id ),
 			);
 
-			echo wp_send_json( $data );
+			echo wp_send_json( $data ); //phpcs:ignore
 		}
 
 		wp_die();

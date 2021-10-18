@@ -1,13 +1,18 @@
 <?php
 /**
- * Class Header Footer Elementor
+ * Elementor
  *
- * Main Plugin class
- * @since 1.2.0
+ * Elementor Class.
+ *
+ * @package Boostify_Header_Footer
+ * Author: ptp
  */
 
 namespace Boostify_Header_Footer;
 
+/**
+ * Elementor Class.
+ */
 class Elementor {
 	/**
 	 * Instance
@@ -20,7 +25,15 @@ class Elementor {
 	 */
 	private static $instance = null;
 
-
+	/**
+	 * Elementor Modules Manager
+	 *
+	 * @since 1.2.0
+	 * @access private
+	 * @static
+	 *
+	 * @var Plugin The single instance of the class.
+	 */
 	private $modules_manager;
 	/**
 	 * Instance
@@ -41,6 +54,8 @@ class Elementor {
 
 	/**
 	 * Register custom widget categories.
+	 *
+	 * @param object $elements_manager | Elementer elements manager.
 	 */
 	public function add_elementor_widget_categories( $elements_manager ) {
 		$elements_manager->add_category(
@@ -50,6 +65,7 @@ class Elementor {
 			)
 		);
 	}
+
 	/**
 	 * Widget Class
 	 */
@@ -166,7 +182,7 @@ class Elementor {
 	 */
 	public function init_widgets() {
 		$this->autoload_widgets();
-		// Its is now safe to include Widgets files
+		// Its is now safe to include Widgets files.
 		$widget_manager = \Elementor\Plugin::instance()->widgets_manager;
 		foreach ( $this->get_widgets() as $widget ) {
 			$class_name = 'Boostify_Header_Footer\Widgets\\' . $widget;
@@ -174,13 +190,21 @@ class Elementor {
 		}
 	}
 
+	/**
+	 * Register Sticky Module
+	 *
+	 * Register new Elementor widgets.
+	 *
+	 * @since 1.2.0
+	 * @access public
+	 */
 	public function init() {
 
 		$this->modules_manager = \Boostify_Header_Footer\Module\Sticky::instance();
 
 		$elementor = \Elementor\Plugin::$instance;
 
-		// Add element category in panel
+		// Add element category in panel.
 		$elementor->elements_manager->add_category(
 			'boostify-sticky',
 			array(
@@ -193,13 +217,15 @@ class Elementor {
 		do_action( 'elementor_controls/init' ); // phpcs:ignore
 	}
 
-		/**
-		 * Add icon for elementor.
-		 */
+	/**
+	 * Add icon for elementor.
+	 *
+	 * @param (object) $controls_registry | controls_registry.
+	 */
 	public function modify_controls( $controls_registry ) {
-		// Get existing icons
+		// Get existing icons.
 		$icons = $controls_registry->get_control( 'icon' )->get_settings( 'options' );
-		// Append new icons
+		// Append new icons.
 		$new_icons = array_merge(
 			array(
 				'ion-android-arrow-dropdown'  => 'Ion Dropdown',
@@ -218,35 +244,46 @@ class Elementor {
 			),
 			$icons
 		);
-		// Then we set a new list of icons as the options of the icon control
+		// Then we set a new list of icons as the options of the icon control.
 		$controls_registry->get_control( 'icon' )->set_settings( 'options', $new_icons );
 	}
 
+	/**
+	 * Elementor hooks.
+	 */
 	private function setup_hooks() {
 		// Register Module.
 		add_action( 'elementor/init', array( $this, 'init' ) );
 		add_action( 'elementor/init', array( $this, 'register_abstract' ) );
 		// Register custom widget categories.
 		add_action( 'elementor/elements/categories_registered', array( $this, 'add_elementor_widget_categories' ) );
-		// Register widget scripts
+		// Register widget scripts.
 		add_action( 'elementor/frontend/after_register_scripts', array( $this, 'widget_scripts' ) );
-		// Register widgets
+		// Register widgets.
 		add_action( 'elementor/widgets/widgets_registered', array( $this, 'init_widgets' ) );
 		add_action( 'elementor/init', array( $this, 'maybe_init_cart' ) );
 		add_action( 'elementor/controls/controls_registered', array( $this, 'modify_controls' ), 10, 1 );
 	}
 
+	/**
+	 * Include abstract.
+	 */
 	public function register_abstract() {
 		require BOOSTIFY_HEADER_FOOTER_PATH . 'inc/elementor/abstract/class-base-widget.php';
 		require BOOSTIFY_HEADER_FOOTER_PATH . 'inc/elementor/abstract/class-nav-menu.php';
 		require BOOSTIFY_HEADER_FOOTER_PATH . 'inc/elementor/module/class-woocommerce.php';
 	}
 
+	/**
+	 * Include file.
+	 */
 	public function includes() {
 		require BOOSTIFY_HEADER_FOOTER_PATH . 'inc/elementor/module/class-sticky.php';
 	}
 
-
+	/**
+	 * Woocommerce.
+	 */
 	public function maybe_init_cart() {
 		if ( class_exists( 'Woocommerce' ) ) {
 			new \Boostify_Header_Footer\Module\Woocommerce();
@@ -266,6 +303,6 @@ class Elementor {
 		$this->setup_hooks();
 	}
 }
-// Instantiate Elementor Class
+// Instantiate Elementor Class.
 Elementor::instance();
 
