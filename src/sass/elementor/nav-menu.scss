@@ -90,6 +90,7 @@
 				padding-left: 5px;
 			}
 		}
+
 		&:hover {
 
 			&>.boostify-menu-child {
@@ -161,6 +162,32 @@
 			margin: 0;
 		}
 	}
+
+	.menu-item-has-children {
+		position: relative;
+		.arrow {
+			position: absolute;
+			right: 0;
+			top: 0;
+			display: flex;
+			width: 30px;
+			justify-content: flex-end;
+			align-items: center;
+
+
+			&:after {
+				content: '\f3d0';
+				font-family: "Ionicons";
+			}
+		}
+
+		a {
+			position: relative;
+			&:after {
+				display: none;
+			}
+		}
+	}
 }
 
 
@@ -200,13 +227,13 @@
 	}
 
 	.menu-item-has-children {
-		&>a:after {
+		&>a .arrow:after {
 			content: '\f3d0';
 			font-family: "Ionicons";
 			transition: all 0.3s;
 		}
 
-		&>a.up:after {
+		&>a .arrow.up:after {
 			content: '\f3d1';
 			transition: all 0.3s;
 		}

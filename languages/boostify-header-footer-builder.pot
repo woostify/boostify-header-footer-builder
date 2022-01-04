@@ -1,4 +1,4 @@
-# Copyright (C) 2021 boostify-header-footer-builder
+# Copyright (C) 2022 boostify-header-footer-builder
 # This file is distributed under the same license as the boostify-header-footer-builder package.
 msgid ""
 msgstr ""
@@ -13,71 +13,71 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: inc/admin/class-admin.php:87
+#: inc/admin/class-admin.php:85
 msgid "Type"
 msgstr ""
 
-#: inc/admin/class-admin.php:88, inc/admin/class-admin.php:224, inc/admin/class-metabox.php:248, inc/admin/class-metabox.php:497, inc/admin/class-metabox.php:527
+#: inc/admin/class-admin.php:86, inc/admin/class-admin.php:222, inc/admin/class-metabox.php:243, inc/admin/class-metabox.php:493, inc/admin/class-metabox.php:523
 msgid "Display On"
 msgstr ""
 
-#: inc/admin/class-admin.php:113, inc/admin/class-admin.php:102, inc/admin/class-metabox.php:268, inc/admin/class-metabox.php:330, inc/admin/class-metabox.php:441, inc/admin/class-metabox.php:469
+#: inc/admin/class-admin.php:111, inc/admin/class-admin.php:100, inc/admin/class-metabox.php:263, inc/admin/class-metabox.php:325, inc/admin/class-metabox.php:437, inc/admin/class-metabox.php:465
 msgid "All"
 msgstr ""
 
-#: inc/admin/class-admin.php:110
+#: inc/admin/class-admin.php:108
 msgid "404 Page"
 msgstr ""
 
-#: inc/admin/class-admin.php:108, inc/elementor/widgets/class-site-search.php:73, inc/helper.php:106
+#: inc/admin/class-admin.php:106, inc/elementor/widgets/class-site-search.php:73, inc/helper.php:106
 msgid "Search"
 msgstr ""
 
-#: inc/admin/class-admin.php:106
+#: inc/admin/class-admin.php:104
 msgid "Archive"
 msgstr ""
 
-#: inc/admin/class-admin.php:104
+#: inc/admin/class-admin.php:102
 msgid "Blog Page"
 msgstr ""
 
-#: inc/admin/class-admin.php:173
+#: inc/admin/class-admin.php:171
 msgid "New Template"
 msgstr ""
 
-#: inc/admin/class-admin.php:182
+#: inc/admin/class-admin.php:180
 msgid "Back"
 msgstr ""
 
-#: inc/admin/class-admin.php:198
+#: inc/admin/class-admin.php:196
 msgid "Choose Template Type"
 msgstr ""
 
-#: inc/admin/class-admin.php:202
+#: inc/admin/class-admin.php:200
 msgid "Name your template"
 msgstr ""
 
-#: inc/admin/class-admin.php:209
+#: inc/admin/class-admin.php:207
 msgid "Select the type of template you want to work on"
 msgstr ""
 
-#: inc/admin/class-admin.php:246, inc/admin/class-metabox.php:306, inc/admin/class-metabox.php:545
+#: inc/admin/class-admin.php:244, inc/admin/class-metabox.php:301, inc/admin/class-metabox.php:541
 msgid "Do Not Display On"
 msgstr ""
 
-#: inc/admin/class-admin.php:269
+#: inc/admin/class-admin.php:267
 msgid "Create Template"
 msgstr ""
 
-#: inc/admin/class-metabox.php:72
+#: inc/admin/class-metabox.php:67
 msgid "Type of Template"
 msgstr ""
 
-#: inc/admin/class-metabox.php:311, inc/admin/class-metabox.php:550
+#: inc/admin/class-metabox.php:306, inc/admin/class-metabox.php:546
 msgid "Select"
 msgstr ""
 
-#: inc/admin/class-metabox.php:409
+#: inc/admin/class-metabox.php:404
 msgid "Nothing Found"
 msgstr ""
 

@@ -129,25 +129,24 @@
 		);
 
 		/* MOBILE MENU */
-
-		var btn = nav.find( 'ul >.menu-item-has-children>a' );
-		btn.on(
-			'click',
-			function (e) {
-				e.preventDefault();
-				var item   = $( this ).siblings( '.sub-menu' );
-				var active = item.hasClass( 'active' );
-				if ( active ) {
-					item.removeClass( 'active' );
-					$( this ).removeClass( 'up' );
-					item.slideUp( 300 );
-				} else {
-					item.addClass( 'active' );
-					item.slideDown( 300 );
-					$( this ).addClass( 'up' );
-				}
+		// Add arrow
+		var itemHasChild = nav.find( 'ul >.menu-item-has-children>a' );
+		itemHasChild.append('<span class="arrow"></span>')
+		var btn = nav.find( 'ul >.menu-item-has-children .arrow' );
+		btn.on( 'click', function (e) {
+			e.preventDefault();
+			var item = $( this ).parent().siblings('ul.sub-menu');
+			var active = item.hasClass('active');
+			if ( active ) {
+				item.removeClass('active');
+				$(this).removeClass('up');
+				item.slideUp( 300 );
+			} else {
+				item.addClass('active');
+				item.slideDown( 300 );
+				$(this).addClass('up');
 			}
-		);
+		} );
 
 		if ( main.hasClass( 'primary-menu' ) ) {
 			main.removeClass( 'primary-menu' );
