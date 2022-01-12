@@ -24,7 +24,7 @@
 
 		sub.each(
 			function ( index ) {
-				if ( $(this).hasClass( 'sub-mega-menu' ) ) {
+				if ( $( this ).hasClass( 'sub-mega-menu' ) ) {
 					$( this ).wrap( '<div class="boostify-menu-child boostify-mega-sub">' );
 				} else {
 					$( this ).wrap( '<div class="boostify-menu-child">' );
@@ -66,7 +66,7 @@
 
 						mega.css( { 'left' : position + 'px', 'width' : contentWith + 'px' } );
 					} else if ( item.hasClass( 'sub-width-custom' ) ) {
-						contentWith = parseInt( item.attr('data-custom-width') );
+						contentWith = parseInt( item.attr( 'data-custom-width' ) );
 
 						if ( ! contentWith && contentWith < 200 ) {
 							contentWith = 500;
@@ -75,8 +75,7 @@
 						padding     = ( width - contentWith ) / 2;
 						left        = padding - left;
 						mega.css( { 'left' : 'calc( ( 100% - ' + contentWith + 'px' + ' ) /2 )', 'width' : contentWith + 'px' } );
-					}
-					 else {
+					} else {
 						mega.css( { 'left' : '-' + left + 'px', 'width' : width } );
 					}
 
