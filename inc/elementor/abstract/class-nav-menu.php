@@ -246,9 +246,24 @@ abstract class Nav_Menu extends Widget_Base {
 				'default'   => '#aa3166',
 				'selectors' => array(
 					'{{WRAPPER}} .boostify-menu > li:hover > a' => 'color: {{VALUE}}',
+					'{{WRAPPER}} .boostify-menu li.current-menu-item a' => 'color: {{VALUE}}',
+
+				),
+			)
+		);
+
+		$this->add_control(
+			'menu_item_underline_color_hover',
+			array(
+				'label'     => __( 'Line Item Hover', 'boostify' ),
+				'type'      => Controls_Manager::COLOR,
+				'default'   => '#000',
+				'condition' => array(
+					'pointer' => array( 'underline', 'overline' ),
+				),
+				'selectors' => array(
 					'{{WRAPPER}} .boostify--hover-underline .boostify-menu > li:hover > a:before' => 'background-color: {{VALUE}}',
 					'{{WRAPPER}} .boostify--hover-overline .boostify-menu li a:before' => 'background-color: {{VALUE}}',
-					'{{WRAPPER}} .boostify-menu li.current-menu-item a' => 'color: {{VALUE}}',
 					'{{WRAPPER}} .boostify--hover-underline .boostify-menu > li.current-menu-item > a:before' => 'background-color: {{VALUE}}',
 					'{{WRAPPER}} .boostify--hover-overline .boostify-menu li a.current-menu-item > a:before' => 'background-color: {{VALUE}}',
 				),
@@ -261,6 +276,9 @@ abstract class Nav_Menu extends Widget_Base {
 				'label'     => __( 'Background Item Hover', 'boostify' ),
 				'type'      => Controls_Manager::COLOR,
 				'default'   => '#eee',
+				'condition' => array(
+					'pointer' => 'background',
+				),
 				'selectors' => array(
 					'{{WRAPPER}} .boostify--hover-background .boostify-menu > li:hover' => 'background-color: {{VALUE}}',
 				),
@@ -361,6 +379,8 @@ abstract class Nav_Menu extends Widget_Base {
 				'selectors'  => array(
 					'{{WRAPPER}} .boostify-menu .sub-menu-default li' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 					'{{WRAPPER}} .boostify-nav-default .sub-menu li' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .boostify--hover-overline .boostify-menu .sub-menu>li:hover>a:before' => 'width: calc( 100% - {{RIGHT}}{{UNIT}} - {{LEFT}}{{UNIT}} );',
+					'{{WRAPPER}} .boostify--hover-underline .boostify-menu .sub-menu>li:hover>a:before' => 'width: calc( 100% - {{RIGHT}}{{UNIT}} - {{LEFT}}{{UNIT}} );',
 				),
 			)
 		);
@@ -482,11 +502,25 @@ abstract class Nav_Menu extends Widget_Base {
 				'separator' => 'before',
 				'selectors' => array(
 					'{{WRAPPER}} .boostify-nav-default li .sub-menu > li:hover > a'                                  => 'color: {{VALUE}}',
-					'{{WRAPPER}} .boostify--hover-underline.boostify-nav-default li .sub-menu > li:hover > a:after' => 'background-color: {{VALUE}}',
 					'{{WRAPPER}} .boostify-nav-default .sub-menu li.current-menu-item a'                                       => 'color: {{VALUE}}',
 					'{{WRAPPER}} .boostify-menu li .sub-menu-default > li:hover > a'                                  => 'color: {{VALUE}}',
-					'{{WRAPPER}} .boostify--hover-underline .boostify-menu li .sub-menu-default > li:hover > a:after' => 'background-color: {{VALUE}}',
 					'{{WRAPPER}} .boostify-menu .sub-menu-default li.current-menu-item a'                                       => 'color: {{VALUE}}',
+				),
+			)
+		);
+
+		$this->add_control(
+			'sub_menu_item_underline_color_hover',
+			array(
+				'label'     => __( 'Line Item Hover', 'boostify' ),
+				'type'      => Controls_Manager::COLOR,
+				'default'   => '#000',
+				'condition' => array(
+					'pointer' => array( 'underline', 'overline' ),
+				),
+				'selectors' => array(
+					'{{WRAPPER}} .boostify--hover-underline.boostify-nav-default li .sub-menu > li:hover > a:before' => 'background-color: {{VALUE}}',
+					'{{WRAPPER}} .boostify--hover-underline .boostify-menu li .sub-menu-default > li:hover > a:before' => 'background-color: {{VALUE}}',
 				),
 			)
 		);
