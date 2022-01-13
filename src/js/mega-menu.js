@@ -40,6 +40,7 @@
 				megaWidth();
 			}
 		);
+
 		function megaWidth() {
 			itemMega.each(
 				function( index ) {
@@ -74,7 +75,7 @@
 
 						padding = ( width - contentWith ) / 2;
 						left    = padding - left;
-						mega.css( { 'left: calc( ( 100% - ' + contentWith + 'px ) /2 )', 'width' : contentWith + 'px' } );
+						mega.css( { 'left' : 'calc( ( 100% - ' + contentWith + 'px ) /2 )', 'width' : contentWith + 'px' } );
 					} else {
 						mega.css( { 'left' : '-' + left + 'px', 'width' : width } );
 					}
