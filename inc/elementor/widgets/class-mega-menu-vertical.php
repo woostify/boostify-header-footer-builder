@@ -157,6 +157,26 @@ class Mega_Menu_Vertical extends Nav_Menu {
 			'sub_width',
 			array(
 				'label'     => __( 'Width', 'boostify' ),
+				'type'      => Controls_Manager::SELECT,
+				'default'   => 'default',
+				'options'   => array(
+					'default'   => __( 'Default', 'boostify' ),
+					'container' => __( 'Container', 'boostify' ),
+					'full'      => __( 'Full Width', 'boostify' ),
+					'custom'    => __( 'Custom', 'boostify' ),
+				),
+				'condition' => array(
+					'has_sub'   => 'yes',
+					'sub_type'  => 'mega',
+					'sub_menu!' => 'no',
+				),
+			)
+		);
+
+		$repeater->add_control(
+			'width_custom',
+			array(
+				'label'     => __( 'Width', 'boostify' ),
 				'type'      => Controls_Manager::SLIDER,
 				'range'     => array(
 					'px' => array(
@@ -167,13 +187,8 @@ class Mega_Menu_Vertical extends Nav_Menu {
 				'default'   => array(
 					'size' => 918,
 				),
-				'selectors' => array(
-					'{{WRAPPER}} .boostify-menu .boostify-menu-child .sub-menu.sub-mega-menu' => 'width: {{SIZE}}{{UNIT}};',
-				),
 				'condition' => array(
-					'has_sub'   => 'yes',
-					'sub_type'  => 'mega',
-					'sub_menu!' => 'no',
+					'sub_width' => 'custom',
 				),
 			)
 		);
@@ -238,6 +253,9 @@ class Mega_Menu_Vertical extends Nav_Menu {
 		$this->end_controls_section();
 	}
 
+	/**
+	 * Icon menu style
+	 */
 	protected function icon_menu_style() {
 		$this->add_control(
 			'icon_menu_color',
@@ -266,10 +284,10 @@ class Mega_Menu_Vertical extends Nav_Menu {
 						'step' => 1,
 					),
 				),
-				'default' => array(
+				'default'    => array(
 					'size' => 14,
 				),
-				'selectors' => array(
+				'selectors'  => array(
 					'{{WRAPPER}} .boostify-menu .menu-item-icon'     => 'font-size: {{SIZE}}{{UNIT}};',
 					'{{WRAPPER}} .boostify-menu .menu-item-icon svg' => 'width: {{SIZE}}{{UNIT}};',
 				),
@@ -277,6 +295,9 @@ class Mega_Menu_Vertical extends Nav_Menu {
 		);
 	}
 
+	/**
+	 * Icon menu hover style
+	 */
 	protected function icon_menu_hover_style() {
 		$this->add_control(
 			'icon_menu_color_hover',
@@ -340,6 +361,10 @@ class Mega_Menu_Vertical extends Nav_Menu {
 			if ( ! empty( $icon['value'] ) ) {
 				array_push( $menu_item_class, 'menu-item-has-icon' );
 			}
+			if ( ! empty( $menu['sub_width'] ) ) {
+				$width = $menu['sub_width'];
+				array_push( $menu_item_class, 'sub-width-' . $width );
+			}
 		}
 
 		$classes = implode( ' ', $menu_item_class );
@@ -365,10 +390,12 @@ class Mega_Menu_Vertical extends Nav_Menu {
 			$sub_type      = $menu['sub_type'];
 			$menu_location = $menu['menu_register'];
 			$child_of      = $menu['child_of'];
+			$custom_width  = $menu['width_custom'];
 			$item_class    = '';
 			$classes       = $this->menu_item_class( $menu );
+			$attributes    = ( ! empty( $custom_width ) && isset( $custom_width['size'] ) ) ? 'data-custom-width="' . $custom_width['size'] . '"' : '';
 			?>
-			<li class="<?php echo esc_attr( $classes ); ?>">
+			<li class="<?php echo esc_attr( $classes ); ?>" <?php echo wp_kses( $attributes, 'post' ); ?>>
 
 				<a href="<?php echo esc_url( $menu['link']['url'] ); ?>">
 					<span class="menu-item-main-info">
@@ -379,7 +406,7 @@ class Mega_Menu_Vertical extends Nav_Menu {
 								<span class="menu-item-icon <?php echo esc_attr( $icon['value'] ); ?>"></span>
 							<?php else : ?>
 								<span class="menu-item-icon menu-item-icon-svg">
-									<?php Icons_Manager::render_icon( $icon, [ 'aria-hidden' => 'true' ] ); ?>
+									<?php Icons_Manager::render_icon( $icon, array( 'aria-hidden' => 'true' ) ); ?>
 								</span>
 								<?php
 							endif;
