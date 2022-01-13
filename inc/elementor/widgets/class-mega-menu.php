@@ -614,4 +614,3 @@ class Mega_Menu extends Nav_Menu {
 		<?php
 	}
 }
-
