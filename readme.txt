@@ -2,9 +2,9 @@
 Contributors: duongancol, ptp96
 Donate link: https://woostify.com/contact/
 Tags: elementor, header builder, footer builder, elementor header, sticky menu, elementor sticky, header footer builder
-Requires at least: 4.0
-Requires PHP: 5.3
-Tested up to: 5.8
+Requires at least: 5.8
+Requires PHP: 5.7
+Tested up to: 5.9.2
 Stable tag: 1.2.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -107,6 +107,9 @@ Learn more about how [Appsero collects and uses this data](https://appsero.com/p
 == Changelog ==
 
 ## Changelog
+= 1.2.8 =
+- Compatibility with WordPress 5.9.2
+
 = 1.2.7 =
 - Fix Mega menu issue
 
