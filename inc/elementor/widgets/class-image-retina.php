@@ -64,7 +64,7 @@ class Image_Retina extends Base_Widget {
 		return 'eicon-eye';
 	}
 
-	protected function _register_controls() { //phpcs:ignore
+	protected function register_controls() { //phpcs:ignore
 		$this->retina();
 		$this->image_style();
 		$this->caption_style();
