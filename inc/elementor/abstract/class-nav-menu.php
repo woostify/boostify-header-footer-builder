@@ -63,7 +63,7 @@ abstract class Nav_Menu extends Widget_Base {
 		return $options;
 	}
 
-	protected function _register_controls() { //phpcs:ignore
+	protected function register_controls() { //phpcs:ignore
 		$this->main_menu();
 		$this->custom_button_vertical();
 		$this->mobile_menu();
