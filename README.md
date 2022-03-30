@@ -107,6 +107,9 @@ Learn more about how [Appsero collects and uses this data](https://appsero.com/p
 == Changelog ==
 
 ## Changelog
+= 1.2.8 =
+- Compatibility with WordPress 5.9.2
+
 = 1.2.7 =
 - Fix Mega menu issue
 
