@@ -75,7 +75,7 @@ class Cart_Icon extends Base_Widget {
 	 *
 	 * @access public
 	 */
-	public function _register_controls() { //phpcs:ignore
+	public function register_controls() { //phpcs:ignore
 
 		$this->content();
 

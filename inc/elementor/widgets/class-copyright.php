@@ -59,7 +59,7 @@ class Copyright extends Base_Widget {
 		return 'fa fa-copyright';
 	}
 
-	public function _register_controls() { //phpcs:ignore
+	public function register_controls() { //phpcs:ignore
 		$this->start_controls_section(
 			'section_title',
 			array(
