@@ -99,7 +99,6 @@ class Template {
 	public function render_header() {
 		$header_id = $this->template_header_id();
 		if ( $header_id ) {
-
 			require BOOSTIFY_HEADER_FOOTER_PATH . 'templates/default/header.php';
 			$templates   = array();
 			$templates[] = 'header.php';
@@ -515,12 +514,33 @@ class Template {
 	 */
 	public function template_header_id() {
 		global $post;
-		$shop_id = get_option( 'woocommerce_shop_page_id' );
+		$shop_id   = get_option( 'woocommerce_shop_page_id' );
+		$page_type = $this->page_type();
+		$header    = false;
+		if ( $this->display_all() ) {
+			$header = $this->display_all();
+		} elseif ( $this->display_template( $page_type ) ) {
+			$header = $this->display_template( $page_type );
+		}
+
+		if ( $header ) {
+			while ( $header->have_posts() ) {
+				$header->the_post();
+				$id = get_the_ID();
+			}
+			wp_reset_postdata();
+
+			return $id;
+		}
+
+
 		if ( empty( $post ) ) {
 			return false;
 		}
-			$post_id   = $post->ID;
-			$post_type = get_post_type( $post->ID );
+
+
+		$post_id   = $post->ID;
+		$post_type = get_post_type( $post->ID );
 
 		if ( class_exists( 'Woocommerce' ) && is_shop() ) {
 			$post_id   = $shop_id;
@@ -532,8 +552,9 @@ class Template {
 		if ( 'coming_soon' == $maintenance_mode && $maintenance_template == $post_id ) { //phpcs:ignore
 			return false;
 		}
-		$page_type = $this->page_type();
-		$id        = '';
+
+		$id = '';
+
 
 		if ( $this->display_all() || $this->display_template( $page_type ) || $this->all_single( $post_id, $post_type ) || $this->current_single( $post_id, $post_type ) ) {
 			if ( $this->display_all() ) {
@@ -570,10 +591,27 @@ class Template {
 	 */
 	public function template_footer_id() {
 		global $post;
-		$shop_id = get_option( 'woocommerce_shop_page_id' );
-		if ( ! empty( $post ) ) {
-			$this->post_id   = $post->ID;
-			$this->post_type = get_post_type( $post->ID );
+		$shop_id   = get_option( 'woocommerce_shop_page_id' );
+		$page_type = $this->page_type();
+		$footer    = false;
+		if ( $this->display_all( 'footer' ) ) {
+			$footer = $this->display_all( 'footer' );
+		} elseif ( $this->display_template( $page_type, 'footer' ) ) {
+			$footer = $this->display_template( $page_type, 'footer' );
+		}
+
+		if ( $footer ) {
+			while ( $footer->have_posts() ) {
+				$footer->the_post();
+				$id = get_the_ID();
+			}
+			wp_reset_postdata();
+
+			return $id;
+		}
+
+		if ( empty( $post ) ) {
+			return false;
 		}
 
 		if ( class_exists( 'Woocommerce' ) && is_shop() ) {

@@ -24,7 +24,8 @@
   background-color: #d9534f;
   font-size: 10px;
   display: flex;
-  min-width: 1.6em;
+  min-width: 16px;
+  height: 16px;
   right: -0.7em;
   justify-content: center;
   align-items: center;
