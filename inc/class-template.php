@@ -115,6 +115,7 @@ class Template {
 	 */
 	public function render_footer() {
 		$footer_id = $this->template_footer_id();
+		var_dump($footer_id);
 		if ( $footer_id ) {
 			require BOOSTIFY_HEADER_FOOTER_PATH . 'templates/default/footer.php';
 			$templates   = array();
@@ -185,18 +186,16 @@ class Template {
 			$post_type = get_post_type( $shop_id );
 		}
 
-		$path      = BOOSTIFY_HEADER_FOOTER_PATH . 'templates/content/content-header.php';
+		$path      = BOOSTIFY_HEADER_FOOTER_PATH . 'templates/content/content-footer.php';
 		$page_type = $this->page_type();
 
+
+		if ( $this->display_all( 'footer' ) ) {
+			$footer = $this->display_all( 'footer' );
+			$this->render( $footer, $path );
+		}
 		if ( is_singular() || ( class_exists( 'Woocommerce' ) && is_shop() ) ) {
 			$footer = $this->current_single( $id, $post_type, 'footer' );
-
-			if ( ! $footer ) {
-				$footer = $this->all_single( $id, $post_type, 'footer' );
-				if ( ! $footer ) {
-					$footer = $this->display_all( 'footer' );
-				}
-			}
 
 			$this->render( $footer, $path );
 		}
@@ -594,6 +593,7 @@ class Template {
 		$shop_id   = get_option( 'woocommerce_shop_page_id' );
 		$page_type = $this->page_type();
 		$footer    = false;
+
 		if ( $this->display_all( 'footer' ) ) {
 			$footer = $this->display_all( 'footer' );
 		} elseif ( $this->display_template( $page_type, 'footer' ) ) {
@@ -606,6 +606,7 @@ class Template {
 				$id = get_the_ID();
 			}
 			wp_reset_postdata();
+
 
 			return $id;
 		}
