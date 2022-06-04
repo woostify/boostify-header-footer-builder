@@ -115,7 +115,6 @@ class Template {
 	 */
 	public function render_footer() {
 		$footer_id = $this->template_footer_id();
-		var_dump($footer_id);
 		if ( $footer_id ) {
 			require BOOSTIFY_HEADER_FOOTER_PATH . 'templates/default/footer.php';
 			$templates   = array();
