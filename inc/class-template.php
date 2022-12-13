@@ -447,7 +447,7 @@ class Template {
 	 * @param (string) $path | Post Type Single Post.
 	 */
 	public function render( $header, $path ) {
-		if ( $header->have_posts() ) {
+		if ( $header && $header->have_posts() ) {
 			while ( $header->have_posts() ) {
 				$header->the_post();
 				load_template( $path );
