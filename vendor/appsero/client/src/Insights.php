@@ -777,12 +777,14 @@ class Insights {
      */
     public function uninstall_reason_submission() {
 
+        check_ajax_referer( 'appsero_security_nonce', 'nonce' );
+
         if ( ! isset( $_POST['reason_id'] ) ) {
             wp_send_json_error();
         }
 
-        if ( ! wp_verify_nonce( $_POST['nonce'], 'appsero-security-nonce' ) ) {
-            wp_send_json_error( 'Nonce verification failed' );
+        if ( ! current_user_can( 'manage_options' ) ) {
+            wp_send_json_error( 'You are not allowed for this task' );
         }
 
         $data                = $this->get_tracking_data();
