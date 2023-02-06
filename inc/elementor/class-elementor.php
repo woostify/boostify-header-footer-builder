@@ -186,7 +186,7 @@ class Elementor {
 		$widget_manager = \Elementor\Plugin::instance()->widgets_manager;
 		foreach ( $this->get_widgets() as $widget ) {
 			$class_name = 'Boostify_Header_Footer\Widgets\\' . $widget;
-			$widget_manager->register_widget_type( new $class_name() );
+			$widget_manager->register( new $class_name() );
 		}
 	}
 
@@ -260,7 +260,7 @@ class Elementor {
 		// Register widget scripts.
 		add_action( 'elementor/frontend/after_register_scripts', array( $this, 'widget_scripts' ) );
 		// Register widgets.
-		add_action( 'elementor/widgets/widgets_registered', array( $this, 'init_widgets' ) );
+		add_action( 'elementor/widgets/register', array( $this, 'init_widgets' ) );
 		add_action( 'elementor/init', array( $this, 'maybe_init_cart' ) );
 		add_action( 'elementor/controls/controls_registered', array( $this, 'modify_controls' ), 10, 1 );
 	}
