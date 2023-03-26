@@ -98,7 +98,6 @@ class Template_Render {
 
 		}
 	}
-	}
 
 
 	/**

@@ -300,7 +300,7 @@ class Template {
 			'post_type'           => 'btf_builder',
 			'orderby'             => 'id',
 			'order'               => 'DESC',
-			'posts_per_page'      => -1,
+			'posts_per_page'      => 1,
 			'ignore_sticky_posts' => 1,
 			'meta_query'          => array( //phpcs:ignore
 				array(
@@ -313,10 +313,16 @@ class Template {
 					'compare' => 'LIKE',
 					'value'   => $post_type,
 				),
+				array(
+					'key'     => 'bhf_post',
+					'compare' => 'LIKE',
+					'value'   => $id,
+				)
 			),
 		);
 
 		$header = new \WP_Query( $args );
+
 
 		if ( $header->have_posts() ) {
 			$list_header = $header->posts;
@@ -324,8 +330,10 @@ class Template {
 
 			foreach ( $list_header as $key => $post ) {
 				$list_id = get_post_meta( $post->ID, 'bhf_post', true );
+
 				if ( ! empty( $list_id ) || 'all' != $list_id ) { // phpcs:ignore
 					$post_id = explode( ',', $list_id );
+
 					if ( in_array( $id, $post_id ) ) { // phpcs:ignore
 						$current[0] = $post;
 					}
@@ -397,12 +405,16 @@ class Template {
 				$ex_post_type = get_post_meta( $id, 'bhf_ex_post_type', true );
 				$list_ex_post = array();
 				$post_type    = get_post_type( $post_id );
-				$list_ex_post = explode( ',', $ex_post );
+				$list_ex_post = array();
+				if ( !empty( $ex_post ) ) {
+					$list_ex_post = explode( ',', $ex_post );
+				}
+
 				if ( 'all' === $ex_post && $post_type === $ex_post_type ) {
 
 					return false;
 				}
-				if ( in_array( $post_id, $list_ex_post ) ) { //phpcs:ignore
+				if ( ! empty( $list_ex_post ) && in_array( $post_id, $list_ex_post ) ) { //phpcs:ignore
 
 					return false;
 				}
@@ -551,35 +563,33 @@ class Template {
 			return false;
 		}
 
-		$id = '';
+		$id = false;
 
+		if ( $this->display_all() ) {
+			$header = $this->display_all();
+		}
 
-		if ( $this->display_all() || $this->display_template( $page_type ) || $this->all_single( $post_id, $post_type ) || $this->current_single( $post_id, $post_type ) ) {
-			if ( $this->display_all() ) {
-				$header = $this->display_all();
-			}
+		if ( $this->display_template( $page_type ) ) {
+			$header = $this->display_template( $page_type );
+		}
+		if ( $this->all_single( $post_id, $post_type ) ) {
+			$header = $this->all_single( $post_id, $post_type );
+		}
+		if ( $this->current_single( $post_id, $post_type ) ) {
+			$header = $this->current_single( $post_id, $post_type );
+		}
 
-			if ( $this->display_template( $page_type ) ) {
-				$header = $this->display_template( $page_type );
-			}
-			if ( $this->all_single( $post_id, $post_type ) ) {
-				$header = $this->all_single( $post_id, $post_type );
-			}
-			if ( $this->current_single( $post_id, $post_type ) ) {
-				$header = $this->current_single( $post_id, $post_type );
-			}
-
-			while ( $header->have_posts() ) {
-				$header->the_post();
-				$id = get_the_ID();
-			}
-			wp_reset_postdata();
-
-			return $id;
-
-		} else {
+		if ( ! $header ) {
 			return false;
 		}
+
+		while ( $header->have_posts() ) {
+			$header->the_post();
+			$id = get_the_ID();
+		}
+		wp_reset_postdata();
+
+		return $id;
 	}
 
 	/**
@@ -592,24 +602,6 @@ class Template {
 		$shop_id   = get_option( 'woocommerce_shop_page_id' );
 		$page_type = $this->page_type();
 		$footer    = false;
-
-		if ( $this->display_all( 'footer' ) ) {
-			$footer = $this->display_all( 'footer' );
-		} elseif ( $this->display_template( $page_type, 'footer' ) ) {
-			$footer = $this->display_template( $page_type, 'footer' );
-		}
-
-		if ( $footer ) {
-			while ( $footer->have_posts() ) {
-				$footer->the_post();
-				$id = get_the_ID();
-			}
-			wp_reset_postdata();
-
-
-			return $id;
-		}
-
 		if ( empty( $post ) ) {
 			return false;
 		}
@@ -630,31 +622,33 @@ class Template {
 		}
 		$page_type = $this->page_type();
 		$post_type = $this->post_type;
-		$id        = '';
-		if ( $this->display_all( 'footer' ) || $this->display_template( $page_type, 'footer' ) || $this->all_single( $post_id, $post_type, 'footer' ) || $this->current_single( $post_id, $post_type, 'footer' ) ) {
-			if ( $this->display_all( 'footer' ) ) {
-				$header = $this->display_all( 'footer' );
-			}
-			if ( $this->display_template( $page_type, 'footer' ) ) {
-				$header = $this->display_template( $page_type, 'footer' );
-			}
-			if ( $this->all_single( $post_id, $post_type, 'footer' ) ) {
-				$header = $this->all_single( $post_id, $post_type, 'footer' );
-			}
-			if ( $this->current_single( $post_id, $post_type, 'footer' ) ) {
-				$header = $this->current_single( $post_id, $post_type, 'footer' );
-			}
+		$id        = false;
 
-			while ( $header->have_posts() ) {
-				$header->the_post();
-				$id = get_the_ID();
-			}
-			wp_reset_postdata();
+		if ( $this->display_all( 'footer' ) ) {
+			$header = $this->display_all( 'footer' );
+		}
+		if ( $this->display_template( $page_type, 'footer' ) ) {
+			$header = $this->display_template( $page_type, 'footer' );
+		}
+		if ( $this->all_single( $post_id, $post_type, 'footer' ) ) {
+			$header = $this->all_single( $post_id, $post_type, 'footer' );
+		}
+		if ( $this->current_single( $post_id, $post_type, 'footer' ) ) {
+			$header = $this->current_single( $post_id, $post_type, 'footer' );
+		}
 
-			return $id;
-		} else {
+		if ( ! $header ) {
 			return false;
 		}
+
+		while ( $header->have_posts() ) {
+			$header->the_post();
+			$id = get_the_ID();
+		}
+		wp_reset_postdata();
+
+		return $id;
+
 	}
 }
 
