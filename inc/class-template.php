@@ -621,7 +621,6 @@ class Template {
 			return false;
 		}
 		$page_type = $this->page_type();
-		$post_type = $this->post_type;
 		$id        = false;
 
 		if ( $this->display_all( 'footer' ) ) {
