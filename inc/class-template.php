@@ -527,22 +527,6 @@ class Template {
 		$shop_id   = get_option( 'woocommerce_shop_page_id' );
 		$page_type = $this->page_type();
 		$header    = false;
-		if ( $this->display_all() ) {
-			$header = $this->display_all();
-		} elseif ( $this->display_template( $page_type ) ) {
-			$header = $this->display_template( $page_type );
-		}
-
-		if ( $header ) {
-			while ( $header->have_posts() ) {
-				$header->the_post();
-				$id = get_the_ID();
-			}
-			wp_reset_postdata();
-
-			return $id;
-		}
-
 
 		if ( empty( $post ) ) {
 			return false;
