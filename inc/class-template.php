@@ -187,7 +187,11 @@ class Template {
 
 		$path      = BOOSTIFY_HEADER_FOOTER_PATH . 'templates/content/content-footer.php';
 		$page_type = $this->page_type();
+		if ( is_singular() || ( class_exists( 'Woocommerce' ) && is_shop() ) ) {
+			$footer = $this->current_single( $id, $post_type, 'footer' );
 
+			$this->render( $footer, $path );
+		}
 
 		if ( $this->display_all( 'footer' ) ) {
 			$footer = $this->display_all( 'footer' );
@@ -528,7 +532,7 @@ class Template {
 		$page_type = $this->page_type();
 		$header    = false;
 
-		if ( empty( $post ) ) {
+		if ( empty( $post ) && ! is_404() ) {
 			return false;
 		}
 
@@ -586,7 +590,7 @@ class Template {
 		$shop_id   = get_option( 'woocommerce_shop_page_id' );
 		$page_type = $this->page_type();
 		$footer    = false;
-		if ( empty( $post ) ) {
+		if ( empty( $post ) && ! is_404() ) {
 			return false;
 		}
 
@@ -597,8 +601,9 @@ class Template {
 		if ( ! empty( $post ) ) {
 			$post_id   = $post->ID;
 			$post_type = get_post_type( $post->ID );
+
 		}
-		$post_id              = $this->post_id;
+
 		$maintenance_mode     = get_option( 'elementor_maintenance_mode_mode' );
 		$maintenance_template = get_option( 'elementor_maintenance_mode_template_id' );
 		if ( 'coming_soon' == $maintenance_mode && $maintenance_template == $post_id ) { //phpcs:ignore
@@ -608,6 +613,7 @@ class Template {
 		$id        = false;
 
 		if ( $this->display_all( 'footer' ) ) {
+			
 			$header = $this->display_all( 'footer' );
 		}
 		if ( $this->display_template( $page_type, 'footer' ) ) {
@@ -617,8 +623,11 @@ class Template {
 			$header = $this->all_single( $post_id, $post_type, 'footer' );
 		}
 		if ( $this->current_single( $post_id, $post_type, 'footer' ) ) {
+
 			$header = $this->current_single( $post_id, $post_type, 'footer' );
 		}
+
+
 
 		if ( ! $header ) {
 			return false;
