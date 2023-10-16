@@ -5,7 +5,7 @@ Tags: elementor, header builder, footer builder, elementor header, sticky menu, 
 Requires at least: 5.8
 Requires PHP: 5.7
 Tested up to: 5.9.2
-Stable tag: 1.2.9
+Stable tag: 1.3.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -107,6 +107,9 @@ Learn more about how [Appsero collects and uses this data](https://appsero.com/p
 == Changelog ==
 
 ## Changelog
+= 1.3.0 =
+- Fix Footer doesn't appear on 404 page
+
 = 1.2.9 =
 - Compatibility with Elementor 3.10.x
 - Fix Footer disappear
