@@ -159,6 +159,18 @@ class Template {
 			$this->render( $header, $path );
 		}
 
+		if ( $this->display_all() ) {
+			$header = $this->display_all();
+			$this->render( $header, $path );
+		}
+
+		if ( is_singular() || ( class_exists( 'Woocommerce' ) && is_shop() ) ) {
+			$header = $this->current_single( $id, $post_type );
+
+			$this->render( $header, $path );
+		}
+
+
 		if ( ! empty( $page_type ) ) {
 			$header = $this->display_template( $page_type );
 			if ( ! $header ) {
@@ -166,7 +178,6 @@ class Template {
 			}
 			$this->render( $header, $path );
 		}
-
 	}
 
 	/**
@@ -532,7 +543,8 @@ class Template {
 		$page_type = $this->page_type();
 		$header    = false;
 
-		if ( empty( $post ) && ! is_404() ) {
+
+		if ( empty( $post ) && ( ! is_404() || ! $page_type ) ) {
 			return false;
 		}
 
@@ -556,6 +568,7 @@ class Template {
 		if ( $this->display_all() ) {
 			$header = $this->display_all();
 		}
+
 
 		if ( $this->display_template( $page_type ) ) {
 			$header = $this->display_template( $page_type );
@@ -614,27 +627,27 @@ class Template {
 
 		if ( $this->display_all( 'footer' ) ) {
 			
-			$header = $this->display_all( 'footer' );
+			$footer = $this->display_all( 'footer' );
 		}
 		if ( $this->display_template( $page_type, 'footer' ) ) {
-			$header = $this->display_template( $page_type, 'footer' );
+			$footer = $this->display_template( $page_type, 'footer' );
 		}
 		if ( $this->all_single( $post_id, $post_type, 'footer' ) ) {
-			$header = $this->all_single( $post_id, $post_type, 'footer' );
+			$footer = $this->all_single( $post_id, $post_type, 'footer' );
 		}
 		if ( $this->current_single( $post_id, $post_type, 'footer' ) ) {
 
-			$header = $this->current_single( $post_id, $post_type, 'footer' );
+			$footer = $this->current_single( $post_id, $post_type, 'footer' );
 		}
 
 
 
-		if ( ! $header ) {
+		if ( ! $footer ) {
 			return false;
 		}
 
-		while ( $header->have_posts() ) {
-			$header->the_post();
+		while ( $footer->have_posts() ) {
+			$footer->the_post();
 			$id = get_the_ID();
 		}
 		wp_reset_postdata();
