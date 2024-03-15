@@ -109,8 +109,6 @@ Learn more about how [Appsero collects and uses this data](https://appsero.com/p
 ## Changelog
 = 1.3.2 =
 - Update Appsero library 2.0.2
-
-= 1.3.0 =
 - Fix Footer doesn't appear on 404 page
 
 = 1.2.9 =
