@@ -541,10 +541,32 @@ class Template {
 		global $post;
 		$shop_id   = get_option( 'woocommerce_shop_page_id' );
 		$page_type = $this->page_type();
-		$header    = false;
+		$id = false;
+		$header = $this->display_all();
+
+		$id = false;
+		if (empty( $post ) &&  $page_type) {
 
 
-		if ( empty( $post ) && ( ! is_404() || ! $page_type ) ) {
+			if ( $this->display_template( $page_type ) ) {
+				$header = $this->display_template( $page_type );
+			}		
+
+			if ( ! $header ) {
+				return false;
+			}
+
+			while ( $header->have_posts() ) {
+				$header->the_post();
+				$id = get_the_ID();
+			}
+			wp_reset_postdata();
+
+			return $id;
+		}
+
+
+		if ( empty( $post ) && ! is_404() ) {
 			return false;
 		}
 
@@ -561,12 +583,6 @@ class Template {
 		$maintenance_template = get_option( 'elementor_maintenance_mode_template_id' );
 		if ( 'coming_soon' == $maintenance_mode && $maintenance_template == $post_id ) { //phpcs:ignore
 			return false;
-		}
-
-		$id = false;
-
-		if ( $this->display_all() ) {
-			$header = $this->display_all();
 		}
 
 
@@ -602,8 +618,29 @@ class Template {
 		global $post;
 		$shop_id   = get_option( 'woocommerce_shop_page_id' );
 		$page_type = $this->page_type();
-		$footer    = false;
-		if (empty( $post ) && ( ! is_404() || ! $page_type ) ) {
+		$footer    = $this->display_all( 'footer' );
+		$id        = false;
+
+		if (empty( $post ) &&  $page_type) {
+
+			if ( $this->display_template( $page_type, 'footer' ) ) {
+				$footer = $this->display_template( $page_type, 'footer' );
+			}		
+
+			if ( ! $footer ) {
+				return false;
+			}
+
+			while ( $footer->have_posts() ) {
+				$footer->the_post();
+				$id = get_the_ID();
+			}
+			wp_reset_postdata();
+
+			return $id;
+		}
+		
+		if (empty( $post ) && ! is_404() ) {
 			return false;
 		}
 
@@ -622,8 +659,6 @@ class Template {
 		if ( 'coming_soon' == $maintenance_mode && $maintenance_template == $post_id ) { //phpcs:ignore
 			return false;
 		}
-		$page_type = $this->page_type();
-		$id        = false;
 
 		if ( $this->display_all( 'footer' ) ) {
 			
