@@ -603,7 +603,7 @@ class Template {
 		$shop_id   = get_option( 'woocommerce_shop_page_id' );
 		$page_type = $this->page_type();
 		$footer    = false;
-		if ( empty( $post ) && ! is_404() ) {
+		if (empty( $post ) && ( ! is_404() || ! $page_type ) ) {
 			return false;
 		}
 
