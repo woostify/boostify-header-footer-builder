@@ -3,9 +3,9 @@ Contributors: duongancol, ptp96
 Donate link: https://woostify.com/contact/
 Tags: elementor, header builder, footer builder, elementor header, sticky menu, elementor sticky, header footer builder
 Requires at least: 4.0
-Requires PHP: 5.3
-Tested up to: 5.8
-Stable tag: 1.3.2
+Requires PHP: 7.2 or higher
+Tested up to: 6.5.3
+Stable tag: 1.3.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -107,6 +107,9 @@ Learn more about how [Appsero collects and uses this data](https://appsero.com/p
 == Changelog ==
 
 ## Changelog
+= 1.3.3 =
+- Fix security issue reported by Wordfence
+
 = 1.3.2 =
 - Update Appsero library 2.0.2
 - Fix Footer doesn't appear on 404 page
