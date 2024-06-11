@@ -5,10 +5,11 @@ Tags: elementor, header builder, footer builder, elementor header, sticky menu, 
 Requires at least: 5.8
 Requires PHP: 7.2 or higher
 Tested up to: 6.5.3
-Stable tag: 1.3.3
+Stable tag: 1.3.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
+Create Header, Footer and Mega menu for your WordPress website using Elementor Page Builder for free.
 
 == Description ==
 
@@ -107,6 +108,9 @@ Learn more about how [Appsero collects and uses this data](https://appsero.com/p
 == Changelog ==
 
 ## Changelog
+= 1.3.4 =
+- Update readme file
+
 = 1.3.3 =
 - Fix security issue reported by Wordfence
 

@@ -1,14 +1,16 @@
 === Boostify Header Footer Builder for Elementor ===
 Contributors: duongancol, ptp96
 Donate link: https://woostify.com/contact/
-Tags: elementor, header builder, footer builder, elementor header, sticky menu, elementor sticky, header footer builder
+Tags: elementor, header builder, footer builder,elementor sticky, header footer builder
 Requires at least: 4.0
-Requires PHP: 7.2 or higher
+Requires PHP: 7.2
 Tested up to: 6.5.3
-Stable tag: 1.3.3
+Stable tag: 1.3.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
+
+Create Header, Footer and Mega menu for your WordPress website using Elementor Page Builder for free.
 
 == Description ==
 
@@ -107,6 +109,9 @@ Learn more about how [Appsero collects and uses this data](https://appsero.com/p
 == Changelog ==
 
 ## Changelog
+= 1.3.4 =
+- Update readme file
+
 = 1.3.3 =
 - Fix security issue reported by Wordfence
 
