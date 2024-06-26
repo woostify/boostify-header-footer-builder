@@ -278,7 +278,7 @@ class Admin {
 	}
 
 	public function create_bhf_post() {
-		if ( ! current_user_can( 'publish_posts' ) ) {
+		if ( ! current_user_can( 'edit_posts' ) ) {
 			echo esc_html__( 'You don\'t give permission', 'boostify' );
 			return;
 		}
