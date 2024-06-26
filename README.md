@@ -5,7 +5,7 @@ Tags: elementor, header builder, footer builder,elementor sticky, header footer 
 Requires at least: 4.0
 Requires PHP: 7.2
 Tested up to: 6.5.3
-Stable tag: 1.3.4
+Stable tag: 1.3.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -109,7 +109,7 @@ Learn more about how [Appsero collects and uses this data](https://appsero.com/p
 == Changelog ==
 
 ## Changelog
-= 1.3.4 =
+= 1.3.5 =
 - Update readme file
 
 = 1.3.3 =
