@@ -278,6 +278,10 @@ class Admin {
 	}
 
 	public function create_bhf_post() {
+		if ( ! current_user_can( 'edit_posts' ) ) {
+			echo esc_html__( 'You don\'t give permission', 'boostify' );
+			return;
+		}
 		check_ajax_referer( 'ht_hf_nonce' );
 		$post_type        = $_GET['post_type'];
 		$post_title       = $_GET['post_title'];
