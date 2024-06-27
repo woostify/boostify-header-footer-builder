@@ -82,9 +82,9 @@ class Admin {
 	public function columns_head( $columns ) {
 		$date_column = $columns['date'];
 		unset( $columns['date'] );
-		$columns['type']      = __( 'Type', 'boostify' );
+		$columns['type']    = __( 'Type', 'boostify' );
 		$columns['display'] = __( 'Display On', 'boostify' );
-		$columns['date']      = $date_column;
+		$columns['date']    = $date_column;
 
 		return $columns;
 	}
@@ -110,13 +110,13 @@ class Admin {
 			if ( 'all' == $post_id ) {
 				$display = __( 'All', 'boostify' ) . $post_type;
 			} else {
-				$post_array = explode(',', $post_id);
+				$post_array = explode( ',', $post_id );
 				$list_title = array();
-				foreach ($post_array as $id) {
+				foreach ( $post_array as $id ) {
 					$list_title[] = get_the_title( $id );
 				}
 
-				$display = implode(',', $list_title);
+				$display = implode( ',', $list_title );
 			}
 		}
 		switch ( $column_name ) {
@@ -305,10 +305,10 @@ class Admin {
 		if ( array_key_exists( 'bhf_ex_post', $_GET ) ) {
 			$bhf_ex_post = $_GET['bhf_ex_post'];
 		}
-		$args = array(
+		$args      = array(
 			'post_title'  => $post_title,
 			'post_type'   => $post_type,
-			'post_status' => 'publish'
+			'post_status' => 'publish',
 		);
 		$permalink = get_option( 'permalink_structure' );
 

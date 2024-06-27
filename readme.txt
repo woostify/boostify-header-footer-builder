@@ -5,7 +5,7 @@ Tags: elementor, header builder, footer builder, elementor header, sticky menu, 
 Requires at least: 5.8
 Requires PHP: 7.2 or higher
 Tested up to: 6.5.3
-Stable tag: 1.3.5
+Stable tag: 1.3.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -108,7 +108,7 @@ Learn more about how [Appsero collects and uses this data](https://appsero.com/p
 == Changelog ==
 
 ## Changelog
-= 1.3.5 =
+= 1.3.6 =
 - Update readme file
 
 = 1.3.3 =
