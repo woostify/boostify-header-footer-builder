@@ -109,6 +109,17 @@ class Template_Render {
 	 * @param array $atts attributes for shortcode.
 	 */
 	public function render_template( $atts ) {
+		$id   = ! empty( $atts['id'] ) ? intval( $atts['id'] ) : '';
+
+		if ( empty( $id ) ) {
+			return '';
+		}
+
+		$bhf_post = get_post($id);
+
+		if ( $bhf_post->post_status !== 'publish') {
+			return '';
+		}
 
 		$atts = shortcode_atts(
 			array(
@@ -119,12 +130,7 @@ class Template_Render {
 			'bhf'
 		);
 
-		$id   = ! empty( $atts['id'] ) ? intval( $atts['id'] ) : '';
 		$type = ! empty( $atts['type'] ) ? $atts['type'] : '';
-
-		if ( empty( $id ) ) {
-			return '';
-		}
 
 		if ( class_exists( '\Elementor\Core\Files\CSS\Post' ) ) {
 			$css_file = new \Elementor\Core\Files\CSS\Post( $id );
