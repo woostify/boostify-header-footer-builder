@@ -61,10 +61,6 @@ if ( ! class_exists( 'Boostify_Header_Footer_Builder' ) ) {
 		 * Hook.
 		 */
 		public function hooks() {
-			if ( ! is_user_admin() ) {
-				echo esc_html__( 'Sorry, you are not allowed to access this page.', 'boostify' );
-				return;
-			}
 			add_action( 'init', array( $this, 'post_types' ) );
 			add_action( 'init', array( $this, 'translate' ) );
 			add_action( 'plugins_loaded', array( $this, 'init' ) );
