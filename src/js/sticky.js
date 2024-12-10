@@ -60,8 +60,8 @@
 					if ( screen.includes( enabled ) ) {
 						if ( ! tranparent ) {
 							var coppyClass = 'boostify-header--default elementor-section';
-							if ( sticky.hasClass( 'elementor-hidden-phone' ) ) {
-								coppyClass += ' elementor-hidden-phone';
+							if ( sticky.hasClass( 'elementor-hidden-mobile' ) ) {
+								coppyClass += ' elementor-hidden-mobile';
 							}
 
 							if ( sticky.hasClass( 'elementor-hidden-tablet' ) ) {
@@ -208,8 +208,8 @@
 					if ( screen.includes( enabled ) ) {
 						if ( ! tranparent ) {
 							var coppyClass = 'boostify-header--default elementor-section';
-							if ( sticky.hasClass( 'elementor-hidden-phone' ) ) {
-								coppyClass += ' elementor-hidden-phone';
+							if ( sticky.hasClass( 'elementor-hidden-mobile' ) ) {
+								coppyClass += ' elementor-hidden-mobile';
 							}
 
 							if ( sticky.hasClass( 'elementor-hidden-tablet' ) ) {
