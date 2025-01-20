@@ -525,7 +525,7 @@ class Mega_Menu extends Nav_Menu {
 			$custom_width  = $menu['width_custom'];
 			$item_class    = '';
 			$classes       = $this->menu_item_class( $menu );
-			$attributes    = ( ! empty( $custom_width ) && isset( $custom_width['size'] ) ) ? 'data-custom-width="' . sanitize_text_field( $custom_width['size'] ) . '"' : '';
+			$attributes    = ( ! empty( $custom_width ) && isset( $custom_width['size'] ) ) ? 'data-custom-width=' . sanitize_text_field( $custom_width['size'] ) . '' : '';
 			?>
 			<li class="<?php echo esc_attr( $classes ); ?>" <?php echo esc_attr( $attributes ); ?>>
 
