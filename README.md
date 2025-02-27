@@ -5,7 +5,7 @@ Tags: elementor, header builder, footer builder,elementor sticky, header footer 
 Requires at least: 4.0
 Requires PHP: 7.2
 Tested up to: 6.5.3
-Stable tag: 1.3.9
+Stable tag: 1.4.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -40,14 +40,14 @@ Not like other plugins, the plugin gives the built-in widgets for the header so 
 
 ## Sticky Header
 
-Build a sticky header is easily with the plugin. It offers enabling the sticky in mobile, tablet or desktop. 
+Build a sticky header is easily with the plugin. It offers enabling the sticky in mobile, tablet or desktop.
 Uploading custom logo for sticky menu, change the background menu, all can be done via Elementor.
 [View Tutorial](https://www.loom.com/share/c069549ad20a41729cb43da1e3ab5e0a)
 [View Demo](https://filmic.boostifythemes.com/)
 
 ## Mega Menu
 
-Build a mega menu is easily with Elementor. Go to Boostify Header Footer builder -> Add new, in Type, select 'sub mega menu' option. 
+Build a mega menu is easily with Elementor. Go to Boostify Header Footer builder -> Add new, in Type, select 'sub mega menu' option.
 Then build this sub mega menu.
 To add it to the header layout, in the header builder, select Nav mega menu, in this widget, select sub mega menu that's in step one.
 [View Tutorial](https://www.loom.com/share/ff726f36bec64d67adcd78d63b8243c4)
@@ -109,6 +109,9 @@ Learn more about how [Appsero collects and uses this data](https://appsero.com/p
 == Changelog ==
 
 ## Changelog
+= 1.4.0 =
+- Fix option custom width Mega menu
+
 = 1.3.9 =
 - Remove deprecated CSS code of Elementor
 
@@ -117,7 +120,7 @@ Learn more about how [Appsero collects and uses this data](https://appsero.com/p
 
 = 1.3.7 =
 - Change only admin role can edit the page
-- Fix deprecated Elementor function enqueue_styles 
+- Fix deprecated Elementor function enqueue_styles
 
 = 1.3.6 =
 - Update readme file
