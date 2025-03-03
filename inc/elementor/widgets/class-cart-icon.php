@@ -270,7 +270,7 @@ class Cart_Icon extends Base_Widget {
 					),
 				),
 				'selectors' => array(
-					'{{WRAPPER}} .elementor-widget-container' => 'text-align: {{VALUE}};',
+					'{{WRAPPER}} .boostify-cart-icon' => 'text-align: {{VALUE}};',
 				),
 			)
 		);
