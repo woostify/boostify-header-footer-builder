@@ -5,7 +5,7 @@ Tags: elementor, header builder, footer builder,elementor sticky, header footer 
 Requires at least: 4.0
 Requires PHP: 7.2
 Tested up to: 6.5.3
-Stable tag: 1.4.0
+Stable tag: 1.4.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -109,6 +109,9 @@ Learn more about how [Appsero collects and uses this data](https://appsero.com/p
 == Changelog ==
 
 ## Changelog
+= 1.4.1 =
+- Fix optimized DOM in elementor
+
 = 1.4.0 =
 - Fix option custom width Mega menu
 
